@@ -4,6 +4,8 @@ import connectDB from '../../utils/connectDB'
 import User from '../../models/userModel'
 import bcrypt from 'bcrypt'
 import { generateVerificationCode } from '../../utils/verificationCode'
+import { Resend } from 'resend'
+import VerificationEmail from '../../emails/verification'
 
 type Data = {
   user?: UserType,
@@ -77,8 +79,16 @@ export default async function handler(
       throw new Error('Server error, failed to create user. Try again later.')
     }
     const user = await User.findById(createdUser._id)
-      .select('firstName lastName email shares purchaseHistory verificationCode createdAt')
+      .select('firstName lastName email shares purchaseHistory  createdAt')
       .exec()
+
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'marbleinvestments2024@gmail.com',
+      subject: 'Welcome to Marble!',
+      react: VerificationEmail({ firstName, verificationCode: verificationCode.code }),
+    })
 
     res.status(201).json({ user })
 
