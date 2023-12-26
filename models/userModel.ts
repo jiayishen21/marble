@@ -1,0 +1,53 @@
+import { Schema, model, models, } from 'mongoose'
+
+const userSchema = new Schema(
+  {
+    firstName: {
+      type: String,
+      required: [true, 'Missing first name.'],
+    },
+
+    lastName: {
+      type: String,
+      required: [true, 'Missing last name.'],
+    },
+
+    email: {
+      type: String,
+      required: [true, 'Missing email.'],
+    },
+
+    password: {
+      type: String,
+      required: [true, 'Missing password.'],
+    },
+
+    shares: {
+      type: Number,
+      required: [true, 'Missing number of shares.'],
+      default: 0,
+    },
+
+    purchaseHistory: {
+      type: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Purchase',
+        required: [true, 'Missing purchase record.'],
+      }],
+      required: [true, 'Missing purchase history.'],
+      default: [],
+    },
+
+    verificationCode: {
+      type: Number,
+      required: false,
+    }
+  },
+  {
+    timestamps: true,
+  }
+)
+
+const User = models.User || model('User', userSchema)
+
+export default User
