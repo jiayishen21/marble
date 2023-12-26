@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserType } from '../../types/userType'
+import { UserType } from '../../types'
 import connectDB from '../../utils/connectDB'
 import User from '../../models/userModel'
 import bcrypt from 'bcrypt'

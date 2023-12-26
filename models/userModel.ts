@@ -39,7 +39,16 @@ const userSchema = new Schema(
     },
 
     verificationCode: {
-      type: Number,
+      type: {
+        code: {
+          type: String,
+          required: [true, 'Missing verification code.'],
+        },
+        expiresAt: {
+          type: Date,
+          required: [true, 'Missing verification code expiration date.'],
+        },
+      },
       required: false,
     }
   },

@@ -1,4 +1,6 @@
-export const generateVerificationCode = (): string => {
+import { VerificationCodeType } from '../types'
+
+export const generateVerificationCode = (): VerificationCodeType => {
   const codeLength = 6
   let code = ''
 
@@ -8,5 +10,8 @@ export const generateVerificationCode = (): string => {
     code += randomDigit.toString()
   }
 
-  return code
+  // Set the expiration date to 10 minutes from now
+  const expiresAt = new Date(Date.now() + 600000)
+
+  return { code, expiresAt }
 }
