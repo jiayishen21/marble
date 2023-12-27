@@ -19,6 +19,8 @@ export default async function handler(
 
     console.log(`Original: ${password}`);
     console.log(`Encrypted: ${encrypted.encryptedPassword}`);
+    console.log(`IV: ${encrypted.iv}`);
+    console.log(`Client Key: ${encrypted.clientKey}`)
     console.log(`Decrypted: ${decrypted}`);
 
     res.status(200).json({ message: "Success" })

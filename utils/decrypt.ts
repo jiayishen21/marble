@@ -21,6 +21,9 @@ const decrypt = (
   // Prepare the key for AES
   const iv = Buffer.from(ivHex, 'hex');
 
+  console.log(aesKey)
+  console.log(iv)
+
   // Decrypt the data
   const decipher: Decipher = createDecipheriv('aes-256-cbc', aesKey, iv);
   let decrypted = decipher.update(encryptedData, 'hex', 'utf8');

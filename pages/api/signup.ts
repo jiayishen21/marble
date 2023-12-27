@@ -2,28 +2,16 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { UserType } from '../../types'
 import connectDB from '../../utils/connectDB'
 import User from '../../models/userModel'
-import bcrypt from 'bcrypt'
 import { generateVerificationCode } from '../../utils/verificationCode'
 import { Resend } from 'resend'
 import VerificationEmail from '../../emails/verification'
+import decrypt from '../../utils/decrypt'
+import bcrypt from 'bcrypt'
+import isPasswordValid from '../../utils/validPassword'
 
 type Data = {
   user?: UserType,
   message?: string | undefined,
-}
-
-const isPasswordValid = (password: string): boolean => {
-  // Define your password criteria checks
-  const minLength = 8
-  const hasUppercase = /[A-Z]/.test(password)
-  const hasLowercase = /[a-z]/.test(password)
-  const hasNumber = /\d/.test(password)
-
-  // Check if the password meets all criteria
-  const isLengthValid = password.length >= minLength
-
-  // Return true if all criteria are met, otherwise false
-  return isLengthValid && hasUppercase && hasLowercase && hasNumber
 }
 
 export default async function handler(
@@ -37,18 +25,20 @@ export default async function handler(
 
     await connectDB()
 
-    // TODO: Decrypt password
-    const { firstName, lastName, email, encryptedPassword } = req.body
+    const { firstName, lastName, email, encryptedPassword, iv, clientKey } = req.body
 
-    const password = encryptedPassword
+    const password = decrypt(encryptedPassword, iv, clientKey, process.env.ECC_PRIVATE_KEY || '')
 
     if (!firstName || !lastName || !email || !password) {
       throw new Error("Please fill out all fields.")
     }
 
     if (!isPasswordValid(password)) {
-      throw new Error("Password must be at least 8 characters long and contain at a number, uppercase, and lowercase letter.")
+      throw new Error("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.")
     }
+
+    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS || '10'))
+    const hashedPassword = await bcrypt.hash(password, salt)
 
     const lowercaseEmail = email.toLowerCase()
     const emailExists = await User.findOne(
@@ -58,9 +48,6 @@ export default async function handler(
     if (emailExists) {
       throw new Error("An account with this email already exists. Try logging in instead.")
     }
-
-    const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS || '10'))
-    const hashedPassword = await bcrypt.hash(password, salt)
 
     const verificationCode = generateVerificationCode()
 
@@ -79,7 +66,7 @@ export default async function handler(
       throw new Error('Server error, failed to create user. Try again later.')
     }
     const user = await User.findById(createdUser._id)
-      .select('firstName lastName email shares purchaseHistory  createdAt')
+      .select('_id firstName lastName email shares purchaseHistory createdAt')
       .exec()
 
     const resend = new Resend(process.env.RESEND_API_KEY)
