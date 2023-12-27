@@ -43,6 +43,12 @@ export default async function handler(
     }
 
     const user = await User.findById(emailExists._id)
+      .select('_id firstName lastName email shares purchaseHistory verificationCode')
+      .populate({
+        path: 'purchaseHistory',
+        select: 'price quantity createdAt'
+      })
+      .exec()
 
     res.status(200).json({ user })
   } catch (error: any) {
