@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { UserType } from '../../types'
 import connectDB from '../../utils/connectDB'
+import Purchase from '../../models/purchaseModel'
 import User from '../../models/userModel'
 import decrypt from '../../utils/decrypt'
 import bcrypt from 'bcrypt'
@@ -42,8 +43,10 @@ export default async function handler(
       throw new Error("Could not find an account matching this email and password. Please try again.")
     }
 
+    Purchase.findOne() // initialize purchase model
+
     const user = await User.findById(emailExists._id)
-      .select('_id firstName lastName email shares purchaseHistory verificationCode')
+      .select('_id accountType firstName lastName email shares purchaseHistory verificationCode')
       .populate({
         path: 'purchaseHistory',
         select: 'price quantity createdAt'

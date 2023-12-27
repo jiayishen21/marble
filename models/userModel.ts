@@ -1,7 +1,14 @@
 import { Schema, model, models, } from 'mongoose'
+import Purchase from './purchaseModel'
 
 const userSchema = new Schema(
   {
+    accountType: {
+      type: String,
+      required: [true, 'Missing account type.'],
+      default: 'client',
+    },
+
     firstName: {
       type: String,
       required: [true, 'Missing first name.'],

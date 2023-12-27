@@ -1,5 +1,6 @@
 export type UserType = {
   _id: string,
+  accountType: 'client' | 'admin',
   firstName: string,
   lastName: string,
   email: string,

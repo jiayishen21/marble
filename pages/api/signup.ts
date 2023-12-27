@@ -66,7 +66,7 @@ export default async function handler(
       throw new Error('Server error, failed to create user. Try again later.')
     }
     const user = await User.findById(createdUser._id)
-      .select('_id firstName lastName email shares purchaseHistory createdAt')
+      .select('_id accountType firstName lastName email shares purchaseHistory createdAt')
       .exec()
 
     const resend = new Resend(process.env.RESEND_API_KEY)
