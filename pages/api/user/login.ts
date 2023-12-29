@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserType } from '../../types'
-import connectDB from '../../utils/connectDB'
-import Purchase from '../../models/purchaseModel'
-import User from '../../models/userModel'
-import decrypt from '../../utils/decrypt'
+import { UserType } from '../../../types'
+import connectDB from '../../../utils/connectDB'
+import Purchase from '../../../models/purchaseModel'
+import User from '../../../models/userModel'
+import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
+import getPopulatedUser from '../../../utils/getPopulatedUser'
 
 type Data = {
   user?: UserType,
@@ -43,19 +44,12 @@ export default async function handler(
       throw new Error("Could not find an account matching this email and password. Please try again.")
     }
 
-    Purchase.findOne() // initialize purchase model
+    await Purchase.findOne() // initialize purchase model
 
-    const user = await User.findById(emailExists._id)
-      .select('_id accountType firstName lastName email shares purchaseHistory verificationCode')
-      .populate({
-        path: 'purchaseHistory',
-        select: 'price quantity createdAt'
-      })
-      .exec()
+    const user = await getPopulatedUser(emailExists._id)
 
     res.status(200).json({ user })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }
 }
-

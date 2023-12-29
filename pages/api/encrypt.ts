@@ -28,4 +28,3 @@ export default async function handler(
     res.status(400).json({ message: error.message })
   }
 }
-

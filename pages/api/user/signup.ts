@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserType } from '../../types'
-import connectDB from '../../utils/connectDB'
-import User from '../../models/userModel'
-import { generateVerificationCode } from '../../utils/verificationCode'
+import { UserType } from '../../../types'
+import connectDB from '../../../utils/connectDB'
+import User from '../../../models/userModel'
+import { generateVerificationCode } from '../../../utils/verificationCode'
 import { Resend } from 'resend'
-import VerificationEmail from '../../emails/verification'
-import decrypt from '../../utils/decrypt'
+import VerificationEmail from '../../../emails/verification'
+import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
-import isPasswordValid from '../../utils/validPassword'
+import isPasswordValid from '../../../utils/validPassword'
 
 type Data = {
   user?: UserType,
