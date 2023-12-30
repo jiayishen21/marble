@@ -8,6 +8,10 @@ module.exports = {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
       },
+      backgroundImage: {
+        'landing': "url('/landingBackground.svg')",
+        'landing2': "url('/landingBackground2.png')",
+      }
     },
   },
   plugins: [],
