@@ -2,7 +2,7 @@
 
 @layer base {
   @font-face {
-    font-family: Inter;
+    font-family: "Inter";
     font-weight: 400;
     src: url(/fonts/Inter.ttf) format("ttf");
   }
@@ -18,6 +18,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
 }
 
 a {
