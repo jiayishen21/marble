@@ -5,15 +5,20 @@ import Link from "next/link";
 export default function navBar() {
   return (
     <>
-      <nav className="flex items-center justify-between w-screen p-[1rem]">
+      <nav className="flex items-center justify-between w-screen p-[2rem]">
         <Link href="/">
-          <div className="">
-            <Image src="./marble.svg" alt="marble svg" width={50} height={50} />
-          </div>
+          <Image
+            src="/marble.svg"
+            alt="Marble logo"
+            height={0}
+            width={0}
+            sizes="100vw"
+            className="w-[50%] h-auto"
+          />
         </Link>
 
         <div>
-          <ul className="flex justify-center items-center">
+          <ul className="flex justify-center items-center gap-[3rem] pr-[3rem] font-bold text-3xl text-[#26477C]">
             <Link href="/">
               <li>About us</li>
             </Link>
