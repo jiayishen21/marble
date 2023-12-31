@@ -20,16 +20,16 @@ export default function navBar() {
         <div>
           <ul className="flex justify-center items-center gap-[3rem] pr-[3rem] font-bold text-3xl text-[#26477C]">
             <Link href="/">
-              <li>About us</li>
+              <li>HOME</li>
             </Link>
             <Link href="/">
-              <li>Our Team</li>
+              <li>TEAM</li>
             </Link>
             <Link href="/">
-              <li>Resources</li>
+              <li>RESOURCES</li>
             </Link>
             <Link href="/">
-              <li>Dashboard</li>
+              <li>JOIN</li>
             </Link>
           </ul>
         </div>

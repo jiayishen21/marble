@@ -17,7 +17,6 @@ const Home: NextPage = () => {
   return (
     <>
       <NavBar />
-      <button onClick={onButton}>Click me</button>
     </>
   );
 };
