@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function navBar() {
   return (
     <>
-      <nav className="flex items-center justify-between w-screen p-[2rem]">
+      <nav className="flex items-center justify-between w-screen px-[3rem] py-[2rem]">
         <Link href="/">
           <Image
             src="/marble.svg"
@@ -13,7 +13,7 @@ export default function navBar() {
             height={0}
             width={0}
             sizes="100vw"
-            className="w-[50%] h-auto"
+            className="w-[90%] h-auto"
           />
         </Link>
 
