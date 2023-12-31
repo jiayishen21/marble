@@ -11,6 +11,14 @@ module.exports = {
       backgroundImage: {
         'landing': "url('/landingBackground.svg')",
         'landing2': "url('/landingBackground2.png')",
+      },
+      colors: {
+        'lightblue': "#a4c5cc",
+        'moonstone': "#79adbb",
+        'airforce': "#5687a8",
+        'lapis': "#2f5a8d",
+        'semiblack': "#03040a",
+        'intermediate':"#496c9d" //change this later!
       }
     },
   },
