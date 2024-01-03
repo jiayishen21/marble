@@ -1,6 +1,6 @@
 .buffer{
     background: linear-gradient(180deg, theme('colors.intermediate') 0%, 
-    theme('colors.lapis') 100%);
+    theme('colors.airforce') 100%);
 }
 
 .left-fade{

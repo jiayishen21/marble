@@ -30,7 +30,7 @@ export default function login() {
 
           <button
             type="submit"
-            className="w-full text-center p-[1rem] text-white bg-[#26467C] mb-[1rem] rounded-sm"
+            className="w-full text-center p-[1rem] text-neutral-50 bg-[#26467C] mb-[1rem] rounded-sm"
           >
             Send Recovery Email
           </button>

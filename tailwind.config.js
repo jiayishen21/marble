@@ -18,7 +18,7 @@ module.exports = {
         'airforce': "#5687a8",
         'lapis': "#2f5a8d",
         'semiblack': "#03040a",
-        'intermediate':"#496c9d" //change this later!
+        'intermediate':"#6a80af" //change this later!
       }
     },
   },

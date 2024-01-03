@@ -3,6 +3,7 @@ import Polywave from "../components/Polywave";
 import Navbar from "../components/layout/Navbar";
 import { useNavParams } from "../hooks/useNavParams";
 import styles from "../styles/Home.module.css"
+import { Button } from "antd";
 
 const Home: NextPage = () => {
   const {navRef, navHeight} = useNavParams()
@@ -21,42 +22,56 @@ const Home: NextPage = () => {
               <Polywave/>
           </div>
         </div>
-        <div className="absolute top-0 left-0 w-screen h-screen bg-landing z-[-1]"/>
-        <section className={`relative flex flex-col gap-8 px-16 h-full ${styles["left-fade"]}`}>
-          <div className="flex flex-col gap-3 mt-20">
-            <div className="text-lapis font-bold text-6xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
-              Hedge Fund,
-            </div>
-            <div className="text-lapis font-medium text-5xl">
-              Made by Students, for Students
-            </div>
+        <div className="absolute top-0 left-0 w-screen h-screen z-[-1]"/>
+        <section className={`relative flex flex-col gap-12 px-20 h-full ${styles["left-fade"]}`}>
+          <div className="flex flex-col gap-3 mt-20 text-semiblack font-bold text-6xl">
+              A hedge fund like no other —<br/>
+              by students, for students.
           </div>
-          <div className="text-lapis font-normal text-3xl w-[60%]">
-            Marble aims to support students with a seamless investing process
-            while providing them with the knowledge needed to succeed in all areas
-            of finance
+          <div className="text-airforce font-cairo font-semibold tracking-wide text-3xl">
+              “TO INVEST IN THE FUTURE, INVEST IN THOSE WHO BUILD THE FUTURE” <br/>
+              — PREFERABLY THIS IS MORE UNIQUE TO MARBLE THAN A QUOTE
           </div>
-          <button className="w-64 h-16 bg-white/[0.3] rounded-md text-lapis text-3xl 
-          font-medium flex justify-center items-center hover:scale-[1.04] transition-all duration-300">
-            Get Started
-          </button>
+          <Button type="primary" className="w-60 h-14 bg-lapis rounded-md text-neutral-50 text-2xl 
+          font-normal flex justify-center items-center">
+            Invest with us
+          </Button>
         </section>
       </div>
-      <section className={`${styles['buffer']} h-[5rem]`}/>
-      <section className="bg-lapis"> 
-        <div className="pb-[30rem] pt-[8rem]">
-          <div className="font-inter text-[#A4C5CC] text-6xl font-semibold drop-shadow-[0_1px_1px_rgba(255, 255, 255,0.8)] 
+      <section className={`${styles['buffer']} h-[2rem]`}/>
+      <section className="bg-airforce"> 
+        <div className="flex flex-col gap-12 pb-[10rem] pt-[8rem]">
+          <div className="text-neutral-50 text-6xl font-bold
           text-center">
-            Mission Statement
+            Our Mission
           </div>
-          <div className="font-inter text-white text-3xl font-normal mx-auto w-1/2 mt-4 text-center">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <div className=" text-neutral-50 text-3xl font-normal mx-auto text-center">
+          Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate <br/>
+          libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu <br/>
+          ad litora torquent per conubia nostra, per inceptos himenaeos.
           </div>
-          <div className="w-screen h-1/2 flex justify-around align-center pt-16 px-10">
-            <div className="bg-[#D9D9D9] h-96 w-96 bg-opacity-50 rounded "></div>
-            <div className="bg-[#D9D9D9] h-96 w-96 bg-opacity-50 rounded "></div>
-            <div className="bg-[#D9D9D9] h-96 w-96 bg-opacity-50 rounded "></div>
+          <div className="w-screen flex justify-around align-center pt-8 px-10">
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
+          </div>
+        </div>
+      </section>
+      <section className=""> 
+        <div className="flex flex-col gap-12 pb-[10rem] pt-[8rem]">
+          <div className="text-neutral-50 text-6xl font-bold
+          text-center">
+            Our Mission
+          </div>
+          <div className=" text-neutral-50 text-3xl font-normal mx-auto text-center">
+          Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate <br/>
+          libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu <br/>
+          ad litora torquent per conubia nostra, per inceptos himenaeos.
+          </div>
+          <div className="w-screen flex justify-around align-center pt-8 px-10">
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
+            <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded "></div>
           </div>
         </div>
       </section>

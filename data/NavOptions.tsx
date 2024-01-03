@@ -9,19 +9,25 @@ type NavOption = {
 
 const BaseNavOptions:NavOption[] = [
     {
-        title: "HOME",
+        title: "Home",
         route: "/",
         icon: "",
         dropdown: <></>
     },
     {
-        title: "TEAM",
+        title: "Team",
         route: "/",
         icon: "",
         dropdown: <></>
     },
     {
-        title: "RESOURCES",
+        title: "Resources",
+        route: "/",
+        icon: "",
+        dropdown: <></>
+    },
+    {
+        title: "Contact Us",
         route: "/",
         icon: "",
         dropdown: <></>
@@ -30,22 +36,22 @@ const BaseNavOptions:NavOption[] = [
 
 const PublicNavOptions = [
     ...BaseNavOptions,     
-    {
-        title: "JOIN",
-        route: "/",
-        icon: "",
-        dropdown: <></>
-    }
+    // {
+    //     title: "JOIN",
+    //     route: "/",
+    //     icon: "",
+    //     dropdown: <></>
+    // }
 ]
 
 const NavOptions = [
     ...BaseNavOptions,     
-    {
-        title: "DASHBOARD",
-        route: "/",
-        icon: "",
-        dropdown: <></>
-    }
+    // {
+    //     title: "DASHBOARD",
+    //     route: "/",
+    //     icon: "",
+    //     dropdown: <></>
+    // }
 ]
 
 export {PublicNavOptions, NavOptions}
