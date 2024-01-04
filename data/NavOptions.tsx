@@ -15,20 +15,20 @@ const BaseNavOptions:NavOption[] = [
         dropdown: <></>
     },
     {
-        title: "Team",
-        route: "/",
+        title: "Our Team",
+        route: "/our-team",
         icon: "",
         dropdown: <></>
     },
     {
         title: "Resources",
-        route: "/",
+        route: "/resources",
         icon: "",
         dropdown: <></>
     },
     {
         title: "Contact Us",
-        route: "/",
+        route: "/contact",
         icon: "",
         dropdown: <></>
     },

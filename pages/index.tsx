@@ -7,12 +7,15 @@ import { ContactOptions } from "../data/ContactOptions";
 import { useForm } from "antd/lib/form/Form";
 
 import styles from "../styles/Home.module.css"
+import { useRouter } from "next/router";
+import Footer from "../components/layout/Footer";
 
 const {Item} = Form;
 const {TextArea} = Input;
 
 const Home: NextPage = () => {
   const {navRef, navHeight} = useNavParams()
+  const router = useRouter()
 
   const [form] = useForm()
 
@@ -28,7 +31,7 @@ const Home: NextPage = () => {
           display:"grid",
           gridTemplateRows:`${navHeight}px calc(100vh - ${navHeight}px)`
       }}>
-        <Navbar navRef={navRef} blank={false}/>
+        <Navbar navRef={navRef} blank={false} router={router}/>
         <div className="flex absolute bottom-0 left-0 h-[300px] w-screen overflow-y-hidden pointer-events-none">
           <div className={`absolute bottom-0 left-0 z-[500] w-screen overflow-hidden
           ${styles['bottom-surge']}`}>
@@ -92,18 +95,16 @@ const Home: NextPage = () => {
         </div>
         <div className="flex items-center justify-center pl-20 pr-40">
           <div className="bg-neutral-400 h-[28rem] w-full bg-opacity-50 rounded"
-           data-aos="zoom-in-left"/>
+           data-aos="fade-left"/>
         </div>
       </section>
       <div className="pt-[16rem] pl-20">
-        <div className="text-semiblack text-6xl font-bold font-hind"
-        data-aos="fade-right">
+        <div className="text-semiblack text-6xl font-bold font-hind">
           Get in touch
         </div>
       </div>
       <Row className="pb-[12rem] pt-[2rem]"> 
-        <Col className="flex flex-col gap-12 pl-20" span={9}
-        data-aos="fade-right">
+        <Col className="flex flex-col gap-12 pl-20" span={9}>
           <div className="text-semiblack text-2xl font-hind">
             We invite you to contact us through one of the methods below.
           </div>
@@ -206,6 +207,7 @@ const Home: NextPage = () => {
           </Form>
         </Col>
       </Row>
+      <Footer/>
     </main>
   );
 };

@@ -1,15 +1,22 @@
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { Button } from "antd";
+import { NextRouter } from "next/router";
 
 interface Props{
   navRef:MutableRefObject<any>,
-  blank: boolean
+  blank: boolean,
+  router: NextRouter
 }
 
-export default function Navbar({navRef, blank}:Props) {
+export default function Navbar({navRef, blank, router}:Props) {
+  const [currentRoute, setCurrentRoute] = useState<string>('')
+
+  useEffect(() => {
+    setTimeout(() => {setCurrentRoute(router.asPath)}, 100)
+  }, [router.asPath])
 
   return blank ? 
     <nav className="relative px-12 py-4" ref={navRef}>
@@ -47,8 +54,10 @@ export default function Navbar({navRef, blank}:Props) {
             <div key={key}>
               <Link href={opt.route}>
                 <li className="nav-option text-semiblack hover:text-lapis
-                hover:scale-[1.04]
-                transition-all duration-300">{opt.title}</li>
+                transition-all duration-300 px-1"
+                style={{
+                  // fontWeight: currentRoute === opt.route ? 700 : 500
+                }}>{opt.title}</li>
               </Link>
             </div>
           ))}
