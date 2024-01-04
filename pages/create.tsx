@@ -1,72 +1,89 @@
-import React from "react";
+import {Row, Col, Form, Input, Button} from "antd"
+import { useForm } from "antd/lib/form/Form";
 import Link from "next/link";
+import styles from "../styles/Auth.module.css"
 
-export default function login() {
+const {Item} = Form
+const {Password} = Input
+
+export default function Create() {
+  const [form] = useForm()
+
+  const handleSubmit = (formData:any) => {
+    alert(JSON.stringify(formData))
+    form.resetFields()
+  }
+
   return (
-    <main className="flex justify-center items-center flex-1">
-      <div className="bg-[rgba(255,255,255,0.75)] w-[50%] flex flex-col p-[2.5rem] gap-[2rem] rounded-sm">
-        <h1 className="font-bold text-3xl">
-          Create a Marble Investment Account
-        </h1>
-
-        <p>Get started on your investment journey with us.</p>
-        <p>
-          <span className="text-red-500">*</span> Indicates a required field.
-        </p>
-        <form
-          onSubmit={() => {
-            //do api later
-            console.log("create");
-          }}
-        >
-          <div className="flex flex-col gap-[0.2rem]">
-            <label htmlFor="email">
-              Email address <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="email"
-              className="mb-[2rem] border border-gray-500 h-10 p-[1rem]"
-            />
-            <label htmlFor="c-password">
-              Create password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="c-password"
-              className="mb-[2rem] border border-gray-500 h-10 p-[1rem]"
-            />
-            <div className="flex justify-end mb-[1rem] underline text-blue-800">
-              Show password
-            </div>
-            <label htmlFor="r-password">
-              Re-type password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="r-password"
-              className="mb-[2rem] border border-gray-500 h-10 p-[1rem]"
-            />
-          </div>
-          <div className="flex items-center mb-[2rem]">
-            <input
-              type="checkbox"
-              id="check"
-              className="form-checkbox h-6 w-6 border-2 border-gray-500 appearance-none mr-[1rem] rounded-sm"
-            />
-            <label htmlFor="check">blah blah</label>
-          </div>
-          <button
-            type="submit"
-            className="w-full text-center p-[1rem] text-neutral-50 bg-[#26467C] mb-[1rem] rounded-sm"
-          >
-            Create account
-          </button>
-          <div className="flex justify-center underline text-blue-800">
-            <Link href="/login">I already have an account</Link>
-          </div>
-        </form>
-      </div>
-    </main>
+    <div className="flex items-center justify-center w-full h-full">
+      <Row className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
+      data-aos="fade-up">
+        <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">
+          Become a Marble Investor
+        </div>
+        <Form form={form} onFinish={handleSubmit} layout="vertical"
+        className="flex items-center justify-center w-full pt-8">
+          <Row gutter={[10, 5]} className="w-full">
+            <Col span={11}>
+              <Item 
+              name="firstname"
+              label={<label className={styles["touch-form-label"]}>First Name</label>}
+              >
+                <Input size="large"/>
+              </Item>
+            </Col>
+            <Col span={2}></Col>
+            <Col span={11}>
+              <Item 
+              name="firstname"
+              label={<label className={styles["touch-form-label"]}>Last Name</label>}
+              >
+                <Input size="large"/>
+              </Item>
+            </Col>
+            <Col span={24}>
+              <Item 
+              name="email"
+              label={<label className={styles["touch-form-label"]}>Email</label>}
+              >
+                <Input size="large"/>
+              </Item>
+            </Col>
+            <Col span={24}>
+              <Item 
+              name="password"
+              label={<label className={styles["touch-form-label"]}>Set a password</label>}
+              >
+                <Password size="large"/>
+              </Item>
+            </Col>
+            <Col span={24}>
+              <Item 
+              name="confirm"
+              label={<label className={styles["touch-form-label"]}>Retype password</label>}
+              >
+                <Input size="large"/>
+              </Item>
+            </Col>
+            <Col className="flex flex-row gap-2 items-start justify-center" span={24}>
+              <Item name="agree">
+                <Input size="large" type="checkbox"/>
+              </Item>
+              <div className={`${styles["touch-form-label"]} py-1`}>
+                I confirm and acknowledge the terms and conditions.
+              </div>
+            </Col>
+            <Col span={24} className="mt-2 flex flex-col items-center justify-center">
+              <Button type="primary" htmlType="submit"
+              className="w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind
+              text-2xl font-normal flex justify-center items-center">
+                Sign Up
+              </Button>
+              <Link href="/login" className="mt-4 underline hover:underline">I already have an account</Link>
+            </Col>
+          </Row>
+        </Form>
+      </Row>
+    </div>
   );
 }

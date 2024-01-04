@@ -2,10 +2,11 @@ import type { NextPage } from "next";
 import Polywave from "../components/Polywave";
 import Navbar from "../components/layout/Navbar";
 import { useNavParams } from "../hooks/useNavParams";
-import styles from "../styles/Home.module.css"
 import { Button, Col, Form, Input, Row } from "antd";
 import { ContactOptions } from "../data/ContactOptions";
 import { useForm } from "antd/lib/form/Form";
+
+import styles from "../styles/Home.module.css"
 
 const {Item} = Form;
 const {TextArea} = Input;
@@ -15,8 +16,9 @@ const Home: NextPage = () => {
 
   const [form] = useForm()
 
-  const onSubmit = () => {
-    alert("form submitted!")
+  const onSubmit = (formData:any) => {
+    alert(JSON.stringify(formData))
+    form.resetFields()
   }
 
   return (
@@ -26,7 +28,7 @@ const Home: NextPage = () => {
           display:"grid",
           gridTemplateRows:`${navHeight}px calc(100vh - ${navHeight}px)`
       }}>
-        <Navbar navRef={navRef}/>
+        <Navbar navRef={navRef} blank={false}/>
         <div className="flex absolute bottom-0 left-0 h-[300px] w-screen overflow-y-hidden pointer-events-none">
           <div className={`absolute bottom-0 left-0 z-[500] w-screen overflow-hidden
           ${styles['bottom-surge']}`}>
@@ -34,7 +36,8 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className="absolute top-0 left-0 w-screen h-screen z-[-1]"/>
-        <section className={`relative flex flex-col gap-12 px-20 h-full ${styles["left-fade"]}`}>
+        <section className={`relative flex flex-col gap-12 px-20 h-full`}
+        data-aos="fade-right">
           <div className="flex flex-col gap-3 mt-20 text-semiblack font-bold text-6xl">
               A hedge fund like no other —<br/>
               by students, for students.
@@ -52,22 +55,26 @@ const Home: NextPage = () => {
       <section className={`${styles['buffer']} h-[2rem]`}/>
       <section className="bg-airforce flex flex-col gap-12 pb-[10rem] pt-[8rem]"> 
         <div className="text-neutral-50 text-6xl font-bold
-        text-center">
+        text-center" data-aos="fade-up">
           Our Mission
         </div>
-        <div className=" text-neutral-50 text-3xl font-normal mx-auto text-center">
+        <div className=" text-neutral-50 text-3xl font-normal mx-auto text-center"
+         data-aos="fade-up">
         Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate <br/>
         libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu <br/>
         ad litora torquent per conubia nostra, per inceptos himenaeos.
         </div>
         <div className="w-screen flex justify-around align-center pt-8 px-10">
-          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"/>
-          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"/>
-          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"/>
+          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+           data-aos="fade-right"/>
+          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+          data-aos="fade-up"/>
+          <div className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+          data-aos="fade-left"/>
         </div>
       </section>
       <section className="grid grid-cols-2 gap-12 pb-10 pt-[10rem]"> 
-        <div className="flex flex-col gap-12 pl-20">
+        <div className="flex flex-col gap-12 pl-20" data-aos="fade-right">
           <div className="text-semiblack text-6xl font-bold">
             We are passionate about <br/>
             growing your money
@@ -84,16 +91,19 @@ const Home: NextPage = () => {
           </Button>
         </div>
         <div className="flex items-center justify-center pl-20 pr-40">
-          <div className="bg-neutral-400 h-[28rem] w-full bg-opacity-50 rounded"/>
+          <div className="bg-neutral-400 h-[28rem] w-full bg-opacity-50 rounded"
+           data-aos="zoom-in-left"/>
         </div>
       </section>
       <div className="pt-[16rem] pl-20">
-        <div className="text-semiblack text-6xl font-bold font-hind">
-            Get in touch
-          </div>
+        <div className="text-semiblack text-6xl font-bold font-hind"
+        data-aos="fade-right">
+          Get in touch
+        </div>
       </div>
-      <Row className="pb-10 pt-[2rem]"> 
-        <Col className="flex flex-col gap-12 pl-20" span={9}>
+      <Row className="pb-[12rem] pt-[2rem]"> 
+        <Col className="flex flex-col gap-12 pl-20" span={9}
+        data-aos="fade-right">
           <div className="text-semiblack text-2xl font-hind">
             We invite you to contact us through one of the methods below.
           </div>
@@ -124,64 +134,65 @@ const Home: NextPage = () => {
             </div>
             <Row gutter={[10, 10]}>
               <Col span={12}>
-                <Item name="fullname" label="Full Name"
+                <Item name="fullname" className="touch-form"
                 rules={[
                   {
                     required: true,
                     message: "Required field"
                   }
-                ]}>
-                  <Input size="large" placeholder="Full Name"
+                ]}
+                label={<label className={styles['touch-form-label']}>Full Name</label>}>
+                  <Input size="large" placeholder="Name"
                   />
                 </Item>
               </Col>
               <Col span={12}>
-                <Item name="email" label="Email"
+                <Item name="email"
                 rules={[
                   {
                     required: true,
                     message: "Required field"
                   }
-                ]}>
-                  <Input size="large" placeholder="Email"
-                  />
+                ]}
+                label={<label className={styles['touch-form-label']}>Email</label>}>
+                  <Input size="large" placeholder="Email"/>
                 </Item>
               </Col>
               <Col span={12}>
-                <Item name="company" label="Your Company/Institution"
+                <Item name="company"
                 rules={[
                   {
                     required: true,
                     message: "Required field"
                   }
-                ]}>
-                  <Input size="large" placeholder="Company"
-                  />
+                ]}
+                label={<label className={styles['touch-form-label']}>Your Company/Institution</label>}>
+                  <Input size="large" placeholder="Company"/>
                 </Item>
               </Col>
               <Col span={12}>
-                <Item name="subject" label="Subject"
+                <Item name="subject"
                 rules={[
                   {
                     required: true,
                     message: "Required field"
                   }
-                ]}>
-                  <Input size="large" placeholder="Subject"
-                  />
+                ]}
+                label={<label className={styles['touch-form-label']}>Subject</label>}>
+                  <Input size="large" placeholder="Subject"/>
                 </Item>
               </Col>
               <Col span={24}>
-                <Item name="message" label="Please leave your message below."
+                <Item name="message"
                 rules={[
                   {
                     required: true,
                     message: "Required field"
                   }
-                ]}>
+                ]}
+                label={<label className={styles['touch-form-label']}>Please leave your message below.</label>}>
                   <TextArea size="large" placeholder="Enter your message here..."
-                  rows={5} style={{resize:"none"}}
-                  />
+                  rows={5} style={{resize:"none"}}/>
                 </Item>
               </Col>
               <Col span={6} className="mt-2">

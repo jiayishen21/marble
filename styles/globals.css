@@ -32,3 +32,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.ant-input, .ant-input-password{
+  border-radius: 1px;
+  border-color: theme('colors.airforce')
+}
