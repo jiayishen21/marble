@@ -3,7 +3,7 @@
     theme('colors.airforce') 100%);
 }
 
-.left-fade{
+/* .left-fade{
     opacity: 1;
     transform: translateX(0px);
     animation: left-fly 1.2s;
@@ -37,4 +37,4 @@ wave-surge{
         transform: translateY(0px);
         opacity: 1;
     }
-}
+} */

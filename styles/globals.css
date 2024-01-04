@@ -16,8 +16,12 @@ body {
   font-family: Hind, sans-serif;
 }
 
+.font-hind{
+  font-family: Hind, sans-serif !important;
+}
+
 .font-cairo{
-  font-family: Cairo, sans-serif
+  font-family: Cairo, sans-serif !important;
 }
 
 a {

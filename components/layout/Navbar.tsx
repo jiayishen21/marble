@@ -43,7 +43,7 @@ export default function Navbar({navRef}:Props) {
           <li className="nav-option text-semiblack hover:text-lapis
           font-light text-2xl">Sign Up</li>
         </Link>
-        <Button type="primary" className="bg-lapis text-neutral-50 text-2xl 
+        <Button type="primary" className="bg-lapis text-neutral-50 font-hind text-2xl 
           font-light flex justify-center items-center px-8 h-11" href="/login">
             Client Login
           </Button>
