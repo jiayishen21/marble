@@ -1,58 +1,61 @@
-import React from "react";
+import {Row, Col, Form, Input, Button} from "antd"
+import { useForm } from "antd/lib/form/Form";
 import Link from "next/link";
+import styles from "../styles/Auth.module.css"
+import { FaUnlockAlt } from "react-icons/fa";
 
-export default function login() {
+const {Item} = Form
+const {Password} = Input
+
+export default function Login() {
+  const [form] = useForm()
+
+  const handleSubmit = (formData:any) => {
+    alert(JSON.stringify(formData))
+    form.resetFields()
+  }
+
   return (
-    <main className="flex justify-center items-center flex-1">
-      <div className="bg-[rgba(255,255,255,0.75)] w-[50%] flex flex-col p-[2.5rem] gap-[2rem] rounded-sm">
-        <h1 className="font-bold text-3xl">
-          Sign in to Your Marble Investment Account
-        </h1>
-
-        <p>Check on the progress of your investment</p>
-        <p>
-          <span className="text-red-500">*</span> Indicates a required
-          field.
-        </p>
-        <form
-          //do api later
-          onSubmit={() => {
-            console.log("signed in");
-          }}
-        >
-          <div className="flex flex-col gap-[0.2rem]">
-            <label htmlFor="email">
-              Email address <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="email"
-              className="mb-[2rem] border border-gray-500 h-10 p-[1rem]"
-            />
-            <label htmlFor="password">
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              id="password"
-              className="mb-[2rem] border border-gray-500 h-10 p-[1rem]"
-            />
-          </div>
-          <div className="flex justify-end mb-[3rem] underline text-blue-800">
-            Show password
-          </div>
-          <button
-            type="submit"
-            className="w-full text-center p-[1rem] text-neutral-50 bg-[#26467C] mb-[1rem] rounded-sm"
-          >
-            Sign in
-          </button>
-          <div className="flex justify-start underline text-blue-800">
-            <Link href="/">Forgot Password?</Link>
-          </div>
-        </form>
-      </div>
-    </main>
-
+    <div className="flex items-center justify-center w-full h-full">
+      <Row className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
+      data-aos="fade-up">
+        <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">
+          <FaUnlockAlt/>
+        </div>
+        <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">
+          Sign into Your Marble Account
+        </div>
+        <Form form={form} onFinish={handleSubmit} layout="vertical"
+        className="flex items-center justify-center w-full pt-8">
+          <Row gutter={[10, 5]} className="w-full">
+            <Col span={24}>
+              <Item 
+              name="username"
+              label={<label className={styles["touch-form-label"]}>Username or Email</label>}
+              >
+                <Input size="large"/>
+              </Item>
+            </Col>
+            <Col span={24} className="flex flex-col">
+              <Item 
+              name="password"
+              label={<label className={styles["touch-form-label"]}>Password</label>}
+              >
+                <Password size="large"/>
+              </Item>
+              <Link href="/forgot" className="text-end mb-4 underline hover:underline">Forgot password?</Link>
+            </Col>
+            <Col span={24} className="mt-2 flex flex-col items-center justify-center">
+              <Button type="primary" htmlType="submit"
+              className="w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind
+              text-2xl font-normal flex justify-center items-center">
+                Sign In
+              </Button>
+              <Link href="/create" className="mt-4 underline hover:underline">Create an account</Link>
+            </Col>
+          </Row>
+        </Form>
+      </Row>
+    </div>
   );
 }

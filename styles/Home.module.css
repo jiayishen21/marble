@@ -3,38 +3,7 @@
     theme('colors.airforce') 100%);
 }
 
-.left-fade{
-    opacity: 1;
-    transform: translateX(0px);
-    animation: left-fly 1.2s;
-}
-
-.bottom-surge{
-    opacity: 1;
-    transform: translateY(0px);
-    animation: wave-surge 1.2s
-}
-
-@keyframes
-left-fly{
-    from{
-        transform: translateX(-400px);
-        opacity: 0;
-    }
-    to{
-        transform: translateX(0px);
-        opacity: 1;
-    }
-}
-
-@keyframes
-wave-surge{
-    from{
-        transform: translateY(300px);
-        opacity: 0.5;
-    }
-    to{
-        transform: translateY(0px);
-        opacity: 1;
-    }
+.touch-form-label{
+    font-size: 0.95rem !important;
+    font-family: Hind, sans-serif !important;
 }
