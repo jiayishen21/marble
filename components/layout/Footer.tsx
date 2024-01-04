@@ -2,7 +2,6 @@ import React, { MutableRefObject } from "react";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { ContactOptions } from "../../data/ContactOptions";
-import Image from "next/image";
 
 export default function Footer() {
   return (
