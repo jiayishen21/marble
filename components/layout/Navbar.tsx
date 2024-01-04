@@ -5,20 +5,22 @@ import { PublicNavOptions } from "../../data/NavOptions";
 import { Button } from "antd";
 import { NextRouter } from "next/router";
 
-interface Props{
-  navRef:MutableRefObject<any>,
-  blank: boolean,
-  router: NextRouter
+interface Props {
+  navRef: MutableRefObject<any>;
+  blank: boolean;
+  router: NextRouter;
 }
 
-export default function Navbar({navRef, blank, router}:Props) {
-  const [currentRoute, setCurrentRoute] = useState<string>('')
+export default function Navbar({ navRef, blank, router }: Props) {
+  const [currentRoute, setCurrentRoute] = useState<string>("");
 
   useEffect(() => {
-    setTimeout(() => {setCurrentRoute(router.asPath)}, 100)
-  }, [router.asPath])
+    setTimeout(() => {
+      setCurrentRoute(router.asPath);
+    }, 100);
+  }, [router.asPath]);
 
-  return blank ? 
+  return blank ? (
     <nav className="relative px-12 py-4" ref={navRef}>
       <section className="fixed">
         <Link href="/">
@@ -56,11 +58,17 @@ export default function Navbar({navRef, blank, router}:Props) {
           {PublicNavOptions.map((opt, key) => (
             <div key={key}>
               <Link href={opt.route}>
-                <li className="nav-option text-semiblack hover:text-lapis
+                <li
+                  className="nav-option text-semiblack hover:text-lapis
                 transition-all duration-300 px-1"
-                style={{
-                  // fontWeight: currentRoute === opt.route ? 700 : 500
-                }}>{opt.title}</li>
+                  style={
+                    {
+                      // fontWeight: currentRoute === opt.route ? 700 : 500
+                    }
+                  }
+                >
+                  {opt.title}
+                </li>
               </Link>
             </div>
           ))}
