@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserType } from '../types';
+import { useRouter } from 'next/router';
 
 const theme = {
   components: {
@@ -24,10 +25,18 @@ const theme = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+  const [user, setUser] = useState<UserType | undefined>(undefined)
+
   useEffect(() => {
     AOS.init()
   }, [])
-  const [user, setUser] = useState<UserType | undefined>(undefined)
+
+  useEffect(() => {
+    if (user?.verificationCode) {
+      router.push('/verify')
+    }
+  }, [user])
 
   const modifiedProps = {
     ...pageProps,

@@ -12,7 +12,11 @@ import { UserType } from "../types";
 const { Item } = Form
 const { Password } = Input
 
-export default function Create({ setUser }: { setUser: (user: UserType) => void }) {
+interface Props {
+  setUser: (user: UserType) => void
+}
+
+export default function Create({ setUser }: Props) {
   const [form] = useForm()
   const [loading, setLoading] = useState(false)
   const [agree, setAgree] = useState(false)
@@ -20,7 +24,6 @@ export default function Create({ setUser }: { setUser: (user: UserType) => void 
   const handleSubmit = (formData: any) => {
     try {
       setLoading(true)
-      console.log(formData)
       if (!isNameValid(formData["given-name"])) {
         throw new Error('Invalid format for first name. Please make sure it is not empty and contains only alphabetical characters, dashes, quotes, and periods.')
       }

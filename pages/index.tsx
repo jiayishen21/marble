@@ -8,6 +8,7 @@ import { useForm } from "antd/lib/form/Form";
 import Footer from "../components/layout/Footer";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -27,14 +28,14 @@ const Home: NextPage = () => {
     <main className="overflow-x-hidden min-w-screen">
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
         }}
       >
         <Navbar navRef={navRef} blank={false} router={router} />
-        <div className="flex absolute bottom-0 left-0 h-[300px] w-screen overflow-y-hidden pointer-events-none">
+        <div className="flex absolute bottom-0 left-0 h-[300px] w-full overflow-y-hidden pointer-events-none">
           <div
-            className={`absolute -bottom-2 left-0 z-[500] w-screen overflow-hidden
+            className={`absolute -bottom-2 left-0 z-[500] w-full overflow-hidden
           ${styles["bottom-surge"]}`}
           >
             <Polywave />
@@ -53,13 +54,14 @@ const Home: NextPage = () => {
             “TO INVEST IN THE FUTURE, INVEST IN THOSE WHO BUILD THE FUTURE”{" "}
             <br />— PREFERABLY THIS IS MORE UNIQUE TO MARBLE THAN A QUOTE
           </div>
-          <Button
+          <Link
+            href='/create'
             type="primary"
             className="w-60 h-14 bg-lapis rounded-md text-neutral-50 font-hind
           text-2xl font-normal flex justify-center items-center"
           >
             Invest with us
-          </Button>
+          </Link>
         </section>
       </div>
       <section className={`${styles["buffer"]} h-[2rem]`} />
