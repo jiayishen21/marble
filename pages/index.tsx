@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <div
         style={{
           display: "grid",
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
         <Navbar navRef={navRef} blank={false} router={router} />
         <div className="flex absolute bottom-0 left-0 h-[300px] w-screen overflow-y-hidden pointer-events-none">
           <div
-            className={`absolute bottom-0 left-0 z-[500] w-screen overflow-hidden
+            className={`absolute -bottom-2 left-0 z-[500] w-screen overflow-hidden
           ${styles["bottom-surge"]}`}
           >
             <Polywave />
