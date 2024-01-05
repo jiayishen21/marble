@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main className="overflow-x-hidden min-w-screen">
+    <main className="overflow-x-hidden w-full">
       <div
         style={{
           display: 'grid',
@@ -41,7 +41,7 @@ const Home: NextPage = () => {
             <Polywave />
           </div>
         </div>
-        <div className="absolute top-0 left-0 w-screen h-screen z-[-1]" />
+        <div className="absolute top-0 left-0 w-full h-screen z-[-1]" />
         <section
           className={`relative flex flex-col gap-12 px-20 h-full`}
           data-aos="fade-right"
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
           sociosqu <br />
           ad litora torquent per conubia nostra, per inceptos himenaeos.
         </div>
-        <div className="w-screen flex justify-around align-center pt-8 px-10">
+        <div className="w-full flex justify-around align-center pt-8 px-10">
           <div
             className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
             data-aos="fade-right"
