@@ -24,8 +24,8 @@ export default function Footer() {
         </ul>
       </section>
       <section className="flex justify-center items-center w-[25%] gap-[3rem]">
-        {ContactOptions.map((icon) => (
-          <Link href={icon.value} className="text-white text-4xl">
+        {ContactOptions.map((icon, key) => (
+          <Link key={key} href={icon.value} className="text-white text-4xl">
             {icon.icon}
           </Link>
         ))}
