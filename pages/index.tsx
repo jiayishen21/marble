@@ -28,7 +28,7 @@ const Home: NextPage = () => {
     <main className="overflow-x-hidden">
       <div
         style={{
-          display: "grid",
+          display: 'grid',
           gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
         }}
       >
