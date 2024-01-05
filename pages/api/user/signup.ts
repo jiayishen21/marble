@@ -7,7 +7,7 @@ import { Resend } from 'resend'
 import VerificationEmail from '../../../emails/verification'
 import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
-import isPasswordValid from '../../../utils/validPassword'
+import { isNameValid, isEmailValid, isPasswordValid } from '../../../utils/validForm'
 
 type Data = {
   user?: UserType,
@@ -29,12 +29,17 @@ export default async function handler(
 
     const password = decrypt(encryptedPassword, iv, clientKey, process.env.ECC_PRIVATE_KEY || '')
 
-    if (!firstName || !lastName || !email || !password) {
-      throw new Error("Please fill out all fields.")
+    if (!isNameValid(firstName)) {
+      throw new Error('Invalid format for first name. Please make sure it is not empty and contains only alphabetical characters, dashes, quotes, and periods.')
     }
-
+    if (!isNameValid(lastName)) {
+      throw new Error('Invalid format for last name. Please make sure it is not empty and contains only alphabetical characters, dashes, quotes, and periods.')
+    }
+    if (!isEmailValid(email)) {
+      throw new Error('Invalid email. Please make sure it is not empty and in the correct format.')
+    }
     if (!isPasswordValid(password)) {
-      throw new Error("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, and one number.")
+      throw new Error('Invalid password. Please make sure it is not empty and contains at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number.')
     }
 
     const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS || '10'))
