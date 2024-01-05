@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-hidden min-w-screen">
       <div
         style={{
           display: "grid",
