@@ -8,15 +8,15 @@ import axios from "axios";
 import encrypt from "../utils/encrypt";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { setUser } from "../store/userSlice";
+import { AppDispatch } from "../store/store";
+import { useDispatch } from "react-redux";
 
 const { Item } = Form
 const { Password } = Input
 
-interface Props {
-  setUser: (user: any) => void
-}
-
-export default function Login({ setUser }: Props) {
+export default function Login() {
+  const dispatch = useDispatch<AppDispatch>()
   const [loading, setLoading] = useState(false)
   const [form] = useForm()
 
@@ -45,7 +45,7 @@ export default function Login({ setUser }: Props) {
             throw new Error('Server error. Please try again')
           }
           localStorage.setItem('token', response.data.token)
-          setUser(response.data.user)
+          dispatch(setUser(response.data.user))
           setLoading(false)
         })
         .catch((error: any) => {

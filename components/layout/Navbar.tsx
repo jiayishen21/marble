@@ -4,7 +4,6 @@ import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { Button } from "antd";
 import { NextRouter } from "next/router";
-import { UserType } from "../../types";
 
 interface Props {
   navRef: MutableRefObject<any>;

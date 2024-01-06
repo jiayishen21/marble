@@ -7,16 +7,15 @@ import { toast } from "react-toastify";
 import { isNameValid, isEmailValid, isPasswordValid } from "../utils/validForm";
 import axios from "axios";
 import { useState } from "react";
-import { UserType } from "../types";
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/store';
+import { setUser } from '../store/userSlice';
 
 const { Item } = Form
 const { Password } = Input
 
-interface Props {
-  setUser: (user: UserType) => void
-}
-
-export default function Create({ setUser }: Props) {
+export default function Create() {
+  const dispatch = useDispatch<AppDispatch>()
   const [form] = useForm()
   const [loading, setLoading] = useState(false)
   const [agree, setAgree] = useState(false)
@@ -59,7 +58,7 @@ export default function Create({ setUser }: Props) {
             throw new Error('Server error. Please try again')
           }
           localStorage.setItem('token', response.data.token)
-          setUser(response.data.user)
+          dispatch(setUser(response.data.user))
           setLoading(false)
         })
         .catch((error: any) => {

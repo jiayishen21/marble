@@ -64,6 +64,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [])
 
   useEffect(() => {
+    console.log(user)
     if (router.asPath === '/verify') {
       return
     }
