@@ -1,3 +1,8 @@
+export interface AppState {
+  user: UserType | null,
+  userLoading: boolean,
+}
+
 export type UserType = {
   _id: string,
   accountType: 'client' | 'admin',

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { Button } from "antd";
 import { NextRouter } from "next/router";
+import { UserType } from "../../types";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -37,7 +38,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
     </nav>
   ) : (
     <nav
-      className="relative flex items-center justify-between w-screen px-12"
+      className="relative flex items-center justify-between w-full px-12"
       ref={navRef}
     >
       {/* example dropdown:

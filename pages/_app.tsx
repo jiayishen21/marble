@@ -9,8 +9,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserType } from '../types';
 import { useRouter } from 'next/router';
-import authenticate from '../utils/authenticate';
 import axios from 'axios';
+import { Provider } from 'react-redux';
+import { store } from '../store/store';
 
 const theme = {
   components: {
@@ -66,12 +67,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ToastContainer position='top-right' autoClose={5000} />
-      <ConfigProvider theme={theme}>
-        <Layout>
-          <Component {...modifiedProps} />
-        </Layout>
-      </ConfigProvider>
+      <Provider store={store}>
+        <ToastContainer position='top-right' autoClose={5000} />
+        <ConfigProvider theme={theme}>
+          <Layout>
+            <Component {...modifiedProps} />
+          </Layout>
+        </ConfigProvider>
+      </Provider>
     </>
   )
 }
