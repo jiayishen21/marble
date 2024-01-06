@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-airforce h-[100px] w-full font-hind text-neutral-50 flex">
       <section className="flex flex-1">
-        <ul className="flex items-center justify-center gap-[9rem] font-light text-2xl w-full ">
+        <ul className="flex items-center justify-around font-light text-2xl w-full ">
           {PublicNavOptions.map((opt, key) => (
             <div key={key}>
               <Link href={opt.route}>
