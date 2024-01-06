@@ -37,3 +37,7 @@ a {
   border-radius: 1px;
   border-color: theme('colors.airforce')
 }
+
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
