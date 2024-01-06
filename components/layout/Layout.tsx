@@ -19,7 +19,7 @@ export default function Layout({ children }: PropsWithChildren<any>) {
             } : { display: "grid", gridTemplateRows: "0 100% 100px" }}>
             {/* <div className="absolute top-0 left-0 w-full h-screen bg-landing z-[-1] pointer-events-none"/> */}
             <Navbar navRef={navRef} blank={blank} router={router} />
-            <div className="flex h-full overflow-scroll">
+            <div className="flex h-full">
                 {children}
             </div>
             <Footer />

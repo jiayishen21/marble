@@ -4,14 +4,16 @@ import type { AppProps } from 'next/app'
 import { ConfigProvider } from 'antd';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { UserType } from '../types';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import { Provider } from 'react-redux';
-import { store } from '../store/store';
+
+// Redux
+import { Provider, useSelector, useDispatch } from 'react-redux';
+import { store, RootState, AppDispatch } from '../store/store';
+import { setUser, setUserLoading } from '../store/userSlice';
 
 const theme = {
   components: {
@@ -27,27 +29,38 @@ const theme = {
   },
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
+  return (
+    <>
+      <Provider store={store}>
+        <AppComponent Component={Component} pageProps={pageProps} router={router} />
+      </Provider>
+    </>
+  )
+}
+
+const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter()
-  const [user, setUser] = useState<UserType | undefined>(undefined)
-  const [userLoading, setUserLoading] = useState(true)
+
+  const user = useSelector((state: RootState) => state.user.user);
+  const userLoading = useSelector((state: RootState) => state.user.userLoading);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    setUserLoading(true)
+    dispatch(setUserLoading(true))
     AOS.init()
     const token = localStorage.getItem('token') || ''
     axios
       .get('/api/user', { headers: { 'Authorization': `Bearer ${token}` } })
       .then((response: any) => {
         if (response?.data?.user) {
-          setUser(response.data.user)
+          dispatch(setUser(response.data.user))
         }
-        setUserLoading(false)
+        dispatch(setUserLoading(false))
       })
       .catch((error: any) => {
-        setUserLoading(false)
+        dispatch(setUserLoading(false))
       })
-
   }, [])
 
   useEffect(() => {
@@ -61,20 +74,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const modifiedProps = {
     ...pageProps,
-    user,
-    setUser,
   }
 
   return (
     <>
-      <Provider store={store}>
-        <ToastContainer position='top-right' autoClose={5000} />
-        <ConfigProvider theme={theme}>
-          <Layout>
-            <Component {...modifiedProps} />
-          </Layout>
-        </ConfigProvider>
-      </Provider>
+      <ToastContainer position='top-right' autoClose={5000} />
+      <ConfigProvider theme={theme}>
+        <Layout>
+          <Component {...modifiedProps} />
+        </Layout>
+      </ConfigProvider>
     </>
   )
 }
