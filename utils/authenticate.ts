@@ -9,28 +9,23 @@ const authenticate = async (authorization: string): Promise<UserType | undefined
     authorization &&
     authorization.startsWith('Bearer')
   ) {
-    try {
-      // Take out the 'Bearer' part
-      token = authorization.split(' ')[1]
+    // Take out the 'Bearer' part
+    token = authorization.split(' ')[1]
 
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || '')
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || '')
 
-      if (typeof decoded === 'string' || !decoded.id) {
-        throw new Error('Invalid token.')
-      }
+    if (typeof decoded === 'string' || !decoded._id) {
+      throw new Error('Your session expired. Please log in again.')
+    }
 
-      // Get user from the token
-      const user = await getPopulatedUser(decoded.id)
+    // Get user from the token
+    const user = await getPopulatedUser(decoded._id)
 
-      if (user) {
-        return user
-      } else {
-        throw new Error('User not found')
-      }
-
-    } catch (error: any) {
-      throw new Error(error.message)
+    if (user) {
+      return user
+    } else {
+      throw new Error('Your session expired. Please log in again.')
     }
   }
 

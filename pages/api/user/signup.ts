@@ -8,9 +8,11 @@ import VerificationEmail from '../../../emails/verification'
 import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
 import { isNameValid, isEmailValid, isPasswordValid } from '../../../utils/validForm'
+import jwt from 'jsonwebtoken'
 
 type Data = {
   user?: UserType,
+  token?: string,
   message?: string | undefined,
 }
 
@@ -74,6 +76,8 @@ export default async function handler(
       .select('_id accountType firstName lastName email shares purchaseHistory createdAt')
       .exec()
 
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '180d' })
+
     const resend = new Resend(process.env.RESEND_API_KEY)
     resend.emails.send({
       from: 'onboarding@resend.dev',
@@ -82,7 +86,7 @@ export default async function handler(
       react: VerificationEmail({ firstName, verificationCode: verificationCode.code }),
     })
 
-    res.status(201).json({ user })
+    res.status(201).json({ user, token })
 
   } catch (error: any) {
     res.status(400).json({ message: error.message })

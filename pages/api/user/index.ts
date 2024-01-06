@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { UserType } from '../../../types'
 import connectDB from '../../../utils/connectDB'
-import User from '../../../models/userModel'
 import decrypt from '../../../utils/decrypt'
 import authenticate from '../../../utils/authenticate'
 
@@ -21,15 +20,7 @@ export default async function handler(
 
     await connectDB()
 
-    const { iv, clientKey } = req.query
-
-    if (typeof iv !== 'string' || typeof clientKey !== 'string') {
-      throw new Error('Encryption error.')
-    }
-
-    const jwt = decrypt(req.headers.authorization || '', iv, clientKey, process.env.ECC_PRIVATE_KEY || '')
-
-    await connectDB()
+    const jwt = req.headers.authorization || ''
 
     const user = await authenticate(jwt)
 

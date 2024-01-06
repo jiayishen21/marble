@@ -6,9 +6,11 @@ import User from '../../../models/userModel'
 import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
 import getPopulatedUser from '../../../utils/getPopulatedUser'
+import jwt from 'jsonwebtoken'
 
 type Data = {
   user?: UserType,
+  token?: string,
   message?: string | undefined,
 }
 
@@ -48,7 +50,9 @@ export default async function handler(
 
     const user = await getPopulatedUser(emailExists._id)
 
-    res.status(200).json({ user })
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '180d' })
+
+    res.status(200).json({ user, token })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }

@@ -41,9 +41,10 @@ export default function Login({ setUser }: Props) {
           clientKey: encrypted.clientKey,
         })
         .then((response: any) => {
-          if (!response?.data?.user) {
+          if (!response?.data?.user || !response?.data?.token) {
             throw new Error('Server error. Please try again')
           }
+          localStorage.setItem('token', response.data.token)
           setUser(response.data.user)
           setLoading(false)
         })

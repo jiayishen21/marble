@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserType } from '../types';
 import { useRouter } from 'next/router';
+import authenticate from '../utils/authenticate';
+import axios from 'axios';
 
 const theme = {
   components: {
@@ -27,12 +29,30 @@ const theme = {
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const [user, setUser] = useState<UserType | undefined>(undefined)
+  const [userLoading, setUserLoading] = useState(true)
 
   useEffect(() => {
+    setUserLoading(true)
     AOS.init()
+    const token = localStorage.getItem('token') || ''
+    axios
+      .get('/api/user', { headers: { 'Authorization': `Bearer ${token}` } })
+      .then((response: any) => {
+        if (response?.data?.user) {
+          setUser(response.data.user)
+        }
+        setUserLoading(false)
+      })
+      .catch((error: any) => {
+        setUserLoading(false)
+      })
+
   }, [])
 
   useEffect(() => {
+    if (router.asPath === '/verify') {
+      return
+    }
     if (user?.verificationCode) {
       router.push('/verify')
     }
