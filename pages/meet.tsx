@@ -47,7 +47,7 @@ export default function Meet() {
           </span>
         </div>
       </section>
-      <section className="mt-20">
+      <section className="mt-20" data-aos="fade-right">
         <Row gutter={[16, 0]}>
           {LeadMembers.map((item, key) => (
             <Col className="flex flex-col gap-2 items-center justify-center" key={key}
