@@ -16,9 +16,9 @@ export default function Layout({ children }: PropsWithChildren<any>) {
         <div className="relative w-full min-h-[calc(100vh_+_64px)]"
             style={!blank ? {
                 display: "grid", gridTemplateRows: `${navHeight}px auto 100px`
-            } : { display: "grid", gridTemplateRows: "0 100% 100px" }}>
+            } : { display: "grid", gridTemplateRows: `0 100% 100px` }}>
             {/* <div className="absolute top-0 left-0 w-full h-screen bg-landing z-[-1] pointer-events-none"/> */}
-            <Navbar navRef={navRef} blank={blank} router={router} />
+            <Navbar navRef={navRef} blank={blank ? navHeight: 0} router={router} />
             <div className="flex h-full">
                 {children}
             </div>
