@@ -2,8 +2,9 @@ import React, { MutableRefObject, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
-import { Button } from "antd";
+import { Button, Dropdown, Menu, Space } from "antd";
 import { NextRouter } from "next/router";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function Navbar({ navRef, blank, router }: Props) {
+  
   const [currentRoute, setCurrentRoute] = useState<string>("");
 
   const LogoIcon = useMemo(() => {
@@ -59,20 +61,38 @@ export default function Navbar({ navRef, blank, router }: Props) {
       <section className="flex items-center gap-20">
         {LogoIcon}
         <ul className="flex justify-center items-center gap-12 pr-12 font-light text-2xl">
-          {PublicNavOptions.map((opt, key) => (
+          {PublicNavOptions.map((opt, key) => !(opt.dropdown && opt.options) ? (
             <div key={key}>
               <Link href={opt.route}>
                 <li
                   className="nav-option text-semiblack hover:text-lapis
-                transition-all duration-300 px-1"
-                  style={{
-                      // fontWeight: currentRoute === opt.route ? 700 : 500
-                  }}
+                  transition-all duration-300 px-1"
                 >
                   {opt.title}
                 </li>
               </Link>
             </div>
+          ) : 
+          (
+            <Dropdown
+              key={key}
+              overlay={(
+                <Menu>
+                  {opt.options.map((subopt, subkey) => (
+                    <Menu.Item key={subkey} onClick={() => router.push(opt.route + "/" + subopt.append)}
+                    className="font-hind">
+                      {subopt.title}
+                    </Menu.Item>
+                  ))}
+                </Menu>
+              )}>
+              <a href={opt.route}>
+                <Space>
+                {opt.title}
+                  <IoMdArrowDropdown/>
+                </Space>
+              </a>
+            </Dropdown>
           ))}
         </ul>
       </section>
