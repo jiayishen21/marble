@@ -49,6 +49,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
     dispatch(setUserLoading(true))
     AOS.init()
+
     const token = localStorage.getItem('token') || ''
     axios
       .get('/api/user', { headers: { 'Authorization': `Bearer ${token}` } })
@@ -58,7 +59,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
         }
         dispatch(setUserLoading(false))
       })
-      .catch((error: any) => {
+      .catch(() => {
         dispatch(setUserLoading(false))
       })
   }, [])

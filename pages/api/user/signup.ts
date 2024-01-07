@@ -13,7 +13,7 @@ import jwt from 'jsonwebtoken'
 type Data = {
   user?: UserType,
   token?: string,
-  message?: string | undefined,
+  message?: string,
 }
 
 export default async function handler(
@@ -72,8 +72,10 @@ export default async function handler(
     if (!createdUser) {
       throw new Error('Server error, failed to create user. Try again later.')
     }
+
+    // We don't use getPopulatedUser() here because we don't want to populated purchaseHistory
     const user = await User.findById(createdUser._id)
-      .select('_id accountType firstName lastName email shares purchaseHistory createdAt')
+      .select('_id accountType firstName lastName email shares purchaseHistory verificationCode createdAt')
       .exec()
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '180d' })

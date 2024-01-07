@@ -1,12 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { UserType } from '../../../types'
 import connectDB from '../../../utils/connectDB'
-import decrypt from '../../../utils/decrypt'
 import authenticate from '../../../utils/authenticate'
 
 type Data = {
   user?: UserType,
-  message?: string | undefined,
+  message?: string,
 }
 
 export default async function handler(

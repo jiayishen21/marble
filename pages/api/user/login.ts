@@ -11,7 +11,7 @@ import jwt from 'jsonwebtoken'
 type Data = {
   user?: UserType,
   token?: string,
-  message?: string | undefined,
+  message?: string,
 }
 
 export default async function handler(
