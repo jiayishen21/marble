@@ -31,7 +31,7 @@ export default function Verify() {
     }
   }, [timeOut])
 
-  const handleSubmit = (formData: any) => {
+  const handleSubmit = () => {
     try {
       setLoading(true)
       if (!user) {
@@ -40,7 +40,7 @@ export default function Verify() {
       if (!user.verificationCode) {
         throw new Error('User already verified. Try navigating to the dashboard.')
       }
-      const verificationCode = Object.values(formData).join('')
+      const verificationCode = values.join('')
 
       if (verificationCode !== user.verificationCode.code) {
         throw new Error('Invalid or timed out verification code. Try generating a new code.')
@@ -89,6 +89,7 @@ export default function Verify() {
       setLoading(false)
     }
     form.resetFields()
+    setValues(["", "", "", "", "", ""])
   }
 
   const resendCode = () => {
@@ -152,12 +153,12 @@ export default function Verify() {
   }, [values])
 
   const refetchActive = () => {
-    for(let i = 0; i < 6; i++){
-        form.setFieldValue(`input${i}`, values[i])
-        if(values[i] === "" || isNaN(Number(values[i]))){
-            setActive(false)
-            return
-        }
+    for (let i = 0; i < 6; i++) {
+      form.setFieldValue(`input${i}`, values[i])
+      if (values[i] === "" || isNaN(Number(values[i]))) {
+        setActive(false)
+        return
+      }
     }
     setActive(true)
   }
@@ -177,50 +178,50 @@ export default function Verify() {
           className="flex items-center justify-center w-full pt-8">
           <Row gutter={[10, 5]} className="w-full">
             <Col span={24} className="flex flex-row gap-4">
-                {Array.from(Array(6).keys()).map((_, index) => 
-                    <div key={index}>
-                        <Item 
-                        name={`input${_}`}
-                        label={<label className={styles["touch-form-label"]}></label>}
-                        >
-                            <Input size="large" className="py-6 font-hind text-4xl text-center font-semibold" 
-                            maxLength={1} id={`validate${_}`}
-                            value={values[_]}
-                            onChange={e => {
-                                setValues(prev => {
-                                    const clone = [...prev]
-                                    clone[_] = e.target.value
-                                    return clone.map(s => s.replace(/\D/g, ''))
-                                })
-                            }}
-                            onPaste={e => {
-                                const paste = e.clipboardData.getData('text/plain')
-                                setValues(prev => {
-                                    const clone = [...prev]
-                                    for(let i = 0; i < paste.length; i++){
-                                        if(_ + i < clone.length){
-                                            clone[_ + i] = paste.charAt(i)
-                                        }
-                                    }
-                                    return clone.map(s => s.replace(/\D/g, ''))
-                                })
-                            }}
-                            onKeyUp={e => {
-                                if (e.key === 'Backspace') {
-                                    document.getElementById(`validate${_-1}`)?.focus()
-                                }
-                            }}
-                            onKeyDown={e => {
-                                if(!isNaN(Number(e.key))){
-                                    const current = document.getElementById(`validate${_}`) as HTMLInputElement
-                                    if(current && current?.value !== ''){
-                                        document.getElementById(`validate${_+1}`)?.focus()
-                                    }
-                                }
-                            }}/>
-                        </Item>
-                    </div>
-                )}
+              {Array.from(Array(6).keys()).map((_, index) =>
+                <div key={index}>
+                  <Item
+                    name={`input${_}`}
+                    label={<label className={styles["touch-form-label"]}></label>}
+                  >
+                    <Input size="large" className="py-6 font-hind text-4xl text-center font-semibold"
+                      maxLength={1} id={`validate${_}`}
+                      value={values[_]}
+                      onChange={e => {
+                        setValues(prev => {
+                          const clone = [...prev]
+                          clone[_] = e.target.value
+                          return clone.map(s => s.replace(/\D/g, ''))
+                        })
+                      }}
+                      onPaste={e => {
+                        const paste = e.clipboardData.getData('text/plain')
+                        setValues(prev => {
+                          const clone = [...prev]
+                          for (let i = 0; i < paste.length; i++) {
+                            if (_ + i < clone.length) {
+                              clone[_ + i] = paste.charAt(i)
+                            }
+                          }
+                          return clone.map(s => s.replace(/\D/g, ''))
+                        })
+                      }}
+                      onKeyUp={e => {
+                        if (e.key === 'Backspace') {
+                          document.getElementById(`validate${_ - 1}`)?.focus()
+                        }
+                      }}
+                      onKeyDown={e => {
+                        if (!isNaN(Number(e.key))) {
+                          const current = document.getElementById(`validate${_}`) as HTMLInputElement
+                          if (current && current?.value !== '') {
+                            document.getElementById(`validate${_ + 1}`)?.focus()
+                          }
+                        }
+                      }} />
+                  </Item>
+                </div>
+              )}
             </Col>
             <Col span={24} className="mt-2 flex flex-col items-center justify-center">
               <Button type="primary" htmlType="submit" disabled={!active || loading}
