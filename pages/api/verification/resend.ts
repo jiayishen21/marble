@@ -5,9 +5,10 @@ import { generateVerificationCode } from '../../../utils/verificationCode'
 import { Resend } from 'resend'
 import VerificationEmail from '../../../emails/verification'
 import authenticate from '../../../utils/authenticate'
+import { VerificationCodeType } from '../../../types'
 
 type Data = {
-  verificationCode?: string,
+  verificationCode?: VerificationCodeType,
   message?: string,
 }
 
@@ -43,7 +44,7 @@ export default async function handler(
       react: VerificationEmail({ firstName: user.firstName, verificationCode: verificationCode.code }),
     })
 
-    res.status(200).json({ verificationCode: verificationCode.code })
+    res.status(200).json({ verificationCode: verificationCode })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }
