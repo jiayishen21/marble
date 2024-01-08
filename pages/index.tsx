@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import {PolywaveTop, PolywaveBottom} from "../components/Polywave";
+import { PolywaveTop, PolywaveBottom } from "../components/Polywave";
 import Navbar from "../components/layout/Navbar";
 import { useNavParams } from "../hooks/useNavParams";
 import { Button, Col, Form, Input, Row } from "antd";
@@ -8,6 +8,8 @@ import { useForm } from "antd/lib/form/Form";
 import Footer from "../components/layout/Footer";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -19,7 +21,36 @@ const Home: NextPage = () => {
   const [form] = useForm();
 
   const onSubmit = (formData: any) => {
-    alert(JSON.stringify(formData));
+    const { fullName, email, company, subject, message } = formData;
+
+    axios
+      .post('/api/message', {
+        fullName,
+        email,
+        company,
+        subject,
+        message,
+      })
+      .then((res) => {
+        if (res?.data?.message) {
+          toast.success(res.data.message)
+        }
+        else {
+          toast.success('Message sent successfully!');
+        }
+      })
+      .catch((err: any) => {
+        if (err?.response?.data?.error) {
+          toast.error(err.response.data.error);
+        }
+        else if (err?.message) {
+          toast.error(err.message);
+        }
+        else {
+          toast.error(err)
+        }
+      })
+
     form.resetFields();
   };
 
@@ -34,7 +65,7 @@ const Home: NextPage = () => {
         <Navbar navRef={navRef} blank={0} router={router} />
         <div className="flex absolute bottom-0 left-0 h-[300px] w-full overflow-y-hidden pointer-events-none">
           <div className={`absolute bottom-0 left-0 z-[500] w-full overflow-x-hidden`}>
-            <PolywaveTop/>
+            <PolywaveTop />
           </div>
         </div>
         <div className="absolute top-0 left-0 w-full h-screen z-[-1]" />
@@ -43,7 +74,7 @@ const Home: NextPage = () => {
           data-aos="fade-right"
         >
           <div className="absolute right-0 z-0" data-aos="fade-left">
-            <img src="/elements/hextiles.png" className="w-[30vw] h-auto"/>
+            <img src="/elements/hextiles.png" className="w-[30vw] h-auto" />
           </div>
           <div className="flex flex-col gap-3 mt-20 text-semiblack font-bold text-6xl z-[10]">
             A hedge fund like no other —<br />
@@ -97,11 +128,11 @@ const Home: NextPage = () => {
           />
         </div>
       </section>
-      <PolywaveBottom/>
+      <PolywaveBottom />
       <section className="grid grid-cols-2 gap-12 pb-10 pt-[4rem]">
         <div className="relative flex flex-col gap-12 pl-20" data-aos="fade-right">
           <div className="absolute left-0 top-[-10rem] z-0">
-            <img src="/elements/arrow.png" className="w-[32vw] h-auto opacity-[0.8]"/>
+            <img src="/elements/arrow.png" className="w-[32vw] h-auto opacity-[0.8]" />
           </div>
           <div className="text-semiblack text-6xl font-bold z-[10]">
             We are passionate about <br />
@@ -168,7 +199,7 @@ const Home: NextPage = () => {
             <Row gutter={[10, 10]}>
               <Col span={12}>
                 <Item
-                  name="fullname"
+                  name="fullName"
                   className="touch-form"
                   rules={[
                     {
@@ -206,8 +237,7 @@ const Home: NextPage = () => {
                   name="company"
                   rules={[
                     {
-                      required: true,
-                      message: "Required field",
+                      required: false,
                     },
                   ]}
                   label={
