@@ -1,25 +1,28 @@
 import {Row, Col, Form, Input, Button} from "antd"
 import { useForm } from "antd/lib/form/Form";
-import Link from "next/link";
 import styles from "../styles/Auth.module.css"
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const {Item} = Form
 
 export default function Verify() {
   const [form] = useForm()
   const [active, setActive] = useState<boolean>(false)
+  const [values, setValues] = useState<string[]>(["", "", "", "", "", ""])
 
   const handleSubmit = (formData:any) => {
     alert(JSON.stringify(formData))
     form.resetFields()
   }
 
+  useEffect(() => {
+    refetchActive()
+  }, [values])
+
   const refetchActive = () => {
-    const data = form.getFieldsValue()
-    console.log(data)
     for(let i = 0; i < 6; i++){
-        if(!data || !data[`input${i}`] || data[`input${i}`] === "" || isNaN(Number(data[`input${i}`]))){
+        form.setFieldValue(`input${i}`, values[i])
+        if(values[i] === "" || isNaN(Number(values[i]))){
             setActive(false)
             return
         }
@@ -42,29 +45,46 @@ export default function Verify() {
         className="flex items-center justify-center w-full pt-8">
           <Row gutter={[10, 5]} className="w-full">
             <Col span={24} className="flex flex-row gap-4">
-                {Array.from(Array(6).keys()).map((item, key) => 
-                    <div key={key}>
+                {Array.from(Array(6).keys()).map((_, index) => 
+                    <div key={index}>
                         <Item 
-                        name={`input${item}`}
+                        name={`input${_}`}
                         label={<label className={styles["touch-form-label"]}></label>}
                         >
                             <Input size="large" className="py-6 font-hind text-4xl text-center font-semibold" 
-                            maxLength={1} id={`validate${item}`}
-                            onKeyUp={e => {
-                                if(!isNaN(Number(e.key)) || e.key === 'Backspace'){
-                                    if (e.key === 'Backspace') {
-                                        document.getElementById(`validate${item-1}`)?.focus()
-                                    }
-                                    else{
-                                        const current = document.getElementById(`validate${item}`) as HTMLInputElement
-                                        if(current && current?.value !== ''){
-                                            document.getElementById(`validate${item+1}`)?.focus()
+                            maxLength={1} id={`validate${_}`}
+                            value={values[_]}
+                            onChange={e => {
+                                setValues(prev => {
+                                    const clone = [...prev]
+                                    clone[_] = e.target.value
+                                    return clone.map(s => s.replace(/\D/g, ''))
+                                })
+                            }}
+                            onPaste={e => {
+                                const paste = e.clipboardData.getData('text/plain')
+                                setValues(prev => {
+                                    const clone = [...prev]
+                                    for(let i = 0; i < paste.length; i++){
+                                        if(_ + i < clone.length){
+                                            clone[_ + i] = paste.charAt(i)
                                         }
                                     }
+                                    return clone.map(s => s.replace(/\D/g, ''))
+                                })
+                            }}
+                            onKeyUp={e => {
+                                if (e.key === 'Backspace') {
+                                    document.getElementById(`validate${_-1}`)?.focus()
                                 }
                             }}
-                            onChange={() => {
-                                refetchActive()
+                            onKeyDown={e => {
+                                if(!isNaN(Number(e.key))){
+                                    const current = document.getElementById(`validate${_}`) as HTMLInputElement
+                                    if(current && current?.value !== ''){
+                                        document.getElementById(`validate${_+1}`)?.focus()
+                                    }
+                                }
                             }}/>
                         </Item>
                     </div>
