@@ -20,7 +20,7 @@ const ContactOptions: ContactOption[] = [
     {
         title: "LINKEDIN",
         value: "Keep up with us on Linkedin",
-        to: 'https://www.linkedin.com/company/marble-investments/',
+        to: 'https://www.linkedin.com/company/marble-investment/',
         icon: <FaLinkedin />,
     },
     {
