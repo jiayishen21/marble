@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "../styles/Auth.module.css"
 
 const {Item} = Form
-const {Password} = Input
 
 export default function Create() {
   const [form] = useForm()
@@ -15,7 +14,7 @@ export default function Create() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex items-center justify-center w-full h-screen">
       <Row className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
       data-aos="fade-up">
         <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">

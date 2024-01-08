@@ -68,7 +68,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex items-center justify-center w-full h-screen">
       <Row className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
         data-aos="fade-up">
         <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">

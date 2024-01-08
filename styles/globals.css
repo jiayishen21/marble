@@ -38,6 +38,15 @@ a {
   border-color: theme('colors.airforce')
 }
 
+.ant-dropdown-menu-title-content{
+  font-size: 1.25em;
+  padding: 0.25rem
+}
+
+.custom-input-number .ant-input-number-handler-wrap {
+  display: none;
+}
+
 body::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }

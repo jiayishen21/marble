@@ -26,7 +26,7 @@ export default function Meet() {
         src={item.photo}
         alt={item.name}
         preview={false}
-        className={`scale-[${large ? 1.25 : 1}] origin-bottom`}
+        className={large ? `scale-[1.5] origin-bottom` : `scale-[1] origin-bottom`}
       />
       <span className="text-semiblack font-bold text-3xl font-hind">{item.name}</span>
       <span className="font-cairo font-normal tracking-wider text-xl text-semiblack">{item.role}</span>
