@@ -1,16 +1,15 @@
 .polywave-container{
     position: relative;
-    width: 200vw;
+    width: 100vw;
 }
 
 .polywave-internal{
     position: absolute;
     inset: 0;
     width: 100%;
-    animation: polywave-animate cubic-bezier(.5,.8,.5,.2) infinite;
     transform-origin: bottom;
 }
-
+/* 
 @keyframes 
 polywave-animate{
     0%{
@@ -22,4 +21,4 @@ polywave-animate{
     100%{
         transform: translateX(-50%) scaleY(100%)
     }
-}
+} */

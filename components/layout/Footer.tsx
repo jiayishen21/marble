@@ -11,11 +11,7 @@ export default function Footer() {
           {PublicNavOptions.map((opt, key) => (
             <div key={key}>
               <Link href={opt.route}>
-                <li
-                  className="nav-option text-white hover:text-lapis
-                hover:scale-[1.04]
-                transition-all duration-300"
-                >
+                <li className="nav-option text-white hover:text-lightblue transition-all duration-300">
                   {opt.title}
                 </li>
               </Link>
@@ -25,7 +21,8 @@ export default function Footer() {
       </section>
       <section className="flex justify-center items-center w-[25%] gap-[3rem]">
         {ContactOptions.map((icon, key) => (
-          <Link key={key} href={icon.value} className="text-white text-4xl">
+          <Link key={key} href={icon.value} className="text-white text-4xl hover:text-lightblue 
+          transition-all duration-300">
             {icon.icon}
           </Link>
         ))}
@@ -34,16 +31,18 @@ export default function Footer() {
         <ul className="flex justify-center items-center w-full gap-[4rem]">
           <Link href={"/create"}>
             <li
-              className="nav-option text-white hover:text-lapis
-          font-light text-2xl"
+              className="nav-option text-white hover:text-lightblue
+          font-light text-2xl 
+          transition-all duration-300"
             >
               Sign Up
             </li>
           </Link>
           <Link href={"/login"}>
             <li
-              className="nav-option text-white hover:text-lapis
-          font-light text-2xl underline"
+              className="nav-option text-white hover:text-lightblue
+          font-light text-2xl underline 
+          transition-all duration-300"
             >
               Client Login
             </li>
