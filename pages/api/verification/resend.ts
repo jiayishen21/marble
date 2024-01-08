@@ -44,7 +44,6 @@ export default async function handler(
     })
 
     res.status(200).json({ verificationCode: verificationCode.code })
-
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }

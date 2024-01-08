@@ -5,6 +5,8 @@ import { PublicNavOptions } from "../../data/NavOptions";
 import { Button, Dropdown, Menu, Space } from "antd";
 import { NextRouter } from "next/router";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -13,11 +15,12 @@ interface Props {
 }
 
 export default function Navbar({ navRef, blank, router }: Props) {
-  
+  const user = useSelector((state: RootState) => state.user.user);
+
   const [currentRoute, setCurrentRoute] = useState<string>("");
 
   const LogoIcon = useMemo(() => {
-    return(
+    return (
       <div className="scale-[1.4] origin-top-left">
         <Link href="/">
           <Image
@@ -72,47 +75,55 @@ export default function Navbar({ navRef, blank, router }: Props) {
                 </li>
               </Link>
             </div>
-          ) : 
-          (
-            <Dropdown
-              key={key}
-              overlay={(
-                <Menu>
-                  {opt.options.map((subopt, subkey) => (
-                    <Menu.Item key={subkey} onClick={() => router.push(opt.route + "/" + subopt.append)}
-                    className="font-hind">
-                      {subopt.title}
-                    </Menu.Item>
-                  ))}
-                </Menu>
-              )}>
-              <a href={opt.route}>
-                <Space>
-                {opt.title}
-                  <IoMdArrowDropdown/>
-                </Space>
-              </a>
-            </Dropdown>
-          ))}
+          ) :
+            (
+              <Dropdown
+                key={key}
+                overlay={(
+                  <Menu>
+                    {opt.options.map((subopt, subkey) => (
+                      <Menu.Item key={subkey} onClick={() => router.push(opt.route + "/" + subopt.append)}
+                        className="font-hind">
+                        {subopt.title}
+                      </Menu.Item>
+                    ))}
+                  </Menu>
+                )}>
+                <a href={opt.route}>
+                  <Space>
+                    {opt.title}
+                    <IoMdArrowDropdown />
+                  </Space>
+                </a>
+              </Dropdown>
+            ))}
         </ul>
       </section>
       <ul className="flex justify-center items-center gap-12 pr-12">
-        <Link href={"/create"}>
-          <li
-            className="nav-option text-semiblack hover:text-lapis
-          font-light text-2xl"
-          >
-            Sign Up
-          </li>
-        </Link>
-        <Button
-          type="primary"
-          className="bg-lapis text-neutral-50 font-hind text-2xl 
-          font-light flex justify-center items-center px-8 h-11"
-          href="/login"
-        >
-          Client Login
-        </Button>
+        {user ? (
+          <>
+            Dashboard, Profile
+          </>
+        ) : (
+          <>
+            <Link href={"/create"}>
+              <li
+                className="nav-option text-semiblack hover:text-lapis
+                  font-light text-2xl"
+              >
+                Sign Up
+              </li>
+            </Link>
+            <Button
+              type="primary"
+              className="bg-lapis text-neutral-50 font-hind text-2xl 
+                font-light flex justify-center items-center px-8 h-11"
+              href="/login"
+            >
+              Client Login
+            </Button>
+          </>
+        )}
       </ul>
     </nav>
   );

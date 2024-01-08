@@ -2,8 +2,12 @@ import React, { MutableRefObject } from "react";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { ContactOptions } from "../../data/ContactOptions";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export default function Footer() {
+  const user = useSelector((state: RootState) => state.user.user);
+
   return (
     <footer className="bg-airforce h-[100px] w-full font-hind text-neutral-50 flex">
       <section className="flex flex-1">
@@ -21,7 +25,7 @@ export default function Footer() {
       </section>
       <section className="flex justify-center items-center w-[25%] gap-[3rem]">
         {ContactOptions.map((icon, key) => (
-          <Link key={key} href={icon.value} className="text-white text-4xl hover:text-lightblue 
+          <Link key={key} href={icon.to} target="_blank" className="text-white text-4xl hover:text-lightblue 
           transition-all duration-300">
             {icon.icon}
           </Link>
@@ -29,24 +33,34 @@ export default function Footer() {
       </section>
       <section className="flex w-[25%]">
         <ul className="flex justify-center items-center w-full gap-[4rem]">
-          <Link href={"/create"}>
-            <li
-              className="nav-option text-white hover:text-lightblue
-          font-light text-2xl 
-          transition-all duration-300"
-            >
-              Sign Up
-            </li>
-          </Link>
-          <Link href={"/login"}>
-            <li
-              className="nav-option text-white hover:text-lightblue
-          font-light text-2xl underline 
-          transition-all duration-300"
-            >
-              Client Login
-            </li>
-          </Link>
+          {
+            user ? (
+              <>
+                Dashboard, profile
+              </>
+            ) : (
+              <>
+                <Link href={"/create"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
+                      font-light text-2xl 
+                      transition-all duration-300"
+                  >
+                    Sign Up
+                  </li>
+                </Link>
+                <Link href={"/login"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
+                      font-light text-2xl underline 
+                      transition-all duration-300"
+                  >
+                    Client Login
+                  </li>
+                </Link>
+              </>
+            )
+          }
         </ul>
       </section>
     </footer>
