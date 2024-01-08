@@ -58,10 +58,6 @@ export default async function handler(
 
     const verificationCode = generateVerificationCode()
 
-    // TODO: Email verification
-    // https://www.youtube.com/watch?v=D4pS4b9-DgA
-    // https://github.com/colbyfayock/my-react-email/blob/main/src/emails/welcome.tsx
-
     const createdUser = await User.create({
       firstName,
       lastName,
@@ -82,8 +78,8 @@ export default async function handler(
 
     const resend = new Resend(process.env.RESEND_API_KEY)
     resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'marbleinvestments2024@gmail.com',
+      from: 'welcome@marbleinvestments.ca',
+      to: user.email,
       subject: 'Welcome to Marble!',
       react: VerificationEmail({ firstName, verificationCode: verificationCode.code }),
     })

@@ -31,16 +31,14 @@ export default async function handler(
 
     const verificationCode = generateVerificationCode()
 
-    // TODO: Email verification
-
     await User.findByIdAndUpdate(user._id, {
       verificationCode
     })
 
     const resend = new Resend(process.env.RESEND_API_KEY)
     resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'marbleinvestments2024@gmail.com',
+      from: 'welcome@marbleinvestments.ca',
+      to: user.email,
       subject: 'Welcome to Marble!',
       react: VerificationEmail({ firstName: user.firstName, verificationCode: verificationCode.code }),
     })
