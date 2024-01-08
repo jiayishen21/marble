@@ -21,7 +21,7 @@ export default function Footer() {
       </section>
       <section className="flex justify-center items-center w-[25%] gap-[3rem]">
         {ContactOptions.map((icon, key) => (
-          <Link key={key} href={icon.value} className="text-white text-4xl hover:text-lightblue 
+          <Link key={key} href={icon.to} target="_blank" className="text-white text-4xl hover:text-lightblue 
           transition-all duration-300">
             {icon.icon}
           </Link>

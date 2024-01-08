@@ -4,27 +4,31 @@ import { FaLinkedin } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 
 type ContactOption = {
-    title:string,
+    title: string,
     value: string,
-    icon:ReactNode, 
+    to: string,
+    icon: ReactNode,
 }
 
-const ContactOptions:ContactOption[] = [
+const ContactOptions: ContactOption[] = [
     {
         title: "EMAIL",
-        value: "hello@marble.com",
-        icon: <MdOutlineMail/>
+        value: "marbleinvestments2024@gmail.com",
+        to: 'mailto:marbleinvestments2024@gmail.com',
+        icon: <MdOutlineMail />,
     },
     {
         title: "LINKEDIN",
         value: "Keep up with us on Linkedin",
-        icon: <FaLinkedin/>
+        to: 'https://www.linkedin.com/company/marble-investments/',
+        icon: <FaLinkedin />,
     },
     {
         title: "INSTAGRAM",
         value: "@marbleinvestments",
-        icon: <AiFillInstagram/>
+        to: 'https://www.instagram.com/marbleinvestments/',
+        icon: <AiFillInstagram />,
     },
 ]
 
-export {ContactOptions}
+export { ContactOptions }
