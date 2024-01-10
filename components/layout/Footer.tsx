@@ -1,17 +1,47 @@
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useState, useEffect } from "react";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { ContactOptions } from "../../data/ContactOptions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
+  const { width } = useWindowSize();
+
+  const [mobile, setMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (width !== null && width !== undefined) {
+      if (!mobile && width < 1024) {
+        setMobile(true);
+      } else if (mobile && width >= 1024) {
+        setMobile(false);
+      }
+    }
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setMobile(true);
+    }
+  }, [width]);
 
   return (
-    <footer className="bg-airforce h-[100px] w-full font-hind text-neutral-50 flex">
+    <footer
+      className={`bg-airforce w-full font-hind text-neutral-50 flex ${
+        mobile ? "flex-col h-fit py-[2rem] gap-[3rem]" : "h-[100px]"
+      }`}
+    >
       <section className="flex flex-1">
-        <ul className="flex items-center justify-around font-light text-2xl w-full ">
+        <ul
+          className={`flex items-center justify-around font-light text-2xl w-full ${
+            mobile && "flex-col gap-[1.5rem]"
+          }`}
+        >
           {PublicNavOptions.map((opt, key) => (
             <div key={key}>
               <Link href={opt.route}>
@@ -23,44 +53,49 @@ export default function Footer() {
           ))}
         </ul>
       </section>
-      <section className="flex justify-center items-center w-[25%] gap-[3rem]">
+      <section
+        className={`flex justify-center items-center gap-[3rem] ${
+          mobile ? "w-full" : "w-[25%]"
+        }`}
+      >
         {ContactOptions.map((icon, key) => (
-          <Link key={key} href={icon.to} target="_blank" className="text-white text-4xl hover:text-lightblue 
-          transition-all duration-300">
+          <Link
+            key={key}
+            href={icon.to}
+            target="_blank"
+            className="text-white text-4xl hover:text-lightblue 
+          transition-all duration-300"
+          >
             {icon.icon}
           </Link>
         ))}
       </section>
-      <section className="flex w-[25%]">
+      <section className={`flex ${mobile ? "w-full" : "w-[25%]"}`}>
         <ul className="flex justify-center items-center w-full gap-[4rem]">
-          {
-            user ? (
-              <>
-                Dashboard, profile
-              </>
-            ) : (
-              <>
-                <Link href={"/create"}>
-                  <li
-                    className="nav-option text-white hover:text-lightblue
+          {user ? (
+            <>Dashboard, profile</>
+          ) : (
+            <>
+              <Link href={"/create"}>
+                <li
+                  className="nav-option text-white hover:text-lightblue
                       font-light text-2xl 
                       transition-all duration-300"
-                  >
-                    Sign Up
-                  </li>
-                </Link>
-                <Link href={"/login"}>
-                  <li
-                    className="nav-option text-white hover:text-lightblue
+                >
+                  Sign Up
+                </li>
+              </Link>
+              <Link href={"/login"}>
+                <li
+                  className="nav-option text-white hover:text-lightblue
                       font-light text-2xl underline 
                       transition-all duration-300"
-                  >
-                    Client Login
-                  </li>
-                </Link>
-              </>
-            )
-          }
+                >
+                  Client Login
+                </li>
+              </Link>
+            </>
+          )}
         </ul>
       </section>
     </footer>

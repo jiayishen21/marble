@@ -1,4 +1,10 @@
-import React, { MutableRefObject, useEffect, useMemo, useState } from "react";
+import React, {
+  MutableRefObject,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
@@ -7,6 +13,9 @@ import { NextRouter } from "next/router";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { useWindowSize } from "@uidotdev/usehooks";
+import { FaBars } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -16,8 +25,16 @@ interface Props {
 
 export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
-
+  const { width } = useWindowSize();
   const [currentRoute, setCurrentRoute] = useState<string>("");
+  const [burger, setBurger] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (width !== null && width !== undefined) {
+      setBurger(width < 1750);
+    }
+  }, [width]);
 
   const LogoIcon = useMemo(() => {
     return (
@@ -29,12 +46,12 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className="w-[50%] h-auto"
+            className={`h-auto ${burger ? "w-[45%]" : "w-[50%]"}`}
           />
         </Link>
       </div>
-    )
-  }, [])
+    );
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -42,53 +59,48 @@ export default function Navbar({ navRef, blank, router }: Props) {
     }, 100);
   }, [router.asPath]);
 
-  return blank > 0 ? (
-    <nav
-      className="flex items-center justify-between w-full px-12"
-      ref={navRef}
-      style={{
-        height: `${blank}px`
-      }}
-    >
-      <section className="fixed">
-        {LogoIcon}
-      </section>
-    </nav>
-  ) : (
-    <nav
-      className="relative flex items-center justify-between w-full px-12"
-      ref={navRef}
-    >
-      {/* example dropdown:
-      <div className="absolute top-0 left-0 h-[700px] w-[200px] bg-semiblack"/> */}
-      <section className="flex items-center gap-20">
-        {LogoIcon}
-        <ul className="flex justify-center items-center gap-12 pr-12 font-light text-2xl">
-          {PublicNavOptions.map((opt, key) => !(opt.dropdown && opt.options) ? (
-            <div key={key}>
-              <Link href={opt.route}>
-                <li
-                  className="nav-option text-semiblack hover:text-lapis
-                  transition-all duration-300 px-1"
-                >
-                  {opt.title}
-                </li>
-              </Link>
-            </div>
-          ) :
-            (
+  const renderOptions = useCallback(() => {
+    return (
+      <div
+        className={`${
+          burger && "absolute bg-airforce rounded-md z-20 mt-[17rem] ml-[3rem]"
+        }`}
+      >
+        <ul
+          className={`flex justify-center font-light ${
+            burger
+              ? "flex-col w-full font-bold items-start gap-5 h-auto text-md p-5"
+              : "items-center pr-12 text-2xl gap-12"
+          }`}
+        >
+          {PublicNavOptions.map((opt, key) =>
+            !(opt.dropdown && opt.options) ? (
+              <div key={key}>
+                <Link href={opt.route}>
+                  <li className="nav-option text-semiblack hover:text-lapis transition-all duration-300 px-1">
+                    {opt.title}
+                  </li>
+                </Link>
+              </div>
+            ) : (
               <Dropdown
                 key={key}
-                overlay={(
+                overlay={
                   <Menu>
-                    {opt.options.map((subopt, subkey) => (
-                      <Menu.Item key={subkey} onClick={() => router.push(opt.route + "/" + subopt.append)}
-                        className="font-hind">
+                    {opt.options.map((subopt: any, subkey: number) => (
+                      <Menu.Item
+                        key={subkey}
+                        onClick={() =>
+                          router.push(opt.route + "/" + subopt.append)
+                        }
+                        className="font-hind"
+                      >
                         {subopt.title}
                       </Menu.Item>
                     ))}
                   </Menu>
-                )}>
+                }
+              >
                 <a href={opt.route}>
                   <Space>
                     {opt.title}
@@ -96,14 +108,57 @@ export default function Navbar({ navRef, blank, router }: Props) {
                   </Space>
                 </a>
               </Dropdown>
-            ))}
+            )
+          )}
         </ul>
+      </div>
+    );
+  }, [burger]);
+
+  if (burger) {
+    return (
+      <nav className="flex justify-center items-center">
+        <div className="px-5 flex justify-center items-center relative">
+          <Button
+            onClick={() => setOpenMenu(!openMenu)}
+            className="flex items-center justify-center text-5xl py-7"
+          >
+            <FaBars />
+          </Button>
+          {openMenu && renderOptions()}
+        </div>
+        <div>{LogoIcon}</div>
+        <div className="flex-1 flex justify-end items-center pr-[4.5rem]">
+          <Link href="/" className="text-5xl text-[#00299B]">
+            <FaRegUserCircle />
+          </Link>
+        </div>
+      </nav>
+    );
+  }
+
+  return blank > 0 ? (
+    <nav
+      className="flex items-center justify-between w-full px-12"
+      ref={navRef}
+      style={{
+        height: `${blank}px`,
+      }}
+    >
+      <section className="fixed">{LogoIcon}</section>
+    </nav>
+  ) : (
+    <nav
+      className="relative flex items-center justify-between w-full px-12"
+      ref={navRef}
+    >
+      <section className="flex items-center gap-20">
+        {LogoIcon}
+        {renderOptions()}
       </section>
       <ul className="flex justify-center items-center gap-12 pr-12">
         {user ? (
-          <>
-            Dashboard, Profile
-          </>
+          <>Dashboard, Profile</>
         ) : (
           <>
             <Link href={"/create"}>

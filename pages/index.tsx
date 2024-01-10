@@ -10,6 +10,8 @@ import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useWindowSize } from "@uidotdev/usehooks";
+import { useEffect, useState, useLayoutEffect } from "react";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -20,11 +22,33 @@ const Home: NextPage = () => {
 
   const [form] = useForm();
 
+  const { width } = useWindowSize();
+
+  const [mobile, setMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (width !== null && width !== undefined) {
+      if (!mobile && width < 1024) {
+        setMobile(true);
+      } else if (mobile && width >= 1024) {
+        setMobile(false);
+      }
+    }
+
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setMobile(true);
+    }
+  }, [width]);
+
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;
 
     axios
-      .post('/api/message', {
+      .post("/api/message", {
         fullName,
         email,
         company,
@@ -33,23 +57,20 @@ const Home: NextPage = () => {
       })
       .then((res) => {
         if (res?.data?.message) {
-          toast.success(res.data.message)
-        }
-        else {
-          toast.success('Message sent successfully!');
+          toast.success(res.data.message);
+        } else {
+          toast.success("Message sent successfully!");
         }
       })
       .catch((err: any) => {
         if (err?.response?.data?.error) {
           toast.error(err.response.data.error);
-        }
-        else if (err?.message) {
+        } else if (err?.message) {
           toast.error(err.message);
+        } else {
+          toast.error(err);
         }
-        else {
-          toast.error(err)
-        }
-      })
+      });
 
     form.resetFields();
   };
@@ -58,13 +79,15 @@ const Home: NextPage = () => {
     <main className="overflow-x-hidden w-full">
       <div
         style={{
-          display: 'grid',
+          display: "grid",
           gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
         }}
       >
         <Navbar navRef={navRef} blank={0} router={router} />
         <div className="flex absolute bottom-0 left-0 h-[300px] w-full overflow-y-hidden pointer-events-none">
-          <div className={`absolute bottom-0 left-0 z-[500] w-full overflow-x-hidden`}>
+          <div
+            className={`absolute bottom-0 left-0 z-[500] w-full overflow-x-hidden`}
+          >
             <PolywaveTop />
           </div>
         </div>
@@ -113,26 +136,50 @@ const Home: NextPage = () => {
           sociosqu <br />
           ad litora torquent per conubia nostra, per inceptos himenaeos.
         </div>
-        <div className="w-full flex justify-around align-center pt-8 px-10">
+        <div
+          className={` ${
+            mobile
+              ? "flex flex-col justify-center items-center gap-[2rem]"
+              : "flex w-full justify-around align-center pt-8 px-10"
+          }`}
+        >
           <div
-            className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
+              mobile ? "w-[60%]" : "w-[28%]"
+            }`}
             data-aos="fade-right"
           />
           <div
-            className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
+              mobile ? "w-[60%]" : "w-[28%]"
+            }`}
             data-aos="fade-up"
           />
           <div
-            className="bg-neutral-50 h-80 w-[28%] bg-opacity-50 rounded"
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
+              mobile ? "w-[60%]" : "w-[28%]"
+            }`}
             data-aos="fade-left"
           />
         </div>
       </section>
       <PolywaveBottom />
-      <section className="grid grid-cols-2 gap-12 pb-10 pt-[4rem]">
-        <div className="relative flex flex-col gap-12 pl-20" data-aos="fade-right">
+      <section
+        className={`${
+          mobile
+            ? "flex flex-col gap-10"
+            : "grid grid-cols-2 gap-12 pb-10 pt-[4rem]"
+        }`}
+      >
+        <div
+          className="relative flex flex-col gap-12 pl-20"
+          data-aos="fade-right"
+        >
           <div className="absolute left-0 top-[-10rem] z-0">
-            <img src="/elements/arrow.png" className="w-[32vw] h-auto opacity-[0.8]" />
+            <img
+              src="/elements/arrow.png"
+              className="w-[32vw] h-auto opacity-[0.8]"
+            />
           </div>
           <div className="text-semiblack text-6xl font-bold z-[10]">
             We are passionate about <br />
@@ -154,19 +201,23 @@ const Home: NextPage = () => {
             Meet our team
           </Button>
         </div>
-        <div className="flex items-center justify-center pl-10 pr-[8rem]">
+        <div
+          className={`flex items-center justify-center ${
+            mobile ? "px-[2rem]" : "pl-10 pr-[8rem]"
+          }`}
+        >
           <div
             className="bg-neutral-400 h-[28rem] w-full bg-opacity-50 rounded"
             data-aos="fade-left"
           />
         </div>
       </section>
-      <div className="pt-[16rem] pl-20">
+      <div className={`${mobile ? "pt-[5rem]" : "pt-[16rem]"} pl-20`}>
         <div className="text-semiblack text-6xl font-bold font-hind">
           Get in touch
         </div>
       </div>
-      <Row className="pb-[12rem] pt-[2rem]">
+      <Row className={`${mobile ? "flex flex-col" : "pb-[12rem] pt-[2rem]"}`}>
         <Col className="flex flex-col gap-12 pl-20" span={9}>
           <div className="text-semiblack text-2xl font-hind">
             We invite you to contact us through one of the methods below.
@@ -174,7 +225,12 @@ const Home: NextPage = () => {
           <div className="flex flex-col justify-between h-full pb-8 pt-4">
             {ContactOptions.map((item, key) => {
               return (
-                <div className="flex flex-col gap-6 text-2xl" key={key}>
+                <div
+                  className={`flex flex-col gap-6 text-2xl ${
+                    mobile && "mt-[2rem]"
+                  }`}
+                  key={key}
+                >
                   <div className="flex flex-row items-center gap-6">
                     <span className="text-3xl">{item.icon}</span>
                     <span className="font-hind font-bold">{item.title}</span>
@@ -188,7 +244,12 @@ const Home: NextPage = () => {
         <Col span={2} className="flex items-center justify-center">
           <div className="w-[0.25em] h-full bg-lapis rounded"></div>
         </Col>
-        <Col className="flex flex-col gap-8" span={10}>
+        <Col
+          className={`flex flex-col gap-8 ${
+            mobile && "ml-auto mr-[5rem] mb-[2rem]"
+          }`}
+          span={10}
+        >
           <div className="text-semiblack text-2xl font-hind">
             Or, reach us directly.
           </div>
@@ -295,7 +356,7 @@ const Home: NextPage = () => {
                   type="primary"
                   htmlType="submit"
                   className="w-full h-10 bg-lapis rounded-md text-neutral-50 font-hind
-                text-2xl font-normal flex justify-center items-center"
+                text-xl font-normal flex justify-center items-center"
                 >
                   Submit
                 </Button>
