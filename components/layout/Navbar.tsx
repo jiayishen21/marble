@@ -14,7 +14,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useWindowSize } from "@uidotdev/usehooks";
-import { FaBars } from "react-icons/fa";
+import { IoIosMenu } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 
 interface Props {
@@ -63,7 +63,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
     return (
       <div
         className={`${
-          burger && "absolute bg-airforce rounded-md z-20 mt-[17rem] ml-[3rem]"
+          burger && "absolute bg-white rounded-md z-20 mt-[17rem] ml-[3rem]"
         }`}
       >
         <ul
@@ -121,9 +121,9 @@ export default function Navbar({ navRef, blank, router }: Props) {
         <div className="px-5 flex justify-center items-center relative">
           <Button
             onClick={() => setOpenMenu(!openMenu)}
-            className="flex items-center justify-center text-5xl py-7"
+            className="flex items-center justify-center text-5xl border-none"
           >
-            <FaBars />
+            <IoIosMenu />
           </Button>
           {openMenu && renderOptions()}
         </div>

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { AiOutlineStock } from "react-icons/ai";
 import { FaMoneyCheck } from "react-icons/fa";
 import { FaVoteYea } from "react-icons/fa";
+import React from "react";
 
 type dashBoardType = {
   title: string;
