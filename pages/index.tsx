@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useWindowSize } from "@uidotdev/usehooks";
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 
 const { Item } = Form;
 const { TextArea } = Input;

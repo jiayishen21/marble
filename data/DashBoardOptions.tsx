@@ -1,16 +1,29 @@
+import { ReactNode } from "react";
+import { AiOutlineStock } from "react-icons/ai";
+import { FaMoneyCheck } from "react-icons/fa";
+import { FaVoteYea } from "react-icons/fa";
+
 type dashBoardType = {
   title: string;
+  link: string;
+  icon: ReactNode;
 };
 
 const dashBoardOptions: dashBoardType[] = [
   {
-    title: "Total value",
+    title: "Dashboard",
+    link: "/dashBoard",
+    icon: <AiOutlineStock />,
   },
   {
-    title: "% return",
+    title: "Transaction",
+    link: "/transaction",
+    icon: <FaMoneyCheck />,
   },
   {
-    title: "Time invested thus far",
+    title: "Investor Voting",
+    link: "/voting",
+    icon: <FaVoteYea />,
   },
 ];
 
