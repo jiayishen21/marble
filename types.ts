@@ -20,8 +20,13 @@ export type VerificationCodeType = {
 }
 
 export type PurchaseType = {
-  // user?: string, MONGODB ID
+  user: string,
   price: number,
   quantity: number,
   createdAt: Date,
+}
+
+export type ShareType = {
+  price: number,
+  time: Date,
 }

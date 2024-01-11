@@ -64,13 +64,23 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       })
   }, [])
 
+  // TODO: Complete restrictions after creating all pages
+  const guestRestrictions = ['/dashboard', '/verify']
+  const verifyRestrictions = ['/login', '/register', '/dashboard']
+  const userRestrictions = ['/login', '/register']
   useEffect(() => {
-    console.log(user)
-    if (router.asPath === '/verify') {
+    if (userLoading) {
       return
     }
-    if (user?.verificationCode) {
+    else if (!user && guestRestrictions.includes(router.asPath)) {
+      router.push('/login')
+      return
+    }
+    else if (user?.verificationCode && verifyRestrictions.includes(router.asPath)) {
       router.push('/verify')
+    }
+    else if (user && userRestrictions.includes(router.asPath)) {
+      router.push('/dashboard')
     }
   }, [user])
 
