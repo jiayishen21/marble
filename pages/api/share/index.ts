@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { UserType } from '../../../types'
+import Share from '../../../models/shareModel'
 import connectDB from '../../../utils/connectDB'
-import authenticate from '../../../utils/authenticate'
+import { ShareType } from '../../../types'
 
 type Data = {
-  user?: UserType,
+  shares?: ShareType[],
   message?: string,
 }
 
@@ -18,11 +18,12 @@ export default async function handler(
     }
 
     await connectDB()
+    const shares = await Share.find({})
+      .select('price date')
+      .sort({ date: -1 })
+      .exec()
 
-    const jwt = req.headers.authorization || ''
-    const user = await authenticate(jwt)
-
-    res.status(200).json({ user })
+    res.status(200).json({ shares })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }
