@@ -28,7 +28,6 @@ export default async function handler(
 
     const jwt = req.headers.authorization || ''
     const user = await authenticate(jwt)
-    console.log(user?.email)
     if (!user?.accountType || user.accountType !== 'admin') {
       throw new Error('You are not authorized to perform this action.')
     }
