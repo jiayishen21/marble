@@ -1,6 +1,11 @@
-export interface AppState {
+export interface UserState {
   user: UserType | null,
   userLoading: boolean,
+}
+
+export interface ShareState {
+  shares: ShareType[],
+  sharesLoading: boolean,
 }
 
 export type UserType = {

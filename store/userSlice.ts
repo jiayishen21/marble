@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppState, UserType } from '../types';  // Adjust the path as necessary
+import { UserState, UserType } from '../types';  // Adjust the path as necessary
 
 // Define the initial state using the AppState interface
-const initialState: AppState = {
+const initialState: UserState = {
   user: null,
   userLoading: true,
 };

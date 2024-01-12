@@ -1,10 +1,10 @@
 import React from "react";
-import DashBoardTabs from "../components/DashBoardTabs";
+import DashboardTabs from "../../components/DashboardTabs";
 
 export default function transaction() {
   return (
     <main className="flex w-[70%] pt-[8rem] ml-[8rem]">
-      <DashBoardTabs />
+      <DashboardTabs />
       <section className="flex flex-col gap-[3rem] w-full ml-[5rem]">
         <h1 className="text-2xl font-bold">Transactions</h1>
 

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
+import shareReducer from './shareSlice';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    shares: shareReducer,
   },
 });
 

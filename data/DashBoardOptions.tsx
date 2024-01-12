@@ -4,28 +4,28 @@ import { FaMoneyCheck } from "react-icons/fa";
 import { FaVoteYea } from "react-icons/fa";
 import React from "react";
 
-type dashBoardType = {
+type dashboardType = {
   title: string;
   link: string;
   icon: ReactNode;
 };
 
-const dashBoardOptions: dashBoardType[] = [
+const dashboardOptions: dashboardType[] = [
   {
     title: "Dashboard",
-    link: "/dashBoard",
+    link: "/dashboard",
     icon: <AiOutlineStock />,
   },
   {
     title: "Transaction",
-    link: "/transaction",
+    link: "/dashboard/transaction",
     icon: <FaMoneyCheck />,
   },
   {
     title: "Investor Voting",
-    link: "/voting",
+    link: "/dashboard/voting",
     icon: <FaVoteYea />,
   },
 ];
 
-export { dashBoardOptions };
+export { dashboardOptions };

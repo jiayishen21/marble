@@ -14,6 +14,7 @@ import axios from 'axios';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import { store, RootState, AppDispatch } from '../store/store';
 import { setUser, setUserLoading } from '../store/userSlice';
+import { setShares, setSharesLoading } from '../store/shareSlice';
 
 const theme = {
   components: {
@@ -48,6 +49,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   useEffect(() => {
     dispatch(setUserLoading(true))
+    dispatch(setSharesLoading(true))
     AOS.init()
 
     const token = localStorage.getItem('token') || ''
@@ -61,6 +63,18 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       })
       .catch(() => {
         dispatch(setUserLoading(false))
+      })
+
+    axios
+      .get('/api/shares')
+      .then((response: any) => {
+        if (response?.data?.shares) {
+          dispatch(setShares(response.data.shares))
+        }
+        dispatch(setSharesLoading(false))
+      })
+      .catch(() => {
+        throw new Error('Server error: could not find investment data. Please try again later.')
       })
   }, [])
 
