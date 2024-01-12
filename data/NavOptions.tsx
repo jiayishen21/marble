@@ -28,21 +28,22 @@ const BaseNavOptions: NavOption[] = [
     title: "Resources",
     route: "/resources",
     icon: "",
-    dropdown: true,
-    options: [
-      {
-        title: "Sample Resource 1",
-        append: "sr1"
-      },
-      {
-        title: "Sample Resource 2",
-        append: "sr2"
-      },
-      {
-        title: "Sample Resource 3",
-        append: "sr3"
-      }
-    ]
+    dropdown: false,
+    // dropdown: true,
+    // options: [
+    //   {
+    //     title: "Sample Resource 1",
+    //     append: "sr1"
+    //   },
+    //   {
+    //     title: "Sample Resource 2",
+    //     append: "sr2"
+    //   },
+    //   {
+    //     title: "Sample Resource 3",
+    //     append: "sr3"
+    //   }
+    // ]
   },
   {
     title: "Contact Us",
