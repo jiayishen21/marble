@@ -92,11 +92,13 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
     else if (user?.verificationCode && verifyRestrictions.includes(router.asPath)) {
       router.push('/verify')
+      return
     }
     else if (user && userRestrictions.includes(router.asPath)) {
       router.push('/dashboard')
+      return
     }
-  }, [user])
+  }, [user, userLoading])
 
   const modifiedProps = {
     ...pageProps,
