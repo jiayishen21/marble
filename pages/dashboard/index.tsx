@@ -9,9 +9,9 @@ export default function Dashboard() {
   const shares = useSelector((state: RootState) => state.shares.shares);
 
   return (
-    <main className="flex w-[70%] py-[8rem] ml-[8rem]">
+    <main className="flex w-[70%] py-[8rem] ml-[8rem]" data-aos="fade-up">
       <DashboardTabs />
-      <section className="flex flex-col gap-[3rem] w-full ml-[5rem]">
+      <section className="flex flex-col gap-[3rem] w-full ml-[5rem] ">
         <h1 className="text-2xl font-bold">Welcome back {user?.firstName}</h1>
         <article className="flex w-full h-[10%]">
           <div className="border-r-2 border-gray-300  flex-1 h-full flex flex-col justify-center items-start gap-[2rem]">
@@ -44,10 +44,10 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="flex gap-[3rem]">
-          <Button className="text-lg flex justify-center items-center px-[2rem] h-20 text-white bg-[#26477C]">
+          <Button className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] text-white bg-[#26477C]">
             Buy shares
           </Button>
-          <Button className="text-lg flex justify-center items-center px-[2rem] h-20 border-[#26477C] text-[#26477C]">
+          <Button className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] border-[#26477C] text-[#26477C]">
             Withdraw Shares
           </Button>
         </div>

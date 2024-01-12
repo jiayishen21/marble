@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button } from "antd";
 import Link from "next/link";
+import { IoIosArrowUp } from "react-icons/io";
 
 type Options = {
   title: string;
@@ -21,12 +22,24 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center relative">
-      <Button onClick={handleToggle}>{title}</Button>
+    <div
+      className="flex flex-col justify-center items-center relative"
+      data-aos="fade-up"
+    >
+      <Button
+        onClick={handleToggle}
+        className="border-none shadow-none text-lg flex items-center gap-[1rem]"
+      >
+        {title} <IoIosArrowUp />
+      </Button>
       {isOpen && (
         <div className="flex flex-col absolute z-1 top-12">
           {options.map((option, index) => (
-            <Link href={option.link} key={index}>
+            <Link
+              href={option.link}
+              key={index}
+              className="text-gray-500 hover:underline hover:text-airforce"
+            >
               {option.title}
             </Link>
           ))}

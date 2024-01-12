@@ -100,16 +100,19 @@ const Home: NextPage = () => {
           data-aos="fade-right"
         >
           <div className="absolute right-0 z-0" data-aos="fade-left">
-            <img
-              src="/elements/hextiles.png"
-              className="w-[30vw] h-auto max-lg:hidden"
-            />
+            <div className="relative">
+              <img
+                src="/elements/hextiles.png"
+                className="w-[30vw] h-auto max-lg:hidden"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#fafafa] via-[#fafafa] to-transparent opacity-90 h-[30%]"></div>
+            </div>
           </div>
           <div className="flex flex-col gap-3 mt-20 text-semiblack font-bold text-6xl z-[10] max-lg:text-5xl">
             A hedge fund like no other —<br />
             by students, for students.
           </div>
-          <div className="text-airforce font-cairo font-semibold tracking-wide text-3xl z-[10] max-lg:text-xl">
+          <div className="text-airforce font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md">
             “TO INVEST IN THE FUTURE, INVEST IN THOSE WHO BUILD THE FUTURE”{" "}
             <br />— PREFERABLY THIS IS MORE UNIQUE TO MARBLE THAN A QUOTE
           </div>

@@ -15,8 +15,8 @@ export default function resources() {
         data-aos="fade-right"
       >
         <div className="absolute right-0 z-0" data-aos="fade-left">
-          <div className="relative">
-            <div className="relative overflow-hidden w-[43vw] h-auto max-lg:hidden">
+          <div className="relative overflow-hidden w-[43vw] h-auto max-lg:hidden">
+            <div className="w-full h-full relative">
               <Image
                 alt="hexagons"
                 src="./elements/background hexagons.svg"
@@ -24,16 +24,14 @@ export default function resources() {
                 height={0}
                 className="w-full h-full"
               />
-              <div className="absolute inset-0">
-                <div className="h-1/2 bg-white opacity-50 filter blur-md" />
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-[#fafafa] via-[#fafafa] to-transparent opacity-90 h-[30%]"></div>
             </div>
           </div>
         </div>
         <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10] max-lg:text-5xl">
           Marble Investment Resources
         </h1>
-        <div className="text-airforce font-cairo font-semibold tracking-wide text-3xl z-[10] max-lg:text-xl w-[50%]">
+        <div className="text-airforce font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium
           error eum iusto qui harum temporibus tempore odit vel maiores placeat
           obcaecati ullam porro aut repudiandae, eius aspernatur dolorum, quod
@@ -45,7 +43,7 @@ export default function resources() {
               QUARTERLY LETTERS
             </h2>
             <Dropdown
-              title={"2023 Quarterly Reports"}
+              title={"2023 Quarterly Reports "}
               options={quarterData}
             ></Dropdown>
           </div>
