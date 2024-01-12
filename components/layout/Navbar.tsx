@@ -41,7 +41,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
       <div className="scale-[1.4] origin-top-left">
         <Link href="/">
           <Image
-            src="/marble.svg"
+            src="./elements/marble.svg"
             alt="Marble logo"
             height={0}
             width={0}

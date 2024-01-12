@@ -1,7 +1,7 @@
 type Section = {
   title: string;
-  members: Member[]
-}
+  members: Member[];
+};
 
 type Member = {
   name: string;
@@ -14,21 +14,21 @@ type Member = {
 const LeadMembers: Member[] = [
   {
     name: "Bill Cai",
-    photo: "./memberPlace.svg",
+    photo: "./elements/memberPlace.svg",
     role: "Fund Manager",
     email: "marble@gmail.com",
     link: "https://www.linkedin.com/company/marble-investments/",
   },
   {
     name: "Marshal Guo",
-    photo: "./memberPlace.svg",
+    photo: "./elements/memberPlace.svg",
     role: "Fund Manager",
     email: "marble@gmail.com",
     link: "https://www.linkedin.com/company/marble-investments/",
   },
   {
     name: "Lucas Shen",
-    photo: "./memberPlace.svg",
+    photo: "./elements/memberPlace.svg",
     role: "Fund Manager",
     email: "marble@gmail.com",
     link: "https://www.linkedin.com/company/marble-investments/",
@@ -38,158 +38,161 @@ const LeadMembers: Member[] = [
 const TeamSections: Section[] = [
   {
     title: "Analysts",
-    members:[{
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Analyst",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    }],
+    members: [
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Analyst",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+    ],
   },
-
 
   {
     title: "Developers",
-    members: [{
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Developer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    }]
+    members: [
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Developer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+    ],
   },
-
 
   {
     title: "Marketing & Design",
-    members: [{
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Designer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Designer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Designer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    },
-    {
-      name: "John Doe",
-      photo: "./memberPlace.svg",
-      role: "Designer",
-      email: "marble@gmail.com",
-      link: "https://www.linkedin.com/company/marble-investments/",
-    }]
+    members: [
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Designer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Designer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Designer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+      {
+        name: "John Doe",
+        photo: "./elements/memberPlace.svg",
+        role: "Designer",
+        email: "marble@gmail.com",
+        link: "https://www.linkedin.com/company/marble-investments/",
+      },
+    ],
   },
-]
-
+];
 
 export { LeadMembers, TeamSections };
