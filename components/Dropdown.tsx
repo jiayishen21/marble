@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "antd";
 import Link from "next/link";
 import { IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 
 type Options = {
   title: string;
@@ -30,7 +31,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
         onClick={handleToggle}
         className="border-none shadow-none text-lg flex items-center gap-[1rem]"
       >
-        {title} <IoIosArrowUp />
+        {title} {isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}
       </Button>
       {isOpen && (
         <div className="flex flex-col absolute z-1 top-12">

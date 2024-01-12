@@ -1,14 +1,14 @@
 type Option = {
   title: string;
   append: string;
-}
+};
 
 type NavOption = {
   title: string;
   route: string;
   icon: string; //url, for mobile design
   dropdown: boolean; //has?
-  options?: Option[]
+  options?: Option[];
 };
 
 const BaseNavOptions: NavOption[] = [
