@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { dashboardOptions } from "../data/DashboardOptions";
+import { dashboardOptions } from "../data/DashboardOptionss";
 import { Button } from "antd";
 import React from "react";
 
