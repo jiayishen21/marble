@@ -1,9 +1,12 @@
 import React from "react";
-import DashboardTabs from "../../components/DashboardTabs";
+import DashboardTabs from "../../components/DashBoardTabs";
+import { RootState } from "../../store/store";
+import { useSelector } from "react-redux";
 
 export default function transaction() {
+  const user = useSelector((state: RootState) => state.user.user);
   return (
-    <main className="flex w-[70%] pt-[8rem] ml-[8rem]">
+    <main className="flex w-[70%] py-[8rem] ml-[8rem]">
       <DashboardTabs />
       <section className="flex flex-col gap-[3rem] w-full ml-[5rem]">
         <h1 className="text-2xl font-bold">Transactions</h1>
@@ -18,13 +21,12 @@ export default function transaction() {
             </tr>
           </thead>
           <tbody>
-            {/* example of what transaction table could look like */}
-            {/* {transactions.map((transaction, index) => (
+            {user?.purchaseHistory.map((transaction, index) => (
               <tr
                 key={index}
                 className={`${index % 2 === 0 ? "bg-gray-200" : ""}`}
               >
-                <td
+                {/* <td
                   className={`border px-4 py-2 align-middle ${
                     index === transactions.length - 1 ? "rounded-bl-lg" : ""
                   }`} 
@@ -41,9 +43,9 @@ export default function transaction() {
                 </td>
                 <td className="border px-2 py-2 align-middle text-center">
                   {transaction.balance}
-                </td>
+                </td> */}
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
       </section>

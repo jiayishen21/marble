@@ -9,7 +9,7 @@ import Dropdown from "../components/Dropdown";
 
 export default function resources() {
   return (
-    <main className="overflow-x-hidden w-full">
+    <main className="overflow-x-hidden w-full mb-[8rem]">
       <section
         className={`relative flex flex-col gap-12 px-[8rem] h-full`}
         data-aos="fade-right"

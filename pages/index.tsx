@@ -12,11 +12,14 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useWindowSize } from "@uidotdev/usehooks";
 import React, { useEffect, useState } from "react";
+import { RootState } from "../store/store";
+import { useSelector } from "react-redux";
 
 const { Item } = Form;
 const { TextArea } = Input;
 
 const Home: NextPage = () => {
+  const user = useSelector((state: RootState) => state.user.user);
   const { navRef, navHeight } = useNavParams();
   const router = useRouter();
 
@@ -110,14 +113,16 @@ const Home: NextPage = () => {
             “TO INVEST IN THE FUTURE, INVEST IN THOSE WHO BUILD THE FUTURE”{" "}
             <br />— PREFERABLY THIS IS MORE UNIQUE TO MARBLE THAN A QUOTE
           </div>
-          <Button
-            type="primary"
-            href="/create"
-            className="w-60 h-14 bg-lapis rounded-md text-neutral-50 font-hind
-          text-2xl font-normal flex justify-center items-center"
-          >
-            Invest with us
-          </Button>
+          {!user && (
+            <Button
+              type="primary"
+              href="/create"
+              className="w-60 h-14 bg-lapis rounded-md text-neutral-50 font-hind
+            text-2xl font-normal flex justify-center items-center"
+            >
+              Invest with us
+            </Button>
+          )}
         </section>
       </div>
       {/* <section className={`${styles["buffer"]} h-[2rem]`} /> */}

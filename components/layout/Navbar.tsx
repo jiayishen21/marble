@@ -158,7 +158,9 @@ export default function Navbar({ navRef, blank, router }: Props) {
       </section>
       <ul className="flex justify-center items-center gap-12 pr-12">
         {user ? (
-          <>Dashboard, Profile</>
+          <Link href="/dashboard" className="text-[#26477C] text-2xl">
+            My Dashboard
+          </Link>
         ) : (
           <>
             <Link href={"/register"}>
