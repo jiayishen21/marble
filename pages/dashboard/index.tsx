@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "antd";
-import DashboardTabs from "../../components/DashboardTabss";
+import DashboardTabs from "../../components/DashboardTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
