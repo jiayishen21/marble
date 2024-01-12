@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardTabs from "../../components/DashBoardTabs";
+import DashboardTabs from "../../components/DashboardTabs";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 
