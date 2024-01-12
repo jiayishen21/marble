@@ -11,39 +11,32 @@ export default function transaction() {
       <section className="flex flex-col gap-[3rem] w-full ml-[5rem]">
         <h1 className="text-2xl font-bold">Transactions</h1>
 
-        <table className="table-auto text-center w-full border border-gray-300">
-          <thead>
-            <tr>
-              <th className="px-4 py-4 align-middle">Transaction Date</th>
+        <table className="table-auto text-center w-full">
+          <thead className="bg-[#F8F7F7]">
+            <tr className="">
+              <th className="px-4 py-4 align-middle rounded-tl-lg rounded-bl-lg">
+                Transaction Date
+              </th>
               <th className="px-4 py-4 align-middle">Shares</th>
               <th className="px-4 py-4 align-middle">Amount</th>
-              <th className="px-4 py-4 align-middle">Account Balance</th>
+              <th className="px-4 py-4 align-middle rounded-tr-lg rounded-br-lg">
+                Account Balance
+              </th>
             </tr>
           </thead>
           <tbody>
             {user?.purchaseHistory.map((transaction, index) => (
-              <tr
-                key={index}
-                className={`${index % 2 === 0 ? "bg-gray-200" : ""}`}
-              >
-                {/* <td
-                  className={`border px-4 py-2 align-middle ${
-                    index === transactions.length - 1 ? "rounded-bl-lg" : ""
-                  }`} 
-                >
-                  {transaction.date}
+              <tr key={index} className="border-b-[1px]">
+                <td className="px-4 py-2 align-middle">
+                  {transaction.createdAt.toLocaleString()}
                 </td>
-                <td className="border px-2 py-2 align-middle underline">
-
-                    {transaction.shares}
-
+                <td className="px-2 py-2 align-middle underline">
+                  {transaction.quantity}
                 </td>
-                <td className="border px-2 py-2 align-middle">
-                  {transaction.amount}
+                <td className="px-2 py-2 align-middle">{transaction.price}</td>
+                <td className="px-2 py-2 align-middle text-center">
+                  {transaction.quantity * transaction.quantity}
                 </td>
-                <td className="border px-2 py-2 align-middle text-center">
-                  {transaction.balance}
-                </td> */}
               </tr>
             ))}
           </tbody>
