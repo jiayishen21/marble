@@ -140,39 +140,34 @@ const Home: NextPage = () => {
           ad litora torquent per conubia nostra, per inceptos himenaeos.
         </div>
         <div
-          className={` ${
-            mobile
-              ? "flex flex-col justify-center items-center gap-[2rem]"
-              : "flex w-full justify-around align-center pt-8 px-10"
-          }`}
+          className={` ${mobile
+            ? "flex flex-col justify-center items-center gap-[2rem]"
+            : "flex w-full justify-around align-center pt-8 px-10"
+            }`}
         >
           <div
-            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
-              mobile ? "w-[60%]" : "w-[28%]"
-            }`}
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${mobile ? "w-[60%]" : "w-[28%]"
+              }`}
             data-aos="fade-right"
           />
           <div
-            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
-              mobile ? "w-[60%]" : "w-[28%]"
-            }`}
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${mobile ? "w-[60%]" : "w-[28%]"
+              }`}
             data-aos="fade-up"
           />
           <div
-            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${
-              mobile ? "w-[60%]" : "w-[28%]"
-            }`}
+            className={`bg-neutral-50 h-80 bg-opacity-50 rounded ${mobile ? "w-[60%]" : "w-[28%]"
+              }`}
             data-aos="fade-left"
           />
         </div>
       </section>
       <PolywaveBottom />
       <section
-        className={`${
-          mobile
-            ? "flex flex-col gap-10"
-            : "grid grid-cols-2 gap-12 pb-10 pt-[4rem]"
-        }`}
+        className={`${mobile
+          ? "flex flex-col gap-10"
+          : "grid grid-cols-2 gap-12 pb-10 pt-[4rem]"
+          }`}
       >
         <div
           className="relative flex flex-col gap-12 pl-20"
@@ -205,9 +200,8 @@ const Home: NextPage = () => {
           </Button>
         </div>
         <div
-          className={`flex items-center justify-center ${
-            mobile ? "px-[2rem]" : "pl-10 pr-[8rem]"
-          }`}
+          className={`flex items-center justify-center ${mobile ? "px-[2rem]" : "pl-10 pr-[8rem]"
+            }`}
         >
           <div
             className="bg-neutral-400 h-[28rem] w-full bg-opacity-50 rounded"
@@ -229,9 +223,8 @@ const Home: NextPage = () => {
             {ContactOptions.map((item, key) => {
               return (
                 <div
-                  className={`flex flex-col gap-6 text-2xl ${
-                    mobile && "mt-[2rem]"
-                  }`}
+                  className={`flex flex-col gap-6 text-2xl ${mobile && "mt-[2rem]"
+                    }`}
                   key={key}
                 >
                   <div className="flex flex-row items-center gap-6">
@@ -248,9 +241,8 @@ const Home: NextPage = () => {
           <div className="w-[0.25em] h-full bg-lapis rounded"></div>
         </Col>
         <Col
-          className={`flex flex-col gap-8 ${
-            mobile && "ml-auto mr-[5rem] mb-[2rem]"
-          }`}
+          className={`flex flex-col gap-8 ${mobile && "ml-auto mr-[5rem] mb-[2rem]"
+            }`}
           span={10}
         >
           <div className="text-semiblack text-2xl font-hind">
