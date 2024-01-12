@@ -8,7 +8,7 @@ const getPopulatedUser = async (id: string) => {
     .select('_id accountType firstName lastName email shares purchaseHistory verificationCode')
     .populate({
       path: 'purchaseHistory',
-      select: 'price quantity createdAt'
+      select: 'user price quantity createdAt'
     })
     .exec()
 

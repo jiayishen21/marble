@@ -21,7 +21,7 @@ const Admin: React.FC = () => {
       const realDate = new Date(date)
 
       axios
-        .post('/api/share/new-price', { date: realDate, price }, { headers: { Authorization: `Bearer ${token}` } })
+        .post('/api/shares/new-price', { date: realDate, price }, { headers: { Authorization: `Bearer ${token}` } })
         .then((res) => {
           toast.success('New price added successfully');
           console.log(res.data.shares)

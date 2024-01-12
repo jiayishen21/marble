@@ -5,7 +5,6 @@ import React from "react";
 
 export default function DashboardTabs() {
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <section className="w-[25%] h-full flex flex-col items-start gap-[1.5rem]">
