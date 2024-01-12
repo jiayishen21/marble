@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import DashBoardTabs from "../components/DashBoardTabs";
 
-export default function dashBoard() {
+export default function Dashboard() {
   return (
     <main className="flex w-[70%] pt-[8rem] ml-[8rem]">
       <DashBoardTabs />
