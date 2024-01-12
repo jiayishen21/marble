@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardTabs from "../../components/DashboardTabs";
+import DashboardTabs from "../../components/DashboardTabss";
 
 export default function transaction() {
   return (
