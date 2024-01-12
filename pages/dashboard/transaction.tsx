@@ -39,12 +39,16 @@ export default function transaction() {
         <table className="table-auto text-center w-full">
           <thead className="bg-[#F8F7F7]">
             <tr>
-              <th className="px-4 py-4 align-middle rounded-tl-lg rounded-bl-lg">
+              <th className="px-4 py-4 align-middle rounded-tl-lg rounded-bl-lg w-1/4 font-medium">
                 Transaction Date
               </th>
-              <th className="px-4 py-4 align-middle">Shares</th>
-              <th className="px-4 py-4 align-middle">Amount</th>
-              <th className="px-4 py-4 align-middle rounded-tr-lg rounded-br-lg">
+              <th className="px-4 py-4 align-middle w-1/4 font-medium">
+                Shares
+              </th>
+              <th className="px-4 py-4 align-middle w-1/4 font-medium">
+                Amount
+              </th>
+              <th className="px-4 py-4 align-middle rounded-tr-lg rounded-br-lg w-1/4 font-medium">
                 Shares Owned At Date
               </th>
             </tr>
@@ -52,16 +56,30 @@ export default function transaction() {
           <tbody>
             {transactions.map((purchase, index) => (
               <tr key={index} className="border-b-[1px]">
-                <td className="border px-4 py-2 align-middle">
-                  {purchase.createdAt.toString()}
+                <td className="px-4 py-2 align-middle">
+                  {new Date(purchase.createdAt.toString()).toLocaleString()}
                 </td>
-                <td className="border px-2 py-2 align-middle">
-                  {purchase.quantity}
+                <td className="px-2 py-2 align-middle">
+                  <span
+                    className={
+                      purchase.price > 0 ? "text-[#38A248]" : "text-red-500"
+                    }
+                  >
+                    {purchase.price > 0 ? "BUY" : "SELL"}{" "}
+                  </span>{" "}
+                  {purchase.quantity} share(s)
                 </td>
-                <td className="border px-2 py-2 align-middle">
-                  {purchase.price}
+                <td className="px-2 py-2 align-middle">
+                  <span
+                    className={
+                      purchase.price > 0 ? "text-[#38A248]" : "text-red-500"
+                    }
+                  >
+                    {purchase.price > 0 ? "+" : "-"}${purchase.price}
+                  </span>
+                  &nbsp; CAD
                 </td>
-                <td className="border px-2 py-2 align-middle text-center">
+                <td className="px-2 py-2 align-middle text-center">
                   {purchase.curShares}
                 </td>
               </tr>
