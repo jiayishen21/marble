@@ -1,12 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import Share from '../../../models/shareModel'
-import connectDB from '../../../utils/connectDB'
-import { ShareType } from '../../../types'
+import type { NextApiRequest, NextApiResponse } from "next";
+import Share from "../../../models/shareModel";
+import connectDB from "../../../utils/connectDB";
+import { ShareType } from "../../../types";
 
 type Data = {
-  shares?: ShareType[],
-  message?: string,
-}
+  shares?: ShareType[];
+  message?: string;
+};
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,17 +14,17 @@ export default async function handler(
 ) {
   try {
     if (req.method !== "GET") {
-      throw new Error(`${req.method} is an invalid request method.`)
+      throw new Error(`${req.method} is an invalid request method.`);
     }
 
-    await connectDB()
+    await connectDB();
     const shares = await Share.find({})
-      .select('price date')
+      .select("price date")
       .sort({ date: -1 })
-      .exec()
+      .exec();
 
-    res.status(200).json({ shares })
+    res.status(200).json({ shares });
   } catch (error: any) {
-    res.status(400).json({ message: error.message })
+    res.status(400).json({ message: error.message });
   }
 }

@@ -161,7 +161,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
           <>Dashboard, Profile</>
         ) : (
           <>
-            <Link href={"/create"}>
+            <Link href={"/register"}>
               <li
                 className="nav-option text-semiblack hover:text-lapis
                   font-light text-2xl"
