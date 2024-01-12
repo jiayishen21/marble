@@ -8,11 +8,11 @@ export default function marketing() {
   return (
     <main className="w-full px-[4rem] flex flex-col gap-12 mb-[8rem]">
       <TeamTabs />
-      <section className="mt-[5rem]" data-aos="fade-right">
-        <Row gutter={[12, 40]}>
+      <section className="mt-[6rem]" data-aos="fade-right">
+        <Row gutter={[24, 40]}>
           {TeamSections.Marketing.map((item, key) => (
             <Col
-              className="flex flex-col gap-2 items-center justify-center"
+              className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
               span={6}
               key={key}
             >
