@@ -11,77 +11,68 @@ export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
   const mobile = useMobileDetection();
 
-  if (mobile)
-    <footer
-      className={`bg-[#467099]] w-full font-hind text-neutral-50 flex ${
-        mobile ? "flex-col h-fit py-[2rem] gap-[3rem]" : "h-[100px]"
-      }`}
-    >
-      <section className="flex flex-1">
-        <ul
-          className={`flex items-center justify-around font-light text-2xl w-full ${
-            mobile && "flex-col gap-[1.5rem]"
-          }`}
-        >
-          {PublicNavOptions.map((opt, key) => (
-            <div key={key}>
-              <Link href={opt.route}>
-                <li className="nav-option text-white hover:text-lightblue transition-all duration-300">
-                  {opt.title}
-                </li>
-              </Link>
-            </div>
-          ))}
-        </ul>
-      </section>
-      <section
-        className={`flex justify-center items-center gap-[3rem] ${
-          mobile ? "w-full" : "w-[25%]"
-        }`}
-      >
-        {ContactOptions.map((icon, key) => (
-          <Link
-            key={key}
-            href={icon.to}
-            target="_blank"
-            className="text-white text-4xl hover:text-lightblue 
+  if (mobile) {
+    return (
+      <footer className="bg-[#467099] w-full font-hind text-neutral-50 flex flex-col h-fit py-[2rem] gap-[3rem]">
+        <section className="flex flex-1">
+          <ul className="flex items-center justify-around font-light text-2xl w-full flex-col gap-[1.5rem]">
+            {PublicNavOptions.map((opt, key) => (
+              <div key={key}>
+                <Link href={opt.route}>
+                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300">
+                    {opt.title}
+                  </li>
+                </Link>
+              </div>
+            ))}
+          </ul>
+        </section>
+        <section className="flex justify-center items-center gap-[3rem] w-full">
+          {ContactOptions.map((icon, key) => (
+            <Link
+              key={key}
+              href={icon.to}
+              target="_blank"
+              className="text-white text-4xl hover:text-lightblue 
           transition-all duration-300"
-          >
-            {icon.icon}
-          </Link>
-        ))}
-      </section>
-      <section className={`flex ${mobile ? "w-full" : "w-[25%]"}`}>
-        <ul className="flex justify-center items-center w-full gap-[4rem]">
-          {user ? (
-            <Link href="/dashboard" className="text-[#26477C] text-2xl">
-              My Dashboard
+            >
+              {icon.icon}
             </Link>
-          ) : (
-            <>
-              <Link href={"/create"}>
-                <li
-                  className="nav-option text-white hover:text-lightblue
+          ))}
+        </section>
+        <section className="flex w-full">
+          <ul className="flex justify-center items-center w-full gap-[4rem]">
+            {user ? (
+              <Link href="/dashboard" className="text-2xl">
+                My Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link href={"/create"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
                       font-light text-2xl 
                       transition-all duration-300"
-                >
-                  Sign Up
-                </li>
-              </Link>
-              <Link href={"/login"}>
-                <li
-                  className="nav-option text-white hover:text-lightblue
+                  >
+                    Sign Up
+                  </li>
+                </Link>
+                <Link href={"/login"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
                       font-light text-2xl underline 
                       transition-all duration-300"
-                >
-                  Client Login
-                </li>
-              </Link>
-            </>
-          )}
-        </ul>
-      </section>
-    </footer>;
+                  >
+                    Client Login
+                  </li>
+                </Link>
+              </>
+            )}
+          </ul>
+        </section>
+      </footer>
+    );
+  }
 
   return (
     <footer className="px-[2.5rem] pt-[4rem] bg-[#467099] w-full font-hind text-neutral-50 flex flex-col h-fit">
