@@ -12,7 +12,7 @@ export default function Dashboard() {
     <main className="flex w-[70%] py-[8rem] ml-[8rem]" data-aos="fade-up">
       <DashboardTabs />
       <section className="flex flex-col gap-[3rem] w-full ml-[5rem] ">
-        <h1 className="text-2xl font-bold">Welcome back {user?.firstName}</h1>
+        <h1 className="text-2xl font-bold">Investor Voting</h1>
         <article className="flex w-full h-[10%]">
           <div className="border-r-2 border-gray-300  flex-1 h-full flex flex-col justify-center items-start gap-[2rem]">
             <h2 className="text-xl">Total Investment value</h2>
