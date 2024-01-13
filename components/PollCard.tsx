@@ -11,7 +11,12 @@ import { AppDispatch } from "../store/store";
 import { canVote } from "../utils/canVote";
 import { PollType } from "../types";
 
-export default function PollCard() {
+interface Props {
+  poll: PollType,
+  index: number,
+}
+
+export default function PollCard({ poll, index }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
   const polls = useSelector((state: RootState) => state.polls.polls);
   const dispatch = useDispatch<AppDispatch>();
@@ -63,14 +68,14 @@ export default function PollCard() {
   }, [user, polls])
 
 
-  return polls.map((item: any, index: number) => (
-    <section key={`poll${index}`}>
+  return (
+    <section>
       <h2 className="text-2xl text-[#7E8083] font-semibold">
         Poll {index + 1}/{polls.length}
       </h2>
       <div className="w-full flex flex-col border border-gray-400 rounded-lg">
         <div className="m-[3rem] flex flex-col">
-          <h2 className="text-2xl font-bold">{item.question}</h2>
+          <h2 className="text-2xl font-bold">{poll.question}</h2>
           {/* <p className="mt-[1rem]">{item.description}</p> */}
         </div>
         <Form
@@ -86,7 +91,7 @@ export default function PollCard() {
               }
 
               let optionNum = -1
-              for (const option of item.options) {
+              for (const option of poll.options) {
                 if (option.text === formData[`response${index}`]) {
                   optionNum = option.num
                   break
@@ -96,11 +101,11 @@ export default function PollCard() {
                 throw new Error('Please select a valid option before voting.')
               }
 
-              canVote(user, item)
+              canVote(user, poll)
 
               const token = localStorage.getItem('token') || ''
               axios
-                .post('/api/poll/vote', { pollId: item._id, optionNum }, { headers: { 'Authorization': `Bearer ${token}` } })
+                .post('/api/poll/vote', { pollId: poll._id, optionNum }, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then((response: any) => {
                   if (!response?.data) {
                     throw new Error('Server error. Please try again')
@@ -141,9 +146,9 @@ export default function PollCard() {
             ]}
           >
             <Select style={{ borderRadius: "5px" }}
-              disabled={buttonDisabled(item)}
+              disabled={buttonDisabled(poll)}
             >
-              {item.options.map((option: any) => (
+              {poll.options.map((option: any) => (
                 <Option key={option.num} value={option.text}>
                   {option.text}
                 </Option>
@@ -155,7 +160,7 @@ export default function PollCard() {
               type="primary"
               htmlType="submit"
               className="bg-[#26477C] text-white"
-              disabled={buttonDisabled(item)}
+              disabled={buttonDisabled(poll)}
             >
               Submit
             </Button>
@@ -164,10 +169,10 @@ export default function PollCard() {
         <div className="bg-[#EBEEEF] py-[1.5rem] pl-[3rem] text-xl">
           Voting closes on{" "}
           <span className="font-semibold">
-            {new Date(item.deadline).toLocaleString()}
+            {new Date(poll.deadline).toLocaleString()}
           </span>
         </div>
       </div>
     </section>
-  ));
+  );
 }
