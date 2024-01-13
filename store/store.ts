@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
 import shareReducer from './shareSlice';
+import pollReducer from './pollSlice';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     shares: shareReducer,
+    polls: pollReducer,
   },
 });
 

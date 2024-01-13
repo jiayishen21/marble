@@ -45,6 +45,22 @@ const userSchema = new Schema(
       default: [],
     },
 
+    voteHistory: [{
+      poll: {
+        type: Schema.Types.ObjectId,
+        ref: 'Poll',
+        required: [true, 'Missing poll.'],
+      },
+      optionNum: {
+        type: Number,
+        required: [true, 'Missing option.'],
+      },
+      votes: {
+        type: Number,
+        required: [true, 'Missing number of votes.']
+      },
+    }],
+
     verificationCode: {
       type: {
         code: {

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const Admin: React.FC = () => {
+const SharePrice: React.FC = () => {
   const [date, setDate] = useState<string>('');
   const [price, setPrice] = useState<number | ''>('');
 
@@ -46,5 +46,4 @@ const Admin: React.FC = () => {
   );
 };
 
-export default Admin;
-
+export default SharePrice;
