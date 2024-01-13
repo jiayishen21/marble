@@ -2,7 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Work+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Work+Sans:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cairo:&family=Work+Sans:wght@500&display=swap');
+/* Error fetching these for some reason */
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:&family=Work+Sans:wght@500&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -10,17 +11,18 @@
 
 html,
 body {
-  background: rgb(250, 250, 250); /* neutral-50 */
+  background: rgb(250, 250, 250);
+  /* neutral-50 */
   padding: 0;
   margin: 0;
   font-family: Hind, sans-serif;
 }
 
-.font-hind{
+.font-hind {
   font-family: Hind, sans-serif !important;
 }
 
-.font-cairo{
+.font-cairo {
   font-family: Cairo, sans-serif !important;
 }
 
@@ -33,12 +35,13 @@ a {
   box-sizing: border-box;
 }
 
-.ant-input, .ant-input-password{
+.ant-input,
+.ant-input-password {
   border-radius: 1px;
   border-color: theme('colors.airforce')
 }
 
-.ant-dropdown-menu-title-content{
+.ant-dropdown-menu-title-content {
   font-size: 1.25em;
   padding: 0.25rem
 }
@@ -48,10 +51,13 @@ a {
 }
 
 body::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: none;
+  /* Safari and Chrome */
 }
 
 body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

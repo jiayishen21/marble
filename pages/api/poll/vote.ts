@@ -55,14 +55,14 @@ export default async function handler(
       throw new Error('Option not found. Please select a valid option to vote for.')
     }
 
-    Poll.findByIdAndUpdate(pollId, { options: poll.options })
+    await Poll.findByIdAndUpdate(pollId, { options: poll.options })
     const polls = await Poll.find({})
       .select("_id question deadline options createdAt")
       .sort({ deadline: -1 })
       .exec();
 
     user.voteHistory.unshift({ poll: pollId, optionNum, votes: shares })
-    User.findByIdAndUpdate(user._id, { voteHistory: user.voteHistory })
+    await User.findByIdAndUpdate(user._id, { voteHistory: user.voteHistory })
 
     res.status(200).json({ polls, voteHistory: user.voteHistory })
   } catch (error: any) {

@@ -14,7 +14,7 @@ import { setUser } from "../store/userSlice";
 const { Item } = Form;
 const { Password } = Input;
 
-export default function Create() {
+export default function Register() {
   const dispatch = useDispatch<AppDispatch>();
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
