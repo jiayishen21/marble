@@ -5,14 +5,15 @@ import { ContactOptions } from "../../data/ContactOptions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import useMobileDetection from "../../utils/detectMobile";
+import Image from "next/image";
 
 export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
   const mobile = useMobileDetection();
 
-  return (
+  if (mobile)
     <footer
-      className={`bg-airforce w-full font-hind text-neutral-50 flex ${
+      className={`bg-[#467099]] w-full font-hind text-neutral-50 flex ${
         mobile ? "flex-col h-fit py-[2rem] gap-[3rem]" : "h-[100px]"
       }`}
     >
@@ -53,7 +54,9 @@ export default function Footer() {
       <section className={`flex ${mobile ? "w-full" : "w-[25%]"}`}>
         <ul className="flex justify-center items-center w-full gap-[4rem]">
           {user ? (
-            <>Dashboard, profile</>
+            <Link href="/dashboard" className="text-[#26477C] text-2xl">
+              My Dashboard
+            </Link>
           ) : (
             <>
               <Link href={"/create"}>
@@ -77,6 +80,88 @@ export default function Footer() {
             </>
           )}
         </ul>
+      </section>
+    </footer>;
+
+  return (
+    <footer className="px-[2.5rem] pt-[4rem] bg-[#467099] w-full font-hind text-neutral-50 flex flex-col h-fit">
+      <div className="flex justify-between w-full">
+        <section>
+          <div className="flex flex-col pl-[4rem] gap-[3rem]">
+            <Image
+              src="/elements/marble.svg"
+              alt="Marble logo"
+              height={0}
+              width={0}
+              className="w-[50%] h-auto"
+            />
+            <div className="flex gap-[2rem]">
+              {ContactOptions.map((icon, key) => (
+                <Link
+                  key={key}
+                  href={icon.to}
+                  target="_blank"
+                  className="text-white text-4xl hover:text-lightblue 
+          transition-all duration-300"
+                >
+                  {icon.icon}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="flex">
+          <ul className="flex flex-col justify-start gap-[1rem] w-[60%]">
+            {PublicNavOptions.map((opt, key) => (
+              <div key={key}>
+                <Link href={opt.route}>
+                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300 text-xl">
+                    {opt.title}
+                  </li>
+                </Link>
+              </div>
+            ))}
+          </ul>
+          <ul className="flex flex-col w-[18rem] gap-[1rem] justify-start items-start">
+            {user ? (
+              <Link href="/dashboard" className="text-xl underline">
+                My Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link href={"/register"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
+                      font-light text-xl 
+                      transition-all duration-300"
+                  >
+                    Sign Up
+                  </li>
+                </Link>
+                <Link href={"/login"}>
+                  <li
+                    className="nav-option text-white hover:text-lightblue
+                      font-light text-xl underline 
+                      transition-all duration-300"
+                  >
+                    Client Login
+                  </li>
+                </Link>
+              </>
+            )}
+          </ul>
+        </section>
+      </div>
+      <section className="w-full mt-[4rem]">
+        <hr />
+        <div className="flex py-[2rem] relative items-center">
+          <Link href="/" className="absolute left-[5%]">
+            Terms of service
+          </Link>
+          <p className="absolute left-[40%] text-[#FFFFFF] opacity-50">
+            Copyright &copy; Marble Investments. All rights reserved.
+          </p>
+        </div>
       </section>
     </footer>
   );
