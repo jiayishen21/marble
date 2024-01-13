@@ -21,7 +21,7 @@ export const canVote = (user: UserType, poll: PollType): number => {
   }
 
   if (shares < 1) {
-    throw new Error('You do not have enough shares to perform this action.')
+    throw new Error('You did not own any shares at the time this poll was created.')
   }
 
   return shares
