@@ -62,20 +62,23 @@ export default function transaction() {
                 <td className="px-2 py-2 align-middle">
                   <span
                     className={
-                      purchase.price > 0 ? "text-[#38A248]" : "text-red-500"
+                      purchase.quantity > 0 ? "text-[#38A248]" : "text-red-500"
                     }
                   >
-                    {purchase.price > 0 ? "BUY" : "SELL"}{" "}
+                    {purchase.quantity > 0 ? "BUY" : "SELL"}{" "}
                   </span>{" "}
-                  {purchase.quantity} share(s)
+                  {purchase.quantity < 0
+                    ? purchase.quantity * -1
+                    : purchase.quantity}{" "}
+                  share(s)
                 </td>
                 <td className="px-2 py-2 align-middle">
                   <span
                     className={
-                      purchase.price > 0 ? "text-[#38A248]" : "text-red-500"
+                      purchase.quantity > 0 ? "text-[#38A248]" : "text-red-500"
                     }
                   >
-                    {purchase.price > 0 ? "+" : "-"}${purchase.price}
+                    {purchase.quantity > 0 ? "+" : "-"}${purchase.price}
                   </span>
                   &nbsp; CAD
                 </td>
