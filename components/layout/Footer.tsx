@@ -4,31 +4,11 @@ import { PublicNavOptions } from "../../data/NavOptions";
 import { ContactOptions } from "../../data/ContactOptions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { useWindowSize } from "@uidotdev/usehooks";
+import useMobileDetection from "../../utils/detectMobile";
 
 export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
-  const { width } = useWindowSize();
-
-  const [mobile, setMobile] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (width !== null && width !== undefined) {
-      if (!mobile && width < 1024) {
-        setMobile(true);
-      } else if (mobile && width >= 1024) {
-        setMobile(false);
-      }
-    }
-
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
-      setMobile(true);
-    }
-  }, [width]);
+  const mobile = useMobileDetection();
 
   return (
     <footer
