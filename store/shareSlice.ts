@@ -25,4 +25,3 @@ export const { setShares, setSharesLoading } = shareSlice.actions;
 
 // Export the reducer
 export default shareSlice.reducer;
-

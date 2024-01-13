@@ -15,6 +15,7 @@ import { Provider, useSelector, useDispatch } from 'react-redux';
 import { store, RootState, AppDispatch } from '../store/store';
 import { setUser, setUserLoading } from '../store/userSlice';
 import { setShares, setSharesLoading } from '../store/shareSlice';
+import { setPolls, setPollsLoading } from '../store/pollSlice';
 
 const theme = {
   components: {
@@ -50,6 +51,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
     dispatch(setUserLoading(true))
     dispatch(setSharesLoading(true))
+    dispatch(setPollsLoading(true))
     AOS.init()
 
     const token = localStorage.getItem('token') || ''
@@ -75,6 +77,18 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       })
       .catch(() => {
         throw new Error('Server error: could not find investment data. Please try again later.')
+      })
+
+    axios
+      .get('/api/poll')
+      .then((response: any) => {
+        if (response?.data?.polls) {
+          dispatch(setPolls(response.data.polls))
+        }
+        dispatch(setPollsLoading(false))
+      })
+      .catch(() => {
+        throw new Error('Server error: could not find poll data. Please try again later.')
       })
   }, [])
 

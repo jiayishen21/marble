@@ -25,7 +25,7 @@ export const VerificationEmail = ({
       <Container style={container}>
         <Heading style={h1}>Welcome to Marble Investments, {firstName}</Heading>
         <Text style={{ ...text, marginBottom: '14px' }}>
-          Use this verification code to complete your sign up:
+          Use this verification code to complete your sign up. The code is only valid for 10 minutes.
         </Text>
         <code style={code}>{verificationCode}</code>
         <Text
