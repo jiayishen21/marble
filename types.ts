@@ -49,6 +49,7 @@ export type ShareType = {
 }
 
 export type PollType = {
+  _id: string,
   question: string,
   deadline: Date,
   options: OptionType[],

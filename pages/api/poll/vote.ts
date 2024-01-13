@@ -4,6 +4,7 @@ import { PollType, VoteType } from '../../../types'
 import authenticate from '../../../utils/authenticate'
 import Poll from '../../../models/pollModel'
 import User from '../../../models/userModel'
+import { canVote } from '../../../utils/canVote'
 
 type Data = {
   polls?: PollType[],
@@ -38,28 +39,8 @@ export default async function handler(
     if (!poll) {
       throw new Error('Poll not found.')
     }
-    if (poll.deadline < new Date()) {
-      throw new Error('This poll has already ended.')
-    }
 
-    for (const vote of user.voteHistory) {
-      if (vote.poll === pollId) {
-        throw new Error('You have already voted on this poll.')
-      }
-    }
-
-    let shares = user.shares
-    // This assumes purchaseHistory is sorted most recent to least recent
-    for (const purchase of user.purchaseHistory) {
-      if (purchase.createdAt > poll.createdAt) {
-        break
-      }
-      shares -= purchase.quantity
-    }
-
-    if (shares < 1) {
-      throw new Error('You do not have enough shares to perform this action.')
-    }
+    const shares = canVote(user, poll)
 
     let foundOption = false
     for (const option of poll.options) {
@@ -79,6 +60,7 @@ export default async function handler(
       .select("_id question deadline options createdAt")
       .sort({ deadline: -1 })
       .exec();
+
     user.voteHistory.unshift({ poll: pollId, optionNum, votes: shares })
     User.findByIdAndUpdate(user._id, { voteHistory: user.voteHistory })
 
