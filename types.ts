@@ -45,7 +45,7 @@ export type VoteType = {
 
 export type ShareType = {
   price: number;
-  time: Date;
+  date: Date;
 };
 
 export type PollType = {
