@@ -14,17 +14,15 @@ const ShareChart = () => {
     if (shares.length > 0 && chartRef.current) {
       const existingChart = Chart.getChart(chartRef.current);
 
-      // If there's an existing chart, destroy it
       if (existingChart) {
         existingChart.destroy();
       }
 
-      const dates = shares.map((entry) => moment(entry.date)); // Handle potential undefined date
+      const dates = shares.map((entry) => moment(entry.date));
       const prices = shares.map((entry) => entry.price);
 
       console.log(dates.reverse().map((date) => date.format("YYYY-MM-DD")));
 
-      // Get the canvas element
       const ctx = chartRef.current.getContext("2d");
 
       if (ctx) {
@@ -32,11 +30,11 @@ const ShareChart = () => {
         new Chart(ctx, {
           type: "line",
           data: {
-            labels: dates.reverse().map((date) => date.format("YYYY-MM-DD")), // Reverse the order for chronological display
+            labels: dates.reverse().map((date) => date.format("YYYY-MM-DD")),
             datasets: [
               {
                 label: "Share Price History",
-                data: prices.reverse(), // Reverse the order for chronological display
+                data: prices.reverse(),
                 borderColor: "rgba(75, 192, 192, 1)",
                 borderWidth: 2,
                 fill: false,
@@ -46,10 +44,10 @@ const ShareChart = () => {
           options: {
             scales: {
               x: {
-                type: "time", // Use "time" for dates
+                type: "time",
                 position: "bottom",
                 time: {
-                  unit: "day", // Adjust the time unit as needed
+                  unit: "day",
                 },
               },
               y: {
