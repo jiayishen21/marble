@@ -14,7 +14,7 @@ export const canVote = (user: UserType, poll: PollType): number => {
   let shares = user.shares
   // This assumes purchaseHistory is sorted most recent to least recent
   for (const purchase of user.purchaseHistory) {
-    if (purchase.createdAt > poll.createdAt) {
+    if (purchase.createdAt < poll.createdAt) {
       break
     }
     shares -= purchase.quantity

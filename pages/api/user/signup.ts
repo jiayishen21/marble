@@ -71,7 +71,7 @@ export default async function handler(
 
     // We don't use getPopulatedUser() here because we don't want to populated purchaseHistory
     const user = await User.findById(createdUser._id)
-      .select('_id accountType firstName lastName email shares purchaseHistory verificationCode createdAt')
+      .select('_id accountType firstName lastName email shares voteHistory purchaseHistory verificationCode createdAt')
       .exec()
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '180d' })
