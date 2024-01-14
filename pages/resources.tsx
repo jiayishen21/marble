@@ -85,14 +85,16 @@ export default function resources() {
             </div>
           </div>
         </div>
-        <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10] max-lg:text-5xl">
-          Marble Investment Resources
-        </h1>
-        <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium
-          error eum iusto qui harum temporibus tempore odit vel maiores placeat
-          obcaecati ullam porro aut repudiandae, eius aspernatur dolorum, quod
-          non?
+        <div>
+          <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10]">
+            Marble Investment Resources
+          </h1>
+          <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Accusantium error eum iusto qui harum temporibus tempore odit vel
+            maiores placeat obcaecati ullam porro aut repudiandae, eius
+            aspernatur dolorum, quod non?
+          </div>
         </div>
         <section
           className={`flex justify-between items-center ${

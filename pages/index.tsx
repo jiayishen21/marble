@@ -55,8 +55,8 @@ const Home: NextPage = () => {
             by students, for students.
           </div>
           <div
-            className={`text-airforce font-cairo font-semibold tracking-wide  z-[10] ${
-              mobile ? "text-xs -mt-[2rem]" : "text-lg"
+            className={`text-airforce font-cairo font-semibold tracking-wide z-[10] ${
+              mobile ? "text-md -mt-[2rem]" : "text-lg"
             }`}
           >
             “TO INVEST IN THE FUTURE, INVEST IN THOSE WHO BUILD THE FUTURE”{" "}
@@ -77,7 +77,7 @@ const Home: NextPage = () => {
       </div>
       {/* <section className={`${styles["buffer"]} h-[2rem]`} /> */}
       <section
-        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col gap-12 linear-wave -mt-[13.5rem] items-center justify-center ${
+        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col gap-12 linear-wave -mt-[11rem] items-center justify-center ${
           mobile ? "pt-[9rem] pb-[12rem]" : "h-[120vh]"
         }`}
       >
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
           </div>
           <div
             className={`text-semiblack z-[10] ${
-              mobile ? "text-sm" : "text-2xl"
+              mobile ? "text-lg" : "text-2xl"
             }`}
           >
             Gorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
