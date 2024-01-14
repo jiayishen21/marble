@@ -78,10 +78,6 @@ export default async function handler(
       })
     );
 
-    const cookies = cookie.parse(req.headers.cookie || "");
-    const token2 = cookies.token;
-    console.log(token2);
-
     res.status(200).json({ user });
   } catch (error: any) {
     res.status(400).json({ message: error.message });
