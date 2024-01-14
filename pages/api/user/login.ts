@@ -7,6 +7,7 @@ import decrypt from '../../../utils/decrypt'
 import bcrypt from 'bcrypt'
 import getPopulatedUser from '../../../utils/getPopulatedUser'
 import jwt from 'jsonwebtoken'
+import cookie from 'cookie'
 
 type Data = {
   user?: UserType,
@@ -52,7 +53,15 @@ export default async function handler(
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '180d' })
 
-    res.status(200).json({ user, token })
+    res.setHeader('Set-Cookie', cookie.serialize('token', token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 60 * 60 * 24 * 180, // 180 days
+      sameSite: 'strict',
+      path: '/',
+    }))
+
+    res.status(200).json({ user })
   } catch (error: any) {
     res.status(400).json({ message: error.message })
   }
