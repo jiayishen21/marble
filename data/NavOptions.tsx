@@ -53,6 +53,21 @@ const BaseNavOptions: NavOption[] = [
   },
 ];
 
+const missionData = [
+  {
+    stat: "$14,583",
+    info: "ASSETS UNDER MANAGEMENT",
+  },
+  {
+    stat: "56",
+    info: "MEMBERS/INVESTORs",
+  },
+  {
+    stat: "1000%",
+    info: "RETURN ON INVESTMENTS (%)",
+  },
+];
+
 const PublicNavOptions = [
   ...BaseNavOptions,
   // {
@@ -73,4 +88,4 @@ const NavOptions = [
   // }
 ];
 
-export { PublicNavOptions, NavOptions };
+export { PublicNavOptions, NavOptions, missionData };

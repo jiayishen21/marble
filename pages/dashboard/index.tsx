@@ -3,7 +3,7 @@ import { Button } from "antd";
 import DashboardTabs from "../../components/DashboardTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import ShareChart from "../../components/shareChart";
+import ShareChart from "../../components/ShareChart";
 
 export default function Dashboard() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -36,7 +36,7 @@ export default function Dashboard() {
             </p>
           </div>
         </article>
-        <ShareChart data={shares} />
+        <ShareChart />
         <div>
           <h2 className="text-2xl font-bold">Buy or Sell</h2>
           <p className="text-xl mt-[1rem]">
