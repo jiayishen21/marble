@@ -26,10 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
 
   if (mobile) {
     return (
-      <div
-        className="flex flex-col justify-center items-center"
-        data-aos="fade-up"
-      >
+      <div className="flex flex-col justify-center items-center">
         <Button
           onClick={handleToggle}
           className="border-none shadow-none text-lg flex items-center"
