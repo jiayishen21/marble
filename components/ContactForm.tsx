@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 import { useForm } from "antd/lib/form/Form";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const { Item } = Form;
 const { TextArea } = Input;
@@ -13,6 +14,7 @@ const { TextArea } = Input;
 export default function ContactForm() {
   const [form] = useForm();
   const mobile = useMobileDetection();
+  const router = useRouter();
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;
 
@@ -45,7 +47,11 @@ export default function ContactForm() {
   };
 
   return (
-    <section className={`${!mobile && "mt-[8rem]"}`}>
+    <section
+      className={`${!mobile ? "mt-[8rem]" : ""} ${
+        router.pathname === "/contact" ? "mt-[4rem]" : ""
+      }`}
+    >
       <div className="pl-10">
         <div
           className={`text-semiblack font-bold font-hind ${
