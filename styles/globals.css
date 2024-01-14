@@ -1,7 +1,7 @@
 /* styles/globals.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Work+Sans:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Work+Sans:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Work+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Work+Sans:wght@500&display=swap");
 /* Error fetching these for some reason */
 /* @import url('https://fonts.googleapis.com/css2?family=Cairo:&family=Work+Sans:wght@500&display=swap'); */
 
@@ -38,12 +38,12 @@ a {
 .ant-input,
 .ant-input-password {
   border-radius: 1px;
-  border-color: theme('colors.airforce')
+  border-color: theme("colors.airforce");
 }
 
 .ant-dropdown-menu-title-content {
   font-size: 1.25em;
-  padding: 0.25rem
+  padding: 0.25rem;
 }
 
 .custom-input-number .ant-input-number-handler-wrap {
@@ -60,4 +60,8 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.linear-wave {
+  background-image: url("/elements/linearWave.svg");
 }
