@@ -90,7 +90,8 @@ export default function transaction() {
                       purchase.quantity > 0 ? "text-[#38A248]" : "text-red-500"
                     }
                   >
-                    {purchase.quantity > 0 ? "+" : "-"}${purchase.price}
+                    {purchase.quantity > 0 ? "+" : "-"}$
+                    {purchase.price * purchase.quantity}
                   </span>
                   &nbsp; CAD
                 </td>

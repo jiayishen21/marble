@@ -61,3 +61,8 @@ export type OptionType = {
   text: string;
   votes: number;
 };
+
+export type TradePeriod = {
+  start: Date;
+  end: Date;
+}
