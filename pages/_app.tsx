@@ -92,9 +92,10 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
   }, [])
 
   // TODO: Complete restrictions after creating all pages
-  const guestRestrictions = ['/dashboard', '/verify']
-  const verifyRestrictions = ['/login', '/register', '/dashboard']
-  const userRestrictions = ['/login', '/register']
+  const guestRestrictions = ['/dashboard', '/verify', '/shares', '/admin']
+  const verifyRestrictions = ['/login', '/register', '/forgot', '/dashboard', '/shares', '/admin']
+  const userRestrictions = ['/login', '/register', '/forgot', '/verify', '/admin']
+  const adminRestrictions = ['/login', '/register', '/verify', '/forgot']
   useEffect(() => {
     if (userLoading) {
       return
@@ -105,18 +106,19 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
     const isGuestRestricted = guestRestrictions.some(restriction => path.startsWith(restriction));
     const isVerifyRestricted = verifyRestrictions.some(restriction => path.startsWith(restriction));
     const isUserRestricted = userRestrictions.some(restriction => path.startsWith(restriction));
+    const isAdminRestricted = adminRestrictions.some(restriction => path.startsWith(restriction));
 
     if (!user && isGuestRestricted) {
       router.push('/login');
-      return;
     } else if (user?.verificationCode && isVerifyRestricted) {
       router.push('/verify');
-      return;
-    } else if (user && isUserRestricted) {
+    } else if (user && user.accountType === 'admin' && isAdminRestricted) {
       router.push('/dashboard');
-      return;
     }
-  }, [user, userLoading]);
+    else if (user && isUserRestricted) {
+      router.push('/dashboard');
+    }
+  }, [user, userLoading, router.asPath]);
 
   const modifiedProps = {
     ...pageProps,
