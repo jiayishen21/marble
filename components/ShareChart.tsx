@@ -3,7 +3,7 @@ import Chart from "chart.js/auto";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import "chartjs-adapter-moment";
-import moment from "moment";
+import moment from "moment-timezone";
 
 const ShareChart = () => {
   const shares = useSelector((state: RootState) => state.shares.shares);
@@ -51,7 +51,7 @@ const ShareChart = () => {
                 },
               },
               y: {
-                beginAtZero: false,
+                beginAtZero: true,
               },
             },
           },
