@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { setUser } from "../store/userSlice";
 import { AppDispatch } from "../store/store";
 import { useDispatch } from "react-redux";
+import useMobileDetection from "../utils/detectMobile";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -67,11 +68,15 @@ export default function Login() {
     }
   };
 
+  const mobile = useMobileDetection();
+
   return (
     <div className="flex items-center justify-center w-full h-screen">
       <Row
-        className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
-        data-aos="fade-up"
+        className={`p-12 rounded ${
+          mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
+        }`}
+        data-aos={mobile ? undefined : "fade-up"}
       >
         <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">
           <FaUnlockAlt />

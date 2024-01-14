@@ -2,9 +2,12 @@ import { useRouter } from "next/router";
 import { dashboardOptions } from "../data/DashboardOptions";
 import { Button } from "antd";
 import React from "react";
+import useMobileDetection from "../utils/detectMobile";
 
 export default function DashboardTabs() {
   const router = useRouter();
+
+  const mobile = useMobileDetection();
 
   return (
     <section className="w-[25%] h-full flex flex-col items-start gap-[1.5rem]">

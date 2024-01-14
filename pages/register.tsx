@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { setUser } from "../store/userSlice";
+import useMobileDetection from "../utils/detectMobile";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -89,11 +90,15 @@ export default function Register() {
     // form.resetFields()
   };
 
+  const mobile = useMobileDetection();
+
   return (
-    <div className="flex items-center justify-center w-full h-screen">
+    <div className={`flex items-center justify-center w-full h-screen`}>
       <Row
-        className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
-        data-aos="fade-up"
+        className={`p-12 rounded ${
+          mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
+        }`}
+        data-aos={mobile ? undefined : "fade-up"}
       >
         <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">
           Become a Marble Investor
