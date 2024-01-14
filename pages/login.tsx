@@ -41,10 +41,9 @@ export default function Login() {
           clientKey: encrypted.clientKey,
         })
         .then((response: any) => {
-          if (!response?.data?.user || !response?.data?.token) {
+          if (!response?.data?.user) {
             throw new Error('Server error. Please try again')
           }
-          localStorage.setItem('token', response.data.token)
           dispatch(setUser(response.data.user))
           setLoading(false)
         })

@@ -11,7 +11,6 @@ import cookie from 'cookie'
 
 type Data = {
   user?: UserType,
-  token?: string,
   message?: string,
 }
 

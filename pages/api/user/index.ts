@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { UserType } from '../../../types'
 import connectDB from '../../../utils/connectDB'
 import authenticate from '../../../utils/authenticate'
+import cookie from 'cookie';
 
 type Data = {
   user?: UserType,
@@ -19,8 +20,10 @@ export default async function handler(
 
     await connectDB()
 
-    const jwt = req.headers.authorization || ''
-    const user = await authenticate(jwt)
+    const cookies = cookie.parse(req.headers.cookie || '');
+    const token = cookies.token;
+
+    const user = await authenticate(token)
 
     res.status(200).json({ user })
   } catch (error: any) {

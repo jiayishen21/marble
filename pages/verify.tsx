@@ -49,17 +49,8 @@ export default function Verify() {
         throw new Error('Invalid or timed out verification code. Try generating a new code.')
       }
 
-      const token = localStorage.getItem('token') || ''
-      const headers = {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-
       axios
-        .post('/api/verification/verify', {
-          verificationCode,
-        }, headers)
+        .post('/api/verification/verify', { verificationCode })
         .then(() => {
           toast.success('Successfully verified email.')
           dispatch(setUser({ ...user, verificationCode: undefined }))
@@ -103,15 +94,8 @@ export default function Verify() {
         throw new Error('User already verified. Try navigating to the dashboard.')
       }
 
-      const token = localStorage.getItem('token') || ''
-      const headers = {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      }
-
       axios
-        .post('/api/verification/resend', {}, headers)
+        .post('/api/verification/resend')
         .then((res: any) => {
           if (!res?.data?.verificationCode) {
             throw new Error('Server error. Please try again.')

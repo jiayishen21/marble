@@ -2,16 +2,8 @@ import jwt from 'jsonwebtoken'
 import { UserType } from '../types'
 import getPopulatedUser from './getPopulatedUser'
 
-const authenticate = async (authorization: string): Promise<UserType | undefined> => {
-  let token: string | undefined
-
-  if (
-    authorization &&
-    authorization.startsWith('Bearer')
-  ) {
-    // Take out the 'Bearer' part
-    token = authorization.split(' ')[1]
-
+const authenticate = async (token: string | undefined): Promise<UserType | undefined> => {
+  if (token) {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET || '')
 
@@ -28,12 +20,9 @@ const authenticate = async (authorization: string): Promise<UserType | undefined
       throw new Error('Your session expired. Please log in again.')
     }
   }
-
-  if (!token) {
-    throw new Error('Not authorized, no token')
+  else {
+    throw new Error('Your session expired. Please log in again.')
   }
-
-  return undefined;
 }
 
 export default authenticate

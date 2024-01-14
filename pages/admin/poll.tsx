@@ -13,11 +13,10 @@ const Poll: React.FC = () => {
 
   const handleSubmit = () => {
     try {
-      const token = localStorage.getItem('token');
       const realDate = new Date(deadline)
 
       axios
-        .post('/api/poll/new-poll', { question, deadline: realDate, options }, { headers: { Authorization: `Bearer ${token}` } })
+        .post('/api/poll/new-poll', { question, deadline: realDate, options })
         .then((res) => {
           toast.success('Successfully created poll');
         })

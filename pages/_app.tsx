@@ -54,9 +54,8 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
     dispatch(setPollsLoading(true))
     AOS.init()
 
-    const token = localStorage.getItem('token') || ''
     axios
-      .get('/api/user', { headers: { 'Authorization': `Bearer ${token}` } })
+      .get('/api/user')
       .then((response: any) => {
         if (response?.data?.user) {
           dispatch(setUser(response.data.user))
