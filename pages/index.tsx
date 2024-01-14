@@ -77,8 +77,8 @@ const Home: NextPage = () => {
       </div>
       {/* <section className={`${styles["buffer"]} h-[2rem]`} /> */}
       <section
-        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-screen flex flex-col gap-12 linear-wave -mt-[13.5rem] ${
-          mobile ? "pt-[9rem] pb-[12rem]" : "h-[110vh] pt-[15rem]  pb-[4rem]"
+        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col gap-12 linear-wave -mt-[13.5rem] items-center justify-center ${
+          mobile ? "pt-[9rem] pb-[12rem]" : "h-[120vh]"
         }`}
       >
         <div
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
           Our Mission
         </div>
         <div
-          className={`text-neutral-50 font-normal mx-auto text-center ${
+          className={`text-neutral-50 font-normal text-center ${
             mobile ? "text-xl" : "text-3xl"
           }`}
           data-aos="fade-up"
@@ -110,7 +110,7 @@ const Home: NextPage = () => {
           {missionData.map((item, key) => (
             <div
               className={`bg-white rounded flex flex-col gap-[2rem] items-center justify-center ${
-                mobile ? "h-40 w-[70%]" : "h-80 w-[28%]"
+                mobile ? "h-40 w-full px-[2rem]" : "h-80 w-[28%]"
               }`}
               data-aos="fade-right"
               key={key}
@@ -119,7 +119,7 @@ const Home: NextPage = () => {
                 {item.stat}
               </h2>
               <p
-                className={`font-semibold  text-airforce ${
+                className={`font-semibold  text-airforce whitespace-nowrap ${
                   mobile ? "text-md" : "text-2xl"
                 }`}
               >
