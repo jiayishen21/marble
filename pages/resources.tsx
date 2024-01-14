@@ -12,7 +12,57 @@ export default function resources() {
   const mobile = useMobileDetection();
 
   if (mobile) {
-    return <main className="w-full mb-[8rem]"></main>;
+    return (
+      <main className="w-full my-[3rem] mx-[1.5rem]">
+        <div className="w-[80%]">
+          <h1 className="text-2xl font-bold">Marble Investment Resources</h1>
+          <p className="text-md mt-[1rem]">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+            quidem nam cupiditate pariatur enim repudiandae, ad reiciendis
+            dolores rerum animi culpa laudantium dolorem minima, delectus sint
+            tempore itaque eveniet eum?
+          </p>
+        </div>
+        <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[4rem] rounded-md">
+          <div
+            className="flex flex-col w-full items-center py-[2rem]"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "0 8px 8px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <h2 className="text-semiblack font-bold text-2xl mb-[1rem] ">
+              QUARTERLY LETTERS
+            </h2>
+            <Dropdown title={"2023 Quarterly Reports "} options={quarterData} />
+          </div>
+          <div
+            className="flex flex-col w-full items-center py-[2rem]"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
+              ANNUAL LETTERS
+            </h2>
+            <Dropdown title={"Coming Soon..."} options={annualData} />
+          </div>
+          <div
+            className="flex flex-col w-full items-center py-[2rem]"
+            style={{
+              backgroundColor: "#ffffff",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
+              MISCELLANEOUS
+            </h2>
+            <Dropdown title={"2024 insights"} options={miscellaneousData} />
+          </div>
+        </section>
+      </main>
+    );
   }
 
   return (
@@ -45,7 +95,7 @@ export default function resources() {
           non?
         </div>
         <section
-          className={`flex justify-between items-center  ${
+          className={`flex justify-between items-center ${
             mobile ? "flex-col gap-[3rem] my-[2rem]" : "my-[4rem]"
           }`}
         >

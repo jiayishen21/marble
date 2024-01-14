@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { IoIosMenu } from "react-icons/io";
+import useMobileDetection from "../../utils/detectMobile";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -28,6 +29,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
   const [currentRoute, setCurrentRoute] = useState<string>("");
   const [burger, setBurger] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const mobile = useMobileDetection();
 
   useEffect(() => {
     if (width !== null && width !== undefined) {
@@ -45,7 +47,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-auto ${burger ? "display-none" : "w-[50%]"}`}
+            className="h-auto w-[50%]"
           />
         </Link>
       </div>
@@ -121,13 +123,13 @@ export default function Navbar({ navRef, blank, router }: Props) {
           <div className="flex justify-center items-center relative">
             <Button
               onClick={() => setOpenMenu(!openMenu)}
-              className="flex items-center justify-center text-3xl border-none"
+              className="flex items-center justify-center text-4xl border-none"
             >
               <IoIosMenu />
             </Button>
             {openMenu && renderOptions()}
           </div>
-          <div>{LogoIcon}</div>
+          {!mobile && <div>{LogoIcon}</div>}
         </div>
         {user ? (
           <Link
