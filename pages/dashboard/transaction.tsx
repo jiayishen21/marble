@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import DashboardTabs from "../../components/DashboardTabs";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
-import { PurchaseType } from "../../types";
 
 export default function transaction() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -78,7 +77,7 @@ export default function transaction() {
                       purchase.quantity > 0 ? "text-[#38A248]" : "text-red-500"
                     }
                   >
-                    {purchase.quantity > 0 ? "+" : "-"}${purchase.price}
+                    {purchase.quantity > 0 ? "+" : "-"}${purchase.price * purchase.quantity}
                   </span>
                   &nbsp; CAD
                 </td>
