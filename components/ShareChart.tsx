@@ -18,10 +18,19 @@ const ShareChart = () => {
         existingChart.destroy();
       }
 
-      const dates = shares.map((entry) => moment(entry.date));
+      const oldDate = shares.map((entry) => moment(entry.date));
       const prices = shares.map((entry) => entry.price);
+      const dates = oldDate.reverse().map((date) => date.format("YYYY-MM-DD"));
 
-      console.log(dates.reverse().map((date) => date.format("YYYY-MM-DD")));
+      const addOneDay = (dateString: any) => {
+        const currentDate = new Date(dateString);
+        currentDate.setDate(currentDate.getDate() + 1);
+        return currentDate.toISOString().split("T")[0];
+      };
+
+      const newDates = dates.map(addOneDay);
+
+      console.log(newDates);
 
       const ctx = chartRef.current.getContext("2d");
 
@@ -30,7 +39,7 @@ const ShareChart = () => {
         new Chart(ctx, {
           type: "line",
           data: {
-            labels: dates.reverse().map((date) => date.format("YYYY-MM-DD")),
+            labels: newDates,
             datasets: [
               {
                 label: "Share Price History",
