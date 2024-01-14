@@ -89,6 +89,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       .catch(() => {
         throw new Error('Server error: could not find poll data. Please try again later.')
       })
+
   }, [])
 
   // TODO: Complete restrictions after creating all pages
@@ -112,10 +113,10 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       router.push('/login');
     } else if (user?.verificationCode && isVerifyRestricted) {
       router.push('/verify');
-    } else if (user && user.accountType === 'admin' && isAdminRestricted) {
+    } else if (user && user.accountType === 'client' && isUserRestricted) {
       router.push('/dashboard');
     }
-    else if (user && isUserRestricted) {
+    else if (user && user.accountType === 'admin' && isAdminRestricted) {
       router.push('/dashboard');
     }
   }, [user, userLoading, router.asPath]);
