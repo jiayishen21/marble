@@ -69,7 +69,7 @@ export default function ContactForm() {
         <Col className="flex flex-col gap-12 pl-10" span={9}>
           <div
             className={`text-semiblack font-hind ${
-              mobile ? "text-sm mt-[1rem]" : "text-2xl"
+              mobile ? "text-md mt-[1rem]" : "text-2xl"
             }`}
           >
             We invite you to contact us through one of the methods below.
@@ -97,7 +97,7 @@ export default function ContactForm() {
                     </span>
                     <span className="font-hind font-bold">{item.title}</span>
                   </div>
-                  <div className="font-hind whitespace-nowrap">
+                  <div className="font-hind whitespace-nowrap mt-[0.5rem] text-lg">
                     {item.value}
                   </div>
                 </div>

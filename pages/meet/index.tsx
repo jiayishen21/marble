@@ -7,7 +7,7 @@ export default function Meet() {
   return (
     <main className="w-full px-[4rem] flex flex-col gap-12 mb-[8rem]">
       <TeamTabs />
-      <section className="mt-[6rem]" data-aos="fade-right">
+      <section className="mt-[6rem]">
         <Row gutter={[24, 40]}>
           {LeadMembers.map((item, key) => (
             <Col

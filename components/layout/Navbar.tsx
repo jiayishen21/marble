@@ -80,8 +80,8 @@ export default function Navbar({ navRef, blank, router }: Props) {
                 <div key={key}>
                   <Link href={opt.route}>
                     <li
-                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 text-2xl whitespace-nowrap ${
-                        medium && !mobile ? "text-xl" : ""
+                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 whitespace-nowrap ${
+                        medium && !mobile ? "text-xl" : "text-2xl"
                       }`}
                     >
                       {opt.title}
