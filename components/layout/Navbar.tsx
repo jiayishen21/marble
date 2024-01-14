@@ -15,7 +15,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { IoIosMenu } from "react-icons/io";
-import { FaRegUserCircle } from "react-icons/fa";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -46,7 +45,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-auto ${burger ? "w-[30%]" : "w-[40%]"}`}
+            className={`h-auto ${burger ? "w-[40%]" : "w-[50%]"}`}
           />
         </Link>
       </div>
@@ -117,22 +116,44 @@ export default function Navbar({ navRef, blank, router }: Props) {
 
   if (burger) {
     return (
-      <nav className="flex justify-center items-center">
-        <div className="px-5 flex justify-center items-center relative">
-          <Button
-            onClick={() => setOpenMenu(!openMenu)}
-            className="flex items-center justify-center text-5xl border-none"
+      <nav className="flex justify-between items-center">
+        <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center relative">
+            <Button
+              onClick={() => setOpenMenu(!openMenu)}
+              className="flex items-center justify-center text-3xl border-none"
+            >
+              <IoIosMenu />
+            </Button>
+            {openMenu && renderOptions()}
+          </div>
+          <div>{LogoIcon}</div>
+        </div>
+        {user ? (
+          <Link
+            href="/dashboard"
+            className="text-[#26477C] text-xl mr-[2rem] whitespace-nowrap"
           >
-            <IoIosMenu />
-          </Button>
-          {openMenu && renderOptions()}
-        </div>
-        <div>{LogoIcon}</div>
-        <div className="flex-1 flex justify-end items-center pr-[4.5rem]">
-          <Link href="/" className="text-5xl text-[#00299B]">
-            <FaRegUserCircle />
+            My Dashboard
           </Link>
-        </div>
+        ) : (
+          <div className="flex-1 flex flex-col items-end pr-[2rem]">
+            <Link
+              href={"/register"}
+              className="nav-option text-semiblack hover:text-lapis font-light text-sm pr-[1.5rem]"
+            >
+              Sign Up
+            </Link>
+            <Button
+              type="primary"
+              className="bg-lapis text-neutral-50 font-hind text-sm
+                font-light flex justify-center items-center"
+              href="/login"
+            >
+              Client Login
+            </Button>
+          </div>
+        )}
       </nav>
     );
   }
