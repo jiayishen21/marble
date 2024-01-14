@@ -27,13 +27,13 @@ export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
   const { width } = useWindowSize();
   const [currentRoute, setCurrentRoute] = useState<string>("");
-  const [burger, setBurger] = useState<boolean>(false);
+  const [medium, setMedium] = useState<boolean>(false);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const mobile = useMobileDetection();
 
   useEffect(() => {
     if (width !== null && width !== undefined) {
-      setBurger(width < 1750);
+      setMedium(width <= 1600);
     }
   }, [width]);
 
@@ -47,7 +47,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className="h-auto w-[50%]"
+            className={`h-auto ${medium ? "w-full" : "w-[50%]"}`}
           />
         </Link>
       </div>
@@ -64,61 +64,40 @@ export default function Navbar({ navRef, blank, router }: Props) {
     return (
       <div
         className={`${
-          burger && "absolute bg-white rounded-md z-20 mt-[17rem] ml-[3rem]"
+          mobile && "absolute bg-white rounded-lg z-20 mt-[17rem] ml-[6rem]"
         }`}
       >
         <ul
-          className={`flex justify-center font-light ${
-            burger
+          className={`flex justify-center font-light gap-12 ${
+            mobile
               ? "flex-col w-full font-bold items-start gap-5 h-auto text-md p-5"
-              : "items-center pr-12 text-2xl gap-12"
-          }`}
+              : "items-center"
+          } ${medium && !mobile ? "items-center gap-8 pr-[8rem]" : "text-xl"}`}
         >
-          {PublicNavOptions.map((opt, key) =>
-            !(opt.dropdown && opt.options) ? (
-              <div key={key}>
-                <Link href={opt.route}>
-                  <li className="nav-option text-semiblack hover:text-lapis transition-all duration-300 px-1">
-                    {opt.title}
-                  </li>
-                </Link>
-              </div>
-            ) : (
-              <Dropdown
-                key={key}
-                overlay={
-                  <Menu>
-                    {opt.options.map((subopt: any, subkey: number) => (
-                      <Menu.Item
-                        key={subkey}
-                        onClick={() =>
-                          router.push(opt.route + "/" + subopt.append)
-                        }
-                        className="font-hind"
-                      >
-                        {subopt.title}
-                      </Menu.Item>
-                    ))}
-                  </Menu>
-                }
-              >
-                <a href={opt.route}>
-                  <Space>
-                    {opt.title}
-                    <IoMdArrowDropdown />
-                  </Space>
-                </a>
-              </Dropdown>
-            )
+          {PublicNavOptions.map(
+            (opt, key) =>
+              !(opt.dropdown && opt.options) && (
+                <div key={key}>
+                  <Link href={opt.route}>
+                    <li
+                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 text-2xl whitespace-nowrap ${
+                        medium && !mobile ? "text-xl" : ""
+                      }`}
+                    >
+                      {opt.title}
+                    </li>
+                  </Link>
+                </div>
+              )
           )}
         </ul>
       </div>
     );
-  }, [burger]);
+  }, [medium, mobile]);
 
-  if (burger) {
+  if (mobile) {
     return (
-      <nav className="flex justify-between items-center">
+      <nav className="flex justify-between items-center px-[2rem]">
         <div className="flex justify-center items-center">
           <div className="flex justify-center items-center relative">
             <Button
@@ -139,7 +118,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             My Dashboard
           </Link>
         ) : (
-          <div className="flex-1 flex flex-col items-end pr-[2rem]">
+          <div className="flex-1 flex items-center justify-end pr-[2rem]">
             <Link
               href={"/register"}
               className="nav-option text-semiblack hover:text-lapis font-light text-sm pr-[1.5rem]"
@@ -179,7 +158,11 @@ export default function Navbar({ navRef, blank, router }: Props) {
         {LogoIcon}
         {renderOptions()}
       </section>
-      <ul className="flex justify-center items-center gap-12 pr-12">
+      <ul
+        className={`flex justify-center items-center ${
+          medium ? "gap-6" : "gap-12"
+        }`}
+      >
         {user ? (
           <Link href="/dashboard" className="text-[#26477C] text-2xl">
             My Dashboard
@@ -188,16 +171,18 @@ export default function Navbar({ navRef, blank, router }: Props) {
           <>
             <Link href={"/register"}>
               <li
-                className="nav-option text-semiblack hover:text-lapis
-                  font-light text-2xl"
+                className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
+                  font-light ${medium ? "text-lg" : "text-2xl"}`}
               >
                 Sign Up
               </li>
             </Link>
             <Button
               type="primary"
-              className="bg-lapis text-neutral-50 font-hind text-2xl 
-                font-light flex justify-center items-center px-8 h-11"
+              className={`bg-lapis text-neutral-50 font-hind 
+                font-light flex justify-center items-center ${
+                  medium ? "text-lg px-4 h-9" : "px-8 text-2xl h-11"
+                }`}
               href="/login"
             >
               Client Login

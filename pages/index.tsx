@@ -110,7 +110,7 @@ const Home: NextPage = () => {
           {missionData.map((item, key) => (
             <div
               className={`bg-white rounded flex flex-col gap-[2rem] items-center justify-center ${
-                mobile ? "h-40 w-full px-[2rem]" : "h-80 w-[28%]"
+                mobile ? "h-40 w-full px-[2rem]" : "h-80 w-[30%]"
               }`}
               data-aos="fade-right"
               key={key}
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
               </h2>
               <p
                 className={`font-semibold  text-airforce whitespace-nowrap ${
-                  mobile ? "text-md" : "text-2xl"
+                  mobile ? "text-md" : "text-2xl max-xl:text-xl"
                 }`}
               >
                 {item.info}
