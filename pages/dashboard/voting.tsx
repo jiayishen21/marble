@@ -7,7 +7,7 @@ import PollCard from "../../components/PollCard";
 export default function voting() {
   const polls = useSelector((state: RootState) => state.polls.polls);
   return (
-    <main className="flex w-[70%] py-[8rem] ml-[10rem]">
+    <main className="flex w-[70%] py-[8rem] ml-[8rem]">
       <DashboardTabs />
       <section className="flex flex-col gap-[3rem] w-full ml-[5rem] ">
         <h1 className="text-2xl font-bold">Investor Voting</h1>

@@ -6,12 +6,19 @@ import {
   miscellaneousData,
 } from "../data/ResourceData";
 import Dropdown from "../components/Dropdown";
+import useMobileDetection from "../utils/detectMobile";
 
 export default function resources() {
+  const mobile = useMobileDetection();
+
+  if (mobile) {
+    return <main className="w-full mb-[8rem]"></main>;
+  }
+
   return (
-    <main className="overflow-x-hidden w-full mb-[8rem]">
+    <main className="w-full mb-[8rem]">
       <section
-        className={`relative flex flex-col gap-12 px-[8rem] h-full`}
+        className={`relative flex flex-col gap-12 h-full px-[8rem]`}
         data-aos="fade-right"
       >
         <div className="absolute right-0 z-0" data-aos="fade-left">
@@ -31,15 +38,23 @@ export default function resources() {
         <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10] max-lg:text-5xl">
           Marble Investment Resources
         </h1>
-        <div className="text-airforce font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
+        <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium
           error eum iusto qui harum temporibus tempore odit vel maiores placeat
           obcaecati ullam porro aut repudiandae, eius aspernatur dolorum, quod
           non?
         </div>
-        <section className="flex justify-between items-center my-[4rem]">
-          <div className="flex flex-col">
-            <h2 className=" text-semiblack font-bold text-3xl mb-[2rem]">
+        <section
+          className={`flex justify-between items-center  ${
+            mobile ? "flex-col gap-[3rem] my-[2rem]" : "my-[4rem]"
+          }`}
+        >
+          <div className="flex flex-col py-[2rem]">
+            <h2
+              className={`text-semiblack font-bold  ${
+                mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
+              }`}
+            >
               QUARTERLY LETTERS
             </h2>
             <Dropdown
@@ -48,13 +63,21 @@ export default function resources() {
             ></Dropdown>
           </div>
           <div className="flex flex-col">
-            <h2 className=" text-semiblack font-bold text-3xl mb-[2rem]">
+            <h2
+              className={`text-semiblack font-bold  ${
+                mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
+              }`}
+            >
               ANNUAL REPORTS
             </h2>
             <Dropdown title={"Coming Soon..."} options={annualData}></Dropdown>
           </div>
           <div className="flex flex-col">
-            <h2 className=" text-semiblack font-bold text-3xl mb-[2rem]">
+            <h2
+              className={`text-semiblack font-bold  ${
+                mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
+              }`}
+            >
               MISCELLANEOUS
             </h2>
             <Dropdown

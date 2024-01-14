@@ -45,7 +45,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-auto ${burger ? "w-[40%]" : "w-[50%]"}`}
+            className={`h-auto ${burger ? "display-none" : "w-[50%]"}`}
           />
         </Link>
       </div>
