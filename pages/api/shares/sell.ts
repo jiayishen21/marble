@@ -5,6 +5,7 @@ import { PurchaseType, UserType } from "../../../types";
 import authenticate from "../../../utils/authenticate";
 import Purchase from "../../../models/purchaseModel";
 import User from "../../../models/userModel";
+import cookie from "cookie";
 
 type Data = {
   shares?: number;
@@ -32,7 +33,9 @@ export default async function handler(
       throw new Error("You must sell a whole number of shares.")
     }
 
-    const user = await authenticate(req.headers.authorization || '')
+    const cookies = cookie.parse(req.headers.cookie || '');
+    const token = cookies.token;
+    const user = await authenticate(token)
 
     if (!user) {
       throw new Error('You must be logged in to buy shares.')

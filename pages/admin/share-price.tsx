@@ -17,11 +17,10 @@ const SharePrice: React.FC = () => {
 
   const handleSubmit = () => {
     try {
-      const token = localStorage.getItem('token');
       const realDate = new Date(date)
 
       axios
-        .post('/api/shares/new-price', { date: realDate, price }, { headers: { Authorization: `Bearer ${token}` } })
+        .post('/api/shares/new-price', { date: realDate, price })
         .then((res) => {
           toast.success('New price added successfully');
           console.log(res.data.shares)

@@ -3,6 +3,7 @@ import Share from '../../../models/shareModel'
 import connectDB from '../../../utils/connectDB'
 import { ShareType } from '../../../types'
 import authenticate from '../../../utils/authenticate'
+import cookie from 'cookie'
 
 type Data = {
   shares?: ShareType[],
@@ -26,8 +27,9 @@ export default async function handler(
 
     await connectDB()
 
-    const jwt = req.headers.authorization || ''
-    const user = await authenticate(jwt)
+    const cookies = cookie.parse(req.headers.cookie || '');
+    const token = cookies.token;
+    const user = await authenticate(token)
     if (!user?.accountType || user.accountType !== 'admin') {
       throw new Error('You are not authorized to perform this action.')
     }

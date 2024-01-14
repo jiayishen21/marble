@@ -16,10 +16,8 @@ const Buy: React.FC = () => {
 
   const handleSubmit = () => {
     try {
-      const token = localStorage.getItem('token');
-
       axios
-        .post('/api/shares/buy', { quantity }, { headers: { Authorization: `Bearer ${token}` } })
+        .post('/api/shares/buy', { quantity })
         .then((res) => {
           toast.success('New price added successfully');
           console.log(res.data.shares)

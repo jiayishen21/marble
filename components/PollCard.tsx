@@ -103,9 +103,8 @@ export default function PollCard({ poll, index }: Props) {
 
               canVote(user, poll)
 
-              const token = localStorage.getItem('token') || ''
               axios
-                .post('/api/poll/vote', { pollId: poll._id, optionNum }, { headers: { 'Authorization': `Bearer ${token}` } })
+                .post('/api/poll/vote', { pollId: poll._id, optionNum })
                 .then((response: any) => {
                   if (!response?.data) {
                     throw new Error('Server error. Please try again')

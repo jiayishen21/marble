@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import connectDB from '../../../utils/connectDB'
 import User from '../../../models/userModel'
 import authenticate from '../../../utils/authenticate'
+import cookie from 'cookie'
 
 type Data = {
   message?: string,
@@ -18,9 +19,9 @@ export default async function handler(
 
     await connectDB()
 
-    const jwt = req.headers.authorization || ''
-
-    const user = await authenticate(jwt)
+    const cookies = cookie.parse(req.headers.cookie || '');
+    const token = cookies.token;
+    const user = await authenticate(token)
     if (!user) {
       throw new Error('Your session expired. Please log in again.')
     }

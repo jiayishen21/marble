@@ -54,9 +54,8 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
     dispatch(setPollsLoading(true))
     AOS.init()
 
-    const token = localStorage.getItem('token') || ''
     axios
-      .get('/api/user', { headers: { 'Authorization': `Bearer ${token}` } })
+      .get('/api/user')
       .then((response: any) => {
         if (response?.data?.user) {
           dispatch(setUser(response.data.user))
@@ -100,19 +99,24 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
     if (userLoading) {
       return
     }
-    else if (!user && guestRestrictions.includes(router.asPath)) {
-      router.push('/login')
-      return
+
+    const path = router.asPath;
+
+    const isGuestRestricted = guestRestrictions.some(restriction => path.startsWith(restriction));
+    const isVerifyRestricted = verifyRestrictions.some(restriction => path.startsWith(restriction));
+    const isUserRestricted = userRestrictions.some(restriction => path.startsWith(restriction));
+
+    if (!user && isGuestRestricted) {
+      router.push('/login');
+      return;
+    } else if (user?.verificationCode && isVerifyRestricted) {
+      router.push('/verify');
+      return;
+    } else if (user && isUserRestricted) {
+      router.push('/dashboard');
+      return;
     }
-    else if (user?.verificationCode && verifyRestrictions.includes(router.asPath)) {
-      router.push('/verify')
-      return
-    }
-    else if (user && userRestrictions.includes(router.asPath)) {
-      router.push('/dashboard')
-      return
-    }
-  }, [user, userLoading])
+  }, [user, userLoading]);
 
   const modifiedProps = {
     ...pageProps,

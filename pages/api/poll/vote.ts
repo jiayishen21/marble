@@ -5,6 +5,7 @@ import authenticate from '../../../utils/authenticate'
 import Poll from '../../../models/pollModel'
 import User from '../../../models/userModel'
 import { canVote } from '../../../utils/canVote'
+import cookie from 'cookie'
 
 type Data = {
   polls?: PollType[],
@@ -29,8 +30,9 @@ export default async function handler(
 
     await connectDB()
 
-    const jwt = req.headers.authorization || ''
-    const user = await authenticate(jwt)
+    const cookies = cookie.parse(req.headers.cookie || '');
+    const token = cookies.token;
+    const user = await authenticate(token)
     if (!user) {
       throw new Error('You must be logged in to perform this action.')
     }
