@@ -44,7 +44,7 @@ export default function Footer() {
           <ul className="flex justify-center items-center w-full gap-[4rem]">
             {user ? (
               <Link href="/dashboard" className="text-2xl">
-                My Dashboard
+                Dashboard
               </Link>
             ) : (
               <>
@@ -116,7 +116,7 @@ export default function Footer() {
           <ul className="flex flex-col w-[18rem] gap-[1rem] justify-start items-start">
             {user ? (
               <Link href="/dashboard" className="text-xl underline">
-                My Dashboard
+                Dashboard
               </Link>
             ) : (
               <>

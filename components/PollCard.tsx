@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { setPolls } from "../store/pollSlice";
 import { setUser } from "../store/userSlice";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { canVote } from "../utils/canVote";
 import { PollType } from "../types";
 
 interface Props {
-  poll: PollType,
-  index: number,
+  poll: PollType;
+  index: number;
 }
 
 export default function PollCard({ poll, index }: Props) {
@@ -21,52 +21,51 @@ export default function PollCard({ poll, index }: Props) {
   const polls = useSelector((state: RootState) => state.polls.polls);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
 
   const { Option } = Select;
 
   const buttonDisabled = (poll: PollType) => {
     try {
       if (!user) {
-        return true
+        return true;
       }
-      canVote(user, poll)
-      return false
+      canVote(user, poll);
+      return false;
     } catch (err) {
-      return true
+      return true;
     }
-  }
+  };
 
   const fetchInitialFormData = () => {
-    const formData: any = {}
+    const formData: any = {};
 
     for (let i = 0; i < polls.length; i++) {
-      formData[`response${i}`] = ''
+      formData[`response${i}`] = "";
 
       if (!user || !polls) {
-        continue
+        continue;
       }
 
       for (const vote of user.voteHistory) {
         if (vote.poll === polls[i]._id) {
           for (const option of polls[i].options) {
             if (option.num === vote.optionNum) {
-              formData[`response${i}`] = option.text
-              break
+              formData[`response${i}`] = option.text;
+              break;
             }
           }
-          break
+          break;
         }
       }
     }
 
-    return formData
-  }
+    return formData;
+  };
 
   useEffect(() => {
-    form.setFieldsValue(fetchInitialFormData())
-  }, [user, polls])
-
+    form.setFieldsValue(fetchInitialFormData());
+  }, [user, polls]);
 
   return (
     <section>
@@ -84,52 +83,51 @@ export default function PollCard({ poll, index }: Props) {
           onFinish={(formData) => {
             try {
               if (!user) {
-                throw new Error('Please login to vote.')
+                throw new Error("Please login to vote.");
               }
               if (!formData[`response${index}`]) {
-                throw new Error('Please select an option before voting.')
+                throw new Error("Please select an option before voting.");
               }
 
-              let optionNum = -1
+              let optionNum = -1;
               for (const option of poll.options) {
                 if (option.text === formData[`response${index}`]) {
-                  optionNum = option.num
-                  break
+                  optionNum = option.num;
+                  break;
                 }
               }
               if (optionNum === -1) {
-                throw new Error('Please select a valid option before voting.')
+                throw new Error("Please select a valid option before voting.");
               }
 
-              canVote(user, poll)
+              canVote(user, poll);
 
               axios
-                .post('/api/poll/vote', { pollId: poll._id, optionNum })
+                .post("/api/poll/vote", { pollId: poll._id, optionNum })
                 .then((response: any) => {
                   if (!response?.data) {
-                    throw new Error('Server error. Please try again')
+                    throw new Error("Server error. Please try again");
                   }
-                  const { polls, voteHistory } = response.data
+                  const { polls, voteHistory } = response.data;
                   if (!polls || !voteHistory) {
-                    throw new Error('Server error. Please try again')
+                    throw new Error("Server error. Please try again");
                   }
 
-                  dispatch(setPolls(polls))
-                  dispatch(setUser({ ...user, voteHistory }))
-                  toast.success('Vote submitted successfully!')
+                  dispatch(setPolls(polls));
+                  dispatch(setUser({ ...user, voteHistory }));
+                  toast.success("Vote submitted successfully!");
                 })
                 .catch((error: any) => {
                   if (error?.response?.data?.message) {
-                    toast.error(error.response.data.message)
+                    toast.error(error.response.data.message);
                   } else if (error?.message) {
-                    toast.error(error.message)
+                    toast.error(error.message);
                   } else {
-                    toast.error(error)
+                    toast.error(error);
                   }
-                })
-
+                });
             } catch (error: any) {
-              toast.error(error.message)
+              toast.error(error.message);
             }
           }}
         >
@@ -144,7 +142,8 @@ export default function PollCard({ poll, index }: Props) {
               },
             ]}
           >
-            <Select style={{ borderRadius: "5px" }}
+            <Select
+              style={{ borderRadius: "5px" }}
               disabled={buttonDisabled(poll)}
             >
               {poll.options.map((option: any) => (
@@ -165,7 +164,7 @@ export default function PollCard({ poll, index }: Props) {
             </Button>
           </Form.Item>
         </Form>
-        <div className="bg-[#EBEEEF] py-[1.5rem] pl-[3rem] text-xl">
+        <div className="bg-[#EBEEEF] py-[1.5rem] px-[3rem] text-xl whitespace-nowrap">
           Voting closes on{" "}
           <span className="font-semibold">
             {new Date(poll.deadline).toLocaleString()}

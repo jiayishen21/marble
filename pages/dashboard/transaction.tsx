@@ -3,6 +3,7 @@ import DashboardTabs from "../../components/DashboardTabs";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { PurchaseType } from "../../types";
+import useMobileDetection from "../../utils/detectMobile";
 
 export default function transaction() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -30,25 +31,36 @@ export default function transaction() {
     processShares();
   }, [user]);
 
+  const mobile = useMobileDetection();
+
   return (
-    <main className="flex w-[70%] py-[8rem] ml-[8rem]">
+    <main
+      className={`flex w-[70%] py-[8rem] ${
+        mobile ? "ml-[1.5rem]" : "ml-[8rem]"
+      }`}
+      data-aos={mobile ? undefined : "fade-up"}
+    >
       <DashboardTabs />
-      <section className="flex flex-col gap-[3rem] w-full ml-[5rem]">
+      <section
+        className={`flex flex-col gap-[3rem] w-full ${
+          mobile ? "ml-[10rem]" : "ml-[5rem]"
+        }`}
+      >
         <h1 className="text-2xl font-bold">Transactions</h1>
 
         <table className="table-auto text-center w-full">
           <thead className="bg-[#F8F7F7]">
             <tr>
-              <th className="px-4 py-4 align-middle rounded-tl-lg rounded-bl-lg w-1/4 font-medium">
+              <th className="px-4 py-4 align-middle rounded-tl-lg rounded-bl-lg w-1/4 font-medium whitespace-nowrap">
                 Transaction Date
               </th>
-              <th className="px-4 py-4 align-middle w-1/4 font-medium">
+              <th className="px-4 py-4 align-middle w-1/4 font-medium whitespace-nowrap">
                 Shares
               </th>
-              <th className="px-4 py-4 align-middle w-1/4 font-medium">
+              <th className="px-4 py-4 align-middle w-1/4 font-medium whitespace-nowrap">
                 Amount
               </th>
-              <th className="px-4 py-4 align-middle rounded-tr-lg rounded-br-lg w-1/4 font-medium">
+              <th className="px-4 py-4 align-middle rounded-tr-lg rounded-br-lg w-1/4 font-medium whitespace-nowrap">
                 Shares Owned At Date
               </th>
             </tr>

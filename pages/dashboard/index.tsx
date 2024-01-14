@@ -4,31 +4,60 @@ import DashboardTabs from "../../components/DashboardTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import ShareChart from "../../components/ShareChart";
+import useMobileDetection from "../../utils/detectMobile";
 
 export default function Dashboard() {
   const user = useSelector((state: RootState) => state.user.user);
   const shares = useSelector((state: RootState) => state.shares.shares);
 
+  const mobile = useMobileDetection();
   return (
-    <main className="flex w-[70%] py-[8rem] ml-[8rem]" data-aos="fade-up">
+    <main
+      className={`flex w-[70%] py-[8rem] ${
+        mobile ? "ml-[1.5rem]" : "ml-[8rem]"
+      }`}
+      data-aos={mobile ? undefined : "fade-up"}
+    >
       <DashboardTabs />
-      <section className="flex flex-col gap-[3rem] w-full ml-[5rem] ">
-        <h1 className="text-2xl font-bold">Investor Voting</h1>
+      <section
+        className={`flex flex-col gap-[3rem] w-full ${
+          mobile ? "ml-[10rem]" : "ml-[5rem]"
+        }`}
+      >
+        <h1 className="text-2xl font-bold whitespace-nowrap">
+          Investor Voting
+        </h1>
         <article className="flex w-full h-[10%]">
-          <div className="border-r-2 border-gray-300  flex-1 h-full flex flex-col justify-center items-start gap-[2rem]">
-            <h2 className="text-xl">Total Investment value</h2>
+          <div
+            className={`border-r-2 border-gray-300 flex-1 h-full flex flex-col justify-center items-start gap-[2rem] ${
+              mobile && "pr-[2rem]"
+            }`}
+          >
+            <h2 className="text-xl whitespace-nowrap">
+              Total Investment value
+            </h2>
             <p className="font-bold text-5xl">
               {shares.length > 0 && user
                 ? `$${(user.shares * shares[0].price).toFixed(2)}`
                 : "Could not find"}
             </p>
           </div>
-          <div className="border-r-2 border-grey-700 flex-1 flex flex-col justify-center items-start h-full pl-[3rem] gap-[2rem]">
-            <h2 className="text-xl">Total number of shares</h2>
+          <div
+            className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${
+              mobile ? "px-[2rem]" : "pl-[3rem]"
+            }`}
+          >
+            <h2 className="text-xl whitespace-nowrap">
+              Total number of shares
+            </h2>
             <p className="font-bold text-5xl">{user?.shares}</p>
           </div>
-          <div className="border-r-2 border-grey-700 flex-1 flex flex-col justify-center items-start h-full pl-[3rem] gap-[2rem]">
-            <h2 className="text-xl">Single share value</h2>
+          <div
+            className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${
+              mobile ? "px-[2rem]" : "pl-[3rem]"
+            }`}
+          >
+            <h2 className="text-xl whitespace-nowrap">Single share value</h2>
             <p className="font-bold text-5xl">
               {shares.length > 0
                 ? `$${shares[0].price.toFixed(2)}`

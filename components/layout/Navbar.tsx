@@ -115,7 +115,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             href="/dashboard"
             className="text-[#26477C] text-xl mr-[2rem] whitespace-nowrap"
           >
-            My Dashboard
+            Dashboard
           </Link>
         ) : (
           <div className="flex-1 flex items-center justify-end pr-[2rem]">
@@ -165,7 +165,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
       >
         {user ? (
           <Link href="/dashboard" className="text-[#26477C] text-2xl">
-            My Dashboard
+            Dashboard
           </Link>
         ) : (
           <>
