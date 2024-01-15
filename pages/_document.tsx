@@ -23,33 +23,33 @@ export default function Document() {
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/assets/meta/logo32.png"
+          href="/meta/logo32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/assets/meta/logo16.png"
+          href="/meta/logo16.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="76x76"
-          href="/assets/meta/logo76.png"
+          href="/meta/logo76.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="120x120"
-          href="/assets/meta/logo120.png"
+          href="/meta/logo120.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="152x152"
-          href="/assets/meta/logo152.png"
+          href="/meta/logo152.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/assets/meta/logo180.png"
+          href="/meta/logo180.png"
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Marble Investments" />
@@ -73,7 +73,7 @@ export default function Document() {
           property="og:description"
           content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
-        <meta property="og:image" content="/assets/meta/og-banner.png" />
+        <meta property="og:image" content="/meta/og-banner.png" />
         <meta property="og:image:width" content="180" />
         <meta property="og:image:height" content="180" />
 
@@ -85,7 +85,7 @@ export default function Document() {
           name="twitter:description"
           content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
-        <meta name="twitter:image" content="/assets/meta/og-banner.png" />
+        <meta name="twitter:image" content="/meta/og-banner.png" />
         <meta name="twitter:creator" content="@marbleinvestments" />
         <meta name="twitter:site" content="@marbleinvestments" />
         <meta name="twitter:domain" content="marbleinvesments.ca" />
@@ -115,7 +115,7 @@ export default function Document() {
           itemProp="description"
           content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
-        <meta itemProp="image" content="/assets/meta/logo180.png" />
+        <meta itemProp="image" content="/meta/logo180.png" />
       </Head>
       <body>
         <Main />
