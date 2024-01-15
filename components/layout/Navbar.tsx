@@ -35,7 +35,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-[50px] md:h-[60px] lg:h-[72px] xl:h-[80px] 2xl:h-[90px] w-auto`} 
+            className={`h-[50px] md:h-[55px] lg:h-[65px] xl:h-[75px] w-auto`} 
           />
         </Link>
       </div>
