@@ -6,11 +6,11 @@ import encrypt from "../utils/encrypt";
 import { toast } from "react-toastify";
 import { isNameValid, isEmailValid, isPasswordValid } from "../utils/validForm";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 import { setUser } from "../store/userSlice";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -20,6 +20,7 @@ export default function Register() {
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
   const [agree, setAgree] = useState(false);
+  const {mobile} = useMobile()
 
   const handleSubmit = (formData: any) => {
     try {
@@ -89,8 +90,6 @@ export default function Register() {
     }
     // form.resetFields()
   };
-
-  const mobile = useMobileDetection();
 
   return (
     <div className={`flex items-center justify-center w-full h-screen`}>
@@ -190,7 +189,7 @@ export default function Register() {
                 type="primary"
                 htmlType="submit"
                 disabled={loading}
-                className="w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind
+                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-hind
               text-2xl font-normal flex justify-center items-center"
               >
                 Sign Up

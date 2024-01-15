@@ -4,7 +4,7 @@ import { Button } from "antd";
 import Link from "next/link";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 type Options = {
   title: string;
@@ -18,7 +18,7 @@ type DropdownProps = {
 
 const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
 
   const handleToggle = () => {
     setIsOpen(!isOpen);

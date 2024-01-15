@@ -1,19 +1,19 @@
 import React from "react";
 import { ContactOptions } from "../data/ContactOptions";
 import { Button, Col, Form, Input, Row } from "antd";
-import useMobileDetection from "../utils/detectMobile";
 import styles from "../styles/Home.module.css";
 import { useForm } from "antd/lib/form/Form";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import useMobile from "../hooks/useMobile";
 
 const { Item } = Form;
 const { TextArea } = Input;
 
 export default function ContactForm() {
   const [form] = useForm();
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
   const router = useRouter();
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;

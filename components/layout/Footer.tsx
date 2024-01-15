@@ -4,12 +4,12 @@ import { PublicNavOptions } from "../../data/NavOptions";
 import { ContactOptions } from "../../data/ContactOptions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import useMobileDetection from "../../utils/detectMobile";
 import Image from "next/image";
+import useMobile from "../../hooks/useMobile";
 
 export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
 
   if (mobile) {
     return (

@@ -6,10 +6,10 @@ import {
   miscellaneousData,
 } from "../data/ResourceData";
 import Dropdown from "../components/Dropdown";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 export default function resources() {
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
 
   if (mobile) {
     return (

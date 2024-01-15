@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { TeamSections, teamOptions } from "../data/TeamData";
 import { Row, Col } from "antd";
 import Card from "./Card";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 type Prop = {
   name: string;
 };
 
 export default function Team({ name }: Prop) {
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
   const teamSection = TeamSections[name];
 
   return (
