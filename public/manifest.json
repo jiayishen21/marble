@@ -1,0 +1,43 @@
+{
+  "short_name": "Marble Investments",
+  "name": "Marble Investments",
+  "icons": [
+    {
+      "src": "/assets/meta/icon16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/assets/meta/icon32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/assets/meta/icon76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "/assets/meta/icon120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "/assets/meta/icon152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/assets/meta/icon180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#2F5A8D",
+  "description": "Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns.",
+  "orientation": "landscape-primary"
+}

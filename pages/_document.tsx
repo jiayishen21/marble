@@ -71,10 +71,8 @@ export default function Document() {
         <meta property="og:title" content="Marble Investments" />
         <meta
           property="og:description"
-          // TODO: change this to our description
-          content="Collect adorable slimes while learning from lessons designed to help maximize success in our modern world. Slime Scholars is a gamified learning platform for students, teachers, and parents."
+          content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
-        {/* TODO: Upload og-banner */}
         <meta property="og:image" content="/assets/meta/og-banner.png" />
         <meta property="og:image:width" content="180" />
         <meta property="og:image:height" content="180" />
@@ -85,10 +83,8 @@ export default function Document() {
         <meta name="twitter:title" content="Marble Investments" />
         <meta
           name="twitter:description"
-          // TODO: Same as above
-          content="Collect adorable slimes while learning from lessons designed to help maximize success in our modern world. Slime Scholars is a gamified learning platform for students, teachers, and parents."
+          content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
-        {/* TODO: Same as above */}
         <meta name="twitter:image" content="/assets/meta/og-banner.png" />
         <meta name="twitter:creator" content="@marbleinvestments" />
         <meta name="twitter:site" content="@marbleinvestments" />
@@ -117,8 +113,7 @@ export default function Document() {
         <meta itemProp="name" content="Marble Investments" />
         <meta
           itemProp="description"
-          // TODO:
-          content="Collect adorable slimes while learning from lessons designed to help maximize success in our modern world. Slime Scholars is a gamified learning platform for students, teachers, and parents."
+          content="Marble Investments is a mutual fund geared at bringing investors financial well being. We help investors grow their financial literacy, build meaningful connections, and maximize their returns."
         />
         <meta itemProp="image" content="/assets/meta/logo180.png" />
       </Head>
