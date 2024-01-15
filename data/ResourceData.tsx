@@ -6,20 +6,9 @@ type data = {
 
 const quarterData: data[] = [
   {
-    title: "2023 Q1 report",
-    link: "/",
-  },
-  {
-    title: "2023 Q2 report",
-    link: "/",
-  },
-  {
-    title: "2023 Q3 report",
-    link: "/",
-  },
-  {
     title: "2023 Q4 report",
-    link: "/",
+    link: "/resources/2023_Q4_Shareholder_Letter.pdf",
+
   },
 ];
 
@@ -33,9 +22,8 @@ const annualData: data[] = [
 
 const miscellaneousData: data[] = [
   {
-    title: "Coming soon...",
-    link: "/",
-    inactive: true,
+    title: "2024 Market Insights",
+    link: "/resources/2024_Insights.pdf",
   },
 ];
 
