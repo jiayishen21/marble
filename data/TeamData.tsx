@@ -1,12 +1,10 @@
-type TeamMember = {
+export type TeamMember = {
   name: string;
   photo: string;
   role: string;
   email: string;
   link: string;
 };
-
-type Section = Record<string, TeamMember[]>;
 
 type Member = {
   name: string;
