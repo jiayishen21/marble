@@ -63,16 +63,14 @@ export default function Navbar({ navRef, blank, router }: Props) {
   const renderOptions = useCallback(() => {
     return (
       <div
-        className={`${
-          mobile && "absolute bg-white rounded-lg z-20 mt-[17rem] ml-[6rem]"
-        }`}
+        className={`${mobile && "absolute bg-white rounded-lg z-20 mt-[17rem] ml-[6rem]"
+          }`}
       >
         <ul
-          className={`flex justify-center font-light gap-12 ${
-            mobile
-              ? "flex-col w-full font-bold items-start gap-5 h-auto text-md p-5"
-              : "items-center"
-          } ${medium && !mobile ? "items-center gap-8 pr-[8rem]" : "text-xl"}`}
+          className={`flex justify-center font-light gap-12 ${mobile
+            ? "flex-col w-full font-bold items-start gap-5 h-auto text-md p-5"
+            : "items-center"
+            } ${medium && !mobile ? "items-center gap-8 pr-[8rem]" : "text-xl"}`}
         >
           {PublicNavOptions.map(
             (opt, key) =>
@@ -80,9 +78,8 @@ export default function Navbar({ navRef, blank, router }: Props) {
                 <div key={key}>
                   <Link href={opt.route}>
                     <li
-                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 whitespace-nowrap ${
-                        medium && !mobile ? "text-xl" : "text-2xl"
-                      }`}
+                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 whitespace-nowrap ${medium && !mobile ? "text-xl" : "text-2xl"
+                        }`}
                     >
                       {opt.title}
                     </li>
@@ -159,9 +156,8 @@ export default function Navbar({ navRef, blank, router }: Props) {
         {renderOptions()}
       </section>
       <ul
-        className={`flex justify-center items-center ${
-          medium ? "gap-6" : "gap-12"
-        }`}
+        className={`flex justify-center items-center ${medium ? "gap-6" : "gap-12"
+          }`}
       >
         {user ? (
           <Link href="/dashboard" className="text-[#26477C] text-2xl">
@@ -180,8 +176,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <Button
               type="primary"
               className={`bg-lapis text-neutral-50 font-hind 
-                font-light flex justify-center items-center ${
-                  medium ? "text-lg px-4 h-9" : "px-8 text-2xl h-11"
+                font-light flex justify-center items-center ${medium ? "text-lg px-4 h-9" : "px-8 text-2xl h-11"
                 }`}
               href="/login"
             >
