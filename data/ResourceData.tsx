@@ -1,6 +1,7 @@
 type data = {
   title: string;
   link: string;
+  inactive?: boolean;
 };
 
 const quarterData: data[] = [
@@ -26,6 +27,7 @@ const annualData: data[] = [
   {
     title: "Coming soon...",
     link: "/",
+    inactive: true,
   },
 ];
 
@@ -33,6 +35,7 @@ const miscellaneousData: data[] = [
   {
     title: "Coming soon...",
     link: "/",
+    inactive: true,
   },
 ];
 

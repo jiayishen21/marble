@@ -9,6 +9,7 @@ import useMobile from "../hooks/useMobile";
 type Options = {
   title: string;
   link: string;
+  inactive?: boolean;
 };
 
 type DropdownProps = {
@@ -18,7 +19,7 @@ type DropdownProps = {
 
 const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const {mobile} = useMobile()
+  const { mobile } = useMobile()
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -36,13 +37,23 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
         {isOpen && (
           <div className="flex flex-col">
             {options.map((option, index) => (
-              <Link
-                href={option.link}
-                key={index}
-                className="text-gray-500 hover:underline hover:text-airforce"
-              >
-                {option.title}
-              </Link>
+              option.inactive ? (
+                <span
+                  key={index}
+                  className="text-gray-500"
+                >
+                  {option.title}
+                </span>
+              ) : (
+                <Link
+                  href={option.link}
+                  target='_blank'
+                  key={index}
+                  className="text-gray-500 hover:underline hover:text-airforce"
+                >
+                  {option.title}
+                </Link>
+              )
             ))}
           </div>
         )}
@@ -63,13 +74,23 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
       {isOpen && (
         <div className="flex flex-col absolute z-1 top-full">
           {options.map((option, index) => (
-            <Link
-              href={option.link}
-              key={index}
-              className="text-gray-500 hover:underline hover:text-airforce"
-            >
-              {option.title}
-            </Link>
+            option.inactive ? (
+              <span
+                key={index}
+                className="text-gray-500"
+              >
+                {option.title}
+              </span>
+            ) : (
+              <Link
+                href={option.link}
+                target='_blank'
+                key={index}
+                className="text-gray-500 hover:underline hover:text-airforce"
+              >
+                {option.title}
+              </Link>
+            )
           ))}
         </div>
       )}
