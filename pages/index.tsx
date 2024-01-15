@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const { navRef, navHeight } = useNavParams();
   const router = useRouter();
 
-  const {mobile} = useMobile()
+  const { mobile } = useMobile()
 
   return (
     <main className="overflow-x-hidden w-full">
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
           {!user && (
             <Button
               type="primary"
-              href="/create"
+              href="/register"
               className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${mobile ? "text-md w-20 px-[4rem]" : "text-2xl w-60 h-14"
                 }`}
             >
