@@ -56,15 +56,15 @@ const BaseNavOptions: NavOption[] = [
 const missionData = [
   {
     stat: "$14,583",
-    info: "ASSETS UNDER MANAGEMENT",
+    info: "AUM",
   },
   {
     stat: "56",
-    info: "MEMBERS/INVESTORs",
+    info: "INVESTORS",
   },
   {
-    stat: "1000%",
-    info: "RETURN ON INVESTMENTS (%)",
+    stat: "113%",
+    info: "ROI",
   },
 ];
 

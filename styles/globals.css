@@ -2,8 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@700&family=Work+Sans:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Work+Sans:wght@500&display=swap");
-/* Error fetching these for some reason */
-/* @import url('https://fonts.googleapis.com/css2?family=Cairo:&family=Work+Sans:wght@500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@200..1000&family=Inter&family=PT+Serif:ital,wght@0,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;

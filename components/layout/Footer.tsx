@@ -51,7 +51,7 @@ export default function Footer() {
                 <Link href={"/create"}>
                   <li
                     className="nav-option text-white hover:text-lightblue
-                      font-light text-2xl 
+                      font-light text-2xl
                       transition-all duration-300"
                   >
                     Sign Up
