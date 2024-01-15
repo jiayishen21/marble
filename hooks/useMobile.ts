@@ -11,7 +11,7 @@ const useMobile = () => {
       }
     }, [width])
 
-    return {mobile}
+    return {mobile, width}
 }
 
 export default useMobile

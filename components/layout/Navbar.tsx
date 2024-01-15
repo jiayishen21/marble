@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { IoIosMenu } from "react-icons/io";
 import useMobile from "../../hooks/useMobile";
-import { useWindowSize } from "@uidotdev/usehooks";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -24,8 +23,7 @@ interface Props {
 
 export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
-  const {mobile} = useMobile()
-  const {width} = useWindowSize()
+  const {mobile, width} = useMobile()
 
   const LogoIcon = useMemo(() => {
     return (
