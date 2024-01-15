@@ -8,16 +8,16 @@ import { useRouter } from "next/router";
 import React from "react";
 import { RootState } from "../store/store";
 import { useSelector } from "react-redux";
-import useMobileDetection from "../utils/detectMobile";
 import { missionData } from "../data/NavOptions";
 import Image from "next/image";
+import useMobile from "../hooks/useMobile";
 
 const Home: NextPage = () => {
   const user = useSelector((state: RootState) => state.user.user);
   const { navRef, navHeight } = useNavParams();
   const router = useRouter();
 
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
 
   return (
     <main className="overflow-x-hidden w-full">

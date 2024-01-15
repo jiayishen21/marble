@@ -3,11 +3,13 @@ import DashboardTabs from "../../components/DashboardTabs";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import { PurchaseType } from "../../types";
-import useMobileDetection from "../../utils/detectMobile";
+import useMobile from "../../hooks/useMobile";
 
 export default function transaction() {
   const user = useSelector((state: RootState) => state.user.user);
   const [transactions, setTransactions] = React.useState<any[]>([]);
+
+  const {mobile} = useMobile()
 
   const processShares = () => {
     if (!user?.purchaseHistory) {
@@ -30,8 +32,6 @@ export default function transaction() {
     }
     processShares();
   }, [user]);
-
-  const mobile = useMobileDetection();
 
   return (
     <main

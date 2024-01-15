@@ -4,13 +4,14 @@ import DashboardTabs from "../../components/DashboardTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import ShareChart from "../../components/ShareChart";
-import useMobileDetection from "../../utils/detectMobile";
+import useMobile from "../../hooks/useMobile";
 
 export default function Dashboard() {
   const user = useSelector((state: RootState) => state.user.user);
   const shares = useSelector((state: RootState) => state.shares.shares);
 
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
+  
   return (
     <main
       className={`flex w-[70%] py-[8rem] ${

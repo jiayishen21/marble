@@ -36,7 +36,7 @@ export default function Forgot() {
             </Col>
             <Col span={24} className="mt-2 flex flex-col items-center justify-center">
               <Button type="primary" htmlType="submit"
-                className="w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind
+                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-hind
               text-2xl font-normal flex justify-center items-center">
                 Send Email
               </Button>

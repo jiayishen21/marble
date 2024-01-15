@@ -10,12 +10,10 @@ import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
 import { Button, Dropdown, Menu, Space } from "antd";
 import { NextRouter } from "next/router";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { useWindowSize } from "@uidotdev/usehooks";
 import { IoIosMenu } from "react-icons/io";
-import useMobileDetection from "../../utils/detectMobile";
+import useMobile from "../../hooks/useMobile";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -25,21 +23,11 @@ interface Props {
 
 export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
-  const { width } = useWindowSize();
-  const [currentRoute, setCurrentRoute] = useState<string>("");
-  const [medium, setMedium] = useState<boolean>(false);
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const mobile = useMobileDetection();
-
-  useEffect(() => {
-    if (width !== null && width !== undefined) {
-      setMedium(width <= 1600);
-    }
-  }, [width]);
+  const {mobile, width} = useMobile()
 
   const LogoIcon = useMemo(() => {
     return (
-      <div className="scale-[1.4] origin-top-left">
+      <div className="origin-top-left">
         <Link href="/">
           <Image
             src="/elements/marble.svg"
@@ -47,139 +35,99 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-auto ${medium ? "w-full" : "w-[50%]"}`}
+            className={`h-[50px] md:h-[60px] lg:h-[72px] xl:h-[80px] 2xl:h-[90px] w-auto`} 
           />
         </Link>
       </div>
     );
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCurrentRoute(router.asPath);
-    }, 100);
-  }, [router.asPath]);
+  const menu = (
+    <Menu>
+      {PublicNavOptions.map((opt, index) => (
+        <Menu.Item onClick={() => {router.push(opt.route)}} 
+        className="text-center px-4">
+          <span className="font-hind text-[0.75em]">{opt.title}</span>
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
 
-  const renderOptions = useCallback(() => {
-    return (
-      <div
-        className={`${mobile && "absolute bg-white rounded-lg z-20 mt-[17rem] ml-[6rem]"
-          }`}
-      >
-        <ul
-          className={`flex justify-center font-light gap-12 ${mobile
-            ? "flex-col w-full font-bold items-start gap-5 h-auto text-md p-5"
-            : "items-center"
-            } ${medium && !mobile ? "items-center gap-8 pr-[8rem]" : "text-xl"}`}
-        >
-          {PublicNavOptions.map(
-            (opt, key) =>
-              !(opt.dropdown && opt.options) && (
-                <div key={key}>
-                  <Link href={opt.route}>
-                    <li
-                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 whitespace-nowrap ${medium && !mobile ? "text-xl" : "text-2xl"
-                        }`}
-                    >
-                      {opt.title}
-                    </li>
-                  </Link>
-                </div>
-              )
+  if(mobile){
+    return(
+      <nav className="relative flex flex-row items-center justify-between w-full px-[4vw]" ref={navRef}>
+        <section className="flex flex-row gap-5 items-center">
+        <Dropdown overlay={menu}>
+          <Button type="default">
+            <IoIosMenu/>
+          </Button>
+        </Dropdown>
+        {width && width > 480 && LogoIcon} 
+        </section>
+        <ul className={`flex justify-center items-center gap-6`}>
+          {user ? (
+            <Button type="primary" href="/dashboard"
+              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-sm`}>
+              Dashboard
+            </Button>
+          ) : (
+            <>
+              <Link href={"/register"}>
+                <li className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}>
+                  Sign Up
+                </li>
+              </Link>
+              <Button type="primary" href="/login"
+                className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-6 text-sm`}>
+                Client Login
+              </Button>
+            </>
           )}
         </ul>
-      </div>
-    );
-  }, [medium, mobile]);
-
-  if (mobile) {
-    return (
-      <nav className="flex justify-between items-center px-[2rem]">
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center relative">
-            <Button
-              onClick={() => setOpenMenu(!openMenu)}
-              className="flex items-center justify-center text-4xl border-none"
-            >
-              <IoIosMenu />
-            </Button>
-            {openMenu && renderOptions()}
-          </div>
-          {!mobile && <div>{LogoIcon}</div>}
-        </div>
-        {user ? (
-          <Link
-            href="/dashboard"
-            className="text-[#26477C] text-xl mr-[2rem] whitespace-nowrap"
-          >
-            Dashboard
-          </Link>
-        ) : (
-          <div className="flex-1 flex items-center justify-end pr-[2rem]">
-            <Link
-              href={"/register"}
-              className="nav-option text-semiblack hover:text-lapis font-light text-sm pr-[1.5rem]"
-            >
-              Sign Up
-            </Link>
-            <Button
-              type="primary"
-              className="bg-lapis text-neutral-50 font-hind text-sm
-                font-light flex justify-center items-center"
-              href="/login"
-            >
-              Client Login
-            </Button>
-          </div>
-        )}
       </nav>
-    );
-  }
+  )}
 
-  return blank > 0 ? (
-    <nav
-      className="flex items-center justify-between w-full px-12"
-      ref={navRef}
-      style={{
-        height: `${blank}px`,
-      }}
-    >
-      <section className="fixed">{LogoIcon}</section>
+  if (blank > 0){
+    return (
+    <nav className="flex items-center justify-between w-full px-12"
+      ref={navRef} style={{height: `${blank}px`}}>
+      <section className="fixed">{LogoIcon}</section> 
     </nav>
-  ) : (
-    <nav
-      className="relative flex items-center justify-between w-full px-12"
-      ref={navRef}
-    >
-      <section className="flex items-center gap-20">
+  )}
+
+  return (
+    <nav className="relative flex flex-row items-center justify-between w-full px-[2vw]" ref={navRef}>
+      <section className="flex flex-row gap-10 xl:gap-12 2xl:gap-14">
         {LogoIcon}
-        {renderOptions()}
+        <ul className={`flex items-center font-light gap-6 xl:gap-7 2xl:gap-8`}>
+          {PublicNavOptions.map((opt, key) => !(opt.dropdown && opt.options) && (
+            <div key={key}>
+              <Link href={opt.route}>
+                <li className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 
+                whitespace-nowrap text-xl xl:text-2xl`}>
+                  {opt.title}
+                </li>
+              </Link>
+            </div>
+          ))}
+        </ul>
       </section>
-      <ul
-        className={`flex justify-center items-center ${medium ? "gap-6" : "gap-12"
-          }`}
-      >
+      <ul className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}>
         {user ? (
-          <Link href="/dashboard" className="text-[#26477C] text-2xl">
+          <Button type="primary" href="/dashboard"
+            className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}>
             Dashboard
-          </Link>
+          </Button>
         ) : (
           <>
             <Link href={"/register"}>
-              <li
-                className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
-                  font-light ${medium ? "text-lg" : "text-2xl"}`}
-              >
+              <li className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
+                  font-light  text-xl xl:text-2xl`}>
                 Sign Up
               </li>
             </Link>
-            <Button
-              type="primary"
-              className={`bg-lapis text-neutral-50 font-hind 
-                font-light flex justify-center items-center ${medium ? "text-lg px-4 h-9" : "px-8 text-2xl h-11"
-                }`}
-              href="/login"
-            >
+            <Button type="primary" href="/login"
+              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}>
               Client Login
             </Button>
           </>

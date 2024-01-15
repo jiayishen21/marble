@@ -75,7 +75,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
         dispatch(setSharesLoading(false))
       })
       .catch(() => {
-        throw new Error('Server error: could not find investment data. Please try again later.')
+        //throw new Error('Server error: could not find investment data. Please try again later.')
       })
 
     axios
@@ -87,7 +87,7 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
         dispatch(setPollsLoading(false))
       })
       .catch(() => {
-        throw new Error('Server error: could not find poll data. Please try again later.')
+        //throw new Error('Server error: could not find poll data. Please try again later.')
       })
 
   }, [])

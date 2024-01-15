@@ -3,11 +3,12 @@ import DashboardTabs from "../../components/DashboardTabs";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import PollCard from "../../components/PollCard";
-import useMobileDetection from "../../utils/detectMobile";
+import useMobile from "../../hooks/useMobile";
 
 export default function voting() {
   const polls = useSelector((state: RootState) => state.polls.polls);
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
+  
   return (
     <main
       className={`flex w-[70%] py-[8rem] ${

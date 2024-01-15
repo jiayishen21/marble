@@ -1,12 +1,12 @@
 import { LeadMembers, teamOptions } from "../../data/TeamData";
 import Card from "../../components/Card";
 import { Row, Col, Button } from "antd";
-import useMobileDetection from "../../utils/detectMobile";
 import { useState } from "react";
 import Team from "../../components/Team";
+import useMobile from "../../hooks/useMobile";
 
 export default function Meet() {
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
   const [option, setOption] = useState("Managers");
 
   switch (option) {

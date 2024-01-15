@@ -6,12 +6,12 @@ import { FaUnlockAlt } from "react-icons/fa";
 import { isEmailValid } from "../utils/validForm";
 import axios from "axios";
 import encrypt from "../utils/encrypt";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { setUser } from "../store/userSlice";
 import { AppDispatch } from "../store/store";
 import { useDispatch } from "react-redux";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -20,6 +20,7 @@ export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
   const [form] = useForm();
+  const {mobile} = useMobile()
 
   const handleSubmit = (formData: any) => {
     try {
@@ -67,8 +68,6 @@ export default function Login() {
       toast.error(error.message);
     }
   };
-
-  const mobile = useMobileDetection();
 
   return (
     <div className="flex items-center justify-center w-full h-screen">
@@ -125,7 +124,7 @@ export default function Login() {
                 type="primary"
                 htmlType="submit"
                 disabled={loading}
-                className="w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind
+                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-hind
               text-2xl font-normal flex justify-center items-center"
               >
                 Sign In

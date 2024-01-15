@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import { dashboardOptions } from "../data/DashboardOptions";
 import { Button } from "antd";
 import React from "react";
-import useMobileDetection from "../utils/detectMobile";
+import useMobile from "../hooks/useMobile";
 
 export default function DashboardTabs() {
   const router = useRouter();
 
-  const mobile = useMobileDetection();
+  const {mobile} = useMobile()
 
   return (
     <section

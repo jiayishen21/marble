@@ -7,7 +7,7 @@ import Footer from "./Footer";
 export default function Layout({ children }: PropsWithChildren<any>) {
     const router = useRouter()
     const exempt_routes = ["/"] //routes that have their own custom layout and navbar import
-    const blank_routes = ["/create", "/login", "/forgot", "/verify"]
+    const blank_routes = ["/register", "/login", "/forgot", "/verify"]
     const blank = blank_routes.includes(router.asPath)
 
     const { navRef, navHeight } = useNavParams()
