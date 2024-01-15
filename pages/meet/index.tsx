@@ -7,7 +7,7 @@ import Team from "../../components/Team";
 
 export default function Meet() {
   const mobile = useMobileDetection();
-  const [option, setOption] = useState("Manager");
+  const [option, setOption] = useState("Managers");
 
   switch (option) {
     case "Analysts":
