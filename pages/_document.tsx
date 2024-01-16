@@ -8,7 +8,6 @@ export default function Document() {
           href="https://unpkg.com/aos@2.3.1/dist/aos.css"
           rel="stylesheet"
         />
-        <title>Marble Investments</title>
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="author" content="Marble Investments" />
