@@ -17,12 +17,17 @@ const Home: NextPage = () => {
   const { navRef, navHeight } = useNavParams();
   const router = useRouter();
 
+<<<<<<< HEAD
   const { mobile } = useMobile();
+=======
+  const { mobile, width } = useMobile()
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
 
   return (
     <main className="overflow-x-hidden w-full">
       <div
         style={{
+          height: "100vh",
           display: "grid",
           gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
         }}
@@ -31,8 +36,8 @@ const Home: NextPage = () => {
 
         <div className="absolute top-0 left-0 w-full h-screen z-[-1]" />
         <section
-          className={`relative flex flex-col gap-12 px-[8rem] h-full`}
-          data-aos="fade-right"
+          className={`relative flex flex-col items-center lg:items-start gap-6 lg:gap-9 2xl:gap-12 px-[1.5rem] md:px-[2.5rem] 
+          lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem] h-full`}
         >
           <div className="absolute right-0 z-0" data-aos="fade-left">
             <div className="relative z-0">
@@ -43,6 +48,7 @@ const Home: NextPage = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-[#fafafa] via-[#fafafa] to-transparent opacity-90 h-[30%]"></div>
             </div>
           </div>
+<<<<<<< HEAD
           <div className="max-w-[60rem] w-[75%] z-10">
             <h1
               className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] ${
@@ -61,21 +67,40 @@ const Home: NextPage = () => {
             >
               Growing your financial literacy, building meaningful connections,
               and maximizing your returns.
+=======
+          <div className="max-w-[60rem] w-full md:w-[60%] lg:w-[80%] xl:w-[70%] z-10"
+            data-aos="fade-right">
+            <h1 className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl md:text-3xl lg:text-4xl 
+            2xl:text-5xl mt-0 text-center lg:text-left lg:mt-[5vh] xl:mt-[10vh] 2xl:mt-[15vh]`}>
+              A mutual fund geared toward bringing investors financial well being
+            </h1>
+            <h2 className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-md md:text-lg lg:text-xl 
+            2xl:text-3xl mt-6 text-center lg:text-left lg:mt-8 xl:mt-10`}>
+              Growing your financial literacy, building meaningful connections, and maximizing your returns.
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
             </h2>
           </div>
           {!user && (
             <Button
               type="primary"
+<<<<<<< HEAD
               href="/create"
               className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${
                 mobile ? " w-20 px-[4rem]" : "text-2xl w-60 h-14"
               }`}
+=======
+              href="/register"
+              className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex 
+              justify-center items-center`}
+              data-aos="fade-right"
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
             >
               Invest with us
             </Button>
           )}
         </section>
       </div>
+<<<<<<< HEAD
       {/* <section className={`${styles["buffer"]} h-[2rem]`} /> */}
       <section
         className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col linear-wave -mt-[11rem] px-[8rem] items-center justify-center ${
@@ -87,6 +112,13 @@ const Home: NextPage = () => {
         text-center ${mobile ? "text-4xl" : "text-[2.8rem]"}`}
           data-aos="fade-up"
         >
+=======
+      <section className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col linear-wave 
+      -mt-[7.5rem] lg:-mt-[9rem] px-[1.5rem] md:px-[2.5rem] 
+      lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem] items-center justify-center h-[120vh]`}>
+        <h3 className={`text-neutral-50 font-bold pb-8
+        text-center ${mobile ? "text-4xl" : "text-[2.8rem]"}`} data-aos="fade-up">
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
           Our Mission
         </h3>
         <div

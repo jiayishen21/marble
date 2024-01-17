@@ -9,6 +9,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Head from "next/head";
 
 // Redux
 import { Provider, useSelector, useDispatch } from "react-redux";
@@ -33,6 +34,9 @@ const theme = {
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
+      <Head>
+        <title>Marble Investments</title>
+      </Head>
       <Provider store={store}>
         <AppComponent
           Component={Component}

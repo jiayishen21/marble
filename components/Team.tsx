@@ -9,7 +9,7 @@ type Prop = {
 };
 
 export default function Team({ name }: Prop) {
-  const {mobile} = useMobile()
+  const { mobile } = useMobile()
   const teamSection = TeamSections[name];
 
   return (
@@ -19,7 +19,7 @@ export default function Team({ name }: Prop) {
           mobile ? (
             <Col
               className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
-              span={12}
+              span={name === 'Managers' ? 8 : 12}
               key={key}
             >
               <Card {...item} />
@@ -27,7 +27,7 @@ export default function Team({ name }: Prop) {
           ) : (
             <Col
               className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
-              span={6}
+              span={name === 'Managers' ? 4 : 6}
               key={key}
             >
               <Card {...item} />
