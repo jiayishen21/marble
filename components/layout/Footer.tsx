@@ -106,7 +106,7 @@ export default function Footer() {
             {PublicNavOptions.map((opt, key) => (
               <div key={key}>
                 <Link href={opt.route}>
-                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300 text-sm md:text-base lg:text-lg">
+                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300 text-xs lg:text-sm">
                     {opt.title}
                   </li>
                 </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
                 <Link href={"/register"}>
                   <li
                     className="nav-option text-white hover:text-lightblue
-                      font-light text-sm md:text-base lg:text-lg
+                      font-light  text-xs lg:text-sm
                       transition-all duration-300"
                   >
                     Sign Up
@@ -132,7 +132,7 @@ export default function Footer() {
                 <Link href={"/login"}>
                   <li
                     className="nav-option text-white hover:text-lightblue
-                      font-light text-sm md:text-base lg:text-lg underline 
+                      font-light  text-xs lg:text-sm underline 
                       transition-all duration-300"
                   >
                     Client Login

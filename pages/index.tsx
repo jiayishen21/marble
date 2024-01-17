@@ -23,7 +23,6 @@ const Home: NextPage = () => {
     <main className="overflow-x-hidden w-full">
       <div
         style={{
-          height: "100vh",
           display: "grid",
           gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
         }}
@@ -31,7 +30,7 @@ const Home: NextPage = () => {
         <Navbar navRef={navRef} blank={0} router={router} />
         <section
           className={`relative flex flex-col items-center lg:items-start gap-6 lg:gap-9 2xl:gap-12 px-[1.5rem] md:px-[2.5rem] 
-          lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem] h-full`}
+          lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem]`}
         >
           <div className="absolute right-0 z-0" data-aos="fade-left">
             <div className="relative z-0">
@@ -73,7 +72,7 @@ const Home: NextPage = () => {
       </div>
       <section
         className={`bg-cover bg-center bg-no-repeat min-w-screen flex flex-col linear-wave 
-      -mt-[7.5rem] lg:-mt-[9rem] py-[17vw] md:py-[14vw] mb-16 px-[1.5rem] md:px-[2.5rem] 
+      -mt-[30vh] md:-mt-[23vh] lg:-mt-[20vh] py-[30vw] md:py-[14vw] px-[1.5rem] md:px-[2.5rem] 
       lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem] items-center justify-start `}
       >
         <h3
@@ -84,7 +83,7 @@ const Home: NextPage = () => {
           Our Mission
         </h3>
         <div
-          className={`text-neutral-50 font-normal text-center text-lg md:text-xl xl:text-2xl mb-6`}
+          className={`text-neutral-50 font-normal text-center text-base md:text-lg xl:text-xl 2xl:text-2xl mb-6`}
           data-aos="fade-right"
           data-aos-delay="250"
         >
@@ -97,18 +96,18 @@ const Home: NextPage = () => {
         <div className="w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
             <div
-              className="w-full flex flex-row items-center justify-center space-x-5 bg-slate-50 rounded-md mb-4 px-5 py-3 md:w-[20vw] md:h-[20vw] md:flex-col md:space-x-0"
+              className="w-full grid grid-cols-2 space-x-5 bg-slate-50 rounded-md mb-4 px-5 py-3 md:flex md:w-[20vw] md:h-[20vw] md:flex-col md:items-center md:justify-center md:space-x-0"
               data-aos="fade-right"
               data-aos-delay={mobile ? key * 250 : 500 - key * 250}
               key={key}
             >
               <h2
-                className={`font-semiblack font-bold font-cairo text-3xl md:text-4xl lg:text-5xl xl:text-6xl`}
+                className={`w-full flex items-center justify-end md:justify-center font-semiblack font-bold font-cairo text-3xl md:text-4xl lg:text-5xl xl:text-6xl`}
               >
                 {item.stat}
               </h2>
               <p
-                className={`font-semibold  text-airforce whitespace-nowrap text-base md:text-lg lg:text-xl xl:text-2xl md:mt-1`}
+                className={`w-full flex items-center justify-start md:justify-center font-semibold  text-airforce whitespace-nowrap text-base md:text-lg lg:text-xl xl:text-2xl md:mt-1`}
               >
                 {item.info}
               </p>

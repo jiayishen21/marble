@@ -48,7 +48,7 @@ export default function ContactForm() {
 
   return (
     <section
-      className={`px-10 lg:px-20 xl:px-32 2xl:px-48 flex flex-col md:flex-row md:space-x-14 ${
+      className={`px-10 lg:px-20 xl:px-32 2xl:px-48 pb-10 flex flex-col md:flex-row md:space-x-14 ${
         router.pathname === "/contact" ? "mt-[4rem]" : ""
       }`}
     >
