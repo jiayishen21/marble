@@ -9,14 +9,14 @@ import Dropdown from "../components/Dropdown";
 import useMobile from "../hooks/useMobile";
 
 export default function resources() {
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
 
   if (mobile) {
     return (
       <main className="w-full my-[3rem] mx-[1.5rem]">
         <div className="w-[80%]">
           <h1 className="text-2xl font-bold">Marble Investment Resources</h1>
-          <p className="text-md mt-[1rem]">
+          <p className=" mt-[1rem]">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
             quidem nam cupiditate pariatur enim repudiandae, ad reiciendis
             dolores rerum animi culpa laudantium dolorem minima, delectus sint
@@ -89,7 +89,7 @@ export default function resources() {
           <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10]">
             Marble Investment Resources
           </h1>
-          <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
+          <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg: w-[50%]">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Accusantium error eum iusto qui harum temporibus tempore odit vel
             maiores placeat obcaecati ullam porro aut repudiandae, eius

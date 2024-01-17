@@ -23,7 +23,7 @@ interface Props {
 
 export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
-  const {mobile, width} = useMobile()
+  const { mobile, width } = useMobile();
 
   const LogoIcon = useMemo(() => {
     return (
@@ -35,7 +35,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
-            className={`h-[50px] md:h-[55px] lg:h-[65px] xl:h-[75px] w-auto`} 
+            className={`h-[50px] md:h-[55px] lg:h-[65px] xl:h-[75px] w-auto`}
           />
         </Link>
       </div>
@@ -45,89 +45,127 @@ export default function Navbar({ navRef, blank, router }: Props) {
   const menu = (
     <Menu>
       {PublicNavOptions.map((opt, index) => (
-        <Menu.Item onClick={() => {router.push(opt.route)}} 
-        className="text-center px-4">
+        <Menu.Item
+          onClick={() => {
+            router.push(opt.route);
+          }}
+          className="text-center px-4"
+        >
           <span className="font-hind text-[0.75em]">{opt.title}</span>
         </Menu.Item>
       ))}
     </Menu>
   );
-
-  if(mobile){
-    return(
-      <nav className="relative flex flex-row items-center justify-between w-full px-[4vw]" ref={navRef}>
+  9;
+  if (mobile) {
+    return (
+      <nav
+        className="relative flex flex-row items-center justify-between w-full px-[4vw]"
+        ref={navRef}
+      >
         <section className="flex flex-row gap-5 items-center">
-        <Dropdown overlay={menu}>
-          <Button type="default">
-            <IoIosMenu/>
-          </Button>
-        </Dropdown>
-        {width && width > 480 && LogoIcon} 
+          <Dropdown overlay={menu}>
+            <Button type="default">
+              <IoIosMenu />
+            </Button>
+          </Dropdown>
+          {width && width > 480 && LogoIcon}
         </section>
         <ul className={`flex justify-center items-center gap-6`}>
           {user ? (
-            <Button type="primary" href="/dashboard"
-              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-sm`}>
+            <Button
+              type="primary"
+              href="/dashboard"
+              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-sm`}
+            >
               Dashboard
             </Button>
           ) : (
             <>
               <Link href={"/register"}>
-                <li className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}>
+                <li
+                  className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}
+                >
                   Sign Up
                 </li>
               </Link>
-              <Button type="primary" href="/login"
-                className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-6 text-sm`}>
+              <Button
+                type="primary"
+                href="/login"
+                className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-6 text-sm`}
+              >
                 Client Login
               </Button>
             </>
           )}
         </ul>
       </nav>
-  )}
+    );
+  }
 
-  if (blank > 0){
+  if (blank > 0) {
     return (
-    <nav className="flex items-center justify-between w-full px-12"
-      ref={navRef} style={{height: `${blank}px`}}>
-      <section className="fixed">{LogoIcon}</section> 
-    </nav>
-  )}
+      <nav
+        className="flex items-center justify-between w-full px-12"
+        ref={navRef}
+        style={{ height: `${blank}px` }}
+      >
+        <section className="fixed">{LogoIcon}</section>
+      </nav>
+    );
+  }
 
   return (
-    <nav className="relative flex flex-row items-center justify-between w-full px-[2vw]" ref={navRef}>
+    <nav
+      className="relative flex flex-row items-center justify-between w-full px-[2vw]"
+      ref={navRef}
+    >
       <section className="flex flex-row gap-10 xl:gap-12 2xl:gap-14">
         {LogoIcon}
         <ul className={`flex items-center font-light gap-6 xl:gap-7 2xl:gap-8`}>
-          {PublicNavOptions.map((opt, key) => !(opt.dropdown && opt.options) && (
-            <div key={key}>
-              <Link href={opt.route}>
-                <li className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 
-                whitespace-nowrap text-xl xl:text-2xl`}>
-                  {opt.title}
-                </li>
-              </Link>
-            </div>
-          ))}
+          {PublicNavOptions.map(
+            (opt, key) =>
+              !(opt.dropdown && opt.options) && (
+                <div key={key}>
+                  <Link href={opt.route}>
+                    <li
+                      className={`nav-option text-semiblack hover:text-lapis transition-all duration-300 
+                whitespace-nowrap text-xl xl:text-2xl`}
+                    >
+                      {opt.title}
+                    </li>
+                  </Link>
+                </div>
+              )
+          )}
         </ul>
       </section>
-      <ul className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}>
+      <ul
+        className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}
+      >
         {user ? (
-          <Button type="primary" href="/dashboard"
-            className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}>
+          <Button
+            type="primary"
+            href="/dashboard"
+            className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}
+          >
             Dashboard
           </Button>
         ) : (
           <>
             <Link href={"/register"}>
-              <li className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
-                  font-light  text-xl xl:text-2xl`}>
+              <li
+                className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
+                  font-light  text-xl xl:text-2xl`}
+              >
                 Sign Up
               </li>
             </Link>
-            <Button type="primary" href="/login"
-              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}>
+            <Button
+              type="primary"
+              href="/login"
+              className={`bg-lapis text-neutral-50 font-hind font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}
+            >
               Client Login
             </Button>
           </>

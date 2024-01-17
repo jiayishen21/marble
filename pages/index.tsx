@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const { navRef, navHeight } = useNavParams();
   const router = useRouter();
 
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
 
   return (
     <main className="overflow-x-hidden w-full">
@@ -45,24 +45,31 @@ const Home: NextPage = () => {
           </div>
           <div className="max-w-[60rem] w-[75%] z-10">
             <h1
-              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] ${mobile ? "text-4xl mt-8" : "xl-text-[3.2rem] text-[2.8rem] mt-[15vh]"
-                }`}
+              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] ${
+                mobile
+                  ? "text-4xl mt-8"
+                  : "xl-text-[3.2rem] text-[2.8rem] mt-[15vh]"
+              }`}
             >
-              A mutual fund geared toward bringing investors financial well being
+              A mutual fund geared toward bringing investors financial well
+              being
             </h1>
             <h2
-              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase mt-10 leading-[1.6] ${mobile ? "text-md -mt-[2rem]" : "xl-text-[1.7rem] text-[1.4rem]"
-                }`}
+              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase mt-10 leading-[1.6] ${
+                mobile ? " -mt-[2rem]" : "xl-text-[1.7rem] text-[1.4rem]"
+              }`}
             >
-              Growing your financial literacy, building meaningful connections, and maximizing your returns.
+              Growing your financial literacy, building meaningful connections,
+              and maximizing your returns.
             </h2>
           </div>
           {!user && (
             <Button
               type="primary"
               href="/create"
-              className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${mobile ? "text-md w-20 px-[4rem]" : "text-2xl w-60 h-14"
-                }`}
+              className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${
+                mobile ? " w-20 px-[4rem]" : "text-2xl w-60 h-14"
+              }`}
             >
               Invest with us
             </Button>
@@ -71,8 +78,9 @@ const Home: NextPage = () => {
       </div>
       {/* <section className={`${styles["buffer"]} h-[2rem]`} /> */}
       <section
-        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col linear-wave -mt-[11rem] px-[8rem] items-center justify-center ${mobile ? "pt-[9rem] pb-[12rem]" : "h-[120vh]"
-          }`}
+        className={`bg-cover bg-center bg-no-repeat min-w-screen min-h-full flex flex-col linear-wave -mt-[11rem] px-[8rem] items-center justify-center ${
+          mobile ? "pt-[9rem] pb-[12rem]" : "h-[120vh]"
+        }`}
       >
         <h3
           className={`text-neutral-50 font-bold pb-8
@@ -82,31 +90,43 @@ const Home: NextPage = () => {
           Our Mission
         </h3>
         <div
-          className={`text-neutral-50 font-normal text-center ${mobile ? "text-xl" : "text-2xl"
-            }`}
+          className={`text-neutral-50 font-normal text-center ${
+            mobile ? "text-xl" : "text-2xl"
+          }`}
           data-aos="fade-up"
         >
-          Our principal benchmark is to outperform the S&P 500 index. Since our inception, we've successfully tripled the returns of this benchmark in every quarter.
+          Our principal benchmark is to outperform the S&P 500 index. Since our
+          inception, we've successfully tripled the returns of this benchmark in
+          every quarter.
         </div>
         <div
-          className={` ${mobile
-            ? "flex flex-col justify-center items-center gap-[2rem]"
-            : "flex w-full justify-around align-center pt-8"
-            }`}
+          className={` ${
+            mobile
+              ? "flex flex-col justify-center items-center gap-[2rem]"
+              : "flex w-full justify-around align-center pt-8"
+          }`}
         >
           {missionData.map((item, key) => (
             <div
-              className={`bg-white rounded flex flex-col xl:gap-[2rem] gap-[1.3rem] items-center justify-center ${mobile ? "h-40 w-full px-[2rem]" : "xl:h-[18rem] h-[15rem] w-[30%]"
-                }`}
+              className={`bg-white rounded flex flex-col xl:gap-[2rem] gap-[1.3rem] items-center justify-center ${
+                mobile
+                  ? "h-40 w-full px-[2rem]"
+                  : "xl:h-[18rem] h-[15rem] w-[30%]"
+              }`}
               data-aos="fade-right"
               key={key}
             >
-              <h2 className={`font-black ${mobile ? "text-3xl" : "xl:text-6xl text-5xl"}`}>
+              <h2
+                className={`font-black ${
+                  mobile ? "text-3xl" : "xl:text-6xl text-5xl"
+                }`}
+              >
                 {item.stat}
               </h2>
               <p
-                className={`font-semibold  text-airforce whitespace-nowrap ${mobile ? "text-md" : "xl:text-3xl text-[1.6rem]"
-                  }`}
+                className={`font-semibold  text-airforce whitespace-nowrap ${
+                  mobile ? "" : "xl:text-3xl text-[1.6rem]"
+                }`}
               >
                 {item.info}
               </p>
@@ -116,47 +136,57 @@ const Home: NextPage = () => {
       </section>
 
       <section
-        className={`${mobile
-          ? "flex flex-col gap-10 mb-[5rem]"
-          : "grid grid-cols-2 gap-12 pb-10 pt-[8rem] mb-[16rem]"
-          }`}
+        className={`${
+          mobile
+            ? "flex flex-col gap-10 mb-[5rem]"
+            : "grid grid-cols-2 gap-12 pb-10 pt-[8rem] mb-[16rem]"
+        }`}
       >
         <div
-          className={`relative flex flex-col gap-12 ${mobile ? "px-10" : "pl-20"
-            }`}
+          className={`relative flex flex-col gap-12 ${
+            mobile ? "px-10" : "pl-20"
+          }`}
           data-aos="fade-right"
         >
           <div className="absolute left-0 top-[-6rem] z-0">
             <img
               src="/elements/arrow.png"
-              className={`h-auto opacity-[0.8] ${mobile ? "w-[50vw]" : "w-[32vw]"
-                }`}
+              className={`h-auto opacity-[0.8] ${
+                mobile ? "w-[50vw]" : "w-[32vw]"
+              }`}
             />
           </div>
           <div
-            className={`text-semiblack font-bold z-10 ${mobile ? "text-4xl" : "text-6xl"
-              }`}
+            className={`text-semiblack font-bold z-10 ${
+              mobile ? "text-4xl" : "text-6xl"
+            }`}
           >
             We are passionate about growing your money
           </div>
           <div
-            className={`text-semiblack z-[10] ${mobile ? "text-lg" : "text-2xl"
-              }`}
+            className={`text-semiblack z-[10] ${
+              mobile ? "text-lg" : "text-2xl"
+            }`}
           >
-            Through Marble, students will be equipped with the necessary skills to excel in various financial sectors. We want to provide you with a space to learn, grow, and gain exposure to various trading and value investing strategies.
+            Through Marble, students will be equipped with the necessary skills
+            to excel in various financial sectors. We want to provide you with a
+            space to learn, grow, and gain exposure to various trading and value
+            investing strategies.
           </div>
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${mobile ? "text-md w-20 px-[4rem]" : "text-2xl w-60 h-14"
-              }`}
+            className={` bg-lapis rounded-md text-neutral-50 font-hind font-normal flex justify-center items-center ${
+              mobile ? " w-20 px-[4rem]" : "text-2xl w-60 h-14"
+            }`}
           >
             Meet our team
           </Button>
         </div>
         <div
-          className={`flex items-center justify-center ${mobile ? "px-[2rem]" : "pl-10 pr-[8rem]"
-            }`}
+          className={`flex items-center justify-center ${
+            mobile ? "px-[2rem]" : "pl-10 pr-[8rem]"
+          }`}
         >
           <div
             className="h-[28rem] w-full bg-opacity-50 rounded relative"

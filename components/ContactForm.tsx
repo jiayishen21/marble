@@ -13,7 +13,7 @@ const { TextArea } = Input;
 
 export default function ContactForm() {
   const [form] = useForm();
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
   const router = useRouter();
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;
@@ -69,7 +69,7 @@ export default function ContactForm() {
         <Col className="flex flex-col gap-12 pl-10" span={9}>
           <div
             className={`text-semiblack font-hind ${
-              mobile ? "text-md mt-[1rem]" : "text-2xl"
+              mobile ? " mt-[1rem]" : "text-2xl"
             }`}
           >
             We invite you to contact us through one of the methods below.
