@@ -9,15 +9,28 @@ import Dropdown from "../components/Dropdown";
 import useMobile from "../hooks/useMobile";
 
 export default function resources() {
+<<<<<<< HEAD
+  const { mobile } = useMobile();
+=======
   const { mobile } = useMobile()
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
 
   if (mobile) {
     return (
       <main className="w-full my-[3rem] mx-[1.5rem]">
         <div className="w-[80%]">
+<<<<<<< HEAD
+          <h1 className="text-2xl font-bold">Marble Investment Resources</h1>
+          <p className=" mt-[1rem]">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
+            quidem nam cupiditate pariatur enim repudiandae, ad reiciendis
+            dolores rerum animi culpa laudantium dolorem minima, delectus sint
+            tempore itaque eveniet eum?
+=======
           <h1 className="text-2xl font-bold">Resources</h1>
           <p className="text-md mt-[1rem]">
             We are committed to your financial empowerment. Access free, insightful resources on investor education, mutual growth, and financial literacy.
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
           </p>
         </div>
         <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[4rem] rounded-md">
@@ -86,8 +99,16 @@ export default function resources() {
           <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10]">
             Resources
           </h1>
+<<<<<<< HEAD
+          <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg: w-[50%]">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Accusantium error eum iusto qui harum temporibus tempore odit vel
+            maiores placeat obcaecati ullam porro aut repudiandae, eius
+            aspernatur dolorum, quod non?
+=======
           <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
             We are committed to your financial empowerment. Access free, insightful resources on investor education, mutual growth, and financial literacy.
+>>>>>>> da6a40f5eca072539a78d68fd00eb8e079b72ca8
           </div>
         </div>
         <section

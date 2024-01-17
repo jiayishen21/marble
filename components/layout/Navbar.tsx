@@ -24,6 +24,7 @@ interface Props {
 export default function Navbar({ navRef, blank, router }: Props) {
   const user = useSelector((state: RootState) => state.user.user);
   const { mobile, width } = useMobile();
+  const { mobile, width } = useMobile();
 
   const LogoIcon = useMemo(() => {
     return (
@@ -35,6 +36,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             height={0}
             width={0}
             sizes="100vw"
+            className={`h-[50px] md:h-[55px] lg:h-[65px] xl:h-[75px] w-auto`}
             className={`h-[50px] md:h-[55px] lg:h-[65px] xl:h-[75px] w-auto`}
           />
         </Link>
@@ -73,6 +75,12 @@ export default function Navbar({ navRef, blank, router }: Props) {
             </Button>
           </Dropdown>
           {width && width > 480 && LogoIcon}
+          <Dropdown overlay={menu}>
+            <Button type="default">
+              <IoIosMenu />
+            </Button>
+          </Dropdown>
+          {width && width > 480 && LogoIcon}
         </section>
         <ul className={`flex justify-center items-center gap-6`}>
           {user ? (
@@ -86,6 +94,9 @@ export default function Navbar({ navRef, blank, router }: Props) {
           ) : (
             <>
               <Link href={"/register"}>
+                <li
+                  className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}
+                >
                 <li
                   className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}
                 >
@@ -105,7 +116,10 @@ export default function Navbar({ navRef, blank, router }: Props) {
       </nav>
     );
   }
+    );
+  }
 
+  if (blank > 0) {
   if (blank > 0) {
     return (
       <nav
@@ -117,8 +131,21 @@ export default function Navbar({ navRef, blank, router }: Props) {
       </nav>
     );
   }
+      <nav
+        className="flex items-center justify-between w-full px-12"
+        ref={navRef}
+        style={{ height: `${blank}px` }}
+      >
+        <section className="fixed">{LogoIcon}</section>
+      </nav>
+    );
+  }
 
   return (
+    <nav
+      className="relative flex flex-row items-center justify-between w-full px-[2vw]"
+      ref={navRef}
+    >
     <nav
       className="relative flex flex-row items-center justify-between w-full px-[2vw]"
       ref={navRef}
@@ -143,6 +170,9 @@ export default function Navbar({ navRef, blank, router }: Props) {
           )}
         </ul>
       </section>
+      <ul
+        className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}
+      >
       <ul
         className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}
       >

@@ -14,6 +14,7 @@ const { TextArea } = Input;
 export default function ContactForm() {
   const [form] = useForm();
   const { mobile } = useMobile();
+  const { mobile } = useMobile();
   const router = useRouter();
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;

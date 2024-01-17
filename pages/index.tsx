@@ -90,7 +90,9 @@ const Home: NextPage = () => {
         >
           Our principal benchmark is to outperform the S&P 500 index. Since our
           inception, we've successfully tripled the returns of this benchmark in
-          every quarter.
+          every quarter. Our principal benchmark is to outperform the S&P 500
+          index. Since our inception, we've successfully tripled the returns of
+          this benchmark in every quarter.
         </div>
         <div className="w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
@@ -126,6 +128,9 @@ const Home: NextPage = () => {
               className={`h-auto opacity-[0.8] ${
                 mobile ? "w-[50vw]" : "w-[32vw]"
               }`}
+              className={`h-auto opacity-[0.8] ${
+                mobile ? "w-[50vw]" : "w-[32vw]"
+              }`}
             />
           </div>
           <div
@@ -139,7 +144,10 @@ const Home: NextPage = () => {
             Through Marble, students will be equipped with the necessary skills
             to excel in various financial sectors. We want to provide you with a
             space to learn, grow, and gain exposure to various trading and value
-            investing strategies.
+            investing strategies. Through Marble, students will be equipped with
+            the necessary skills to excel in various financial sectors. We want
+            to provide you with a space to learn, grow, and gain exposure to
+            various trading and value investing strategies.
           </div>
           <Button
             type="primary"
