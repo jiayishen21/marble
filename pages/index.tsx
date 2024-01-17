@@ -128,9 +128,6 @@ const Home: NextPage = () => {
               className={`h-auto opacity-[0.8] ${
                 mobile ? "w-[50vw]" : "w-[32vw]"
               }`}
-              className={`h-auto opacity-[0.8] ${
-                mobile ? "w-[50vw]" : "w-[32vw]"
-              }`}
             />
           </div>
           <div
