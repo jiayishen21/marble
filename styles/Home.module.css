@@ -1,9 +1,12 @@
-.buffer{
-    background: linear-gradient(180deg, theme('colors.intermediate') 0%, 
-    theme('colors.airforce') 100%);
+.buffer {
+  background: linear-gradient(
+    180deg,
+    theme("colors.intermediate") 0%,
+    theme("colors.airforce") 100%
+  );
 }
 
-.touch-form-label{
-    font-size: 0.95rem !important;
-    font-family: Hind, sans-serif !important;
+.touch-form-label {
+  font-size: 0.95rem !important;
+  font-family: Montserrat, sans-serif !important;
 }

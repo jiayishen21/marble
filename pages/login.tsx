@@ -20,7 +20,7 @@ export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
   const [form] = useForm();
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
 
   const handleSubmit = (formData: any) => {
     try {
@@ -80,7 +80,7 @@ export default function Login() {
         <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">
           <FaUnlockAlt />
         </div>
-        <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">
+        <div className="font-montserrat text-4xl font-semibold text-semiblack text-center w-full">
           Sign into Your Marble Account
         </div>
         <Form
@@ -124,7 +124,7 @@ export default function Login() {
                 type="primary"
                 htmlType="submit"
                 disabled={loading}
-                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-hind
+                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-montserrat
               text-2xl font-normal flex justify-center items-center"
               >
                 Sign In

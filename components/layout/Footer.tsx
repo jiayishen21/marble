@@ -9,11 +9,11 @@ import useMobile from "../../hooks/useMobile";
 
 export default function Footer() {
   const user = useSelector((state: RootState) => state.user.user);
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
 
   if (mobile) {
     return (
-      <footer className="bg-[#467099] w-full font-hind text-neutral-50 flex flex-col h-fit py-[2rem] gap-[3rem]">
+      <footer className="bg-[#467099] w-full font-montserrat text-neutral-50 flex flex-col h-fit py-[2rem] gap-[3rem]">
         <section className="flex flex-1">
           <ul className="flex items-center justify-around font-light text-2xl w-full flex-col gap-[1.5rem]">
             {PublicNavOptions.map((opt, key) => (
@@ -75,7 +75,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="px-[2.5rem] pt-[4rem] bg-[#467099] w-full font-hind text-neutral-50 flex flex-col h-fit">
+    <footer className="px-[2.5rem] pt-[4rem] bg-[#467099] w-full font-montserrat text-neutral-50 flex flex-col h-fit">
       <div className="flex justify-between w-full">
         <section>
           <div className="flex flex-col pl-[4rem] gap-[3rem]">
@@ -106,7 +106,7 @@ export default function Footer() {
             {PublicNavOptions.map((opt, key) => (
               <div key={key}>
                 <Link href={opt.route}>
-                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300 text-xl">
+                  <li className="nav-option text-white hover:text-lightblue transition-all duration-300 text-sm md:text-base lg:text-lg">
                     {opt.title}
                   </li>
                 </Link>
@@ -123,7 +123,7 @@ export default function Footer() {
                 <Link href={"/register"}>
                   <li
                     className="nav-option text-white hover:text-lightblue
-                      font-light text-xl 
+                      font-light text-sm md:text-base lg:text-lg
                       transition-all duration-300"
                   >
                     Sign Up
@@ -132,7 +132,7 @@ export default function Footer() {
                 <Link href={"/login"}>
                   <li
                     className="nav-option text-white hover:text-lightblue
-                      font-light text-xl underline 
+                      font-light text-sm md:text-base lg:text-lg underline 
                       transition-all duration-300"
                   >
                     Client Login

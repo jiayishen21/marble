@@ -20,7 +20,7 @@ export default function Register() {
   const [form] = useForm();
   const [loading, setLoading] = useState(false);
   const [agree, setAgree] = useState(false);
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
 
   const handleSubmit = (formData: any) => {
     try {
@@ -99,7 +99,7 @@ export default function Register() {
         }`}
         data-aos={mobile ? undefined : "fade-up"}
       >
-        <div className="font-hind text-4xl font-semibold text-semiblack text-center w-full">
+        <div className="font-montserrat text-4xl font-semibold text-semiblack text-center w-full">
           Become a Marble Investor
         </div>
         <Form
@@ -189,7 +189,7 @@ export default function Register() {
                 type="primary"
                 htmlType="submit"
                 disabled={loading}
-                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-hind
+                className="px-10 h-10 bg-lapis rounded-md text-neutral-50 font-montserrat
               text-2xl font-normal flex justify-center items-center"
               >
                 Sign Up

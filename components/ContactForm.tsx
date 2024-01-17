@@ -13,7 +13,7 @@ const { TextArea } = Input;
 
 export default function ContactForm() {
   const [form] = useForm();
-  const {mobile} = useMobile()
+  const { mobile } = useMobile();
   const router = useRouter();
   const onSubmit = (formData: any) => {
     const { fullName, email, company, subject, message } = formData;
@@ -48,270 +48,162 @@ export default function ContactForm() {
 
   return (
     <section
-      className={`${!mobile ? "mt-[8rem]" : ""} ${
+      className={`px-10 lg:px-20 xl:px-32 2xl:px-48 flex flex-col md:flex-row md:space-x-14 ${
         router.pathname === "/contact" ? "mt-[4rem]" : ""
       }`}
     >
-      <div className="pl-10">
-        <div
-          className={`text-semiblack font-bold font-hind ${
-            mobile ? "text-4xl -mt-[2rem]" : "text-6xl"
-          }`}
+      <div className="flex flex-col">
+        <h2
+          className={`text-semiblack font-bold font-montserrat text-3xl md:text-4xl lg:text-5xl`}
+          data-aos="fade-right"
         >
           Get in touch
+        </h2>
+        <p
+          className={`text-semiblack font-montserrat my-3 text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl`}
+          data-aos="fade-right"
+        >
+          We invite you to contact us through one of the methods below.
+        </p>
+        <div className={`flex flex-col justify-start space-y-6 h-full pb-8`}>
+          {ContactOptions.map((item, key) => {
+            return (
+              <div
+                className={`flex flex-col text-sm md:text-md lg:text-lg 2xl:text-xl`}
+                key={key}
+                data-aos="fade-right"
+              >
+                <div
+                  className={`flex flex-row justify-start items-center ${
+                    mobile ? "gap-2" : ""
+                  }`}
+                >
+                  <span>{item.icon}</span>
+                  <span className="font-montserrat font-bold ml-1">
+                    {item.title}
+                  </span>
+                </div>
+                <div className="font-montserrat whitespace-nowrap text-sm md:text-base lg:text-lg 2xl:text-xl">
+                  {item.value}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <Row
-        className={`${
-          mobile ? "flex flex-col items-start" : "pb-[12rem] pt-[2rem]"
-        }`}
-      >
-        <Col className="flex flex-col gap-12 pl-10" span={9}>
-          <div
-            className={`text-semiblack font-hind ${
-              mobile ? "text-md mt-[1rem]" : "text-2xl"
-            }`}
-          >
-            We invite you to contact us through one of the methods below.
-          </div>
-          <div
-            className={`flex flex-col justify-between h-full pb-8 ${
-              mobile ? "gap-[1rem]" : "pt-4"
-            }`}
-          >
-            {ContactOptions.map((item, key) => {
-              return (
-                <div
-                  className={`flex flex-col ${
-                    mobile ? "text-sm" : "text-2xl gap-6"
-                  }`}
-                  key={key}
-                >
-                  <div
-                    className={`flex items-center ${
-                      mobile ? "gap-2" : "gap-6"
-                    }`}
-                  >
-                    <span className={`${mobile ? "text-xl" : "text-3xl"}`}>
-                      {item.icon}
-                    </span>
-                    <span className="font-hind font-bold">{item.title}</span>
-                  </div>
-                  <div className="font-hind whitespace-nowrap mt-[0.5rem] text-lg">
-                    {item.value}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Col>
-        {!mobile && (
-          <Col span={2} className="flex items-center justify-center mr-[6rem]">
-            <div className="w-[0.25em] h-full bg-lapis rounded"></div>
-          </Col>
-        )}
-        {mobile ? (
-          <Col className="flex flex-col gap-8 mb-[2rem] px-10 w-full">
-            <div className="text-semiblack font-hind text-lg">
-              Or, reach us directly.
-            </div>
-            <form onSubmit={onSubmit} className="w-full">
-              <div className="text-semiblack/[0.5] text-sm font-light font-hind mb-4">
-                All fields marked with * are required.
-              </div>
-              <div className="row-gutter-10">
-                {/* Replace Col and Item with standard HTML structure */}
-                <div className="flex flex-col w-full gap-[0.5rem]">
-                  <label htmlFor="fullName">Full Name</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Name"
-                    required
-                    className="h-[3rem] rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col w-full mt-[1rem] gap-[0.5rem]">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                    className="h-[3rem] rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col w-full mt-[1rem] gap-[0.5rem]">
-                  <label htmlFor="company">Your Company/Institution</label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    placeholder="Company"
-                    className="h-[3rem] rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col w-full mt-[1rem] gap-[0.5rem]">
-                  <label htmlFor="subject">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    placeholder="Subject"
-                    required
-                    className="h-[3rem] rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-col w-full mt-[1rem] gap-[0.5rem]">
-                  <label htmlFor="message">
+      <div className="flex-col flex mb-10" data-aos="fade-left">
+        <p className="text-semiblack font-semibold text-xl md:text-2xl xl:text-3xl font-montserrat">
+          Or, reach us directly.
+        </p>
+        <Form form={form} layout="vertical" onFinish={onSubmit}>
+          <p className="text-semiblack/50 text-lg md:text-xl xl:text-2xl font-light font-montserrat mb-4">
+            All fields marked with * are required.
+          </p>
+          <Row gutter={[8, 0]}>
+            <Col span={mobile ? 24 : 12}>
+              <Item
+                name="fullName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Required field",
+                  },
+                ]}
+                label={
+                  <label className={styles["touch-form-label"]}>
+                    Full Name
+                  </label>
+                }
+              >
+                <Input size="large" placeholder="Name" />
+              </Item>
+            </Col>
+            <Col span={mobile ? 24 : 12}>
+              <Item
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Required field",
+                  },
+                ]}
+                label={
+                  <label className={styles["touch-form-label"]}>Email</label>
+                }
+              >
+                <Input size="large" placeholder="Email" />
+              </Item>
+            </Col>
+            <Col span={mobile ? 24 : 12}>
+              <Item
+                name="company"
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+                label={
+                  <label className={styles["touch-form-label"]}>
+                    Company name
+                  </label>
+                }
+              >
+                <Input size="large" placeholder="Company" />
+              </Item>
+            </Col>
+            <Col span={mobile ? 24 : 12}>
+              <Item
+                name="subject"
+                rules={[
+                  {
+                    required: true,
+                    message: "Required field",
+                  },
+                ]}
+                label={
+                  <label className={styles["touch-form-label"]}>Subject</label>
+                }
+              >
+                <Input size="large" placeholder="Subject" />
+              </Item>
+            </Col>
+            <Col span={24}>
+              <Item
+                name="message"
+                rules={[
+                  {
+                    required: true,
+                    message: "Required field",
+                  },
+                ]}
+                label={
+                  <label className={styles["touch-form-label"]}>
                     Please leave your message below.
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Enter your message here..."
-                    rows={5}
-                    style={{ height: "15rem" }}
-                    required
-                  />
-                </div>
-                <div className="flex flex-col w-full mt-[1rem] gap-[0.5rem]">
-                  <button
-                    type="submit"
-                    className="mx-auto w-[40%] h-10 bg-lapis rounded-md text-neutral-50 font-hind text-xl font-normal flex justify-center items-center"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
-          </Col>
-        ) : (
-          <Col
-            className={`flex flex-col gap-8 ${
-              mobile && "ml-auto mr-[5rem] mb-[2rem]"
-            }`}
-            span={10}
-          >
-            <div className="text-semiblack text-2xl font-hind">
-              Or, reach us directly.
-            </div>
-            <Form form={form} layout="vertical" onFinish={onSubmit}>
-              <div className="text-semiblack/[0.5] text-xl font-light font-hind mb-4">
-                All fields marked with * are required.
-              </div>
-              <Row gutter={[10, 10]}>
-                <Col span={12}>
-                  <Item
-                    name="fullName"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Required field",
-                      },
-                    ]}
-                    label={
-                      <label className={styles["touch-form-label"]}>
-                        Full Name
-                      </label>
-                    }
-                  >
-                    <Input size="large" placeholder="Name" />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item
-                    name="email"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Required field",
-                      },
-                    ]}
-                    label={
-                      <label className={styles["touch-form-label"]}>
-                        Email
-                      </label>
-                    }
-                  >
-                    <Input size="large" placeholder="Email" />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item
-                    name="company"
-                    rules={[
-                      {
-                        required: false,
-                      },
-                    ]}
-                    label={
-                      <label className={styles["touch-form-label"]}>
-                        Your Company/Institution
-                      </label>
-                    }
-                  >
-                    <Input size="large" placeholder="Company" />
-                  </Item>
-                </Col>
-                <Col span={12}>
-                  <Item
-                    name="subject"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Required field",
-                      },
-                    ]}
-                    label={
-                      <label className={styles["touch-form-label"]}>
-                        Subject
-                      </label>
-                    }
-                  >
-                    <Input size="large" placeholder="Subject" />
-                  </Item>
-                </Col>
-                <Col span={24}>
-                  <Item
-                    name="message"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Required field",
-                      },
-                    ]}
-                    label={
-                      <label className={styles["touch-form-label"]}>
-                        Please leave your message below.
-                      </label>
-                    }
-                  >
-                    <TextArea
-                      size="large"
-                      placeholder="Enter your message here..."
-                      rows={5}
-                      style={{ resize: "none" }}
-                    />
-                  </Item>
-                </Col>
-                <Col span={6} className="mt-2">
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="w-full h-10 bg-lapis rounded-md text-neutral-50 font-hind
-                text-xl font-normal flex justify-center items-center"
-                  >
-                    Submit
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-          </Col>
-        )}
-      </Row>
+                }
+              >
+                <TextArea
+                  size="large"
+                  placeholder="Enter your message here..."
+                  rows={5}
+                  style={{ resize: "none" }}
+                />
+              </Item>
+            </Col>
+            <Col span={mobile ? 24 : 12} className="mt-2">
+              <button
+                type="submit"
+                className="w-full h-10 bg-lapis rounded-none text-neutral-50 font-montserrat
+                text-base md:text-lg lg:text-xl px-4 py-2 font-normal flex justify-center items-center
+                hover:bg-lapis/80 transition-all duration-200
+                "
+              >
+                Submit
+              </button>
+            </Col>
+          </Row>
+        </Form>
+      </div>
     </section>
   );
 }
