@@ -1,19 +1,24 @@
-import { useWindowSize } from "@uidotdev/usehooks"
-import { useEffect, useState } from "react"
+import { useWindowSize } from "@uidotdev/usehooks";
+import { useEffect, useState } from "react";
 
 const useMobile = () => {
-  const { width } = useWindowSize()
-  const [mobile, setMobile] = useState<boolean>(false)
+  const { width } = useWindowSize();
+  const [mobile, setMobile] = useState<boolean>(false);
 
   useEffect(() => {
     if (width) {
-      const userAgent = typeof navigator === 'undefined' ? '' : navigator.userAgent;
-      const mobileDevice = Boolean(userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i));
-      setMobile(width <= 768 || mobileDevice)
+      const userAgent =
+        typeof navigator === "undefined" ? "" : navigator.userAgent;
+      const mobileDevice = Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+      );
+      setMobile(width <= 940 || mobileDevice);
     }
-  }, [width])
+  }, [width]);
 
-  return { mobile, width }
-}
+  return { mobile, width };
+};
 
-export default useMobile
+export default useMobile;

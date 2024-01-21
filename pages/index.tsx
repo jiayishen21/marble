@@ -34,23 +34,26 @@ const Home: NextPage = () => {
         >
           <div className="absolute right-0 z-0" data-aos="fade-left">
             <div className="relative z-0">
-              <img src="/elements/hextiles.png" className="w-[30vw] h-auto" />
+              <img
+                src="/elements/hextiles.png"
+                className="w-[30vw] h-auto max-sm:hidden"
+              />
               <div className="absolute inset-0 bg-gradient-to-b from-[#fafafa] via-[#fafafa] to-transparent opacity-90 h-[30%]"></div>
             </div>
           </div>
           <div
-            className="max-w-[60rem] w-full md:w-[60%] lg:w-[80%] xl:w-[70%] z-10"
+            className="max-w-[60rem] w-full sm:w-[70%] lg:w-[80%] xl:w-[70%] z-10"
             data-aos="fade-right"
           >
             <h1
-              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl md:text-3xl lg:text-4xl 
-            2xl:text-5xl mt-[5vw] text-center lg:text-left lg:mt-[5vh] xl:mt-[10vh] 2xl:mt-[15vh]`}
+              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
+            2xl:text-5xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[5vh] xl:mt-[10vh] 2xl:mt-[15vh]`}
             >
               A mutual fund geared toward bringing investors financial well
               being
             </h1>
             <h2
-              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm md:text-base lg:text-lg  
+              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base lg:text-lg  
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-8 xl:mt-10`}
             >
               Growing your financial literacy, building meaningful connections,
@@ -61,7 +64,7 @@ const Home: NextPage = () => {
             <Button
               type="primary"
               href="/register"
-              className={` bg-lapis rounded-none text-neutral-50 text-lg xl:text-xl p-5 font-montserrat font-normal flex 
+              className={` bg-lapis rounded-none text-neutral-50 text-xs xl:text-xl p-2 xl:p-5 font-montserrat font-normal flex 
               justify-center items-center`}
               data-aos="fade-right"
             >
@@ -117,15 +120,15 @@ const Home: NextPage = () => {
       </section>
 
       <section
-        className={`flex flex-col md:grid md:grid-cols-2 gap-12 pb-10 pt-[8rem] mb-[5rem] px-10 lg:px-20 xl:px-32
+        className={`flex flex-col md:grid md:grid-cols-2 gap-12 pb-10 pt-[8rem] mb-[5rem] px-10 lg:px-20 xl:px-32 relative
         `}
       >
-        <div className={`relative flex flex-col gap-12`} data-aos="fade-right">
-          <div className="absolute left-0 top-[-6rem] z-0">
+        <div className={`flex flex-col gap-12`} data-aos="fade-right">
+          <div className="absolute -left-0 top-0 md:-left-20 lg:-left-26 xl:-left-30 z-0">
             <img
               src="/elements/arrow.png"
               className={`h-auto opacity-[0.8] ${
-                mobile ? "w-[50vw]" : "w-[32vw]"
+                mobile ? "w-[50vw]" : "w-[28vw]"
               }`}
             />
           </div>

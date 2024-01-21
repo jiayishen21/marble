@@ -6,7 +6,7 @@ import Team from "../../components/Team";
 import useMobile from "../../hooks/useMobile";
 
 export default function Meet() {
-  const { mobile } = useMobile()
+  const { mobile } = useMobile();
   const [option, setOption] = useState("Managers");
 
   return (
@@ -19,7 +19,8 @@ export default function Meet() {
                 Meet Our Team
               </span>
               <span className="text-semiblack text-lg max-w-[55%]">
-                We've gathered a top-notch team of diverse talent from across Canada. Get to know the folks forging your financial success.
+                We've gathered a top-notch team of diverse talent from across
+                Canada. Get to know the folks forging your financial success.
               </span>
             </div>
           </section>
@@ -27,8 +28,9 @@ export default function Meet() {
             {teamOptions.map((item, key) => (
               <Button
                 key={key}
-                className={`flex items-center justify-center w-fit rounded-full gap-[0.5rem] px-[3rem] py-[1.5rem] text-lg text-[#17499A] ${option === item.title ? "bg-[#E7F6F9] border-4" : "bg-none"
-                  }`}
+                className={`flex items-center justify-center w-fit rounded-full gap-[0.5rem] px-[3rem] py-[1.5rem] text-lg text-[#17499A] ${
+                  option === item.title ? "bg-[#E7F6F9] border-4" : "bg-none"
+                }`}
                 onClick={() => setOption(item.title)}
               >
                 {item.title}
@@ -36,7 +38,7 @@ export default function Meet() {
             ))}
           </section>
         </div>
-        {option === 'Managers' ? (
+        {option === "Managers" ? (
           <section
             className="mt-[6rem]"
             data-aos={mobile ? undefined : "fade-right"}
@@ -58,5 +60,5 @@ export default function Meet() {
         )}
       </main>
     </>
-  )
+  );
 }
