@@ -80,7 +80,10 @@ export default function Login() {
         <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">
           <FaUnlockAlt />
         </div>
-        <div className="font-montserrat text-4xl font-semibold text-semiblack text-center w-full">
+        <div
+          className="text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
+            2xl:text-5xl text-center w-full"
+        >
           Sign into Your Marble Account
         </div>
         <Form

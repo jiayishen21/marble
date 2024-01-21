@@ -31,26 +31,10 @@ export default function Document() {
           sizes="16x16"
           href="/meta/logo16.png"
         />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/meta/logo76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/meta/logo120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/meta/logo152.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/meta/logo180.png"
-        />
+        <link rel="apple-touch-icon" sizes="76x76" href="/meta/logo76.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/meta/logo120.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/meta/logo152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/meta/logo180.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Marble Investments" />
         <meta name="apple-mobile-web-app-status-bar" content="#2F5A8D" />

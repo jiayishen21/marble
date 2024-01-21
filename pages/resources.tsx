@@ -9,7 +9,7 @@ import Dropdown from "../components/Dropdown";
 import useMobile from "../hooks/useMobile";
 
 export default function resources() {
-  const { mobile } = useMobile()
+  const { mobile } = useMobile();
 
   if (mobile) {
     return (
@@ -17,7 +17,9 @@ export default function resources() {
         <div className="w-[80%]">
           <h1 className="text-2xl font-bold">Resources</h1>
           <p className="text-md mt-[1rem]">
-            We are committed to your financial empowerment. Access free, insightful resources on investor education, mutual growth, and financial literacy.
+            We are committed to your financial empowerment. Access free,
+            insightful resources on investor education, mutual growth, and
+            financial literacy.
           </p>
         </div>
         <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[4rem] rounded-md">
@@ -58,14 +60,14 @@ export default function resources() {
             <Dropdown title={"2024 insights"} options={miscellaneousData} />
           </div>
         </section>
-      </main >
+      </main>
     );
   }
 
   return (
     <main className="w-full mb-[8rem]">
       <section
-        className={`relative flex flex-col gap-12 h-full px-[8rem]`}
+        className={`relative flex flex-col gap-12 h-full px-[1.5rem] md:px-[2.5rem] lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem]`}
         data-aos="fade-right"
       >
         <div className="absolute right-0 z-0" data-aos="fade-left">
@@ -82,22 +84,26 @@ export default function resources() {
             </div>
           </div>
         </div>
-        <div>
-          <h1 className="mt-[8rem] text-semiblack font-bold text-6xl z-[10]">
+        <div className="flex flex-col gap-6">
+          <h1
+            className="text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
+            2xl:text-5xl mt-[5rem]"
+          >
             Resources
           </h1>
-          <div className="font-cairo font-semibold tracking-wide text-lg z-[10] max-lg:text-md w-[50%]">
-            We are committed to your financial empowerment. Access free, insightful resources on investor education, mutual growth, and financial literacy.
+          <div className="text-semiblack text-base md:text-lg xl:text-xl w-[50%]">
+            We are committed to your financial empowerment. Access free,
+            insightful resources on investor education, mutual growth, and
+            financial literacy.
           </div>
         </div>
         <section
-          className={`flex justify-between items-center ${mobile ? "flex-col gap-[3rem] my-[2rem]" : "my-[4rem]"
-            }`}
+          className={`flex justify-between items-center my-[4rem]
+          `}
         >
           <div className="flex flex-col py-[2rem]">
             <h2
-              className={`text-semiblack font-bold  ${mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
-                }`}
+              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
               QUARTERLY LETTERS
             </h2>
@@ -108,8 +114,7 @@ export default function resources() {
           </div>
           <div className="flex flex-col">
             <h2
-              className={`text-semiblack font-bold  ${mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
-                }`}
+              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
               ANNUAL REPORTS
             </h2>
@@ -117,8 +122,7 @@ export default function resources() {
           </div>
           <div className="flex flex-col">
             <h2
-              className={`text-semiblack font-bold  ${mobile ? "text-2xl mb-[1rem]" : "text-3xl mb-[2rem]"
-                }`}
+              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
               MISCELLANEOUS
             </h2>
@@ -128,7 +132,7 @@ export default function resources() {
             ></Dropdown>
           </div>
         </section>
-      </section >
-    </main >
+      </section>
+    </main>
   );
 }

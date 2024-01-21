@@ -36,10 +36,10 @@ export default function Card(item: any) {
         src={item.photo}
         alt={item.name}
         preview={false}
-        className={`origin-bottom ${!mobile && "scale-[1.5]"}`}
+        className={`origin-bottom scale-[1.2] 2xl:scale-[1.5]`}
       />
 
-      <span className="text-semiblack font-bold text-3xl font-montserrat">
+      <span className="text-semiblack font-bold text-base sm:text-3xl lg:text-4xl font-montserrat whitespace-nowrap">
         {item.name}
       </span>
       <span className="font-cairo font-normal tracking-wider text-xl text-semiblack">
