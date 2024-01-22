@@ -46,14 +46,14 @@ const Home: NextPage = () => {
             data-aos="fade-right"
           >
             <h1
-              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
+              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl md:text-4xl 
             2xl:text-5xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[5vh] xl:mt-[10vh] 2xl:mt-[15vh]`}
             >
               A mutual fund geared toward bringing investors financial well
               being
             </h1>
             <h2
-              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base lg:text-lg  
+              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-lg  
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-8 xl:mt-10`}
             >
               Growing your financial literacy, building meaningful connections,
