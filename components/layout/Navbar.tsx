@@ -79,7 +79,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <Button
               type="primary"
               href="/dashboard"
-              className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm`}
+              className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm z-10`}
             >
               Dashboard
             </Button>
@@ -95,7 +95,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
               <Button
                 type="primary"
                 href="/login"
-                className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm`}
+                className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm z-10`}
               >
                 Client Login
               </Button>

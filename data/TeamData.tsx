@@ -54,7 +54,7 @@ const TeamSections: Record<string, TeamMember[]> = {
       photo: "/members/blank-pfp.png",
       role: "Frontend Developer",
       email: "aq0335@gmail.com",
-      link: "linkedin.com/in/anthony-qiu-3b8817288",
+      link: "https://www.linkedin.com/in/anthony-qiu-3b8817288/",
     },
     {
       name: "John Liu",
