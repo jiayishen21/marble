@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Image } from "antd";
+import { Button } from "antd";
+import Image from "next/image";
 import { MdEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import useMobile from "../hooks/useMobile";
 
 export default function Card(item: any) {
-  const { mobile } = useMobile();
+  const { width } = useMobile();
 
   const SocialButtons = (item: any) => {
     return (
@@ -32,14 +33,20 @@ export default function Card(item: any) {
 
   return (
     <>
-      <Image
-        src={item.photo}
-        alt={item.name}
-        preview={false}
-        width={210}
-        height={175}
-        className={`origin-bottom scale-[1.2] 2xl:scale-[1.5] rounded-md`}
-      />
+      <div className="w-[85%] h-auto relative">
+        <Image
+          src={item.photo}
+          alt={item.name}
+          // width={width && width < 525 ? 300 : 180}
+          // height={width && width < 525 ? 252 : 151}
+          // className={`origin-bottom scale-[1.2] 2xl:scale-[1.5] rounded-md`}
+          width={180}
+          height={151}
+          layout="responsive"
+          objectFit="cover"
+          className="rounded-md"
+        />
+      </div>
 
       <span className="text-semiblack font-bold text-base sm:text-3xl lg:text-4xl font-montserrat whitespace-nowrap">
         {item.name}

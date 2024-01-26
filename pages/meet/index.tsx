@@ -48,9 +48,8 @@ export default function Meet() {
               teamOptions.map((item, key) => (
                 <Button
                   key={key}
-                  className={`flex items-center justify-center w-fit rounded-full gap-[0.5rem] px-[2rem] py-[1.5rem] text-base md:text-lg xl:text-xl text-[#17499A] ${
-                    option === item.title ? "bg-[#E7F6F9] border-4" : "bg-none"
-                  }`}
+                  className={`flex items-center justify-center w-fit rounded-full gap-[0.5rem] px-[2rem] py-[1.5rem] text-base md:text-lg xl:text-xl text-[#17499A] ${option === item.title ? "bg-[#E7F6F9] border-4" : "bg-none"
+                    }`}
                   onClick={() => setOption(item.title)}
                 >
                   {item.title}
@@ -70,7 +69,7 @@ export default function Meet() {
                   className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
                   key={key}
                   xs={24}
-                  md={8}
+                  md={12}
                 >
                   <Card {...item} />
                 </Col>
