@@ -123,8 +123,11 @@ const Home: NextPage = () => {
         className={`flex flex-col md:grid md:grid-cols-2 gap-12 pb-10 pt-[8rem] mb-[5rem] px-10 lg:px-20 xl:px-32 relative
         `}
       >
-        <div className={`flex flex-col gap-12`} data-aos="fade-right">
-          <div className="absolute -left-0 top-0 md:-left-20 lg:-left-26 xl:-left-30 z-0">
+        <div className={`flex flex-col gap-12`}>
+          <div
+            className="absolute -left-0 top-0 md:-left-20 lg:-left-26 xl:-left-30 z-0"
+            data-aos="fade-right"
+          >
             <img
               src="/elements/arrow.png"
               className={`h-auto opacity-[0.8] ${
@@ -134,11 +137,13 @@ const Home: NextPage = () => {
           </div>
           <div
             className={`text-semiblack font-bold z-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl`}
+            data-aos="fade-right"
           >
             We are passionate about growing your money
           </div>
           <div
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
+            data-aos="fade-right"
           >
             Through Marble, students will be equipped with the necessary skills
             to excel in various financial sectors. We want to provide you with a
@@ -156,6 +161,7 @@ const Home: NextPage = () => {
                 ? "text-sm md:text-base w-20 px-[4rem]"
                 : "text-lg xl:text-xl w-60 py-6"
             }`}
+            data-aos="fade-right"
           >
             Meet our team
           </Button>
