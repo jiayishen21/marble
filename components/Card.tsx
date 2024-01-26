@@ -12,7 +12,7 @@ export default function Card(item: any) {
       <div className="flex gap-6 mt-2">
         <Button
           type="primary"
-          href={item.email}
+          href={`mailto:${item.email}`}
           target="_blank"
           className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
         >
@@ -36,7 +36,9 @@ export default function Card(item: any) {
         src={item.photo}
         alt={item.name}
         preview={false}
-        className={`origin-bottom scale-[1.2] 2xl:scale-[1.5]`}
+        width={210}
+        height={175}
+        className={`origin-bottom scale-[1.2] 2xl:scale-[1.5] rounded-md`}
       />
 
       <span className="text-semiblack font-bold text-base sm:text-3xl lg:text-4xl font-montserrat whitespace-nowrap">
