@@ -78,14 +78,27 @@ export default function Footer() {
     <footer className="px-[2.5rem] pt-[4rem] bg-[#467099] w-full font-montserrat text-neutral-50 flex flex-col h-fit">
       <div className="flex justify-between w-full">
         <section>
-          <div className="flex flex-col pl-[4rem] gap-[3rem]">
-            <Image
-              src="/elements/marble.svg"
+          <div className="flex flex-col pl-[4rem] gap-[2rem]">
+            {/* <Image
+              src="/elements/logo-simple.png"
               alt="Marble logo"
-              height={0}
-              width={0}
+              height={512}
+              width={512}
               className="w-[50%] h-auto"
-            />
+            /> */}
+            <div className="w-full justify-center flex">
+              <div className="w-[9rem] h-auto relative">
+                <Image
+                  src="/elements/logo-footer.png"
+                  alt="Marble logo"
+                  layout="responsive" // This will make the image keep its aspect ratio
+                  height={512}
+                  width={512}
+                  objectFit="contain" // Ensures the image scales down if it doesn't fit in the new size
+                />
+              </div>
+            </div>
+
             <div className="flex gap-[2rem]">
               {ContactOptions.map((icon, key) => (
                 <Link
