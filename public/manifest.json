@@ -3,32 +3,32 @@
   "name": "Marble Investments",
   "icons": [
     {
-      "src": "/assets/meta/icon16.png",
+      "src": "/assets/meta/logo16.png",
       "type": "image/png",
       "sizes": "16x16"
     },
     {
-      "src": "/assets/meta/icon32.png",
+      "src": "/assets/meta/logo32.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "/assets/meta/icon76.png",
+      "src": "/assets/meta/logo76.png",
       "type": "image/png",
       "sizes": "76x76"
     },
     {
-      "src": "/assets/meta/icon120.png",
+      "src": "/assets/meta/logo120.png",
       "type": "image/png",
       "sizes": "120x120"
     },
     {
-      "src": "/assets/meta/icon152.png",
+      "src": "/assets/meta/logo152.png",
       "type": "image/png",
       "sizes": "152x152"
     },
     {
-      "src": "/assets/meta/icon180.png",
+      "src": "/assets/meta/logo180.png",
       "type": "image/png",
       "sizes": "180x180"
     }

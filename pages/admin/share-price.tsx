@@ -23,7 +23,6 @@ const SharePrice: React.FC = () => {
         .post('/api/shares/new-price', { date: realDate, price })
         .then((res) => {
           toast.success('New price added successfully');
-          console.log(res.data.shares)
         })
         .catch((err) => {
           toast.error(err.response.data.message);

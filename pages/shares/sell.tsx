@@ -20,7 +20,6 @@ const Sell: React.FC = () => {
         .post('/api/shares/sell', { quantity })
         .then((res) => {
           toast.success('New price added successfully');
-          console.log(res.data.shares)
         })
         .catch((err) => {
           toast.error(err.response.data.message);

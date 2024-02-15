@@ -30,8 +30,6 @@ const ShareChart = () => {
 
       const newDates = dates.map(addOneDay);
 
-      console.log(newDates);
-
       const ctx = chartRef.current.getContext("2d");
 
       if (ctx) {

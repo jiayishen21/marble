@@ -94,9 +94,8 @@ export default function Register() {
   return (
     <div className={`flex items-center justify-center w-full h-screen`}>
       <Row
-        className={`p-12 rounded ${
-          mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
-        }`}
+        className={`p-12 rounded ${mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
+          }`}
         data-aos={mobile ? undefined : "fade-up"}
       >
         <div
@@ -168,7 +167,7 @@ export default function Register() {
                   </label>
                 }
               >
-                <Password size="large" visibilityToggle={false} />
+                <Password size="large" />
               </Item>
             </Col>
             <Col

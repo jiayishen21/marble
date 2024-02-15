@@ -20,8 +20,6 @@ export default async function handler(
     }
 
     const { question, deadline, options }: { question: string, deadline: Date, options: any } = req.body
-    console.log('lel')
-    console.log(question, deadline, options)
 
     if (!question || !deadline || !options || options.length < 2) {
       throw new Error('Missing question, deadline, or multiple options.')

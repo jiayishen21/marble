@@ -8,12 +8,15 @@ import React, {
 import Image from "next/image";
 import Link from "next/link";
 import { PublicNavOptions } from "../../data/NavOptions";
-import { Button, Dropdown, Menu, Space } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import { NextRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../store/store";
 import { IoIosMenu } from "react-icons/io";
 import useMobile from "../../hooks/useMobile";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { setUser, setUserLoading } from "../../store/userSlice";
 
 interface Props {
   navRef: MutableRefObject<any>;
@@ -22,6 +25,7 @@ interface Props {
 }
 
 export default function Navbar({ navRef, blank, router }: Props) {
+  const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.user.user);
   const { mobile, width } = useMobile();
 
@@ -41,6 +45,25 @@ export default function Navbar({ navRef, blank, router }: Props) {
       </div>
     );
   }, []);
+
+  const onLogout = () => {
+    axios
+      .post('/api/user/logout')
+      .then((response: any) => {
+        if (response?.data?.message) {
+          router.push("/");
+          dispatch(setUser(null));
+        }
+      })
+      .catch((error: any) => {
+        if (error?.response?.data?.message) {
+          toast.error(error.response.data.message);
+        }
+        else {
+          toast.error('Failed to sign out. Please try again.');
+        }
+      });
+  }
 
   const menu = (
     <Menu>
@@ -76,29 +99,36 @@ export default function Navbar({ navRef, blank, router }: Props) {
         </section>
         <ul className={`flex justify-center items-center gap-6`}>
           {user ? (
-            <Button
-              type="primary"
-              href="/dashboard"
-              className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm`}
-            >
-              Dashboard
-            </Button>
+            <>
+              <Button
+                onClick={onLogout}
+                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm'
+              >
+                Log out
+              </Button>
+              <Link
+                type="primary"
+                href={user.verificationCode ? '/verify' : '/dashboard'}
+                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm'
+              >
+                Dashboard
+              </Link>
+            </>
           ) : (
             <>
-              <Link href={"/register"}>
-                <li
-                  className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm`}
-                >
-                  Sign Up
-                </li>
+              <Link
+                href="/register"
+                className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm'
+              >
+                Sign Up
               </Link>
-              <Button
+              <Link
                 type="primary"
                 href="/login"
-                className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm`}
+                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm'
               >
                 Client Login
-              </Button>
+              </Link>
             </>
           )}
         </ul>
@@ -146,30 +176,36 @@ export default function Navbar({ navRef, blank, router }: Props) {
         className={`flex justify-center items-center gap-6 xl:gap-7 2xl:gap-8`}
       >
         {user ? (
-          <Button
-            type="primary"
-            href="/dashboard"
-            className={`bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11`}
-          >
-            Dashboard
-          </Button>
-        ) : (
           <>
-            <Link href={"/register"}>
-              <li
-                className={`nav-option text-semiblack hover:text-lapis whitespace-nowrap
-                  font-medium  text-lg xl:text-xl`}
-              >
-                Sign Up
-              </li>
+            <Link
+              type="primary"
+              href={user.verificationCode ? '/verify' : '/dashboard'}
+              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11'
+            >
+              Dashboard
             </Link>
             <Button
+              onClick={onLogout}
+              className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none'
+            >
+              Log out
+            </Button>
+          </>
+        ) : (
+          <>
+            <Link
+              href="/register"
+              className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl'
+            >
+              Sign Up
+            </Link>
+            <Link
               type="primary"
               href="/login"
-              className={`bg-lapis text-slate-300 font-montserrat font-medium flex justify-center items-center px-4 py-2 text-lg xl:text-xl h-10 2xl:h-11`}
+              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-medium flex justify-center items-center px-4 py-2 text-lg xl:text-xl h-10 2xl:h-11'
             >
               Client Login
-            </Button>
+            </Link>
           </>
         )}
       </ul>
