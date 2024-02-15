@@ -63,72 +63,23 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "john4button@gmail.com",
       link: "https://www.linkedin.com/in/john--liu/",
     },
+  ],
+  Marketing: [
     {
       name: "Jessica Wang",
-      photo: "/members/developers/jessica-wang.png",
-      role: "UI/UX Designer",
+      photo: "/members/marketing/jessica-wang.png",
+      role: "UI/UX Design",
       email: "jessica.wang255@gmail.com",
-      link: "linkedin.com/in/jwang255",
+      link: "https://www.linkedin.com/in/jwang255/",
     },
-    // {
-    //   name: "John Doe",
-    //   photo: "/elements/memberPlace.svg",
-    //   role: "Developer",
-    //   email: "marble@gmail.com",
-    //   link: "https://www.linkedin.com/company/marble-investments/",
-    // },
-    // {
-    //   name: "John Doe",
-    //   photo: "/elements/memberPlace.svg",
-    //   role: "Developer",
-    //   email: "marble@gmail.com",
-    //   link: "https://www.linkedin.com/company/marble-investments/",
-    // },
-    // {
-    //   name: "John Doe",
-    //   photo: "/elements/memberPlace.svg",
-    //   role: "Developer",
-    //   email: "marble@gmail.com",
-    //   link: "https://www.linkedin.com/company/marble-investments/",
-    // },
-    // {
-    //   name: "John Doe",
-    //   photo: "/elements/memberPlace.svg",
-    //   role: "Developer",
-    //   email: "marble@gmail.com",
-    //   link: "https://www.linkedin.com/company/marble-investments/",
-    // },
+    {
+      name: "Jonathan Pan",
+      photo: "/members/marketing/johnathan-pan.png",
+      role: "Design",
+      email: "jonathanpan66@gmail.com",
+      link: "https://www.linkedin.com/in/jonathanpan6/",
+    },
   ],
-  // Marketing: [
-  //   {
-  //     name: "John Doe",
-  //     photo: "/elements/memberPlace.svg",
-  //     role: "Designer",
-  //     email: "marble@gmail.com",
-  //     link: "https://www.linkedin.com/company/marble-investments/",
-  //   },
-  //   {
-  //     name: "John Doe",
-  //     photo: "/elements/memberPlace.svg",
-  //     role: "Designer",
-  //     email: "marble@gmail.com",
-  //     link: "https://www.linkedin.com/company/marble-investments/",
-  //   },
-  //   {
-  //     name: "John Doe",
-  //     photo: "/elements/memberPlace.svg",
-  //     role: "Designer",
-  //     email: "marble@gmail.com",
-  //     link: "https://www.linkedin.com/company/marble-investments/",
-  //   },
-  //   {
-  //     name: "John Doe",
-  //     photo: "/elements/memberPlace.svg",
-  //     role: "Designer",
-  //     email: "marble@gmail.com",
-  //     link: "https://www.linkedin.com/company/marble-investments/",
-  //   },
-  // ],
 };
 
 type teamType = {
@@ -149,10 +100,10 @@ const teamOptions: teamType[] = [
     title: "Developers",
     link: "/meet/developer",
   },
-  // {
-  //   title: "Marketing",
-  //   link: "/meet/marketing",
-  // },
+  {
+    title: "Marketing",
+    link: "/meet/marketing",
+  },
 ];
 
 export { LeadMembers, TeamSections, teamOptions };
