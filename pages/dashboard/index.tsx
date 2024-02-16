@@ -76,15 +76,22 @@ export default function Dashboard() {
         <div>
           <h2 className="text-2xl font-bold">Buy or Sell</h2>
           <p className="text-xl mt-[1rem]">
-            The next open window to buy is{" "}
-            <span className="font-bold">2029</span>
+            The feature to buy or sell shares is coming soon. Stay tuned.
+            {/* The next open window to buy is{" "}
+            <span className="font-bold">2029</span> */}
           </p>
         </div>
         <div className="flex gap-[3rem]">
-          <Button className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] text-white bg-[#26477C]">
+          <Button
+            className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] text-white bg-[#26477C]"
+            disabled={true}
+          >
             Buy shares
           </Button>
-          <Button className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] border-[#26477C] text-[#26477C]">
+          <Button
+            className="text-lg flex justify-center items-center px-[2rem] py-[1.5rem] border-[#26477C] text-[#26477C]"
+            disabled={true}
+          >
             Withdraw Shares
           </Button>
         </div>
