@@ -102,14 +102,14 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <>
               <Button
                 onClick={onLogout}
-                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm'
+                className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none'
               >
                 Log out
               </Button>
               <Link
                 type="primary"
                 href={user.verificationCode ? '/verify' : '/dashboard'}
-                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 text-sm'
+                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 py-2 text-base'
               >
                 Dashboard
               </Link>

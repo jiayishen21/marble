@@ -42,22 +42,21 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div
-            className="max-w-[60rem] w-full sm:w-[70%] lg:w-[80%] xl:w-[70%] z-10"
+            className="max-w-[70rem] w-full sm:w-[70%] lg:w-[90%] xl:w-[90%] z-10"
             data-aos="fade-right"
           >
             <h1
-              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl md:text-4xl 
-            2xl:text-5xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[5vh] xl:mt-[10vh] 2xl:mt-[15vh]`}
+              className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+            2xl:text-6xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[20vh] 2xl:mt-[15vh]`}
             >
-              A mutual fund geared toward bringing investors financial well
-              being
+              Non-profit investment fund. <br />
+              By students, for students.
             </h1>
             <h2
-              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-lg  
-            2xl:text-2xl mt-6 text-center lg:text-left lg:mt-8 xl:mt-10`}
+              className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
+            2xl:text-2xl mt-6 text-center lg:text-left lg:mt-12 2xl:mt-16 lg:w-[75%]`}
             >
-              Growing your financial literacy, building meaningful connections,
-              and maximizing your returns.
+              Growing financial literacy, Building meaningful connections, and Maximizing returns
             </h2>
           </div>
           {!user && (
@@ -83,20 +82,16 @@ const Home: NextPage = () => {
         text-center text-3xl md:text-4xl xl:text-5xl`}
           data-aos="fade-right"
         >
-          Our Mission
+          Marble Investments at a Glance
         </h3>
         <div
-          className={`text-neutral-50 font-normal text-center text-base md:text-lg xl:text-xl 2xl:text-2xl mb-6`}
+          className={`text-neutral-50 font-normal text-center text-base md:text-lg xl:text-xl 2xl:text-2xl md:w-[60%]`}
           data-aos="fade-right"
           data-aos-delay="250"
         >
-          Our principal benchmark is to outperform the S&P 500 index. Since our
-          inception, we've successfully tripled the returns of this benchmark in
-          every quarter. Our principal benchmark is to outperform the S&P 500
-          index. Since our inception, we've successfully tripled the returns of
-          this benchmark in every quarter.
+          Since inception in 2023, Marble has completed two rounds of investing generating market-beating returns for investors across Canada.
         </div>
-        <div className="w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
+        <div className="mt-20 w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
             <div
               className="w-full grid grid-cols-2 space-x-5 bg-slate-50 rounded-md mb-4 px-5 py-3 md:flex md:w-[20vw] md:h-[20vw] md:flex-col md:items-center md:justify-center md:space-x-0"
@@ -130,37 +125,29 @@ const Home: NextPage = () => {
           >
             <img
               src="/elements/arrow.png"
-              className={`h-auto opacity-[0.8] ${
-                mobile ? "w-[50vw]" : "w-[28vw]"
-              }`}
+              className={`h-auto opacity-[0.8] ${mobile ? "w-[50vw]" : "w-[28vw]"
+                }`}
             />
           </div>
           <div
             className={`text-semiblack font-bold z-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl`}
             data-aos="fade-right"
           >
-            We are passionate about growing your money
+            We are passionate about your financial journey
           </div>
           <div
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Through Marble, students will be equipped with the necessary skills
-            to excel in various financial sectors. We want to provide you with a
-            space to learn, grow, and gain exposure to various trading and value
-            investing strategies. Through Marble, students will be equipped with
-            the necessary skills to excel in various financial sectors. We want
-            to provide you with a space to learn, grow, and gain exposure to
-            various trading and value investing strategies.
+            Marble is more than just an investment fund. Join us to step foot into investing and gain valuable insights into our process. Connect with a community of like-minded individuals
           </div>
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${
-              mobile
-                ? "text-sm md:text-base w-20 px-[4rem]"
-                : "text-lg xl:text-xl w-60 py-6"
-            }`}
+            className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${mobile
+              ? "text-sm md:text-base w-20 px-[4rem]"
+              : "text-lg xl:text-xl w-60 py-6"
+              }`}
             data-aos="fade-right"
           >
             Meet our team

@@ -63,8 +63,8 @@ const missionData = [
     info: "INVESTORS",
   },
   {
-    stat: "113%",
-    info: "ROI",
+    stat: "42.07%",
+    info: "1Y RETURNS",
   },
 ];
 
