@@ -24,7 +24,7 @@ const LeadMembers: Member[] = [
   },
   {
     name: "Marshal Guo",
-    photo: "/members/blank-pfp.png",
+    photo: "/members/managers/marshal-guo.png",
     role: "Fund Manager",
     email: "guomarshal@gmail.com",
     link: "https://www.linkedin.com/in/marshal-guo-a06ab2231/",
@@ -64,6 +64,30 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/john--liu/",
     },
   ],
+  Analysts: [
+    {
+      name: "Meryl Tu",
+      photo: "/members/analysts/meryl-tu.png",
+      role: "Analyst",
+      email: "",
+      link: "",
+    },
+    {
+      name: "Joanna Liu",
+      photo: "/members/analysts/joanna-liu.png",
+      role: "Analyst",
+      email: "",
+      link: "",
+    },
+    {
+      name: "Ryan Ling",
+      photo: "/members/analysts/ryan-ling.png",
+      role: "Analyst",
+
+      email: "",
+      link: "",
+    },
+  ],
   Marketing: [
     {
       name: "Jessica Wang",
@@ -79,6 +103,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "jonathanpan66@gmail.com",
       link: "https://www.linkedin.com/in/jonathanpan6/",
     },
+    {
+      name: "Ethan Louie",
+      photo: "/members/marketing/ethan-louie.png",
+      role: "Design",
+      email: "e.louie007@gmail.com",
+      link: "https://www.linkedin.com/in/ethanlouie-/",
+    },
   ],
 };
 
@@ -92,10 +123,10 @@ const teamOptions: teamType[] = [
     title: "Managers",
     link: "/meet",
   },
-  // {
-  //   title: "Analysts",
-  //   link: "/meet/analysts",
-  // },
+  {
+    title: "Analysts",
+    link: "/meet/analysts",
+  },
   {
     title: "Developers",
     link: "/meet/developer",
