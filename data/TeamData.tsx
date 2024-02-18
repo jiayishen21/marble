@@ -87,7 +87,7 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
     },
   ],
-  Marketing: [
+  Design: [
     {
       name: "Jessica Wang",
       photo: "/members/marketing/jessica-wang.png",
@@ -131,8 +131,8 @@ const teamOptions: teamType[] = [
     link: "/meet/developer",
   },
   {
-    title: "Marketing",
-    link: "/meet/marketing",
+    title: "Design",
+    link: "/meet/design",
   },
 ];
 
