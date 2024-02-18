@@ -100,6 +100,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "ryanling42@gmail.com",
       link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
     },
+    {
+      name: "Nick Chen",
+      photo: "/members/analysts/nick-chen.png",
+      role: "Analyst",
+      email: "omfinick@gmail.com",
+      link: "https://ca.linkedin.com/in/zhong-han-chen-89bb56296/",
+    },
   ],
   Design: [
     {
