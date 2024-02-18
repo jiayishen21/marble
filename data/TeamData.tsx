@@ -66,6 +66,13 @@ const TeamSections: Record<string, TeamMember[]> = {
   ],
   Analysts: [
     {
+      name: "Curtis Li",
+      photo: "/members/analysts/curtis-li.png",
+      role: "Analyst",
+      email: "cli2425@uwo.ca",
+      link: "https://www.linkedin.com/in/curtis-li-203316261/",
+    },
+    {
       name: "Meryl Tu",
       photo: "/members/analysts/meryl-tu.png",
       role: "Analyst",
@@ -78,6 +85,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       role: "Analyst",
       email: "",
       link: "https://www.linkedin.com/in/joanna-liu-ca/",
+    },
+    {
+      name: "Eric Ma",
+      photo: "/members/analysts/eric-ma.png",
+      role: "Analyst",
+      email: "",
+      link: "",
     },
     {
       name: "Ryan Ling",
