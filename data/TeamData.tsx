@@ -18,9 +18,9 @@ const LeadMembers: Member[] = [
   {
     name: "Bill Cai",
     photo: "/members/blank-pfp.png",
-    role: "Fund Manager",
-    email: "bill.cai.2005@gmail.com",
-    link: "linkedin.com/in/bill-cai-37b3561b8",
+    role: "Principal Fund Manager",
+    email: "",
+    link: "",
   },
   {
     name: "Marshal Guo",
