@@ -69,23 +69,22 @@ const TeamSections: Record<string, TeamMember[]> = {
       name: "Meryl Tu",
       photo: "/members/analysts/meryl-tu.png",
       role: "Analyst",
-      email: "",
-      link: "",
+      email: "mtu25@uwo.ca",
+      link: "https://www.linkedin.com/in/meryl-tu/",
     },
     {
       name: "Joanna Liu",
       photo: "/members/analysts/joanna-liu.png",
       role: "Analyst",
       email: "",
-      link: "",
+      link: "https://www.linkedin.com/in/joanna-liu-ca/",
     },
     {
       name: "Ryan Ling",
       photo: "/members/analysts/ryan-ling.png",
       role: "Analyst",
-
-      email: "",
-      link: "",
+      email: "ryanling42@gmail.com",
+      link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
     },
   ],
   Marketing: [

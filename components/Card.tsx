@@ -11,22 +11,43 @@ export default function Card(item: any) {
   const SocialButtons = (item: any) => {
     return (
       <div className="flex gap-6 mt-2">
-        <Button
-          type="primary"
-          href={`mailto:${item.email}`}
-          target="_blank"
-          className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
-        >
-          <MdEmail />
-        </Button>
-        <Button
-          type="primary"
-          href={item.link}
-          target="_blank"
-          className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
-        >
-          <FaLinkedin />
-        </Button>
+        {item.email && item.email !== '' ? (
+          <Button
+            type="primary"
+            href={`mailto:${item.email}`}
+            target="_blank"
+            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+          >
+            <MdEmail />
+          </Button>
+        ) : (
+          <Button
+            type="primary"
+            disabled={true}
+            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+          >
+            <MdEmail />
+          </Button>
+        )}
+
+        {item.link && item.link !== '' ? (
+          <Button
+            type="primary"
+            href={item.link}
+            target="_blank"
+            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+          >
+            <FaLinkedin />
+          </Button>
+        ) : (
+          <Button
+            type="primary"
+            disabled={true}
+            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+          >
+            <FaLinkedin />
+          </Button>
+        )}
       </div>
     );
   };
