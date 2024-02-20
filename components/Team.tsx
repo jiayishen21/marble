@@ -16,7 +16,7 @@ export default function Team({ name }: Prop) {
     <section className="mt-[2rem] 2xl:mt-[6rem]" data-aos="fade-right">
       <Row gutter={[24, 40]}>
         {teamSection.map((item, key) =>
-          (width && width < 1050) || mobile ? (
+          (width && width < 1150) || mobile ? (
             <Col
               className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
               span={width && width < 525 ? 24 :

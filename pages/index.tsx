@@ -56,14 +56,15 @@ const Home: NextPage = () => {
               className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-12 2xl:mt-16 lg:w-[75%]`}
             >
-              Growing financial literacy, Building meaningful connections, and Maximizing returns
+              Growing financial literacy, Building meaningful connections, and
+              Maximizing returns
             </h2>
           </div>
           {!user && (
             <Button
               type="primary"
               href="/register"
-              className={` bg-lapis rounded-none text-neutral-50 text-xs xl:text-xl p-2 xl:p-5 font-montserrat font-normal flex 
+              className={` bg-lapis rounded-md text-neutral-50 text-xs xl:text-xl p-2 xl:px-5 xl:py-7 font-montserrat font-normal flex 
               justify-center items-center`}
               data-aos="fade-right"
             >
@@ -89,7 +90,8 @@ const Home: NextPage = () => {
           data-aos="fade-right"
           data-aos-delay="250"
         >
-          Since inception in 2023, Marble has completed two rounds of investing generating market-beating returns for investors across Canada.
+          Since its inception in 2023, Marble has completed multiple investment
+          rounds, exceeding market returns for investors across Canada.
         </div>
         <div className="mt-20 w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
@@ -139,14 +141,16 @@ const Home: NextPage = () => {
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble is more than just an investment fund. Join us to step foot into investing and gain valuable insights into our process. Connect with a community of like-minded individuals
+            Marble is more than just an investment fund. We want to provide you
+            with a seamless and hands-on investing process to support your
+            financial journey.
           </div>
           <Button
             type="primary"
             href="/meet"
             className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${mobile
-              ? "text-sm md:text-base w-20 px-[4rem]"
-              : "text-lg xl:text-xl w-60 py-6"
+                ? "text-sm md:text-base w-20 px-[4rem]"
+                : "text-lg xl:text-xl w-60 py-6"
               }`}
             data-aos="fade-right"
           >
