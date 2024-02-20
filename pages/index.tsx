@@ -49,7 +49,7 @@ const Home: NextPage = () => {
               className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl md:text-4xl lg:text-5xl
             2xl:text-6xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[20vh] 2xl:mt-[15vh]`}
             >
-              Non-profit investment fund. <br />
+              Marble Investments. <br />
               By students, for students.
             </h1>
             <h2

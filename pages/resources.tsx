@@ -43,7 +43,7 @@ export default function resources() {
             }}
           >
             <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
-              ANNUAL LETTERS
+              ANNUAL REPORTS
             </h2>
             <Dropdown title={"Coming Soon..."} options={annualData} />
           </div>
@@ -57,7 +57,7 @@ export default function resources() {
             <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
               MISCELLANEOUS
             </h2>
-            <Dropdown title={"2024 insights"} options={miscellaneousData} />
+            <Dropdown title={"Coming soon."} options={miscellaneousData} />
           </div>
         </section>
       </main>
@@ -127,7 +127,7 @@ export default function resources() {
               MISCELLANEOUS
             </h2>
             <Dropdown
-              title={"2024 insights"}
+              title={"Coming Soon..."}
               options={miscellaneousData}
             ></Dropdown>
           </div>

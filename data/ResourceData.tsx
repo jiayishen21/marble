@@ -22,9 +22,14 @@ const annualData: data[] = [
 
 const miscellaneousData: data[] = [
   {
-    title: "2024 Market Insights",
-    link: "/resources/2024_Insights.pdf",
+    title: "Coming soon...",
+    link: "/",
+    inactive: true,
   },
+  // {
+  //   title: "2024 Market Insights",
+  //   link: "/resources/2024_Insights.pdf",
+  // },
 ];
 
 export { quarterData, annualData, miscellaneousData };
