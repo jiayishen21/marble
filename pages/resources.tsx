@@ -94,7 +94,8 @@ export default function resources() {
           <div className="text-semiblack text-base md:text-lg xl:text-xl w-[50%]">
             We are committed to your financial empowerment. Access free,
             insightful resources on investor education, mutual growth, and
-            financial literacy.
+            financial literacy. Note that Marble Investments does not claim to offer
+            financial advice.
           </div>
         </div>
         <section
