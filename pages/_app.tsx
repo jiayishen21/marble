@@ -64,7 +64,6 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
       easing: "ease-out",
     });
 
-    let userFound = false
     axios
       .get("/api/user")
       .then((response: any) => {
@@ -72,15 +71,11 @@ const AppComponent: React.FC<AppProps> = ({ Component, pageProps }) => {
           dispatch(setUser(response.data.user));
         }
         dispatch(setUserLoading(false));
-        userFound = true
       })
       .catch(() => {
         dispatch(setUserLoading(false));
       });
 
-    if (!userFound) {
-      return
-    }
     axios
       .get("/api/shares")
       .then((response: any) => {
