@@ -38,12 +38,14 @@ export default async function handler(
     })
 
     const resend = new Resend(process.env.RESEND_API_KEY)
+    console.log('nice')
     resend.emails.send({
       from: 'welcome@marbleinvestments.ca',
       to: user.email,
       subject: 'Welcome to Marble!',
       react: VerificationEmail({ firstName: user.firstName, verificationCode: verificationCode.code }),
     })
+    console.log('bad')
 
     res.status(200).json({ verificationCode: verificationCode })
   } catch (error: any) {
