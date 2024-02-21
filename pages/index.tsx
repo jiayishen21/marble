@@ -141,16 +141,16 @@ const Home: NextPage = () => {
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble is more than just an investment fund. We want to provide you
-            with a seamless and hands-on investing process to support your
-            financial journey.
+            Marble is more than just an investment fund. We want to provide you with a
+            seamless and hands-on investment process while building a community of
+            financially oriented young adults.
           </div>
           <Button
             type="primary"
             href="/meet"
             className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${mobile
-                ? "text-sm md:text-base w-20 px-[4rem]"
-                : "text-lg xl:text-xl w-60 py-6"
+              ? "text-sm md:text-base w-20 px-[4rem]"
+              : "text-lg xl:text-xl w-60 py-6"
               }`}
             data-aos="fade-right"
           >
