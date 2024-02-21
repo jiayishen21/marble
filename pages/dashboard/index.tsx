@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import ShareChart from "../../components/ShareChart";
 import useMobile from "../../hooks/useMobile";
+import Link from "next/link";
 
 export default function Dashboard() {
   const user = useSelector((state: RootState) => state.user.user);
@@ -76,7 +77,14 @@ export default function Dashboard() {
         <div>
           <h2 className="text-2xl font-bold">Buy or Sell</h2>
           <p className="text-xl mt-[1rem]">
-            The feature to buy or sell shares is coming soon. Stay tuned.
+            The feature to buy or sell shares on the website is coming soon.
+            For this trading period, please fill out the form{" "}
+            <Link
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdNgb5XziJqCnydiz1ThgKGoE60UhD26T8WW_gHQuFI8vd_dA/viewform?usp=sf_link"
+              className="text-blue-500 underline hover:text-blue-300"
+              target="_blank"
+            >
+              here</Link>.
             {/* The next open window to buy is{" "}
             <span className="font-bold">2029</span> */}
           </p>
