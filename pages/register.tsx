@@ -171,7 +171,6 @@ export default function Register() {
               </Item>
             </Col>
             <Col
-              className="flex flex-row gap-2 items-start justify-center"
               span={24}
             >
               <Checkbox
@@ -179,7 +178,13 @@ export default function Register() {
                 onChange={(e: any) => setAgree(e.target.checked)}
               >
                 <div className={`${styles["touch-form-label"]} py-1`}>
-                  I confirm and acknowledge the terms and conditions.
+                  I confirm and acknowledge Marble's{' '}
+                  <Link
+                    className="text-blue-500 underline hover:underline hover:text-blue-300"
+                    href='/documents/privacy-policy.pdf'
+                    target="_blank"
+                  >privacy policy.
+                  </Link>
                 </div>
               </Checkbox>
             </Col>

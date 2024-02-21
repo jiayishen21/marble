@@ -80,6 +80,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/meryl-tu/",
     },
     {
+      name: "Adam Goldband",
+      photo: "/members/analysts/adam-goldband.png",
+      role: "Analyst",
+      email: "agoldban@uwo.ca",
+      link: "https://www.linkedin.com/in/adam-goldband/",
+    },
+    {
       name: "Joanna Liu",
       photo: "/members/analysts/joanna-liu.png",
       role: "Analyst",
@@ -106,13 +113,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       role: "Analyst",
       email: "omfinick@gmail.com",
       link: "https://ca.linkedin.com/in/zhong-han-chen-89bb56296/",
-    },
-    {
-      name: "Adam Goldband",
-      photo: "/members/blank-pfp.png",
-      role: "Analyst",
-      email: "agoldban@uwo.ca",
-      link: "https://www.linkedin.com/in/adam-goldband/",
     },
   ],
   Design: [

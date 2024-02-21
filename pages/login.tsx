@@ -72,9 +72,8 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center w-full h-screen">
       <Row
-        className={`p-12 rounded ${
-          mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
-        }`}
+        className={`p-12 rounded ${mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
+          }`}
         data-aos={mobile ? undefined : "fade-up"}
       >
         <div className="text-[3.25rem] flex items-center text-semiblack justify-center w-full mb-8">
@@ -112,12 +111,13 @@ export default function Login() {
               >
                 <Password size="large" />
               </Item>
-              <Link
+              {/* FIXME */}
+              {/* <Link
                 href="/forgot"
                 className="text-end mb-4 underline hover:underline"
               >
                 Forgot password?
-              </Link>
+              </Link> */}
             </Col>
             <Col
               span={24}

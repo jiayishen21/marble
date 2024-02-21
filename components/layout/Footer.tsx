@@ -159,8 +159,12 @@ export default function Footer() {
       <section className="w-full mt-[4rem]">
         <hr />
         <div className="flex py-[2rem] relative items-center">
-          <Link href="/" className="absolute left-[5%]">
-            Terms of service
+          <Link
+            href="/documents/privacy-policy.pdf"
+            className="absolute left-[5%]"
+            target="_blank"
+          >
+            Privacy Policy
           </Link>
           <p className="absolute left-[40%] text-[#FFFFFF] opacity-50">
             Copyright &copy; Marble Investments. All rights reserved.
