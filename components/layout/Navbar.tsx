@@ -180,7 +180,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <Link
               type="primary"
               href={user.verificationCode ? '/verify' : '/dashboard'}
-              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11'
+              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11 rounded-md'
             >
               Dashboard
             </Link>

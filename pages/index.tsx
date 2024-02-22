@@ -149,7 +149,7 @@ const Home: NextPage = () => {
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${mobile
+            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${mobile
               ? "text-sm md:text-base w-20 px-[4rem]"
               : "text-lg xl:text-xl w-60 py-6"
               }`}
