@@ -144,7 +144,7 @@ const Home: NextPage = () => {
             Marble is more than just an investment fund. We want to provide you with a
             seamless and hands-on investment process while building a community of
             financially oriented young adults. Investors can expect to gain access to
-            exclusive newsletters as well as opportunities to connect with our community.
+            exclusive newsletters as well as opportunities to connect with our team.
           </div>
           <Button
             type="primary"
