@@ -83,6 +83,18 @@ export default function Navbar({ navRef, blank, router }: Props) {
     </Menu>
   );
 
+  if (blank > 0) {
+    return (
+      <nav
+        className="flex items-center justify-between w-full px-12"
+        ref={navRef}
+        style={{ height: `${blank}px` }}
+      >
+        <section className="fixed">{LogoIcon}</section>
+      </nav>
+    );
+  }
+
   if (mobile)
     return (
       <nav
@@ -102,14 +114,14 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <>
               <Button
                 onClick={onLogout}
-                className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none'
+                className="nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none"
               >
                 Log out
               </Button>
               <Link
                 type="primary"
-                href={user.verificationCode ? '/verify' : '/dashboard'}
-                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 py-2 text-base'
+                href={user.verificationCode ? "/verify" : "/dashboard"}
+                className="bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-8 py-2 text-base"
               >
                 Dashboard
               </Link>
@@ -118,14 +130,14 @@ export default function Navbar({ navRef, blank, router }: Props) {
             <>
               <Link
                 href="/register"
-                className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm'
+                className="nav-option text-semiblack hover:text-lapis whitespace-nowrap font-light text-sm"
               >
                 Sign Up
               </Link>
               <Link
                 type="primary"
                 href="/login"
-                className='bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm rounded-md'
+                className="bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm rounded-md"
               >
                 Client Login
               </Link>
@@ -134,18 +146,6 @@ export default function Navbar({ navRef, blank, router }: Props) {
         </ul>
       </nav>
     );
-
-  if (blank > 0) {
-    return (
-      <nav
-        className="flex items-center justify-between w-full px-12"
-        ref={navRef}
-        style={{ height: `${blank}px` }}
-      >
-        <section className="fixed">{LogoIcon}</section>
-      </nav>
-    );
-  }
 
   return (
     <nav
