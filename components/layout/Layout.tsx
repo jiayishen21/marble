@@ -6,13 +6,17 @@ import Footer from "./Footer";
 
 export default function Layout({ children }: PropsWithChildren<any>) {
     const router = useRouter()
-    const exempt_routes = ["/"] //routes that have their own custom layout and navbar import
-    const blank_routes = ["/register", "/login", "/forgot", "/verify"]
-    const blank = blank_routes.includes(router.asPath)
+    const exemptRoutes = ["/"] //routes that have their own custom layout and navbar import
+    const blankRoutes = ["/register", "/login", "/forgot", "/verify"]
+    const blank = blankRoutes.includes(router.asPath)
 
     const { navRef, navHeight } = useNavParams()
 
-    return exempt_routes.includes(router.asPath) ? children :
+    const isBlankRoute = (path: string) => {
+        return blankRoutes.some(route => path.startsWith(route));
+    };
+
+    return isBlankRoute(router.asPath) ? (
         <div className="relative w-full min-h-[calc(100vh_+_64px)]"
             style={!blank ? {
                 display: "grid", gridTemplateRows: `${navHeight}px auto 100px`
@@ -24,4 +28,5 @@ export default function Layout({ children }: PropsWithChildren<any>) {
             </div>
             <Footer />
         </div>
+    ) : (children)
 }
