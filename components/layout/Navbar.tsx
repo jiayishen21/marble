@@ -90,7 +90,7 @@ export default function Navbar({ navRef, blank, router }: Props) {
         ref={navRef}
         style={{ height: `${blank}px` }}
       >
-        <section className="fixed">{LogoIcon}</section>
+        <section>{LogoIcon}</section>
       </nav>
     );
   }
