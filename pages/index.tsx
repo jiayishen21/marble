@@ -49,8 +49,8 @@ const Home: NextPage = () => {
               className={`flex flex-col gap-3 text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl md:text-4xl lg:text-5xl
             2xl:text-6xl mt-[7vh] sm:mt-[18vh] text-center lg:text-left lg:mt-[20vh] 2xl:mt-[15vh]`}
             >
-              Marble Investments. <br />
-              By students, for students.
+              Marble Investments <br />
+              By Students, for Students
             </h1>
             <h2
               className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
@@ -149,7 +149,7 @@ const Home: NextPage = () => {
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis hover:bg-lapis/80 rounded-none text-neutral-50 font-montserrat font-normal flex justify-center items-center ${mobile
+            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${mobile
               ? "text-sm md:text-base w-20 px-[4rem]"
               : "text-lg xl:text-xl w-60 py-6"
               }`}
