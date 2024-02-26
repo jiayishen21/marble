@@ -155,7 +155,7 @@ export default function Verify() {
   return (
     <div className="flex items-center justify-center w-full h-screen">
       <Row
-        className="p-12 border-2 rounded border-airforce/[0.2] w-[35%]"
+        className="py-6 sm:p-12 border-2 rounded border-airforce/[0.2] w-[95%] sm:w-[80%] md:w-[65%] lg:w-[50%] 2xl:w-[35%]"
         data-aos="fade-up"
       >
         <div className="font-montserrat text-4xl font-semibold text-semiblack text-center w-full">
@@ -172,7 +172,7 @@ export default function Verify() {
           className="flex items-center justify-center w-full pt-8"
         >
           <Row gutter={[10, 5]} className="w-full">
-            <Col span={24} className="flex flex-row gap-4">
+            <Col span={24} className="flex flex-row gap-[0.5rem] sm:gap-4">
               {Array.from(Array(6).keys()).map((_, index) => (
                 <div key={index}>
                   <Item
