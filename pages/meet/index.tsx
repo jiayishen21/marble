@@ -27,8 +27,9 @@ export default function Meet() {
                 Meet Our Team
               </h1>
               <span className="text-semiblack text-base md:text-lg xl:text-xl w-full xl:max-w-[55%]">
-                We've gathered a top-notch team of diverse talent from across
-                Canada. Get to know the folks forging your financial success.
+                {/* We've gathered a top-notch team of diverse talent from across
+                Canada.  */}
+                Get to know the people forging your financial success.
               </span>
             </div>
           </section>

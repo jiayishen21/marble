@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import {
-  quarterData,
+  quarterData23,
+  quarterData24,
   annualData,
   miscellaneousData,
 } from "../data/ResourceData";
@@ -17,9 +18,9 @@ export default function resources() {
         <div className="w-[80%]">
           <h1 className="text-2xl font-bold">Resources</h1>
           <p className="text-md mt-[1rem]">
-            We are committed to your financial empowerment. Access free,
-            insightful resources on investor education, mutual growth, and
-            financial literacy.
+            {/* We are committed to your financial empowerment.  */}
+            Access free, insightful resources on investor education, mutual
+            growth, and financial literacy.
           </p>
         </div>
         <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[4rem] rounded-md">
@@ -33,7 +34,8 @@ export default function resources() {
             <h2 className="text-semiblack font-bold text-2xl mb-[1rem] ">
               QUARTERLY LETTERS
             </h2>
-            <Dropdown title={"2023 Quarterly Reports "} options={quarterData} />
+            <Dropdown title={"2023 Quarterly Reports "} options={quarterData23} />
+            <Dropdown title={"2024 Quarterly Reports "} options={quarterData24} />
           </div>
           <div
             className="flex flex-col w-full items-center py-[2rem]"
@@ -92,26 +94,32 @@ export default function resources() {
             Resources
           </h1>
           <div className="text-semiblack text-base md:text-lg xl:text-xl w-[50%]">
-            We are committed to your financial empowerment. Access free,
-            insightful resources on investor education, mutual growth, and
-            financial literacy. Note that Marble Investments does not claim to offer
-            financial advice.
+            {/* We are committed to your financial empowerment.  */}
+            Access free, insightful resources on investor education, mutual
+            growth, and financial literacy. Note that Marble Investments does
+            not claim to offer financial advice.
           </div>
         </div>
         <section
           className={`flex justify-between items-center my-[4rem]
           `}
         >
-          <div className="flex flex-col py-[2rem]">
+          <div className="flex flex-col relative items-center self-start">
             <h2
               className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
               QUARTERLY LETTERS
             </h2>
-            <Dropdown
-              title={"2023 Quarterly Reports "}
-              options={quarterData}
-            ></Dropdown>
+            <div className="absolute top-[3rem]">
+              <Dropdown
+                title={"2023 Quarterly Reports "}
+                options={quarterData23}
+              />
+              <Dropdown
+                title={"2024 Quarterly Reports "}
+                options={quarterData24}
+              />
+            </div>
           </div>
           <div className="flex flex-col">
             <h2
