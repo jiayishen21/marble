@@ -17,14 +17,16 @@ export default function Dashboard() {
 
   return (
     <main
-      className={`flex w-[70%] py-[8rem] ${mobile ? "ml-[1.5rem]" : "ml-[8rem]"
-        }`}
+      className={`flex w-[70%] py-[8rem] ${
+        mobile ? "ml-[1.5rem]" : "ml-[8rem]"
+      }`}
       data-aos={mobile ? undefined : "fade-up"}
     >
       <DashboardTabs />
       <section
-        className={`flex flex-col gap-[3rem] w-full ${mobile ? "ml-[10rem]" : "ml-[5rem]"
-          }`}
+        className={`flex flex-col gap-[3rem] w-full ${
+          mobile ? "ml-[10rem]" : "ml-[5rem]"
+        }`}
       >
         <h1 className="text-3xl font-bold whitespace-nowrap">
           Welcome back, {user?.firstName}
@@ -35,8 +37,9 @@ export default function Dashboard() {
           <>
             <article className="flex w-full h-[10%]">
               <div
-                className={`border-r-2 border-gray-300 flex-1 h-full flex flex-col justify-center items-start gap-[2rem] ${mobile && "pr-[2rem]"
-                  }`}
+                className={`border-r-2 border-gray-300 flex-1 h-full flex flex-col justify-center items-start gap-[2rem] ${
+                  mobile && "pr-[2rem]"
+                }`}
               >
                 <h2 className="text-xl whitespace-nowrap">
                   Total Investment value
@@ -48,8 +51,9 @@ export default function Dashboard() {
                 </p>
               </div>
               <div
-                className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${mobile ? "px-[2rem]" : "pl-[3rem]"
-                  }`}
+                className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${
+                  mobile ? "px-[2rem]" : "pl-[3rem]"
+                }`}
               >
                 <h2 className="text-xl whitespace-nowrap">
                   Total number of shares
@@ -57,8 +61,9 @@ export default function Dashboard() {
                 <p className="font-bold text-5xl">{user?.shares}</p>
               </div>
               <div
-                className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${mobile ? "px-[2rem]" : "pl-[3rem]"
-                  }`}
+                className={`border-r-2 border-gray-300 flex-1 flex flex-col justify-center items-start h-full gap-[2rem] ${
+                  mobile ? "px-[2rem]" : "pl-[3rem]"
+                }`}
               >
                 <h2 className="text-xl whitespace-nowrap">
                   Single share value
@@ -77,14 +82,16 @@ export default function Dashboard() {
         <div>
           <h2 className="text-2xl font-bold">Buy or Sell</h2>
           <p className="text-xl mt-[1rem]">
-            The feature to buy or sell shares on the website is coming soon.
-            For this trading period, please fill out the form{" "}
+            The feature to buy or sell shares on the website is coming soon. For
+            this trading period, please fill out the form{" "}
             <Link
               href="https://docs.google.com/forms/d/e/1FAIpQLSdNgb5XziJqCnydiz1ThgKGoE60UhD26T8WW_gHQuFI8vd_dA/viewform?usp=sf_link"
               className="text-blue-500 underline hover:text-blue-300"
               target="_blank"
             >
-              here</Link>.
+              here
+            </Link>
+            .
             {/* The next open window to buy is{" "}
             <span className="font-bold">2029</span> */}
           </p>

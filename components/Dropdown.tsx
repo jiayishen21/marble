@@ -72,7 +72,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
         {title} {isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}
       </Button>
       {isOpen && (
-        <div className="flex flex-col absolute z-1 top-full">
+        <div className="flex flex-col z-1 top-full">
           {options.map((option, index) => (
             option.inactive ? (
               <span

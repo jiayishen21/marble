@@ -5,29 +5,29 @@ import { useNavParams } from "../../hooks/useNavParams";
 import Footer from "./Footer";
 
 export default function Layout({ children }: PropsWithChildren<any>) {
-    const router = useRouter()
-    const exemptRoutes = ["/"] //routes that have their own custom layout and navbar import
-    const blankRoutes = ["/register", "/login", "/forgot", "/verify"]
+  const router = useRouter();
+  //   const exemptRoutes = ["/"]; //routes that have their own custom layout and navbar import
+  //   const blankRoutes = ["/register", "/login", "/forgot", "/verify"];
+  //   const blank = blankRoutes.includes(router.asPath);
 
-    const { navRef, navHeight } = useNavParams()
+  const { navRef, navHeight } = useNavParams();
 
-    const isBlankRoute = (path: string) => {
-        return blankRoutes.some(route => path.startsWith(route));
-    };
+  //   const isBlankRoute = (path: string) => {
+  //     return blankRoutes.some((route) => path.startsWith(route));
+  //   };
 
-    const blank = isBlankRoute(router.asPath)
-
-    return isBlankRoute(router.asPath) ? (
-        <div className="relative w-full min-h-[calc(100vh_+_64px)]"
-            style={!blank ? {
-                display: "grid", gridTemplateRows: `${navHeight}px auto 100px`
-            } : { display: "grid", gridTemplateRows: `0 100vh 100px` }}>
-            {/* <div className="absolute top-0 left-0 w-full h-screen bg-landing z-[-1] pointer-events-none"/> */}
-            <Navbar navRef={navRef} blank={blank ? navHeight : 0} router={router} />
-            <div className="flex h-full">
-                {children}
-            </div>
-            <Footer />
-        </div>
-    ) : (children)
+  return (
+    <div
+      className="relative w-full min-h-[calc(100vh_+_64px)]"
+      style={{
+        display: "grid",
+        gridTemplateRows: `${navHeight}px auto 100px`,
+      }}
+    >
+      {/* <div className="absolute top-0 left-0 w-full h-screen bg-landing z-[-1] pointer-events-none"/> */}
+      <Navbar navRef={navRef} router={router} />
+      <div className="flex h-full">{children}</div>
+      <Footer />
+    </div>
+  );
 }

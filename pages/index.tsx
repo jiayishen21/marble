@@ -22,12 +22,9 @@ const Home: NextPage = () => {
   return (
     <main className="overflow-x-hidden w-full">
       <div
-        style={{
-          display: "grid",
-          gridTemplateRows: `${navHeight}px calc(100vh - ${navHeight}px)`,
-        }}
+        className="h-screen"
       >
-        <Navbar navRef={navRef} blank={0} router={router} />
+        
         <section
           className={`relative flex flex-col items-center lg:items-start gap-6 lg:gap-9 2xl:gap-12 px-[1.5rem] md:px-[2.5rem] 
           lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem]`}
@@ -141,8 +138,8 @@ const Home: NextPage = () => {
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble is more than just an investment fund. We want to provide you with a
-            seamless and hands-on investment process while building a community of
+            {/* Marble is more than just an investment fund. */}
+            We want to provide you with a seamless and hands-on investment process while building a community of
             financially oriented young adults. Investors can expect to gain access to
             exclusive newsletters as well as opportunities to connect with our team.
           </div>
@@ -173,7 +170,6 @@ const Home: NextPage = () => {
         </div>
       </section>
       <ContactForm />
-      <Footer />
     </main>
   );
 };

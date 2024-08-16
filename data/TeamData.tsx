@@ -116,13 +116,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "jessica.wang255@gmail.com",
       link: "https://www.linkedin.com/in/jwang255/",
     },
-    {
-      name: "Jonathan Pan",
-      photo: "/members/marketing/johnathan-pan.png",
-      role: "Designer",
-      email: "jonathanpan66@gmail.com",
-      link: "https://www.linkedin.com/in/jonathanpan6/",
-    },
+    // {
+    //   name: "Jonathan Pan",
+    //   photo: "/members/marketing/johnathan-pan.png",
+    //   role: "Designer",
+    //   email: "jonathanpan66@gmail.com",
+    //   link: "https://www.linkedin.com/in/jonathanpan6/",
+    // },
     {
       name: "Ethan Louie",
       photo: "/members/marketing/ethan-louie.png",

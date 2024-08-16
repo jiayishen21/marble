@@ -4,11 +4,17 @@ type data = {
   inactive?: boolean;
 };
 
-const quarterData: data[] = [
+const quarterData23: data[] = [
   {
     title: "2023 Q4 report",
     link: "/resources/2023_Q4_Shareholder_Letter.pdf",
+  },
+];
 
+const quarterData24: data[] = [
+  {
+    title: "2024 Q2 report",
+    link: "/resources/Marble_Investments_2024_Q2_Report.pdf",
   },
 ];
 
@@ -32,4 +38,4 @@ const miscellaneousData: data[] = [
   // },
 ];
 
-export { quarterData, annualData, miscellaneousData };
+export { quarterData23, quarterData24, annualData, miscellaneousData };

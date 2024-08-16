@@ -20,11 +20,11 @@ import { setUser, setUserLoading } from "../../store/userSlice";
 
 interface Props {
   navRef: MutableRefObject<any>;
-  blank: number;
+  // blank: number;
   router: NextRouter;
 }
 
-export default function Navbar({ navRef, blank, router }: Props) {
+export default function Navbar({ navRef, router }: Props) {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.user.user);
   const { mobile, width } = useMobile();
@@ -83,17 +83,17 @@ export default function Navbar({ navRef, blank, router }: Props) {
     </Menu>
   );
 
-  if (blank > 0) {
-    return (
-      <nav
-        className="flex items-center justify-between w-full px-12"
-        ref={navRef}
-        style={{ height: `${blank}px` }}
-      >
-        <section>{LogoIcon}</section>
-      </nav>
-    );
-  }
+  // if (blank > 0) {
+  //   return (
+  //     <nav
+  //       className="flex items-center justify-between w-full px-12"
+  //       ref={navRef}
+  //       style={{ height: `${blank}px` }}
+  //     >
+  //       <section>{LogoIcon}</section>
+  //     </nav>
+  //   );
+  // }
 
   if (mobile)
     return (
