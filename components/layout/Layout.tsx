@@ -8,13 +8,14 @@ export default function Layout({ children }: PropsWithChildren<any>) {
     const router = useRouter()
     const exemptRoutes = ["/"] //routes that have their own custom layout and navbar import
     const blankRoutes = ["/register", "/login", "/forgot", "/verify"]
-    const blank = blankRoutes.includes(router.asPath)
 
     const { navRef, navHeight } = useNavParams()
 
     const isBlankRoute = (path: string) => {
         return blankRoutes.some(route => path.startsWith(route));
     };
+
+    const blank = isBlankRoute(router.asPath)
 
     return isBlankRoute(router.asPath) ? (
         <div className="relative w-full min-h-[calc(100vh_+_64px)]"

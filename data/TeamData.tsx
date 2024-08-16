@@ -87,13 +87,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/adam-goldband/",
     },
     {
-      name: "Joanna Liu",
-      photo: "/members/analysts/joanna-liu.png",
-      role: "Analyst",
-      email: "annajjj100@gmail.com",
-      link: "https://www.linkedin.com/in/joanna-liu-ca/",
-    },
-    {
       name: "Eric Ma",
       photo: "/members/analysts/eric-ma.png",
       role: "Analyst",
