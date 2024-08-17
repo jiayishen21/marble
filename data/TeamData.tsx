@@ -107,6 +107,20 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "omfinick@gmail.com",
       link: "https://ca.linkedin.com/in/zhong-han-chen-89bb56296/",
     },
+    {
+      name: "Peter Bai",
+      photo: "/members/blank-pfp.png",
+      role: "Analyst",
+      email: "pbai6@uwo.ca",
+      link: "https://www.linkedin.com/in/peter-bai/",
+    },
+    {
+      name: "Jia Jia He",
+      photo: "/members/blank-pfp.png",
+      role: "Analyst",
+      email: "jiajiahe5730@gmail.com",
+      link: "https://www.linkedin.com/in/jiajiahe05/",
+    },
   ],
   Design: [
     {
