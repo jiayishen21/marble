@@ -121,7 +121,7 @@ export default function resources() {
               />
             </div>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col relative items-center self-start">
             <h2
               className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
@@ -129,14 +129,14 @@ export default function resources() {
             </h2>
             <Dropdown title={"Coming Soon..."} options={annualData}></Dropdown>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col relative items-center self-start">
             <h2
               className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
             >
               MISCELLANEOUS
             </h2>
             <Dropdown
-              title={"Coming Soon..."}
+              title={"Equity Reports"}
               options={miscellaneousData}
             ></Dropdown>
           </div>

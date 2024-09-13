@@ -27,15 +27,19 @@ const annualData: data[] = [
 ];
 
 const miscellaneousData: data[] = [
-  {
-    title: "Coming soon...",
-    link: "/",
-    inactive: true,
-  },
+  // {
+  //   title: "Coming soon...",
+  //   link: "/",
+  //   inactive: true,
+  // },
   // {
   //   title: "2024 Market Insights",
   //   link: "/resources/2024_Insights.pdf",
   // },
+  {
+    title: "TSMC Equity Report",
+    link: "/resources/Marble TSMC Equity Report.pdf",
+  },
 ];
 
 export { quarterData23, quarterData24, annualData, miscellaneousData };
