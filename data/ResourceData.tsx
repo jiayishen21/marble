@@ -38,7 +38,7 @@ const miscellaneousData: data[] = [
   // },
   {
     title: "TSMC Equity Report",
-    link: "/resources/Marble TSMC Equity Report.pdf",
+    link: "/resources/Marble_TSMC_Equity_Report.pdf",
   },
 ];
 
