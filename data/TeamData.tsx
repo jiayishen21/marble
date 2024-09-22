@@ -93,13 +93,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "ericma549@gmail.com",
       link: "https://www.linkedin.com/in/eric-ma-274142242/",
     },
-    {
-      name: "Ryan Ling",
-      photo: "/members/analysts/ryan-ling.png",
-      role: "Analyst",
-      email: "ryanling42@gmail.com",
-      link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
-    },
+    // {
+    //   name: "Ryan Ling",
+    //   photo: "/members/analysts/ryan-ling.png",
+    //   role: "Analyst",
+    //   email: "ryanling42@gmail.com",
+    //   link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
+    // },
     {
       name: "Nick Chen",
       photo: "/members/analysts/nick-chen.png",
