@@ -121,12 +121,19 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "jiajiahe5730@gmail.com",
       link: "https://www.linkedin.com/in/jiajiahe05/",
     },
+    {
+      name: "Calvin Luo",
+      photo: "/members/blank-pfp.png",
+      role: "Analyst",
+      email: "cluo86@uwo.ca",
+      link: "https://www.linkedin.com/in/calvin-luo22/",
+    },
   ],
   Design: [
     {
       name: "Jessica Wang",
       photo: "/members/marketing/jessica-wang.png",
-      role: "UI/UX Designer",
+      role: "UI/UX Design",
       email: "jessica.wang255@gmail.com",
       link: "https://www.linkedin.com/in/jwang255/",
     },
@@ -140,9 +147,16 @@ const TeamSections: Record<string, TeamMember[]> = {
     {
       name: "Ethan Louie",
       photo: "/members/marketing/ethan-louie.png",
-      role: "Designer",
+      role: "Graphic Design",
       email: "e.louie007@gmail.com",
       link: "https://www.linkedin.com/in/ethanlouie-/",
+    },
+    {
+      name: "Hayley Chai",
+      photo: "/members/blank-pfp.png",
+      role: "Graphic Designer",
+      email: "hayleyjhchai@gmail.com",
+      link: "https://www.linkedin.com/in/hayley-jinghan-chai/",
     },
   ],
 };

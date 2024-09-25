@@ -55,7 +55,7 @@ const BaseNavOptions: NavOption[] = [
 
 const missionData = [
   {
-    stat: "$28,733",
+    stat: "$39856",
     info: "AUM",
   },
   {
@@ -63,8 +63,8 @@ const missionData = [
     info: "INVESTORS",
   },
   {
-    stat: "63.95%",
-    info: "1Y RETURNS",
+    stat: "24.13%",
+    info: "IRR",
   },
 ];
 

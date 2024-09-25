@@ -48,7 +48,7 @@ export default function Navbar({ navRef, router }: Props) {
 
   const onLogout = () => {
     axios
-      .post('/api/user/logout')
+      .post("/api/user/logout")
       .then((response: any) => {
         if (response?.data?.message) {
           router.push("/");
@@ -58,12 +58,11 @@ export default function Navbar({ navRef, router }: Props) {
       .catch((error: any) => {
         if (error?.response?.data?.message) {
           toast.error(error.response.data.message);
-        }
-        else {
-          toast.error('Failed to sign out. Please try again.');
+        } else {
+          toast.error("Failed to sign out. Please try again.");
         }
       });
-  }
+  };
 
   const menu = (
     <Menu>
@@ -139,7 +138,7 @@ export default function Navbar({ navRef, router }: Props) {
                 href="/login"
                 className="bg-lapis text-neutral-50 font-montserrat font-light flex justify-center items-center px-4 py-2 text-sm rounded-md"
               >
-                Client Login
+                Login
               </Link>
             </>
           )}
@@ -179,14 +178,14 @@ export default function Navbar({ navRef, router }: Props) {
           <>
             <Link
               type="primary"
-              href={user.verificationCode ? '/verify' : '/dashboard'}
-              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11 rounded-md'
+              href={user.verificationCode ? "/verify" : "/dashboard"}
+              className="bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-light flex justify-center items-center px-8 text-xl xl:text-2xl h-10 2xl:h-11 rounded-md"
             >
               Dashboard
             </Link>
             <Button
               onClick={onLogout}
-              className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none'
+              className="nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl border-none shadow-none"
             >
               Log out
             </Button>
@@ -195,16 +194,16 @@ export default function Navbar({ navRef, router }: Props) {
           <>
             <Link
               href="/register"
-              className='nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl'
+              className="nav-option text-semiblack hover:text-lapis whitespace-nowrap font-medium  text-lg xl:text-xl"
             >
               Sign Up
             </Link>
             <Link
               type="primary"
               href="/login"
-              className='bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-medium flex justify-center items-center px-4 py-2 text-lg xl:text-xl h-10 2xl:h-11 rounded-md'
+              className="bg-lapis text-neutral-50 hover:bg-opacity-75 transition-[500] font-montserrat font-medium flex justify-center items-center px-4 py-2 text-lg xl:text-xl h-10 2xl:h-11 rounded-md"
             >
-              Client Login
+              Login
             </Link>
           </>
         )}

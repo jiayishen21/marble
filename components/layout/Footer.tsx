@@ -63,7 +63,7 @@ export default function Footer() {
                       font-light text-2xl underline 
                       transition-all duration-300"
                   >
-                    Client Login
+                    Login
                   </li>
                 </Link>
               </>
@@ -148,7 +148,7 @@ export default function Footer() {
                       font-light  text-xs lg:text-sm underline 
                       transition-all duration-300"
                   >
-                    Client Login
+                    Login
                   </li>
                 </Link>
               </>

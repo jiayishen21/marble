@@ -21,10 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <main className="overflow-x-hidden w-full">
-      <div
-        className="h-screen"
-      >
-        
+      <div className="h-screen">
         <section
           className={`relative flex flex-col items-center lg:items-start gap-6 lg:gap-9 2xl:gap-12 px-[1.5rem] md:px-[2.5rem] 
           lg:px-[3.5rem] xl:px-[4.5rem] 2xl:px-[6.5rem]`}
@@ -65,7 +62,7 @@ const Home: NextPage = () => {
               justify-center items-center`}
               data-aos="fade-right"
             >
-              Invest with us
+              Get Involved
             </Button>
           )}
         </section>
@@ -88,7 +85,7 @@ const Home: NextPage = () => {
           data-aos-delay="250"
         >
           Since its inception in 2023, Marble has completed multiple investment
-          rounds, exceeding market returns for investors across Canada.
+          rounds, consistently beating our benchmark, S&P 500 index.
         </div>
         <div className="mt-20 w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
@@ -124,32 +121,38 @@ const Home: NextPage = () => {
           >
             <img
               src="/elements/arrow.png"
-              className={`h-auto opacity-[0.8] ${mobile ? "w-[50vw]" : "w-[28vw]"
-                }`}
+              className={`h-auto opacity-[0.8] ${
+                mobile ? "w-[50vw]" : "w-[28vw]"
+              }`}
             />
           </div>
           <div
             className={`text-semiblack font-bold z-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl`}
             data-aos="fade-right"
           >
-            We are passionate about your financial journey
+            We are passionate about growing the finance community
           </div>
           <div
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
             {/* Marble is more than just an investment fund. */}
-            We want to provide you with a seamless and hands-on investment process while building a community of
-            financially oriented young adults. Investors can expect to gain access to
-            exclusive newsletters as well as opportunities to connect with our team.
+            {/* We want to provide you with a seamless and hands-on investment
+            process while building a community of financially oriented young
+            adults. Investors can expect to gain access to exclusive newsletters
+            as well as opportunities to connect with our team. */}
+            Members of Marble will have the opportunity to attend a variety of
+            events and educationals, as well as gain access to exclusive reports
+            and insights into our investing strategies.
           </div>
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${mobile
-              ? "text-sm md:text-base w-20 px-[4rem]"
-              : "text-lg xl:text-xl w-60 py-6"
-              }`}
+            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${
+              mobile
+                ? "text-sm md:text-base w-20 px-[4rem]"
+                : "text-lg xl:text-xl w-60 py-6"
+            }`}
             data-aos="fade-right"
           >
             Meet our team
