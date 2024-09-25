@@ -154,7 +154,7 @@ const TeamSections: Record<string, TeamMember[]> = {
     {
       name: "Hayley Chai",
       photo: "/members/blank-pfp.png",
-      role: "Graphic Designer",
+      role: "Graphic Design",
       email: "hayleyjhchai@gmail.com",
       link: "https://www.linkedin.com/in/hayley-jinghan-chai/",
     },
