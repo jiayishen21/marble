@@ -29,7 +29,7 @@ export default function Meet() {
               <span className="text-semiblack text-base md:text-lg xl:text-xl w-full xl:max-w-[55%]">
                 {/* We've gathered a top-notch team of diverse talent from across
                 Canada.  */}
-                Our entire team is responsible for managing the funds
+                The people responsible for managing the funds
                 operations.
               </span>
             </div>
