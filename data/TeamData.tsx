@@ -86,7 +86,7 @@ const TeamSections: Record<string, TeamMember[]> = {
     },
     {
       name: "Felix Qin",
-      photo: "/members/marketing/felix-qin.png",
+      photo: "/members/blank-pfp.png",
       role: "Operations",
       email: "felixqin21@gmail.com",
       link: "https://www.linkedin.com/in/felix-qin/",
