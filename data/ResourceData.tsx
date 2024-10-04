@@ -16,6 +16,10 @@ const quarterData24: data[] = [
     title: "2024 Q2 report",
     link: "/resources/Marble_Investments_2024_Q2_Report.pdf",
   },
+  {
+    title: "2024 Q3 report",
+    link: "/resources/Marble_Investments_2024_Q3_Report.pdf",
+  },
 ];
 
 const annualData: data[] = [
