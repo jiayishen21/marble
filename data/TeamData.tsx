@@ -41,7 +41,7 @@ const TeamSections: Record<string, TeamMember[]> = {
   //   //   link: "https://www.linkedin.com/company/marble-investments/",
   //   // },
   // ],
-  Developers: [
+  Operations: [
     {
       name: "Lucas Shen",
       photo: "/members/developers/lucas-shen.png",
@@ -62,6 +62,34 @@ const TeamSections: Record<string, TeamMember[]> = {
       role: "Frontend Developer",
       email: "john4button@gmail.com",
       link: "https://www.linkedin.com/in/john--liu/",
+    },
+    {
+      name: "Jessica Wang",
+      photo: "/members/marketing/jessica-wang.png",
+      role: "UI/UX Design",
+      email: "jessica.wang255@gmail.com",
+      link: "https://www.linkedin.com/in/jwang255/",
+    },
+    {
+      name: "Ethan Louie",
+      photo: "/members/marketing/ethan-louie.png",
+      role: "Graphic Design",
+      email: "e.louie007@gmail.com",
+      link: "https://www.linkedin.com/in/ethanlouie-/",
+    },
+    {
+      name: "Hayley Chai",
+      photo: "/members/blank-pfp.png",
+      role: "Graphic Design",
+      email: "hayleyjhchai@gmail.com",
+      link: "https://www.linkedin.com/in/hayley-jinghan-chai/",
+    },
+    {
+      name: "Felix Qin",
+      photo: "/members/marketing/felix-qin.png",
+      role: "Operations",
+      email: "felixqin21@gmail.com",
+      link: "https://www.linkedin.com/in/felix-qin/",
     },
   ],
   Analysts: [
@@ -129,36 +157,36 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/calvin-luo22/",
     },
   ],
-  Design: [
-    {
-      name: "Jessica Wang",
-      photo: "/members/marketing/jessica-wang.png",
-      role: "UI/UX Design",
-      email: "jessica.wang255@gmail.com",
-      link: "https://www.linkedin.com/in/jwang255/",
-    },
-    // {
-    //   name: "Jonathan Pan",
-    //   photo: "/members/marketing/johnathan-pan.png",
-    //   role: "Designer",
-    //   email: "jonathanpan66@gmail.com",
-    //   link: "https://www.linkedin.com/in/jonathanpan6/",
-    // },
-    {
-      name: "Ethan Louie",
-      photo: "/members/marketing/ethan-louie.png",
-      role: "Graphic Design",
-      email: "e.louie007@gmail.com",
-      link: "https://www.linkedin.com/in/ethanlouie-/",
-    },
-    {
-      name: "Hayley Chai",
-      photo: "/members/blank-pfp.png",
-      role: "Graphic Design",
-      email: "hayleyjhchai@gmail.com",
-      link: "https://www.linkedin.com/in/hayley-jinghan-chai/",
-    },
-  ],
+  // Design: [
+  //   {
+  //     name: "Jessica Wang",
+  //     photo: "/members/marketing/jessica-wang.png",
+  //     role: "UI/UX Design",
+  //     email: "jessica.wang255@gmail.com",
+  //     link: "https://www.linkedin.com/in/jwang255/",
+  //   },
+  //   {
+  //     name: "Ethan Louie",
+  //     photo: "/members/marketing/ethan-louie.png",
+  //     role: "Graphic Design",
+  //     email: "e.louie007@gmail.com",
+  //     link: "https://www.linkedin.com/in/ethanlouie-/",
+  //   },
+  //   {
+  //     name: "Hayley Chai",
+  //     photo: "/members/blank-pfp.png",
+  //     role: "Graphic Design",
+  //     email: "hayleyjhchai@gmail.com",
+  //     link: "https://www.linkedin.com/in/hayley-jinghan-chai/",
+  //   },
+  //   // {
+  //   //   name: "Jonathan Pan",
+  //   //   photo: "/members/marketing/johnathan-pan.png",
+  //   //   role: "Designer",
+  //   //   email: "jonathanpan66@gmail.com",
+  //   //   link: "https://www.linkedin.com/in/jonathanpan6/",
+  //   // },
+  // ],
 };
 
 type teamType = {
@@ -176,13 +204,13 @@ const teamOptions: teamType[] = [
     link: "/meet/analysts",
   },
   {
-    title: "Developers",
-    link: "/meet/developer",
+    title: "Operations",
+    link: "/meet/operations",
   },
-  {
-    title: "Design",
-    link: "/meet/design",
-  },
+  // {
+  //   title: "Design",
+  //   link: "/meet/design",
+  // },
 ];
 
 export { LeadMembers, TeamSections, teamOptions };
