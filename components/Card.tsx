@@ -54,7 +54,7 @@ export default function Card(item: any) {
 
   return (
     <>
-      <div className="w-[85%] h-auto relative">
+      <div className="w-[85%] h-[300px] relative overflow-clip">
         <Image
           src={item.photo}
           alt={item.name}

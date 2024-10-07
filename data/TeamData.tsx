@@ -143,11 +143,11 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/peter-bai/",
     },
     {
-      name: "Jia Jia He",
+      name: "Ryan ku",
       photo: "/members/blank-pfp.png",
       role: "Analyst",
-      email: "jiajiahe5730@gmail.com",
-      link: "https://www.linkedin.com/in/jiajiahe05/",
+      email: "rku4@uwo.ca",
+      link: "https://www.linkedin.com/in/ryan-ku/",
     },
     {
       name: "Calvin Luo",
