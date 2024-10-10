@@ -143,7 +143,7 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/peter-bai/",
     },
     {
-      name: "Ryan ku",
+      name: "Ryan Ku",
       photo: "/members/blank-pfp.png",
       role: "Analyst",
       email: "rku4@uwo.ca",
