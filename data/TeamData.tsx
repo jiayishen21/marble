@@ -94,11 +94,11 @@ const TeamSections: Record<string, TeamMember[]> = {
   ],
   Analysts: [
     {
-      name: "Curtis Li",
-      photo: "/members/analysts/curtis-li.png",
+      name: "Allyson Wu",
+      photo: "/members/blank-pfp.png",
       role: "Analyst",
-      email: "cli2425@uwo.ca",
-      link: "https://www.linkedin.com/in/curtis-li-203316261/",
+      email: "awu368@uwo.ca",
+      link: "https://www.linkedin.com/in/allysonzwu/",
     },
     {
       name: "Meryl Tu",
@@ -108,11 +108,11 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/meryl-tu/",
     },
     {
-      name: "Adam Goldband",
-      photo: "/members/analysts/adam-goldband.png",
+      name: "Leon Mu",
+      photo: "/members/blank-pfp.png",
       role: "Analyst",
-      email: "agoldban@uwo.ca",
-      link: "https://www.linkedin.com/in/adam-goldband/",
+      email: "",
+      link: "https://www.linkedin.com/in/leon-mu-0b9b6b28b/",
     },
     {
       name: "Eric Ma",
@@ -155,6 +155,34 @@ const TeamSections: Record<string, TeamMember[]> = {
       role: "Analyst",
       email: "cluo86@uwo.ca",
       link: "https://www.linkedin.com/in/calvin-luo22/",
+    },
+    {
+      name: "Rahul Solleti",
+      photo: "/members/blank-pfp.png",
+      role: "Junior Analyst",
+      email: "",
+      link: "https://www.linkedin.com/in/rahulsolleti/",
+    },
+    {
+      name: "Darren Tsui",
+      photo: "/members/blank-pfp.png",
+      role: "Junior Analyst",
+      email: "ttsui26@uwo.ca",
+      link: "https://www.linkedin.com/in/tsz-chun-darren-tsui/",
+    },
+    {
+      name: "Bruce Dai",
+      photo: "/members/blank-pfp.png",
+      role: "Junior Analyst",
+      email: "bdai24@uwo.ca",
+      link: "https://www.linkedin.com/in/brucedai06/",
+    },
+    {
+      name: "Clyde Wang",
+      photo: "/members/blank-pfp.png",
+      role: "Junior Analyst",
+      email: "cwan432@uwo.ca",
+      link: "https://www.linkedin.com/in/clyde-wang/",
     },
   ],
   // Design: [
