@@ -121,6 +121,13 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "ericma549@gmail.com",
       link: "https://www.linkedin.com/in/eric-ma-274142242/",
     },
+    {
+      name: "Abdullah khan",
+      photo: "/members/blank-pfp.png",
+      role: "Analyst",
+      email: "akha329@uwo.ca",
+      link: "https://www.linkedin.com/in/abdullah-khan-b9b20a22b/",
+    },
     // {
     //   name: "Ryan Ling",
     //   photo: "/members/analysts/ryan-ling.png",
