@@ -5,6 +5,7 @@ import {
   quarterData24,
   annualData,
   miscellaneousData,
+  writeUps,
 } from "../data/ResourceData";
 import Dropdown from "../components/Dropdown";
 import useMobile from "../hooks/useMobile";
@@ -34,8 +35,14 @@ export default function resources() {
             <h2 className="text-semiblack font-bold text-2xl mb-[1rem] ">
               QUARTERLY LETTERS
             </h2>
-            <Dropdown title={"2023 Quarterly Reports "} options={quarterData23} />
-            <Dropdown title={"2024 Quarterly Reports "} options={quarterData24} />
+            <Dropdown
+              title={"2023 Quarterly Reports "}
+              options={quarterData23}
+            />
+            <Dropdown
+              title={"2024 Quarterly Reports "}
+              options={quarterData24}
+            />
           </div>
           <div
             className="flex flex-col w-full items-center py-[2rem]"
@@ -139,6 +146,7 @@ export default function resources() {
               title={"Equity Reports"}
               options={miscellaneousData}
             ></Dropdown>
+            <Dropdown title={"Write-ups"} options={writeUps}></Dropdown>
           </div>
         </section>
       </section>

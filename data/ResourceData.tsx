@@ -46,4 +46,15 @@ const miscellaneousData: data[] = [
   },
 ];
 
-export { quarterData23, quarterData24, annualData, miscellaneousData };
+const writeUps: data[] = [
+  {
+    title: "XRAY",
+    link: "/resources/XRAY.pdf"
+  }, 
+  {
+    title: "HE",
+    link: "resources/HE.pdf"
+  }
+]
+
+export { quarterData23, quarterData24, annualData, miscellaneousData, writeUps};
