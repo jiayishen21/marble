@@ -51,6 +51,12 @@ const BaseNavOptions: NavOption[] = [
     icon: "",
     dropdown: false,
   },
+  {
+    title: "Recruiting Success",
+    route: "/recruiting-success",
+    icon: "",
+    dropdown: false,
+  },
 ];
 
 const missionData = [

@@ -18,7 +18,7 @@ const LeadMembers: Member[] = [
   {
     name: "Bill Cai",
     photo: "/members/blank-pfp.png",
-    role: "Principal Fund Manager",
+    role: "Fund Manager",
     email: "",
     link: "",
   },
@@ -28,6 +28,13 @@ const LeadMembers: Member[] = [
     role: "Fund Manager",
     email: "guomarshal@gmail.com",
     link: "https://www.linkedin.com/in/marshal-guo-a06ab2231/",
+  },
+  {
+    name: "Calvin Luo",
+    photo: "/members/blank-pfp.png",
+    role: "Fund Manager",
+    email: "",
+    link: "",
   },
 ];
 
@@ -94,13 +101,6 @@ const TeamSections: Record<string, TeamMember[]> = {
   ],
   Analysts: [
     {
-      name: "Allyson Wu",
-      photo: "/members/blank-pfp.png",
-      role: "Analyst",
-      email: "awu368@uwo.ca",
-      link: "https://www.linkedin.com/in/allysonzwu/",
-    },
-    {
       name: "Meryl Tu",
       photo: "/members/analysts/meryl-tu.png",
       role: "Analyst",
@@ -128,13 +128,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       email: "akha329@uwo.ca",
       link: "https://www.linkedin.com/in/abdullah-khan-b9b20a22b/",
     },
-    // {
-    //   name: "Ryan Ling",
-    //   photo: "/members/analysts/ryan-ling.png",
-    //   role: "Analyst",
-    //   email: "ryanling42@gmail.com",
-    //   link: "https://www.linkedin.com/in/ryan-ling-0251b6231/",
-    // },
     {
       name: "Nick Chen",
       photo: "/members/analysts/nick-chen.png",
