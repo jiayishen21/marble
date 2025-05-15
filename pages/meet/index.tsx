@@ -80,7 +80,10 @@ export default function Meet() {
                   className="flex flex-col gap-2 items-center justify-center mb-[6rem]"
                   key={key}
                   xs={24}
-                  md={6}
+                  sm={24}
+                  md={12}
+                  lg={12}
+                  xl={6}
                 >
                   <Card {...item} />
                 </Col>

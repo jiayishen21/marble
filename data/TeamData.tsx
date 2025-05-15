@@ -4,6 +4,7 @@ export type TeamMember = {
   role: string;
   email: string;
   link: string;
+  portfolio?: string;
 };
 
 type Member = {
@@ -12,29 +13,38 @@ type Member = {
   role: string;
   email: string;
   link: string;
+  portfolio?: string;
 };
 
 const LeadMembers: Member[] = [
   {
     name: "Bill Cai",
-    photo: "/members/blank-pfp.png",
-    role: "Fund Manager",
-    email: "",
-    link: "",
+    photo: "/members/managers/bill-cai.png",
+    role: "Thematic",
+    email: "bill.cai.2005@gmail.com",
+    link: "https://www.linkedin.com/in/bill-cai-37b3561b8/",
+    portfolio: "https://docs.google.com/spreadsheets/d/1rJiaKyP8REtmNNzKcuPaaP1oYtiFs1cJB1goSHTnZfo/edit?gid=1056952550#gid=1056952550",
   },
   {
     name: "Marshal Guo",
     photo: "/members/managers/marshal-guo.png",
-    role: "Fund Manager",
+    role: "Value",
     email: "guomarshal@gmail.com",
     link: "https://www.linkedin.com/in/marshal-guo-a06ab2231/",
   },
   {
     name: "Calvin Luo",
-    photo: "/members/blank-pfp.png",
-    role: "Fund Manager",
-    email: "",
-    link: "",
+    photo: "/members/managers/calvin-luo.png",
+    role: "Value",
+    email: "cluo86@uwo.ca",
+    link: "https://www.linkedin.com/in/calvin-luo22/",
+  },
+  {
+    name: "David Hu-Liu",
+    photo: "/members/managers/david-hu-liu.png",
+    role: "Quant",
+    email: "huliud9vid@gmail.com",
+    link: "https://www.linkedin.com/in/d-huliu/",
   },
 ];
 
@@ -109,7 +119,7 @@ const TeamSections: Record<string, TeamMember[]> = {
     },
     {
       name: "Leon Mu",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/leon-mu.png",
       role: "Analyst",
       email: "",
       link: "https://www.linkedin.com/in/leon-mu-0b9b6b28b/",
@@ -122,13 +132,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/eric-ma-274142242/",
     },
     {
-      name: "Abdullah khan",
-      photo: "/members/blank-pfp.png",
-      role: "Analyst",
-      email: "akha329@uwo.ca",
-      link: "https://www.linkedin.com/in/abdullah-khan-b9b20a22b/",
-    },
-    {
       name: "Nick Chen",
       photo: "/members/analysts/nick-chen.png",
       role: "Analyst",
@@ -137,49 +140,42 @@ const TeamSections: Record<string, TeamMember[]> = {
     },
     {
       name: "Peter Bai",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/peter-bai.png",
       role: "Analyst",
       email: "pbai6@uwo.ca",
       link: "https://www.linkedin.com/in/peter-bai/",
     },
     {
       name: "Ryan Ku",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/ryan-ku.png",
       role: "Analyst",
       email: "rku4@uwo.ca",
       link: "https://www.linkedin.com/in/ryan-ku/",
     },
     {
-      name: "Calvin Luo",
-      photo: "/members/blank-pfp.png",
-      role: "Analyst",
-      email: "cluo86@uwo.ca",
-      link: "https://www.linkedin.com/in/calvin-luo22/",
-    },
-    {
       name: "Rahul Solleti",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/rahul-soletti.png",
       role: "Junior Analyst",
       email: "",
       link: "https://www.linkedin.com/in/rahulsolleti/",
     },
     {
       name: "Darren Tsui",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/darren-tsui.png",
       role: "Junior Analyst",
       email: "ttsui26@uwo.ca",
       link: "https://www.linkedin.com/in/tsz-chun-darren-tsui/",
     },
     {
       name: "Bruce Dai",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/bruce-dai.png",
       role: "Junior Analyst",
       email: "bdai24@uwo.ca",
       link: "https://www.linkedin.com/in/brucedai06/",
     },
     {
       name: "Clyde Wang",
-      photo: "/members/blank-pfp.png",
+      photo: "/members/analysts/clyde-wang.png",
       role: "Junior Analyst",
       email: "cwan432@uwo.ca",
       link: "https://www.linkedin.com/in/clyde-wang/",

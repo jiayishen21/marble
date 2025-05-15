@@ -25,6 +25,12 @@ const BaseNavOptions: NavOption[] = [
     dropdown: false,
   },
   {
+    title: "Portfolio",
+    route: "/portfolio",
+    icon: "",
+    dropdown: false,
+  },
+  {
     title: "Resources",
     route: "/resources",
     icon: "",
@@ -46,12 +52,6 @@ const BaseNavOptions: NavOption[] = [
     // ]
   },
   {
-    title: "Contact Us",
-    route: "/contact",
-    icon: "",
-    dropdown: false,
-  },
-  {
     title: "Recruiting Success",
     route: "/recruiting-success",
     icon: "",
@@ -61,15 +61,15 @@ const BaseNavOptions: NavOption[] = [
 
 const missionData = [
   {
-    stat: "$40,000",
+    stat: "23.50%",
+    info: "YTD",
+  },
+  {
+    stat: "$550,000",
     info: "AUM",
   },
   {
-    stat: "67",
-    info: "INVESTORS",
-  },
-  {
-    stat: "24.13%",
+    stat: "39.13%",
     info: "IRR",
   },
 ];

@@ -92,7 +92,23 @@ export default function Register() {
   };
 
   return (
-    <div className={`flex items-center justify-center w-full h-screen`}>
+    <div className="flex items-center justify-center w-full h-screen">
+    <Row
+    className={`p-12 rounded text-center ${mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"}`}
+    data-aos={mobile ? undefined : "fade-up"}
+    >
+      <div
+        className="text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
+        2xl:text-5xl text-center w-full"
+      >
+        Marble is currently not open to public investors.
+      </div>
+    </Row>
+  </div>
+  )
+}
+
+    {/*<div className={`flex items-center justify-center w-full h-screen`}>
       <Row
         className={`p-12 rounded ${mobile ? "w-full" : "w-[35%] border-airforce/[0.2] border-2"
           }`}
@@ -209,5 +225,4 @@ export default function Register() {
         </Form>
       </Row>
     </div>
-  );
-}
+  );*/}

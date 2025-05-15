@@ -3,6 +3,7 @@ import { Button } from "antd";
 import Image from "next/image";
 import { MdEmail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
+import { BsGlobe } from "react-icons/bs"; // globe icon for portfolio
 import useMobile from "../hooks/useMobile";
 
 export default function Card(item: any) {
@@ -11,41 +12,34 @@ export default function Card(item: any) {
   const SocialButtons = (item: any) => {
     return (
       <div className="flex gap-6 mt-2">
-        {item.email && item.email !== '' ? (
-          <Button
-            type="primary"
-            href={`mailto:${item.email}`}
-            target="_blank"
-            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
-          >
-            <MdEmail />
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            disabled={true}
-            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
-          >
-            <MdEmail />
-          </Button>
-        )}
+        <Button
+          type="primary"
+          href={item.email ? `mailto:${item.email}` : undefined}
+          target="_blank"
+          disabled={!item.email}
+          className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+        >
+          <MdEmail />
+        </Button>
 
-        {item.link && item.link !== '' ? (
+        <Button
+          type="primary"
+          href={item.link || undefined}
+          target="_blank"
+          disabled={!item.link}
+          className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+        >
+          <FaLinkedin />
+        </Button>
+
+        {item.portfolio && (
           <Button
             type="primary"
-            href={item.link}
+            href={item.portfolio}
             target="_blank"
-            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
+            className="rounded-full bg-lapis flex items-center justify-center text-white text-sm font-semibold px-4 h-auto"
           >
-            <FaLinkedin />
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            disabled={true}
-            className="rounded-full bg-lapis flex items-center justify-center text-white text-xl"
-          >
-            <FaLinkedin />
+            Portfolio
           </Button>
         )}
       </div>
@@ -54,21 +48,14 @@ export default function Card(item: any) {
 
   return (
     <>
-      <div className="w-[85%] h-[300px] relative overflow-clip">
+      <div className="w-[85%] h-[400px] relative overflow-hidden rounded-md">
         <Image
           src={item.photo}
           alt={item.name}
-          // width={width && width < 525 ? 300 : 180}
-          // height={width && width < 525 ? 252 : 151}
-          // className={`origin-bottom scale-[1.2] 2xl:scale-[1.5] rounded-md`}
-          width={180}
-          height={151}
-          layout="responsive"
-          objectFit="cover"
-          className="rounded-md"
+          fill
+          className="object-cover rounded-md"
         />
       </div>
-
       <span className="text-semiblack font-bold text-base sm:text-3xl lg:text-4xl font-montserrat whitespace-nowrap">
         {item.name}
       </span>
