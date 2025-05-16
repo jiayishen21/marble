@@ -48,7 +48,7 @@ export default function Card(item: any) {
 
   return (
     <>
-      <div className="w-[85%] h-[400px] relative overflow-hidden rounded-md">
+      <div className="w-[80%] h-[360px] relative overflow-hidden rounded-md">
         <Image
           src={item.photo}
           alt={item.name}

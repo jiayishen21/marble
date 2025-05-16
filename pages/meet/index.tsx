@@ -83,7 +83,7 @@ export default function Meet() {
                   sm={24}
                   md={12}
                   lg={12}
-                  xl={6}
+                  xl={8 }
                 >
                   <Card {...item} />
                 </Col>

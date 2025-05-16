@@ -23,7 +23,7 @@ const LeadMembers: Member[] = [
     role: "Thematic",
     email: "bill.cai.2005@gmail.com",
     link: "https://www.linkedin.com/in/bill-cai-37b3561b8/",
-    portfolio: "https://docs.google.com/spreadsheets/d/1rJiaKyP8REtmNNzKcuPaaP1oYtiFs1cJB1goSHTnZfo/edit?gid=1056952550#gid=1056952550",
+    portfolio: "https://docs.google.com/spreadsheets/d/1-lVjeaHvj0p2GwtYbPgdvtwVszL4G-hzUJP283pJXaY/edit?gid=122010933#gid=122010933",
   },
   {
     name: "Marshal Guo",
@@ -38,13 +38,6 @@ const LeadMembers: Member[] = [
     role: "Value",
     email: "cluo86@uwo.ca",
     link: "https://www.linkedin.com/in/calvin-luo22/",
-  },
-  {
-    name: "David Hu-Liu",
-    photo: "/members/managers/david-hu-liu.png",
-    role: "Quant",
-    email: "huliud9vid@gmail.com",
-    link: "https://www.linkedin.com/in/d-huliu/",
   },
 ];
 

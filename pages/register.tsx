@@ -101,7 +101,7 @@ export default function Register() {
         className="text-semiblack font-bold leading-[1.3] z-[10] text-2xl sm:text-3xl lg:text-4xl 
         2xl:text-5xl text-center w-full"
       >
-        Marble is currently not open to public investors.
+        Marble is currently closed to the public.
       </div>
     </Row>
   </div>
