@@ -52,8 +52,7 @@ const Home: NextPage = () => {
               className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-12 2xl:mt-16 lg:w-[75%]`}
             >
-                  multi-strategy investment fund integrating value, thematic, and quantitative
-                  principles
+                  Multi-strategy investment fund integrating value, thematic, and quantitative principles backed by private capital
             </h2>
           </div>
           {!user && (

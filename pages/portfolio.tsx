@@ -17,16 +17,16 @@ export default function Portfolio() {
     // Manually set data here per fund
     if (selectedFund === "Thematic") {
       setData([
-        ["Company", "Ticker", "Buy Date", "Buy Price", "Shares", "Weight", "Return"],
-        ["Uber", "UBER", "1/3/2025", "$65.00", "800", "27%", "41.22%"],
-        ["Roblox", "RBLX", "1/3/2025", "$60.00", "800", "23%", "35.45%"],
-        ["Sezzle", "SEZL", "4/7/2025", "$30.00", "1000", "17%", "212.63%"],
-        ["Solar Edge", "SED", "5/9/2025", "$15.00", "1000", "8%", "46.80%"],
+        ["Company", "Ticker", "Buy Date", "Buy Price", "Weight", "Return"],
+        ["Uber", "UBER", "1/3/2025", "$65.00", "27%", "41.22%"],
+        ["Roblox", "RBLX", "1/3/2025", "$60.00", "23%", "35.45%"],
+        ["Sezzle", "SEZL", "4/7/2025", "$30.00", "17%", "212.63%"],
+        ["Solar Edge", "SED", "5/9/2025", "$15.00", "8%", "46.80%"],
       ]);
 
       setSummaryData([
-        ["Current Cash Marble", "Current Portfolio", "Current Value", "YTD %", "Initial Value"],
-        ["$70,000", "$207,000", "$277,000", "38.5%", "$200,000"]
+        ["YTD %"],
+        ["38.5%"]
       ]);
     } else {
       setData([]);
@@ -37,11 +37,7 @@ export default function Portfolio() {
   }, [selectedFund]);
 
   const summary = {
-    currentCash: "",
-    currentPortfolio: "",
-    currentValue: "",
     percent: "",
-    initialValue: "",
   };
 
   if (summaryData.length >= 2) {
@@ -50,11 +46,7 @@ export default function Portfolio() {
     labels.forEach((label, i) => {
       const key = label.toLowerCase().trim();
       const value = values[i]?.trim();
-      if (key.includes("current cash")) summary.currentCash = value;
-      if (key.includes("current portfolio")) summary.currentPortfolio = value;
-      if (key.includes("current value")) summary.currentValue = value;
       if (key.includes("%")) summary.percent = value;
-      if (key.includes("initial value")) summary.initialValue = value;
     });
   }
 
@@ -99,13 +91,6 @@ export default function Portfolio() {
               {summary.percent}
             </span>
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            <SummaryCard label="Current Cash" value={summary.currentCash} />
-            <SummaryCard label="Current Portfolio" value={summary.currentPortfolio} />
-            <SummaryCard label="Current Value" value={summary.currentValue} />
-            <SummaryCard label="Initial Value" value={summary.initialValue} />
-          </div>
         </>
       )}
       {!mobile && (
