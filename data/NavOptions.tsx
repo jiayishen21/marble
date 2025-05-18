@@ -66,7 +66,7 @@ const missionData = [
   },
   {
     stat: "$550,000",
-    info: "AUM",
+    info: "Portfolio Capital",
   },
   {
     stat: "39.13%",

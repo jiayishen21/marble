@@ -138,6 +138,11 @@ export default function Portfolio() {
           ) : (
             <p>Coming Soon!</p>
           )}
+          {selectedFund === "Thematic" && (
+           <p className="text-sm text-gray-500 italic mt-4">
+            Results shown are unaudited and for illustrative purposes only.  
+          </p>
+          )}
         </section>
       )}
     </main>
