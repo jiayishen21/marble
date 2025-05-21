@@ -129,13 +129,13 @@ const Home: NextPage = () => {
             className={`text-semiblack font-bold z-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl`}
             data-aos="fade-right"
           >
-            We seek to bridge the gap between modern and traditional investing 
+            We bridge the gap between modern and traditional investing 
           </div>
           <div
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble combines modern insights with timeless investment principles, empowering the next generation of investors to leverage their unique advantages to navigate markets with confidence.
+            Marble empowers the next generation of investors to leverage their unique advantages to nevigate the market with confidence.
           </div>
           <Button
             type="primary"
