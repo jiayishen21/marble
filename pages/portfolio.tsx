@@ -17,16 +17,15 @@ export default function Portfolio() {
     // Manually set data here per fund
     if (selectedFund === "Thematic") {
       setData([
-        ["Company", "Ticker", "Buy Date", "Buy Price (USD)", "Current Pricec (USD)", "Weight", "Return"],
+        ["Company", "Ticker", "Buy Date", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
         ["Uber", "UBER", "1/3/2025", "$65.00", "$88.67", "27%", "36.42%"],
         ["Roblox", "RBLX", "1/3/2025", "$60.00", "$81.16", "23%", "35.45%"],
         ["Sezzle", "SEZL", "4/7/2025", "$30.00", "$99.11", "17%", "212.63%"],
-        ["Solar Edge", "SEDG", "5/9/2025", "$15.00", "$19.84", "8%", "32.80%"],
       ]);
 
       setSummaryData([
         ["YTD %"],
-        ["35.5%"]
+        ["27.5%"]
       ]);
     } else {
       setData([]);
