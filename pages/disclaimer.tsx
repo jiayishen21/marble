@@ -6,6 +6,8 @@ export default function Disclaimer() {
       <p>
         The portfolio presented on this site reflects our investment strategies
         and views. Performance is unaudited and for illustrative purposes only.
+        Note that our value portfolio managed by our fund managers and all analysts trades solely using paper money (Summer 2025). 
+        Our thematic portfolio deploys live capital.
       </p>
       <p className="mt-2">
         This content is for informational purposes only and is
