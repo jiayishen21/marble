@@ -61,7 +61,7 @@ const BaseNavOptions: NavOption[] = [
 
 const missionData = [
   {
-    stat: "23.50%",
+    stat: "34.31%",
     info: "YTD",
   },
   {
