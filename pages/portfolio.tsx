@@ -98,8 +98,23 @@ export default function Portfolio() {
           }
           return row;
         });
+        const shortTickers = currentShortData.slice(1).map(row => row[1]);
+        const shortLive = await fetchPrices(shortTickers);
+        const updatedShort = currentShortData.map((row, i) => {
+          if (i === 0) return row;
+          const ticker = row[1];
+          const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+          const curr = shortLive[ticker];
+          if (!isNaN(curr)) {
+            row[3] = `$${curr.toFixed(2)}`;
+            const ret = ((shortPrice - curr) / shortPrice) * 100;
+            row[5] = `${ret.toFixed(2)}%`;
+          }
+          return row;
+        });
         setData(updated);
-        setShortData(currentShortData);
+        setShortData(updatedShort);
+
       } else {
         setData(exitedLongData);
         setShortData(exitedShortData);
