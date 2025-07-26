@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useMobile from "../hooks/useMobile";
 import { Button } from "antd";
-import { fetchPrices } from "../lib/fetchprices";
-
 
 
 type FundType = "Thematic" | "Value" | "Quant";
@@ -16,125 +14,127 @@ export default function Portfolio() {
   const [loading, setLoading] = useState(true);
   const [showCurrent, setShowCurrent] = useState(true);
 
- useEffect(() => {
-  setLoading(true);
+  useEffect(() => {
+    setLoading(true);
 
-  const fetchAndUpdate = async () => {
-    if (selectedFund === "Thematic") {
-      const thematicCurrent = [
-        ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
-        ["Uber", "UBER", "$65.00", "$95.39", "30%", "46.75%"],
-        ["Roblox", "RBLX", "$60.00", "$105.69", "32.5%", "76.12%"],
-        ["Sezzle", "SEZL", "$30.00", "$134.73", "7.5%", "349.10%"],
-        ["WeBull", "BULL", "$11.50", "$12.48", "11.5%", "8.52%"],
-      ];
-      const thematicExited = [
-        ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
-      ];
+    const fetchPricesFromAPI = async (tickers: string[]) => {
+      const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
+      return await res.json();
+    };
 
-      if (showCurrent) {
-        const tickers = thematicCurrent.slice(1).map(row => row[1]);
-        const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
-        const live = await res.json();
-        const updated = thematicCurrent.map((row, i) => {
-          if (i === 0) return row;
-          const ticker = row[1];
-          const buy = parseFloat(row[2].replace(/[$,]/g, ""));
-          const curr = live[ticker];
-          if (!isNaN(curr)) {
-            row[3] = `$${curr.toFixed(2)}`;
-            const ret = ((curr - buy) / buy) * 100;
-            row[5] = `${ret.toFixed(2)}%`;
-          }
-          return row;
-        });
-        setData(updated);
+    const fetchAndUpdate = async () => {
+      if (selectedFund === "Thematic") {
+        const thematicCurrent = [
+          ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
+          ["Uber", "UBER", "$65.00", "$95.39", "30%", "46.75%"],
+          ["Roblox", "RBLX", "$60.00", "$105.69", "32.5%", "76.12%"],
+          ["Sezzle", "SEZL", "$30.00", "$134.73", "7.5%", "349.10%"],
+          ["WeBull", "BULL", "$11.50", "$12.48", "11.5%", "8.52%"],
+        ];
+        const thematicExited = [
+          ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
+        ];
+
+        if (showCurrent) {
+          const tickers = thematicCurrent.slice(1).map(row => row[1]);
+          const live = await fetchPricesFromAPI(tickers);
+          const updated = thematicCurrent.map((row, i) => {
+            if (i === 0) return row;
+            const ticker = row[1];
+            const buy = parseFloat(row[2].replace(/[$,]/g, ""));
+            const curr = live[ticker];
+            if (!isNaN(curr)) {
+              row[3] = `$${curr.toFixed(2)}`;
+              const ret = ((curr - buy) / buy) * 100;
+              row[5] = `${ret.toFixed(2)}%`;
+            }
+            return row;
+          });
+          setData(updated);
+        } else {
+          setData(thematicExited);
+        }
+
+        setShortData([]);
+        setSummaryData([["YTD %"], ["65.20%"]]);
+      } else if (selectedFund === "Value") {
+        const currentLongData = [
+          ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
+          ["Castlewood", "CWSRF", "$13.33", "$13.43", "12.5%", "0.75%"],
+          ["Welltower", "WELL", "$154.45", "$155.16", "22.5%", "0.46%"],
+          ["NVIDIA", "NVDA", "$141.72", "$164.92", "40.0%", "16.37%"],
+          ["Cellebrite", "CLBT", "$16.53", "$14.59", "4.5%", "-11.74%"],
+          ["UnitedHealth", "UNH", "$303.22", "$304.10", "3.0%", "0.29%"],
+          ["Fortress Transportation", "FTAI", "$122.55", "$110.98", "4.5%", "-9.44%"],
+        ];
+
+        const exitedLongData = [
+          ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
+          ["LTC Properties", "LTC", "$34.75", "$35.16", "10.0%", "1.18%"],
+          ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "8.0%", "1.90%"],
+          ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "8.0%", "4.38%"],
+          ["Omega Healthcare", "OHI", "$36.07", "$37.02", "10.0%", "2.63%"],
+        ];
+
+        const currentShortData = [
+          ["Company", "Ticker", "Short Price (USD)", "Current Price (USD)", "Shares Shorted", "Return"],
+          ["Alphabet", "GOOG", "$171.62", "$181.31", "100", "-5.65%"],
+        ];
+
+        const exitedShortData = [
+          ["Company", "Ticker", "Short Price (USD)", "Exit Price (USD)", "Shares Shorted", "Return"],
+          ["Tesla", "TSLA", "$294.70", "$275.08", "100", "6.66%"],
+        ];
+
+        if (showCurrent) {
+          const tickers = currentLongData.slice(1).map(row => row[1]);
+          const live = await fetchPricesFromAPI(tickers);
+          const updated = currentLongData.map((row, i) => {
+            if (i === 0) return row;
+            const ticker = row[1];
+            const buy = parseFloat(row[2].replace(/[$,]/g, ""));
+            const curr = live[ticker];
+            if (!isNaN(curr)) {
+              row[3] = `$${curr.toFixed(2)}`;
+              const ret = ((curr - buy) / buy) * 100;
+              row[5] = `${ret.toFixed(2)}%`;
+            }
+            return row;
+          });
+
+          const shortTickers = currentShortData.slice(1).map(row => row[1]);
+          const shortLive = await fetchPricesFromAPI(shortTickers);
+          const updatedShort = currentShortData.map((row, i) => {
+            if (i === 0) return row;
+            const ticker = row[1];
+            const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+            const curr = shortLive[ticker];
+            if (!isNaN(curr)) {
+              row[3] = `$${curr.toFixed(2)}`;
+              const ret = ((shortPrice - curr) / shortPrice) * 100;
+              row[5] = `${ret.toFixed(2)}%`;
+            }
+            return row;
+          });
+
+          setData(updated);
+          setShortData(updatedShort);
+        } else {
+          setData(exitedLongData);
+          setShortData(exitedShortData);
+        }
+
+        setSummaryData([["YTD %"], ["6.77%"]]);
       } else {
-        setData(thematicExited);
+        setData([]);
+        setSummaryData([]);
       }
 
-      setShortData([]);
-      setSummaryData([["YTD %"], ["65.20%"]]);
-    } else if (selectedFund === "Value") {
-      const currentLongData = [
-        ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
-        ["Castlewood", "CWSRF", "$13.33", "$13.43", "12.5%", "0.75%"],
-        ["Welltower", "WELL", "$154.45", "$155.16", "22.5%", "0.46%"],
-        ["NVIDIA", "NVDA", "$141.72", "$164.92", "40.0%", "16.37%"],
-        ["Cellebrite", "CLBT", "$16.53", "$14.59", "4.5%", "-11.74%"],
-        ["UnitedHealth", "UNH", "$303.22", "$304.10", "3.0%", "0.29%"],
-        ["Fortress Transportation", "FTAI", "$122.55", "$110.98", "4.5%", "-9.44%"],
-      ];
+      setLoading(false);
+    };
 
-      const exitedLongData = [
-        ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
-        ["LTC Properties", "LTC", "$34.75", "$35.16", "10.0%", "1.18%"],
-        ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "8.0%", "1.90%"],
-        ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "8.0%", "4.38%"],
-        ["Omega Healthcare", "OHI", "$36.07", "$37.02", "10.0%", "2.63%"],
-      ];
-
-      const currentShortData = [
-        ["Company", "Ticker", "Short Price (USD)", "Current Price (USD)", "Shares Shorted", "Return"],
-        ["Alphabet", "GOOG", "$171.62", "$181.31", "100", "-5.65%"],
-      ];
-
-      const exitedShortData = [
-        ["Company", "Ticker", "Short Price (USD)", "Exit Price (USD)", "Shares Shorted", "Return"],
-        ["Tesla", "TSLA", "$294.70", "$275.08", "100", "6.66%"],
-      ];
-
-      if (showCurrent) {
-        const tickers = currentLongData.slice(1).map(row => row[1]);
-        const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
-        const live = await res.json();
-        const updated = currentLongData.map((row, i) => {
-          if (i === 0) return row;
-          const ticker = row[1];
-          const buy = parseFloat(row[2].replace(/[$,]/g, ""));
-          const curr = live[ticker];
-          if (!isNaN(curr)) {
-            row[3] = `$${curr.toFixed(2)}`;
-            const ret = ((curr - buy) / buy) * 100;
-            row[5] = `${ret.toFixed(2)}%`;
-          }
-          return row;
-        });
-        const shortTickers = currentShortData.slice(1).map(row => row[1]);
-        const shortRes = await fetch(`/api/prices?tickers=${shortTickers.join(",")}`);
-        const shortLive = await shortRes.json();
-        const updatedShort = currentShortData.map((row, i) => {
-          if (i === 0) return row;
-          const ticker = row[1];
-          const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
-          const curr = shortLive[ticker];
-          if (!isNaN(curr)) {
-            row[3] = `$${curr.toFixed(2)}`;
-            const ret = ((shortPrice - curr) / shortPrice) * 100;
-            row[5] = `${ret.toFixed(2)}%`;
-          }
-          return row;
-        });
-        setData(updated);
-        setShortData(updatedShort);
-
-      } else {
-        setData(exitedLongData);
-        setShortData(exitedShortData);
-      }
-
-      setSummaryData([["YTD %"], ["6.77%"]]);
-    } else {
-      setData([]);
-      setSummaryData([]);
-    }
-
-    setLoading(false);
-  };
-
-  fetchAndUpdate();
-}, [selectedFund, showCurrent]);
-
+    fetchAndUpdate();
+  }, [selectedFund, showCurrent]);
 
   const summary = {
     percent: "",
@@ -149,6 +149,8 @@ export default function Portfolio() {
       if (key.includes("%")) summary.percent = value;
     });
   }
+
+
 
   return (
     <main
