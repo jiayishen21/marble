@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY;
+const API_KEY = process.env.FINNHUB_API_KEY;
 const BASE_URL = "https://finnhub.io/api/v1/quote";
 
 
