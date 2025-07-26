@@ -34,7 +34,8 @@ export default function Portfolio() {
 
       if (showCurrent) {
         const tickers = thematicCurrent.slice(1).map(row => row[1]);
-        const live = await fetchPrices(tickers);
+        const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
+        const live = await res.json();
         const updated = thematicCurrent.map((row, i) => {
           if (i === 0) return row;
           const ticker = row[1];
@@ -85,7 +86,8 @@ export default function Portfolio() {
 
       if (showCurrent) {
         const tickers = currentLongData.slice(1).map(row => row[1]);
-        const live = await fetchPrices(tickers);
+        const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
+        const live = await res.json();
         const updated = currentLongData.map((row, i) => {
           if (i === 0) return row;
           const ticker = row[1];
@@ -99,7 +101,8 @@ export default function Portfolio() {
           return row;
         });
         const shortTickers = currentShortData.slice(1).map(row => row[1]);
-        const shortLive = await fetchPrices(shortTickers);
+        const shortRes = await fetch(`/api/prices?tickers=${shortTickers.join(",")}`);
+        const shortLive = await shortRes.json();
         const updatedShort = currentShortData.map((row, i) => {
           if (i === 0) return row;
           const ticker = row[1];
