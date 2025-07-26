@@ -3,7 +3,6 @@ import axios from "axios";
 const API_KEY = process.env.FINNHUB_API_KEY;
 const BASE_URL = "https://finnhub.io/api/v1/quote";
 
-
 export async function fetchPrices(tickers: string[]): Promise<Record<string, number>> {
   const prices: Record<string, number> = {};
 
