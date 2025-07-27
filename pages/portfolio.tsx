@@ -6,7 +6,7 @@ import { Button } from "antd";
 type FundType = "Thematic" | "Value" | "Quant";
 
 export default function Portfolio() {
-  const { mobile } = useMobile();
+  const  mobile  = false;
   const [selectedFund, setSelectedFund] = useState<FundType>("Thematic");
   const [data, setData] = useState<string[][]>([]);
   const [shortData, setShortData] = useState<string[][]>([]);
