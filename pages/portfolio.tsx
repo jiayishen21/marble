@@ -17,10 +17,31 @@ export default function Portfolio() {
   useEffect(() => {
     setLoading(true);
 
+
     const fetchPricesFromAPI = async (tickers: string[]) => {
-      const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000); // 6 -second timeout
+
+    try {
+      const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`, {
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error("Failed to fetch prices");
       return await res.json();
-    };
+    } catch (err) {
+      if (err instanceof Error) {
+        console.warn("Fetch aborted or failed:", err.message);
+      } else {
+        console.warn("Unknown error during fetch.");
+      }
+      // Force fallback for all tickers
+      return Object.fromEntries(tickers.map(t => [t, NaN]));
+    } finally {
+      clearTimeout(timeout);
+    }
+  };
+
+
 
     const fetchAndUpdate = async () => {
       if (selectedFund === "Thematic") {
@@ -42,12 +63,15 @@ export default function Portfolio() {
             if (i === 0) return row;
             const ticker = row[1];
             const buy = parseFloat(row[2].replace(/[$,]/g, ""));
+
             const curr = live[ticker];
-            if (!isNaN(curr)) {
-              row[3] = `$${curr.toFixed(2)}`;
-              const ret = ((curr - buy) / buy) * 100;
-              row[5] = `${ret.toFixed(2)}%`;
-            }
+            const fallback = parseFloat(row[3].replace(/[$,]/g, ""));
+            const finalPrice = !isNaN(curr) ? curr : fallback;
+
+            row[3] = `$${finalPrice.toFixed(2)}`;
+            const ret = ((finalPrice - buy) / buy) * 100;
+            row[5] = `${ret.toFixed(2)}%`;
+
             return row;
           });
           setData(updated);
@@ -93,12 +117,15 @@ export default function Portfolio() {
             if (i === 0) return row;
             const ticker = row[1];
             const buy = parseFloat(row[2].replace(/[$,]/g, ""));
+
             const curr = live[ticker];
-            if (!isNaN(curr)) {
-              row[3] = `$${curr.toFixed(2)}`;
-              const ret = ((curr - buy) / buy) * 100;
-              row[5] = `${ret.toFixed(2)}%`;
-            }
+            const fallback = parseFloat(row[3].replace(/[$,]/g, ""));
+            const finalPrice = !isNaN(curr) ? curr : fallback;
+
+            row[3] = `$${finalPrice.toFixed(2)}`;
+            const ret = ((finalPrice - buy) / buy) * 100;
+            row[5] = `${ret.toFixed(2)}%`;
+
             return row;
           });
 
@@ -108,12 +135,15 @@ export default function Portfolio() {
             if (i === 0) return row;
             const ticker = row[1];
             const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+
             const curr = shortLive[ticker];
-            if (!isNaN(curr)) {
-              row[3] = `$${curr.toFixed(2)}`;
-              const ret = ((shortPrice - curr) / shortPrice) * 100;
-              row[5] = `${ret.toFixed(2)}%`;
-            }
+            const fallback = parseFloat(row[3].replace(/[$,]/g, ""));
+            const finalPrice = !isNaN(curr) ? curr : fallback;
+
+            row[3] = `$${finalPrice.toFixed(2)}`;
+            const ret = ((shortPrice - finalPrice) / shortPrice) * 100;
+            row[5] = `${ret.toFixed(2)}%`;
+
             return row;
           });
 
