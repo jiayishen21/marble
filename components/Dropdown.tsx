@@ -32,7 +32,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
           onClick={handleToggle}
           className="border-none shadow-none text-lg flex items-center"
         >
-          {title} {isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}
+          {title} {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </Button>
         {isOpen && (
           <div className="flex flex-col">
@@ -69,7 +69,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, options }) => {
         onClick={handleToggle}
         className="border-none shadow-none text-lg flex items-center gap-[1rem]"
       >
-        {title} {isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}
+        {title} {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </Button>
       {isOpen && (
         <div className="flex flex-col z-1 top-full">
