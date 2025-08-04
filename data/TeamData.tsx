@@ -60,6 +60,27 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/lucas-shen/",
     },
     {
+      name: "Ayden Hwang",
+      photo: "/members/developers/ayden.png",
+      role: "Full Stack Engineer",
+      email: "ahwang24@uwo.ca",
+      link: "https://www.linkedin.com/in/lucas-shen/",
+    },
+    {
+      name: "Sai Kodakalla",
+      photo: "/members/blank-pfp.png",
+      role: "Full Stack Engineer",
+      email: "ahwang24@uwo.ca",
+      link: "https://www.linkedin.com/in/sai-kodakalla/",
+    },
+    {
+      name: "Johan Naresh",
+      photo: "/members/blank-pfp.png",
+      role: "Quant",
+      email: "johannaresh@gmail.com",
+      link: "https://www.linkedin.com/in/johan-naresh/",
+    },
+    {
       name: "Anthony Qiu",
       photo: "/members/blank-pfp.png",
       role: "Frontend Developer",
