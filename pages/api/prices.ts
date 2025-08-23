@@ -9,6 +9,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: "Tickers required" });
   }
 
+
+
   try {
     const symbols = tickers.split(",");
     const prices = await fetchPrices(symbols);
