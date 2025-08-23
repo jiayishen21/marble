@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import useMobile from "../hooks/useMobile";
 import { Button } from "antd";
 
-
 type FundType = "Thematic" | "Value" | "Quant";
 
 export default function Portfolio() {
-  const  mobile  = false;
+  const mobile = false;
   const [selectedFund, setSelectedFund] = useState<FundType>("Thematic");
   const [data, setData] = useState<string[][]>([]);
   const [shortData, setShortData] = useState<string[][]>([]);
@@ -17,47 +16,56 @@ export default function Portfolio() {
   useEffect(() => {
     setLoading(true);
 
-
     const fetchPricesFromAPI = async (tickers: string[]) => {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 6000); // 6 -second timeout
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000); // 6 -second timeout
 
-    try {
-      const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`, {
-        signal: controller.signal,
-      });
-      if (!res.ok) throw new Error("Failed to fetch prices");
-      return await res.json();
-    } catch (err) {
-      if (err instanceof Error) {
-        console.warn("Fetch aborted or failed:", err.message);
-      } else {
-        console.warn("Unknown error during fetch.");
+      try {
+        const res = await fetch(`/api/prices?tickers=${tickers.join(",")}`, {
+          signal: controller.signal,
+        });
+        if (!res.ok) throw new Error("Failed to fetch prices");
+        return await res.json();
+      } catch (err) {
+        if (err instanceof Error) {
+          console.warn("Fetch aborted or failed:", err.message);
+        } else {
+          console.warn("Unknown error during fetch.");
+        }
+        // Force fallback for all tickers
+        return Object.fromEntries(tickers.map((t) => [t, NaN]));
+      } finally {
+        clearTimeout(timeout);
       }
-      // Force fallback for all tickers
-      return Object.fromEntries(tickers.map(t => [t, NaN]));
-    } finally {
-      clearTimeout(timeout);
-    }
-  };
-
-
+    };
 
     const fetchAndUpdate = async () => {
       if (selectedFund === "Thematic") {
         const thematicCurrent = [
-          ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
-          ["Uber", "UBER", "$65.00", "$95.39", "30%", "46.75%"],
-          ["Roblox", "RBLX", "$60.00", "$105.69", "32.5%", "76.12%"],
-          ["Sezzle", "SEZL", "$30.00", "$134.73", "7.5%", "349.10%"],
-          ["WeBull", "BULL", "$11.50", "$12.48", "11.5%", "8.52%"],
+          [
+            "Company",
+            "Ticker",
+            "Buy Price (USD)",
+            "Current Price (USD)",
+            "Return",
+          ],
+          ["Uber", "UBER", "$65.00", "$95.39", "46.75%"],
+          ["Roblox", "RBLX", "$60.00", "$105.69", "76.12%"],
+          ["Sezzle", "SEZL", "$30.00", "$134.73", "349.10%"],
+          ["WeBull", "BULL", "$11.50", "$12.48", "8.52%"],
         ];
         const thematicExited = [
-          ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
+          [
+            "Company",
+            "Ticker",
+            "Buy Price (USD)",
+            "Exit Price (USD)",
+            "Return",
+          ],
         ];
 
         if (showCurrent) {
-          const tickers = thematicCurrent.slice(1).map(row => row[1]);
+          const tickers = thematicCurrent.slice(1).map((row) => row[1]);
           const live = await fetchPricesFromAPI(tickers);
           const updated = thematicCurrent.map((row, i) => {
             if (i === 0) return row;
@@ -70,7 +78,7 @@ export default function Portfolio() {
 
             row[3] = `$${finalPrice.toFixed(2)}`;
             const ret = ((finalPrice - buy) / buy) * 100;
-            row[5] = `${ret.toFixed(2)}%`;
+            row[4] = `${ret.toFixed(2)}%`;
 
             return row;
           });
@@ -83,35 +91,67 @@ export default function Portfolio() {
         setSummaryData([["YTD %"], ["65.20%"]]);
       } else if (selectedFund === "Value") {
         const currentLongData = [
-          ["Company", "Ticker", "Buy Price (USD)", "Current Price (USD)", "Weight", "Return"],
-          ["Castlewood", "CWSRF", "$13.33", "$13.43", "12.5%", "0.75%"],
-          ["Welltower", "WELL", "$154.45", "$155.16", "22.5%", "0.46%"],
-          ["NVIDIA", "NVDA", "$141.72", "$164.92", "40.0%", "16.37%"],
-          ["Cellebrite", "CLBT", "$16.53", "$14.59", "4.5%", "-11.74%"],
-          ["UnitedHealth", "UNH", "$303.22", "$304.10", "3.0%", "0.29%"],
-          ["Fortress Transportation", "FTAI", "$122.55", "$110.98", "4.5%", "-9.44%"],
+          [
+            "Company",
+            "Ticker",
+            "Buy Price (USD)",
+            "Current Price (USD)",
+            "Return",
+          ],
+          ["Castlewood", "CWSRF", "$13.33", "$13.43", "0.75%"],
+          ["Welltower", "WELL", "$154.45", "$155.16", "0.46%"],
+          ["NVIDIA", "NVDA", "$141.72", "$164.92", "16.37%"],
+          ["Cellebrite", "CLBT", "$16.53", "$14.59", "-11.74%"],
+          ["UnitedHealth", "UNH", "$303.22", "$304.10", "0.29%"],
+          [
+            "Fortress Transportation",
+            "FTAI",
+            "$122.55",
+            "$110.98",
+            "-9.44%",
+          ],
         ];
 
         const exitedLongData = [
-          ["Company", "Ticker", "Buy Price (USD)", "Exit Price (USD)", "Weight", "Return"],
-          ["LTC Properties", "LTC", "$34.75", "$35.16", "10.0%", "1.18%"],
-          ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "8.0%", "1.90%"],
-          ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "8.0%", "4.38%"],
-          ["Omega Healthcare", "OHI", "$36.07", "$37.02", "10.0%", "2.63%"],
+          [
+            "Company",
+            "Ticker",
+            "Buy Price (USD)",
+            "Exit Price (USD)",
+            "Return",
+          ],
+          ["LTC Properties", "LTC", "$34.75", "$35.16", "1.18%"],
+          ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "1.90%"],
+          ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "4.38%"],
+          ["Omega Healthcare", "OHI", "$36.07", "$37.02", "2.63%"],
         ];
 
         const currentShortData = [
-          ["Company", "Ticker", "Short Price (USD)", "Current Price (USD)", "Shares Shorted", "Return"],
+          [
+            "Company",
+            "Ticker",
+            "Short Price (USD)",
+            "Current Price (USD)",
+            "Shares Shorted",
+            "Return",
+          ],
           ["Alphabet", "GOOG", "$171.62", "$181.31", "100", "-5.65%"],
         ];
 
         const exitedShortData = [
-          ["Company", "Ticker", "Short Price (USD)", "Exit Price (USD)", "Shares Shorted", "Return"],
+          [
+            "Company",
+            "Ticker",
+            "Short Price (USD)",
+            "Exit Price (USD)",
+            "Shares Shorted",
+            "Return",
+          ],
           ["Tesla", "TSLA", "$294.70", "$275.08", "100", "6.66%"],
         ];
 
         if (showCurrent) {
-          const tickers = currentLongData.slice(1).map(row => row[1]);
+          const tickers = currentLongData.slice(1).map((row) => row[1]);
           const live = await fetchPricesFromAPI(tickers);
           const updated = currentLongData.map((row, i) => {
             if (i === 0) return row;
@@ -124,12 +164,12 @@ export default function Portfolio() {
 
             row[3] = `$${finalPrice.toFixed(2)}`;
             const ret = ((finalPrice - buy) / buy) * 100;
-            row[5] = `${ret.toFixed(2)}%`;
+            row[4] = `${ret.toFixed(2)}%`;
 
             return row;
           });
 
-          const shortTickers = currentShortData.slice(1).map(row => row[1]);
+          const shortTickers = currentShortData.slice(1).map((row) => row[1]);
           const shortLive = await fetchPricesFromAPI(shortTickers);
           const updatedShort = currentShortData.map((row, i) => {
             if (i === 0) return row;
@@ -179,8 +219,6 @@ export default function Portfolio() {
       if (key.includes("%")) summary.percent = value;
     });
   }
-
-
 
   return (
     <main
@@ -333,42 +371,41 @@ export default function Portfolio() {
       )}
       {!mobile && (
         <>
-
-        <section className="overflow-x-auto mb-12">
-          {loading ? (
-            <p>Loading {selectedFund.toLowerCase()} fund...</p>
-          ) : data.length > 1 ? (
-            <table className="min-w-full bg-white border rounded-lg shadow-md text-left">
-              <thead className="bg-gray-100 text-sm sm:text-base">
-                <tr>
-                  {data[0].map((header, i) => (
-                    <th key={i} className="px-4 py-3 border-b">
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="text-sm sm:text-base">
-                {data.slice(1).map((row, i) => (
-                  <tr key={i} className="hover:bg-gray-50">
-                    {row.map((cell, j) => (
-                      <td key={j} className="px-4 py-3 border-b">
-                        {cell.replace(/[^\d.,%\/-]/g, "") || cell}
-                      </td>
+          <section className="overflow-x-auto mb-12">
+            {loading ? (
+              <p>Loading {selectedFund.toLowerCase()} fund...</p>
+            ) : data.length > 1 ? (
+              <table className="min-w-full bg-white border rounded-lg shadow-md text-left">
+                <thead className="bg-gray-100 text-sm sm:text-base">
+                  <tr>
+                    {data[0].map((header, i) => (
+                      <th key={i} className="px-4 py-3 border-b">
+                        {header}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p>Coming Soon!</p>
-          )}
-          {(selectedFund === "Thematic" || selectedFund === "Value") && (
-            <p className="text-sm text-gray-500 italic mt-4">
-              Results shown are unaudited and for illustrative purposes only.
-            </p>
-          )}
-        </section>
+                </thead>
+                <tbody className="text-sm sm:text-base">
+                  {data.slice(1).map((row, i) => (
+                    <tr key={i} className="hover:bg-gray-50">
+                      {row.map((cell, j) => (
+                        <td key={j} className="px-4 py-3 border-b">
+                          {cell.replace(/[^\d.,%\/-]/g, "") || cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>Coming Soon!</p>
+            )}
+            {(selectedFund === "Thematic" || selectedFund === "Value") && (
+              <p className="text-sm text-gray-500 italic mt-4">
+                Results shown are unaudited and for illustrative purposes only.
+              </p>
+            )}
+          </section>
         </>
       )}
 
