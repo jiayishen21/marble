@@ -12,6 +12,8 @@ export default function Portfolio() {
   const [summaryData, setSummaryData] = useState<string[][]>([]);
   const [loading, setLoading] = useState(true);
   const [showCurrent, setShowCurrent] = useState(true);
+  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
+  const [totalPortfolioReturn, setTotalPortfolioReturn] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -39,6 +41,31 @@ export default function Portfolio() {
       }
     };
 
+    const calculatePortfolioMetrics = (portfolioData: string[][]) => {
+      if (portfolioData.length <= 1) return { totalValue: 0, totalReturn: 0 };
+
+      let totalInitialValue = 0;
+      let totalCurrentValue = 0;
+
+      portfolioData.slice(1).forEach((row) => {
+        const buyPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+        const currentPrice = parseFloat(row[3].replace(/[$,]/g, ""));
+        const shares = parseInt(row[4]);
+
+        if (!isNaN(buyPrice) && !isNaN(currentPrice) && !isNaN(shares)) {
+          totalInitialValue += buyPrice * shares;
+          totalCurrentValue += currentPrice * shares;
+        }
+      });
+
+      const totalReturn =
+        totalInitialValue > 0
+          ? ((totalCurrentValue - totalInitialValue) / totalInitialValue) * 100
+          : 0;
+
+      return { totalValue: totalCurrentValue, totalReturn };
+    };
+
     const fetchAndUpdate = async () => {
       if (selectedFund === "Thematic") {
         const thematicCurrent = [
@@ -47,12 +74,13 @@ export default function Portfolio() {
             "Ticker",
             "Buy Price (USD)",
             "Current Price (USD)",
+            "Shares",
             "Return",
           ],
-          ["Uber", "UBER", "$65.00", "$95.39", "46.75%"],
-          ["Roblox", "RBLX", "$60.00", "$105.69", "76.12%"],
-          ["Sezzle", "SEZL", "$30.00", "$134.73", "349.10%"],
-          ["WeBull", "BULL", "$11.50", "$12.48", "8.52%"],
+          ["Uber", "UBER", "$65.00", "$95.39", "100", "46.75%"],
+          ["Roblox", "RBLX", "$60.00", "$105.69", "150", "76.12%"],
+          ["Sezzle", "SEZL", "$30.00", "$134.73", "200", "349.10%"],
+          ["WeBull", "BULL", "$11.50", "$12.48", "300", "8.52%"],
         ];
         const thematicExited = [
           [
@@ -60,6 +88,7 @@ export default function Portfolio() {
             "Ticker",
             "Buy Price (USD)",
             "Exit Price (USD)",
+            "Shares",
             "Return",
           ],
         ];
@@ -78,13 +107,23 @@ export default function Portfolio() {
 
             row[3] = `$${finalPrice.toFixed(2)}`;
             const ret = ((finalPrice - buy) / buy) * 100;
-            row[4] = `${ret.toFixed(2)}%`;
+            row[5] = `${ret.toFixed(2)}%`;
 
             return row;
           });
           setData(updated);
+
+          // Calculate portfolio metrics
+          const metrics = calculatePortfolioMetrics(updated);
+          setTotalPortfolioValue(metrics.totalValue);
+          setTotalPortfolioReturn(metrics.totalReturn);
         } else {
           setData(thematicExited);
+
+          // Calculate portfolio metrics for exited positions
+          const metrics = calculatePortfolioMetrics(thematicExited);
+          setTotalPortfolioValue(metrics.totalValue);
+          setTotalPortfolioReturn(metrics.totalReturn);
         }
 
         setShortData([]);
@@ -96,18 +135,20 @@ export default function Portfolio() {
             "Ticker",
             "Buy Price (USD)",
             "Current Price (USD)",
+            "Shares",
             "Return",
           ],
-          ["Castlewood", "CWSRF", "$13.33", "$13.43", "0.75%"],
-          ["Welltower", "WELL", "$154.45", "$155.16", "0.46%"],
-          ["NVIDIA", "NVDA", "$141.72", "$164.92", "16.37%"],
-          ["Cellebrite", "CLBT", "$16.53", "$14.59", "-11.74%"],
-          ["UnitedHealth", "UNH", "$303.22", "$304.10", "0.29%"],
+          ["Castlewood", "CWSRF", "$13.33", "$13.43", "500", "0.75%"],
+          ["Welltower", "WELL", "$154.45", "$155.16", "100", "0.46%"],
+          ["NVIDIA", "NVDA", "$141.72", "$164.92", "200", "16.37%"],
+          ["Cellebrite", "CLBT", "$16.53", "$14.59", "300", "-11.74%"],
+          ["UnitedHealth", "UNH", "$303.22", "$304.10", "50", "0.29%"],
           [
             "Fortress Transportation",
             "FTAI",
             "$122.55",
             "$110.98",
+            "150",
             "-9.44%",
           ],
         ];
@@ -118,12 +159,13 @@ export default function Portfolio() {
             "Ticker",
             "Buy Price (USD)",
             "Exit Price (USD)",
+            "Shares",
             "Return",
           ],
-          ["LTC Properties", "LTC", "$34.75", "$35.16", "1.18%"],
-          ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "1.90%"],
-          ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "4.38%"],
-          ["Omega Healthcare", "OHI", "$36.07", "$37.02", "2.63%"],
+          ["LTC Properties", "LTC", "$34.75", "$35.16", "200", "1.18%"],
+          ["Sabra Healthcare", "SBRA", "$17.90", "$18.24", "300", "1.90%"],
+          ["CareTrust REIT", "CTRE", "$28.10", "$29.33", "250", "4.38%"],
+          ["Omega Healthcare", "OHI", "$36.07", "$37.02", "180", "2.63%"],
         ];
 
         const currentShortData = [
@@ -164,7 +206,7 @@ export default function Portfolio() {
 
             row[3] = `$${finalPrice.toFixed(2)}`;
             const ret = ((finalPrice - buy) / buy) * 100;
-            row[4] = `${ret.toFixed(2)}%`;
+            row[5] = `${ret.toFixed(2)}%`;
 
             return row;
           });
@@ -187,14 +229,38 @@ export default function Portfolio() {
             return row;
           });
 
-          setData(updated);
-          setShortData(updatedShort);
-        } else {
-          setData(exitedLongData);
-          setShortData(exitedShortData);
-        }
+                     setData(updated);
+           setShortData(updatedShort);
+           
+           // Calculate portfolio metrics for long positions
+           const longMetrics = calculatePortfolioMetrics(updated);
+           
+           // Calculate short position impact (simplified - just for display)
+           let shortImpact = 0;
+           if (updatedShort.length > 1) {
+             updatedShort.slice(1).forEach((row) => {
+               const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+               const currentPrice = parseFloat(row[3].replace(/[$,]/g, ""));
+               const shares = parseInt(row[4]);
+               if (!isNaN(shortPrice) && !isNaN(currentPrice) && !isNaN(shares)) {
+                 shortImpact += (shortPrice - currentPrice) * shares;
+               }
+             });
+           }
+           
+           setTotalPortfolioValue(longMetrics.totalValue + shortImpact);
+           setTotalPortfolioReturn(longMetrics.totalReturn);
+         } else {
+           setData(exitedLongData);
+           setShortData(exitedShortData);
+           
+           // Calculate portfolio metrics for exited positions
+           const longMetrics = calculatePortfolioMetrics(exitedLongData);
+           setTotalPortfolioValue(longMetrics.totalValue);
+           setTotalPortfolioReturn(longMetrics.totalReturn);
+         }
 
-        setSummaryData([["YTD %"], ["6.77%"]]);
+         setSummaryData([["YTD %"], ["6.77%"]]);
       } else {
         setData([]);
         setSummaryData([]);
@@ -251,14 +317,30 @@ export default function Portfolio() {
             {fund} Fund
           </Button>
         ))}
-      </div>
+             </div>
 
-      {selectedFund === "Thematic" && (
+       {/* Portfolio Summary */}
+       {selectedFund !== "Quant" && (
+         <div className="bg-gray-50 rounded-lg p-6 mb-8 shadow-sm">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div>
+               <h3 className="text-lg font-semibold text-gray-700 mb-2">Total Portfolio Value</h3>
+               <p className="text-3xl font-bold text-gray-900">
+                 ${totalPortfolioValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+               </p>
+             </div>
+             <div>
+               <h3 className="text-lg font-semibold text-gray-700 mb-2">Total Portfolio Return</h3>
+               <p className={`text-3xl font-bold ${totalPortfolioReturn >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                 {totalPortfolioReturn >= 0 ? '+' : ''}{totalPortfolioReturn.toFixed(2)}%
+               </p>
+             </div>
+           </div>
+         </div>
+       )}
+
+       {selectedFund === "Thematic" && (
         <>
-          <p className="text-semiblack text-base sm:text-lg md:text-xl mb-6 max-w-[800px]">
-            Our thematic fund consists of companies poised to generate immense
-            value from current social, economic, and technological trends.
-          </p>
           {/* Position Type Toggle for Thematic Fund */}
           <div className="flex flex-wrap gap-4 mb-6">
             <Button
@@ -313,11 +395,6 @@ export default function Portfolio() {
 
       {selectedFund === "Value" && (
         <>
-          <p className="text-semiblack text-base sm:text-lg md:text-xl mb-6 max-w-[800px]">
-            Our value fund focuses on established companies with strong
-            fundamentals, consistent earnings, and attractive valuations
-            relative to their intrinsic worth.
-          </p>
           {/* Position Type Toggle for Value Fund */}
           <div className="flex flex-wrap gap-4 mb-6">
             <Button
