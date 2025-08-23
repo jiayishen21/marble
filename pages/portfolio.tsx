@@ -126,8 +126,8 @@ export default function Portfolio() {
           setTotalPortfolioReturn(metrics.totalReturn);
         }
 
-                 setShortData([]);
-         setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
+        setShortData([]);
+        setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
       } else if (selectedFund === "Value") {
         const currentLongData = [
           [
@@ -264,7 +264,7 @@ export default function Portfolio() {
           setTotalPortfolioReturn(longMetrics.totalReturn);
         }
 
-                 setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
+        setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
       } else {
         setData([]);
         setSummaryData([]);
@@ -276,9 +276,9 @@ export default function Portfolio() {
     fetchAndUpdate();
   }, [selectedFund, showCurrent]);
 
-     const summary = {
-     percent: totalPortfolioReturn.toFixed(2) + "%",
-   };
+  const summary = {
+    percent: totalPortfolioReturn.toFixed(2) + "%",
+  };
 
   return (
     <main
@@ -313,38 +313,7 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Portfolio Summary */}
-      {selectedFund !== "Quant" && (
-        <div className="bg-gray-50 rounded-lg p-6 mb-8 shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                Total Portfolio Value
-              </h3>
-              <p className="text-3xl font-bold text-gray-900">
-                $
-                {totalPortfolioValue.toLocaleString("en-US", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">
-                Total Portfolio Return
-              </h3>
-              <p
-                className={`text-3xl font-bold ${
-                  totalPortfolioReturn >= 0 ? "text-green-600" : "text-red-600"
-                }`}
-              >
-                {totalPortfolioReturn >= 0 ? "+" : ""}
-                {totalPortfolioReturn.toFixed(2)}%
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+      
 
       {selectedFund === "Thematic" && (
         <>
