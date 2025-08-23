@@ -77,10 +77,10 @@ export default function Portfolio() {
             "Shares",
             "Return",
           ],
-          ["Uber", "UBER", "$65.00", "$95.39", "100", "46.75%"],
-          ["Roblox", "RBLX", "$60.00", "$105.69", "150", "76.12%"],
-          ["Sezzle", "SEZL", "$30.00", "$134.73", "200", "349.10%"],
-          ["WeBull", "BULL", "$11.50", "$12.48", "300", "8.52%"],
+          ["Uber", "UBER", "$65.00", "$95.39", "1000", "46.75%"],
+          ["Roblox", "RBLX", "$60.00", "$105.69", "1000", "76.12%"],
+          ["Sezzle", "SEZL", "$30.00", "$134.73", "500", "349.10%"],
+          ["WeBull", "BULL", "$11.50", "$12.48", "2000", "8.52%"],
         ];
         const thematicExited = [
           [
@@ -126,8 +126,8 @@ export default function Portfolio() {
           setTotalPortfolioReturn(metrics.totalReturn);
         }
 
-        setShortData([]);
-        setSummaryData([["YTD %"], ["65.20%"]]);
+                 setShortData([]);
+         setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
       } else if (selectedFund === "Value") {
         const currentLongData = [
           [
@@ -229,38 +229,42 @@ export default function Portfolio() {
             return row;
           });
 
-                     setData(updated);
-           setShortData(updatedShort);
-           
-           // Calculate portfolio metrics for long positions
-           const longMetrics = calculatePortfolioMetrics(updated);
-           
-           // Calculate short position impact (simplified - just for display)
-           let shortImpact = 0;
-           if (updatedShort.length > 1) {
-             updatedShort.slice(1).forEach((row) => {
-               const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
-               const currentPrice = parseFloat(row[3].replace(/[$,]/g, ""));
-               const shares = parseInt(row[4]);
-               if (!isNaN(shortPrice) && !isNaN(currentPrice) && !isNaN(shares)) {
-                 shortImpact += (shortPrice - currentPrice) * shares;
-               }
-             });
-           }
-           
-           setTotalPortfolioValue(longMetrics.totalValue + shortImpact);
-           setTotalPortfolioReturn(longMetrics.totalReturn);
-         } else {
-           setData(exitedLongData);
-           setShortData(exitedShortData);
-           
-           // Calculate portfolio metrics for exited positions
-           const longMetrics = calculatePortfolioMetrics(exitedLongData);
-           setTotalPortfolioValue(longMetrics.totalValue);
-           setTotalPortfolioReturn(longMetrics.totalReturn);
-         }
+          setData(updated);
+          setShortData(updatedShort);
 
-         setSummaryData([["YTD %"], ["6.77%"]]);
+          // Calculate portfolio metrics for long positions
+          const longMetrics = calculatePortfolioMetrics(updated);
+
+          // Calculate short position impact (simplified - just for display)
+          let shortImpact = 0;
+          if (updatedShort.length > 1) {
+            updatedShort.slice(1).forEach((row) => {
+              const shortPrice = parseFloat(row[2].replace(/[$,]/g, ""));
+              const currentPrice = parseFloat(row[3].replace(/[$,]/g, ""));
+              const shares = parseInt(row[4]);
+              if (
+                !isNaN(shortPrice) &&
+                !isNaN(currentPrice) &&
+                !isNaN(shares)
+              ) {
+                shortImpact += (shortPrice - currentPrice) * shares;
+              }
+            });
+          }
+
+          setTotalPortfolioValue(longMetrics.totalValue + shortImpact);
+          setTotalPortfolioReturn(longMetrics.totalReturn);
+        } else {
+          setData(exitedLongData);
+          setShortData(exitedShortData);
+
+          // Calculate portfolio metrics for exited positions
+          const longMetrics = calculatePortfolioMetrics(exitedLongData);
+          setTotalPortfolioValue(longMetrics.totalValue);
+          setTotalPortfolioReturn(longMetrics.totalReturn);
+        }
+
+                 setSummaryData([["YTD %"], [`${totalPortfolioReturn.toFixed(2)}%`]]);
       } else {
         setData([]);
         setSummaryData([]);
@@ -272,19 +276,9 @@ export default function Portfolio() {
     fetchAndUpdate();
   }, [selectedFund, showCurrent]);
 
-  const summary = {
-    percent: "",
-  };
-
-  if (summaryData.length >= 2) {
-    const labels = summaryData[0];
-    const values = summaryData[1];
-    labels.forEach((label, i) => {
-      const key = label.toLowerCase().trim();
-      const value = values[i]?.trim();
-      if (key.includes("%")) summary.percent = value;
-    });
-  }
+     const summary = {
+     percent: totalPortfolioReturn.toFixed(2) + "%",
+   };
 
   return (
     <main
@@ -317,29 +311,42 @@ export default function Portfolio() {
             {fund} Fund
           </Button>
         ))}
-             </div>
+      </div>
 
-       {/* Portfolio Summary */}
-       {selectedFund !== "Quant" && (
-         <div className="bg-gray-50 rounded-lg p-6 mb-8 shadow-sm">
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             <div>
-               <h3 className="text-lg font-semibold text-gray-700 mb-2">Total Portfolio Value</h3>
-               <p className="text-3xl font-bold text-gray-900">
-                 ${totalPortfolioValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-               </p>
-             </div>
-             <div>
-               <h3 className="text-lg font-semibold text-gray-700 mb-2">Total Portfolio Return</h3>
-               <p className={`text-3xl font-bold ${totalPortfolioReturn >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                 {totalPortfolioReturn >= 0 ? '+' : ''}{totalPortfolioReturn.toFixed(2)}%
-               </p>
-             </div>
-           </div>
-         </div>
-       )}
+      {/* Portfolio Summary */}
+      {selectedFund !== "Quant" && (
+        <div className="bg-gray-50 rounded-lg p-6 mb-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                Total Portfolio Value
+              </h3>
+              <p className="text-3xl font-bold text-gray-900">
+                $
+                {totalPortfolioValue.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                Total Portfolio Return
+              </h3>
+              <p
+                className={`text-3xl font-bold ${
+                  totalPortfolioReturn >= 0 ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {totalPortfolioReturn >= 0 ? "+" : ""}
+                {totalPortfolioReturn.toFixed(2)}%
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
-       {selectedFund === "Thematic" && (
+      {selectedFund === "Thematic" && (
         <>
           {/* Position Type Toggle for Thematic Fund */}
           <div className="flex flex-wrap gap-4 mb-6">
