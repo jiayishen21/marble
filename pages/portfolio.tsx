@@ -313,8 +313,6 @@ export default function Portfolio() {
         ))}
       </div>
 
-      
-
       {selectedFund === "Thematic" && (
         <>
           {/* Position Type Toggle for Thematic Fund */}

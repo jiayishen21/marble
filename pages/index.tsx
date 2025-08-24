@@ -52,7 +52,8 @@ const Home: NextPage = () => {
               className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-12 2xl:mt-16 lg:w-[75%]`}
             >
-                  Multi-strategy exploratory fund integrating value, thematic, and quantitative principles backed by private capital
+              Multi-strategy experimental fund integrating value, thematic, and
+              quantitative principles backed by private capital
             </h2>
           </div>
           {!user && (
@@ -85,7 +86,8 @@ const Home: NextPage = () => {
           data-aos="fade-right"
           data-aos-delay="250"
         >
-          Since its inception in 2022, Marbles multi-strategy fund has consistently beaten our benchmark, S&P 500 index.
+          Since its inception in 2022, Marbles multi-strategy fund has
+          consistently beaten our benchmark, S&P 500 index.
         </div>
         <div className="mt-20 w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
           {missionData.map((item, key) => (
@@ -121,29 +123,32 @@ const Home: NextPage = () => {
           >
             <img
               src="/elements/arrow.png"
-              className={`h-auto opacity-[0.8] ${mobile ? "w-[50vw]" : "w-[28vw]"
-                }`}
+              className={`h-auto opacity-[0.8] ${
+                mobile ? "w-[50vw]" : "w-[28vw]"
+              }`}
             />
           </div>
           <div
             className={`text-semiblack font-bold z-10 text-2xl sm:text-3xl md:text-4xl xl:text-5xl`}
             data-aos="fade-right"
           >
-            We bridge the gap between modern and traditional investing 
+            We bridge the gap between modern and traditional investing
           </div>
           <div
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble is an exploratory fund that deploys a mix of live and paper capital to publicly test and validate investment strategies.          
-            </div>
+            Marble is an experimental fund that deploys a mix of live and paper
+            capital to publicly test and validate investment strategies.
+          </div>
           <Button
             type="primary"
             href="/meet"
-            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${mobile
-              ? "text-sm md:text-base w-20 px-[4rem]"
-              : "text-lg xl:text-xl w-60 py-6"
-              }`}
+            className={` bg-lapis hover:bg-lapis/80 text-neutral-50 font-montserrat font-normal flex justify-center rounded-md items-center ${
+              mobile
+                ? "text-sm md:text-base w-20 px-[4rem]"
+                : "text-lg xl:text-xl w-60 py-6"
+            }`}
             data-aos="fade-right"
           >
             Meet our team
