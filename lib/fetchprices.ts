@@ -1,24 +1,54 @@
 import axios from "axios";
 
-const BASE_URL = "https://finnhub.io/api/v1/quote";
+const BASE_URL =
+  "https://api.polygon.io/v2/snapshot/locale/us/markets/stocks/tickers";
 
-export async function fetchPrices(tickers: string[]): Promise<Record<string, number>> {
-  // Use environment variable with fallback to hardcoded key
-  const API_KEY = process.env.FINNHUB_API_KEY || "d228rg9r01qt8677bok0d228rg9r01qt8677bokg";
-  
-  const prices: Record<string, number> = {};
+interface PolygonTicker {
+  ticker: string;
+  day?: {
+    c?: number; // close
+    o?: number; // open
+  };
+  lastTrade?: {
+    p?: number; // last trade
+  };
+}
 
-  for (const symbol of tickers) {
-    try {
-      const res = await axios.get(`${BASE_URL}`, {
-        params: { symbol, token: API_KEY },
-      });
-      const price = res.data.c;
-      prices[symbol] = price;
-    } catch (err) {
-      console.error(`❌ Failed to fetch ${symbol}:`, err);
+export interface PriceResult {
+  prices: Record<string, number>;
+  meta: Record<string, PolygonTicker>;
+}
+
+export async function fetchPrices(tickers: string[]): Promise<PriceResult> {
+  const API_KEY = process.env.NEXT_PUBLIC_POLYGON_API_KEY || "";
+
+  try {
+    const res = await axios.get(BASE_URL, {
+      params: { apiKey: API_KEY },
+    });
+
+    const allData: PolygonTicker[] = res.data?.tickers || [];
+
+    const prices: Record<string, number> = {};
+    const meta: Record<string, PolygonTicker> = {};
+
+    for (const symbol of tickers) {
+      const match = allData.find((item) => item.ticker === symbol);
+      if (match) {
+        prices[symbol] = match.day?.c ?? match.lastTrade?.p ?? NaN;
+        meta[symbol] = match;
+      } else {
+        console.warn(`⚠️ No data for ${symbol}`);
+        prices[symbol] = NaN;
+      }
     }
-  }
 
-  return prices;
+    return { prices, meta };
+  } catch (error) {
+    console.error("❌ Polygon bulk fetch failed:", error);
+    return {
+      prices: Object.fromEntries(tickers.map((t) => [t, NaN])),
+      meta: {},
+    };
+  }
 }

@@ -1,5 +1,11 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const connectDB = async () => mongoose.connect(process.env.MONGO_URI || '')
+const connectDB = async () => {
+  if (mongoose.connection.readyState >= 1) {
+    return mongoose.connection;
+  }
 
-export default connectDB
+  return mongoose.connect(process.env.MONGO_URI || "");
+};
+
+export default connectDB;

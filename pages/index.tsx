@@ -52,8 +52,8 @@ const Home: NextPage = () => {
               className={`text-airforce font-cairo font-bold tracking-wide z-[10] uppercase leading-[1.6] text-sm sm:text-base md:text-xl
             2xl:text-2xl mt-6 text-center lg:text-left lg:mt-12 2xl:mt-16 lg:w-[75%]`}
             >
-              Multi-strategy experimental fund integrating value, thematic, and
-              quantitative principles backed by private capital
+              Multi-strategy investment partnership integrating value, thematic,
+              and quantitative principles backed by private capital
             </h2>
           </div>
           {!user && (
@@ -86,7 +86,7 @@ const Home: NextPage = () => {
           data-aos="fade-right"
           data-aos-delay="250"
         >
-          Since its inception in 2022, Marbles multi-strategy fund has
+          Since its inception in 2022, Marbles multi-vertical stategy has
           consistently beaten our benchmark, S&P 500 index.
         </div>
         <div className="mt-20 w-full px-4 flex flex-col justify-start items-center md:grid-cols-3 md:grid md:place-items-center">
@@ -138,8 +138,9 @@ const Home: NextPage = () => {
             className={`text-semiblack z-[10] text-base md:text-lg xl:text-xl`}
             data-aos="fade-right"
           >
-            Marble is an experimental fund that deploys a mix of live and paper
-            capital to publicly test and validate investment strategies.
+            Marble is an experimental investment partnership that deploys a mix
+            of live and paper capital to publicly test and validate investment
+            strategies.
           </div>
           <Button
             type="primary"
