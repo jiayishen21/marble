@@ -59,9 +59,11 @@ export default function Card(item: any) {
       <span className="text-semiblack font-bold text-base sm:text-3xl lg:text-4xl font-montserrat whitespace-nowrap">
         {item.name}
       </span>
-      <span className="font-cairo font-normal tracking-wider text-xl text-semiblack">
-        {item.role}
-      </span>
+      {item.role && (
+        <span className="font-cairo font-normal tracking-wider text-xl text-semiblack">
+          {item.role}
+        </span>
+      )}
       {SocialButtons(item)}
     </>
   );

@@ -29,8 +29,7 @@ export default function Meet() {
               <span className="text-semiblack text-base md:text-lg xl:text-xl w-full xl:max-w-[55%]">
                 {/* We've gathered a top-notch team of diverse talent from across
                 Canada.  */}
-                The people responsible for managing the funds
-                operations.
+                The people responsible for managing Marble's operations.
               </span>
             </div>
           </section>
@@ -83,7 +82,7 @@ export default function Meet() {
                   sm={24}
                   md={12}
                   lg={12}
-                  xl={8 }
+                  xl={8}
                 >
                   <Card {...item} />
                 </Col>

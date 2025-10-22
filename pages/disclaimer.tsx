@@ -6,9 +6,7 @@ export default function Disclaimer() {
       <p>
         The portfolio presented on this site reflects our investment strategies
         and views. Performance is unaudited and for illustrative purposes only.
-        Note that our value and quant portfolios managed by our fund managers
-        and all analysts trades solely using paper money (Summer 2025). Our
-        thematic portfolio deploys live capital.
+        Note that our portfolio is managed by Bill Cai alone.
       </p>
       <p className="mt-2">
         This content is for informational purposes only and is not investment

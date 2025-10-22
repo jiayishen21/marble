@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  quarterData23,
-  quarterData24,
-  annualData,
-  miscellaneousData,
-  writeUps,
-} from "../data/ResourceData";
+import { quarterData23, quarterData24, writeUps } from "../data/ResourceData";
 import Dropdown from "../components/Dropdown";
 import useMobile from "../hooks/useMobile";
+import WindowCard from "../components/WindowCard";
+import axios from "axios";
 
-export default function resources() {
+type BlogItem = {
+  _id?: string;
+  title: string;
+  type: "post" | "file";
+  content?: string;
+  link?: string;
+  category?: "blog" | "legacy" | "core";
+};
+
+export default function Resources() {
   const { mobile } = useMobile();
+  const [blogs, setBlogs] = useState<BlogItem[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get("/api/blogs");
+        setBlogs(res.data || []);
+      } catch (e) {
+        setBlogs([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
   if (mobile) {
     return (
@@ -19,54 +41,63 @@ export default function resources() {
         <div className="w-[80%]">
           <h1 className="text-2xl font-bold">Resources</h1>
           <p className="text-md mt-[1rem]">
-            {/* We are committed to your financial empowerment.  */}
-            Access free, insightful resources on investor education, mutual
-            growth, and financial literacy.
+            Access our core strategy, blog, and legacy reports.
           </p>
         </div>
-        <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[4rem] rounded-md">
-          <div
-            className="flex flex-col w-full items-center py-[2rem]"
-            style={{
-              backgroundColor: "#ffffff",
-              boxShadow: "0 8px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <h2 className="text-semiblack font-bold text-2xl mb-[1rem] ">
-              QUARTERLY LETTERS
+        <section className="flex flex-col gap-[1.5rem] items-center justify-center mt-[2rem] rounded-md">
+          <div className="flex flex-col w-full items-start py-[1.5rem]">
+            <h2 className="text-semiblack font-bold text-xl mb-[0.5rem]">
+              Core Thematic Strategy
             </h2>
-            <Dropdown
-              title={"2023 Quarterly Reports "}
-              options={quarterData23}
-            />
-            <Dropdown
-              title={"2024 Quarterly Reports "}
-              options={quarterData24}
-            />
+            <p className="text-sm text-gray-700 mb-4">
+              Overview of our core themes and investment philosophy.
+            </p>
+            <div className="grid grid-cols-1 gap-4 w-full">
+              {blogs
+                .filter((b) => b.type === "post" && b.category === "core")
+                .map((b) => (
+                  <WindowCard
+                    key={b._id || b.title}
+                    title={b.title}
+                    href={b._id ? `/blog/${b._id}` : "#"}
+                    external={false}
+                  />
+                ))}
+            </div>
           </div>
-          <div
-            className="flex flex-col w-full items-center py-[2rem]"
-            style={{
-              backgroundColor: "#ffffff",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
-              ANNUAL REPORTS
+          <div className="flex flex-col w-full items-start py-[1.5rem]">
+            <h2 className="text-semiblack font-bold text-xl mb-[0.5rem]">
+              Blog
             </h2>
-            <Dropdown title={"Coming Soon..."} options={annualData} />
+            <div className="grid grid-cols-1 gap-4 w-full">
+              {blogs
+                .filter((b) => b.type === "post" && b.category === "blog")
+                .map((b) => (
+                  <WindowCard
+                    key={b._id || b.title}
+                    title={b.title}
+                    href={b._id ? `/blog/${b._id}` : "#"}
+                    external={false}
+                  />
+                ))}
+            </div>
           </div>
-          <div
-            className="flex flex-col w-full items-center py-[2rem]"
-            style={{
-              backgroundColor: "#ffffff",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <h2 className="text-semiblack font-bold text-2xl mb-[1rem]">
-              MISCELLANEOUS
+          <div className="flex flex-col w-full items-start py-[1.5rem]">
+            <h2 className="text-semiblack font-bold text-xl mb-[0.5rem]">
+              Legacy Reports
             </h2>
-            <Dropdown title={"Coming soon."} options={miscellaneousData} />
+            <div className="grid grid-cols-1 gap-4 w-full">
+              {blogs
+                .filter((b) => b.type === "file")
+                .map((r) => (
+                  <WindowCard
+                    key={r._id || r.title}
+                    title={r.title}
+                    href={r.link || "#"}
+                    external={!!r.link}
+                  />
+                ))}
+            </div>
           </div>
         </section>
       </main>
@@ -100,53 +131,61 @@ export default function resources() {
           >
             Resources
           </h1>
-          <div className="text-semiblack text-base md:text-lg xl:text-xl w-[50%]">
-            {/* We are committed to your financial empowerment.  */}
-            Access free, insightful resources on investor education, mutual
-            growth, and financial literacy. Note that Marble Investments does
-            not claim to offer financial advice.
-          </div>
+          <span className="text-semiblack text-base md:text-lg xl:text-xl w-full xl:max-w-[55%]">
+            Access our core strategy, blog, and legacy reports.
+          </span>
         </div>
-        <section
-          className={`flex justify-between items-center my-[4rem]
-          `}
-        >
-          <div className="flex flex-col relative items-center self-start">
-            <h2
-              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
-            >
-              QUARTERLY LETTERS
+        <section className={`flex flex-col gap-16 my-[2rem]`}>
+          <div className="flex flex-col gap-4">
+            <h2 className={`text-semiblack font-bold text-2xl xl:text-3xl`}>
+              Core Thematic Strategy
             </h2>
-            <div className="absolute top-[3rem]">
-              <Dropdown
-                title={"2023 Quarterly Reports "}
-                options={quarterData23}
-              />
-              <Dropdown
-                title={"2024 Quarterly Reports "}
-                options={quarterData24}
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl">
+              {blogs
+                .filter((b) => b.type === "post" && b.category === "core")
+                .map((b) => (
+                  <WindowCard
+                    key={b._id || b.title}
+                    title={b.title}
+                    href={b._id ? `/blog/${b._id}` : "#"}
+                    external={false}
+                  />
+                ))}
             </div>
           </div>
-          <div className="flex flex-col relative items-center self-start">
-            <h2
-              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
-            >
-              ANNUAL REPORTS
+          <div className="flex flex-col gap-4">
+            <h2 className={`text-semiblack font-bold text-2xl xl:text-3xl`}>
+              Blog
             </h2>
-            <Dropdown title={"Coming Soon..."} options={annualData}></Dropdown>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl">
+              {blogs
+                .filter((b) => b.type === "post" && b.category === "blog")
+                .map((b) => (
+                  <WindowCard
+                    key={b._id || b.title}
+                    title={b.title}
+                    href={b._id ? `/blog/${b._id}` : "#"}
+                    external={false}
+                  />
+                ))}
+            </div>
           </div>
-          <div className="flex flex-col relative items-center self-start">
-            <h2
-              className={`text-semiblack font-bold text-xl md:text-2xl z-10 xl:text-3xl`}
-            >
-              MISCELLANEOUS
+          <div className="flex flex-col gap-4">
+            <h2 className={`text-semiblack font-bold text-2xl xl:text-3xl`}>
+              Legacy Reports
             </h2>
-            <Dropdown
-              title={"Equity Reports"}
-              options={miscellaneousData}
-            ></Dropdown>
-            <Dropdown title={"Write-ups"} options={writeUps}></Dropdown>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl">
+              {blogs
+                .filter((b) => b.type === "file")
+                .map((r) => (
+                  <WindowCard
+                    key={r._id || r.title}
+                    title={r.title}
+                    href={r.link || "#"}
+                    external={!!r.link}
+                  />
+                ))}
+            </div>
           </div>
         </section>
       </section>

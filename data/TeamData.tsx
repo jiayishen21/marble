@@ -1,7 +1,7 @@
 export type TeamMember = {
   name: string;
   photo: string;
-  role: string;
+  role?: string;
   email: string;
   link: string;
   portfolio?: string;
@@ -10,7 +10,7 @@ export type TeamMember = {
 type Member = {
   name: string;
   photo: string;
-  role: string;
+  role?: string;
   email: string;
   link: string;
   portfolio?: string;
@@ -20,22 +20,18 @@ const LeadMembers: Member[] = [
   {
     name: "Bill Cai",
     photo: "/members/managers/bill-cai.png",
-    role: "Thematic",
     email: "bill.cai.2005@gmail.com",
     link: "https://www.linkedin.com/in/bill-cai-37b3561b8/",
-    portfolio: "https://docs.google.com/spreadsheets/d/1-lVjeaHvj0p2GwtYbPgdvtwVszL4G-hzUJP283pJXaY/edit?gid=122010933#gid=122010933",
   },
   {
     name: "Marshal Guo",
     photo: "/members/managers/marshal-guo.png",
-    role: "Value",
     email: "guomarshal@gmail.com",
     link: "https://www.linkedin.com/in/marshal-guo-a06ab2231/",
   },
   {
     name: "Calvin Luo",
     photo: "/members/managers/calvin-luo.png",
-    role: "Value",
     email: "cluo86@uwo.ca",
     link: "https://www.linkedin.com/in/calvin-luo22/",
   },
@@ -74,13 +70,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/sai-kodakalla/",
     },
     {
-      name: "Johan Naresh",
-      photo: "/members/blank-pfp.png",
-      role: "Quant",
-      email: "johannaresh@gmail.com",
-      link: "https://www.linkedin.com/in/johan-naresh/",
-    },
-    {
       name: "Anthony Qiu",
       photo: "/members/blank-pfp.png",
       role: "Frontend Developer",
@@ -93,13 +82,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       role: "Frontend Developer",
       email: "john4button@gmail.com",
       link: "https://www.linkedin.com/in/john--liu/",
-    },
-    {
-      name: "Jessica Wang",
-      photo: "/members/marketing/jessica-wang.png",
-      role: "UI/UX Design",
-      email: "jessica.wang255@gmail.com",
-      link: "https://www.linkedin.com/in/jwang255/",
     },
     {
       name: "Ethan Louie",
@@ -132,13 +114,6 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/meryl-tu/",
     },
     {
-      name: "Leon Mu",
-      photo: "/members/analysts/leon-mu.png",
-      role: "Analyst",
-      email: "",
-      link: "https://www.linkedin.com/in/leon-mu-0b9b6b28b/",
-    },
-    {
       name: "Eric Ma",
       photo: "/members/analysts/eric-ma.png",
       role: "Analyst",
@@ -167,30 +142,23 @@ const TeamSections: Record<string, TeamMember[]> = {
       link: "https://www.linkedin.com/in/ryan-ku/",
     },
     {
-      name: "Rahul Solleti",
-      photo: "/members/analysts/rahul-soletti.png",
-      role: "Junior Analyst",
-      email: "",
-      link: "https://www.linkedin.com/in/rahulsolleti/",
-    },
-    {
       name: "Darren Tsui",
       photo: "/members/analysts/darren-tsui.png",
-      role: "Junior Analyst",
+      role: "Analyst",
       email: "ttsui26@uwo.ca",
       link: "https://www.linkedin.com/in/tsz-chun-darren-tsui/",
     },
     {
       name: "Bruce Dai",
       photo: "/members/analysts/bruce-dai.png",
-      role: "Junior Analyst",
+      role: "Analyst",
       email: "bdai24@uwo.ca",
       link: "https://www.linkedin.com/in/brucedai06/",
     },
     {
       name: "Clyde Wang",
       photo: "/members/analysts/clyde-wang.png",
-      role: "Junior Analyst",
+      role: "Analyst",
       email: "cwan432@uwo.ca",
       link: "https://www.linkedin.com/in/clyde-wang/",
     },

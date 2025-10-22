@@ -35,21 +35,6 @@ const BaseNavOptions: NavOption[] = [
     route: "/resources",
     icon: "",
     dropdown: false,
-    // dropdown: true,
-    // options: [
-    //   {
-    //     title: "Sample Resource 1",
-    //     append: "sr1"
-    //   },
-    //   {
-    //     title: "Sample Resource 2",
-    //     append: "sr2"
-    //   },
-    //   {
-    //     title: "Sample Resource 3",
-    //     append: "sr3"
-    //   }
-    // ]
   },
   {
     title: "Recruiting Success",
@@ -61,7 +46,7 @@ const BaseNavOptions: NavOption[] = [
 
 const missionData = [
   {
-    stat: "34.31%",
+    stat: "74.31%",
     info: "YTD",
   },
   {
@@ -69,7 +54,7 @@ const missionData = [
     info: "AUM",
   },
   {
-    stat: "39.13%",
+    stat: "55.13%",
     info: "IRR",
   },
 ];

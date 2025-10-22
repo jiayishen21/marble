@@ -1,0 +1,107 @@
+/* Rich Text Editor Styles */
+.rich-text-editor {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rich-text-editor .toolbar {
+  background: #fafafa;
+  border-bottom: 1px solid #d9d9d9;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.rich-text-editor .toolbar button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid #d9d9d9;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.rich-text-editor .toolbar button:hover {
+  background: #f5f5f5;
+  border-color: #40a9ff;
+}
+
+.rich-text-editor .toolbar button.active {
+  background: #1890ff;
+  color: white;
+  border-color: #1890ff;
+}
+
+.rich-text-editor textarea {
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  padding: 12px;
+  width: 100%;
+  background: white;
+}
+
+.rich-text-editor textarea:focus {
+  box-shadow: none;
+}
+
+.rich-text-editor .help-text {
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.rich-text-editor .help-text ul {
+  margin: 4px 0 0 0;
+  padding-left: 16px;
+}
+
+.rich-text-editor .help-text li {
+  margin: 2px 0;
+}
+
+/* Formatting preview styles for better UX */
+.format-preview {
+  margin-top: 8px;
+  padding: 8px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #495057;
+}
+
+.format-preview h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: #212529;
+}
+
+.format-preview h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: #212529;
+}
+
+.format-preview strong {
+  font-weight: bold;
+}
+
+.format-preview u {
+  text-decoration: underline;
+}
+

@@ -23,8 +23,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json({ error: "Portfolio must be an array of holdings" });
       }
 
+      // No normalization needed for text dates
+      const normalized = newHoldings;
+
       await Holding.deleteMany({});
-      await Holding.insertMany(newHoldings);
+      await Holding.insertMany(normalized);
 
       return res.status(200).json({ message: "Portfolio updated successfully" });
     } catch (error) {
