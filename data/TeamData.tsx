@@ -50,8 +50,8 @@ const TeamSections: Record<string, TeamMember[]> = {
   Operations: [
     {
       name: "Lucas Shen",
-      photo: "/members/developers/lucas-shen.png",
-      role: "Software Engineer",
+      photo: "/members/developers/lucas-shen.jpg",
+      role: "Operations",
       email: "lucasshen21@gmail.com",
       link: "https://www.linkedin.com/in/lucas-shen/",
     },
